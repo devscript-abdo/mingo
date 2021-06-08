@@ -95,7 +95,7 @@
                             </li>
                         </ul>
                     </div>
-                </div><a class="ps-logo" href="index.html"><img src="img/logo_light.png" alt=""></a>
+                </div><a class="ps-logo" href="index.html"><img src="assets/img/logo_light.png" alt=""></a>
             </div>
             <div class="header__center">
                 <form class="ps-form--quick-search" action="http://nouthemes.net/html/martfury/index.html" method="get">
