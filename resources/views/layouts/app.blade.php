@@ -26,7 +26,7 @@
 
     </div>
     
-    @include('sections.__popup_promo')
+    {{--@include('sections.__popup_promo')--}}
 
     <div id="back2top"><i class="icon icon-arrow-up"></i></div>
     <div class="ps-site-overlay"></div>
