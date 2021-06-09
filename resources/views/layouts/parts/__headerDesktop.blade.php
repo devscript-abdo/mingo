@@ -95,10 +95,10 @@
                             </li>
                         </ul>
                     </div>
-                </div><a class="ps-logo" href="index.html"><img src="assets/img/logo_light.png" alt=""></a>
+                </div><a class="ps-logo" href="{{route('home')}}"><img src="assets/img/logo_light.png" alt=""></a>
             </div>
             <div class="header__center">
-                <form class="ps-form--quick-search" action="http://nouthemes.net/html/martfury/index.html" method="get">
+                <form class="ps-form--quick-search" action="" method="get">
                     <div class="form-group--icon"><i class="icon-chevron-down"></i>
                         <select class="form-control">
                             <option value="0" selected="selected">All</option>
