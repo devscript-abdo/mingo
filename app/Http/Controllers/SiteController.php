@@ -4,13 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Traits\InterfaceHandler;
+
 class SiteController extends Controller
 {
-    //
+
+    use InterfaceHandler;
 
     public function index()
     {
 
-        return view('theme.home.index');
+        $sliders  = $this->Slider()->activeItems();
+
+        $topAds = $this->Ads()->locationIn('top_slider');
+        
+        return view('theme.home.index', compact('sliders','topAds'));
     }
+
+    
 }
