@@ -27,6 +27,11 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Ads\AdsInterface',
             'App\Repositories\Ads\AdsRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Brand\BrandInterface',
+            'App\Repositories\Brand\BrandRepository'
+        );
     }
 
     /**

@@ -2,7 +2,7 @@
     <div class="row align-content-lg-stretch">
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 ">
             <div class="ps-block--category-2" data-mh="categories">
-                <div class="ps-block__thumbnail"><img src="img/categories/shop/1.jpg" alt=""></div>
+                <div class="ps-block__thumbnail"><img src="{{asset('assets/img/categories/shop/1.jpg')}}" alt=""></div>
                 <div class="ps-block__content">
                     <h4>Clothing &amp; Apparel</h4>
                     <ul>
@@ -17,7 +17,7 @@
         </div>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 ">
             <div class="ps-block--category-2" data-mh="categories">
-                <div class="ps-block__thumbnail"><img src="img/categories/shop/2.jpg" alt=""></div>
+                <div class="ps-block__thumbnail"><img src="{{asset('assets/img/categories/shop/2.jpg')}}" alt=""></div>
                 <div class="ps-block__content">
                     <h4>Garden &amp; Kitchen</h4>
                     <ul>
@@ -32,7 +32,7 @@
         </div>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 ">
             <div class="ps-block--category-2" data-mh="categories">
-                <div class="ps-block__thumbnail"><img src="img/categories/shop/3.jpg" alt=""></div>
+                <div class="ps-block__thumbnail"><img src="{{asset('assets/img/categories/shop/3.jpg')}}" alt=""></div>
                 <div class="ps-block__content">
                     <h4>Consumer Electrics</h4>
                     <ul>
@@ -47,7 +47,7 @@
         </div>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 ">
             <div class="ps-block--category-2" data-mh="categories">
-                <div class="ps-block__thumbnail"><img src="img/categories/shop/4.jpg" alt=""></div>
+                <div class="ps-block__thumbnail"><img src="{{asset('assets/img/categories/shop/4.jpg')}}" alt=""></div>
                 <div class="ps-block__content">
                     <h4>Health &amp; Beauty</h4>
                     <ul>
@@ -61,7 +61,7 @@
         </div>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 ">
             <div class="ps-block--category-2" data-mh="categories">
-                <div class="ps-block__thumbnail"><img src="img/categories/shop/5.jpg" alt=""></div>
+                <div class="ps-block__thumbnail"><img src="{{asset('assets/img/categories/shop/5.jpg')}}" alt=""></div>
                 <div class="ps-block__content">
                     <h4>Computers &amp; Technologies</h4>
                     <ul>
@@ -74,7 +74,7 @@
         </div>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 ">
             <div class="ps-block--category-2" data-mh="categories">
-                <div class="ps-block__thumbnail"><img src="img/categories/shop/6.jpg" alt=""></div>
+                <div class="ps-block__thumbnail"><img src="{{asset('assets/img/categories/shop/6.jpg')}}" alt=""></div>
                 <div class="ps-block__content">
                     <h4>Jewelry &amp; Watches</h4>
                     <ul>
@@ -87,7 +87,7 @@
         </div>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 ">
             <div class="ps-block--category-2" data-mh="categories">
-                <div class="ps-block__thumbnail"><img src="img/categories/shop/7.jpg" alt=""></div>
+                <div class="ps-block__thumbnail"><img src="{{asset('assets/img/categories/shop/7.jpg')}}" alt=""></div>
                 <div class="ps-block__content">
                     <h4>Phone &amp; Accessories</h4>
                     <ul>
@@ -101,7 +101,7 @@
         </div>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 ">
             <div class="ps-block--category-2" data-mh="categories">
-                <div class="ps-block__thumbnail"><img src="img/categories/shop/8.jpg" alt=""></div>
+                <div class="ps-block__thumbnail"><img src="{{asset('assets/img/categories/shop/8.jpg')}}" alt=""></div>
                 <div class="ps-block__content">
                     <h4>Sport &amp; Outdoor</h4>
                     <ul>

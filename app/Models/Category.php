@@ -16,7 +16,6 @@ class Category extends Categories
 
     public function products()
     {
-
         return $this->hasMany('App\Models\Product');
     }
 

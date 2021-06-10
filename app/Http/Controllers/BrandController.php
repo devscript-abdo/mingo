@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Brand;
 use Illuminate\Http\Request;
-use App\Traits\InterfaceHandler;
-class ProductController extends Controller
-{
 
-    use InterfaceHandler;
+class BrandController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -16,11 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $topAds = $this->Ads()->locationIn('top_products_page');
-
-        $brands = $this->Brand()->activeItems();
-
-        return view('theme.products.index', compact('topAds','brands'));
+        //
     }
 
     /**
@@ -47,10 +41,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Brand $brand)
     {
         //
     }
@@ -58,10 +52,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Brand $brand)
     {
         //
     }
@@ -70,10 +64,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Brand $brand)
     {
         //
     }
@@ -81,10 +75,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Brand $brand)
     {
         //
     }

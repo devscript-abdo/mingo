@@ -7,7 +7,7 @@
 
         @include('theme.products.default.section_b_banner')
         @include('theme.products.default.section_c_brand')
-        @include('theme.products.default.section_d_categories')
+        {{--@include('theme.products.default.section_d_categories')--}}
 
         <div class="ps-layout--shop">
 
