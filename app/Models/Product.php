@@ -21,7 +21,13 @@ class Product extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
-    public function scopeActive($query){
+    public function colors()
+    {
+        return $this->belongsToMany('App\Models\Color', 'product_color', 'product_id', 'color_id');
+    }
+
+    public function scopeActive($query)
+    {
 
         return $query->whereActive(true)->get();
     }

@@ -95,7 +95,7 @@
                             </li>
                         </ul>
                     </div>
-                </div><a class="ps-logo" href="{{route('home')}}"><img src="assets/img/logo_light.png" alt=""></a>
+                </div><a class="ps-logo" href="{{route('home')}}"><img src="{{asset('assets/img/logo_light.png')}}" alt=""></a>
             </div>
             <div class="header__center">
                 <form class="ps-form--quick-search" action="" method="get">
