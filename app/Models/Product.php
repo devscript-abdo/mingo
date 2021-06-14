@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\Language;
 use TCG\Voyager\Traits\Translatable;
 use Illuminate\Support\Str;
+use TCG\Voyager\Facades\Voyager;
 
 class Product extends Model
 {
@@ -36,5 +37,12 @@ class Product extends Model
     {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
+    }
+
+    public function getFirstPhotoAttribute()
+    {
+        $images =  json_decode($this->images);
+        $image = isset($images);
+        return Voyager::image($image ? array_shift($images) : setting('portfolio.portfolio_default_image'));
     }
 }

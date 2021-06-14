@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\Category\CategoryInterface;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -27,13 +28,15 @@ class ViewComposerServiceProvider extends ServiceProvider
 
         $viewsPages = [
             'theme.products.*',
+            'theme.categories.*',
+            'layouts.parts.*'
         ];
 
-        $categories = app(CategoryInter::class)->getWithChildrens();
+        $categories = app(CategoryInterface::class)->getWithChildrens();
 
         View::composer($viewsPages, function ($view) use ($categories) {
 
-            $view->with('pages', $categories);
+            $view->with('categories', $categories);
         });
     }
 }

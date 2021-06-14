@@ -14,6 +14,7 @@ class Category extends Categories
 
     protected $translatable = ['name', 'description'];
 
+    
     public function products()
     {
         return $this->hasMany('App\Models\Product');
@@ -23,10 +24,10 @@ class Category extends Categories
     {
         return $this->hasMany(self::class, 'parent_id');
     }
-    public function subcategory(){
+    public function subcategory()
+    {
 
         return $this->hasMany('App\Models\Category', 'parent_id');
-
     }
 
     public function parents()
@@ -37,6 +38,11 @@ class Category extends Categories
     public function getUrlAttribute()
     {
         return route('categories.single', $this->slug);
+    }
+
+    public function getAvatarAttribute()
+    {
+        return $this->icon;
     }
 
     public function getPhotoAttribute()

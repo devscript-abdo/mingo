@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,10 @@ Route::group(
         Route::get('/', [SiteController::class, 'index'])->name('home');
 
         Route::get('/products', [ProductController::class, 'index'])->name('products');
+
+        Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+        
+        Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('categories.single');
     }
 );
 

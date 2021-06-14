@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /******MINGO */
+        App\Providers\ViewComposerServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\HelpersServiceProvider::class,
 
