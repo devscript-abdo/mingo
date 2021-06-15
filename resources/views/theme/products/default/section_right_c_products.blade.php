@@ -36,10 +36,10 @@
                                 <div class="ps-product__container"><a class="ps-product__vendor" href="{{$product->category->url}}">{{$product->category->field('name')}}</a>
                                     <div class="ps-product__content">
                                         <a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
-                                        <p class="ps-product__price">$1310.00</p>
+                                        <p class="ps-product__price">{{$product->price}}</p>
                                     </div>
                                     <div class="ps-product__content hover"><a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
-                                        <p class="ps-product__price">$1310.00</p>
+                                        <p class="ps-product__price">{{$product->price}}</p>
                                     </div>
                                 </div>
                             </div>

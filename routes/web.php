@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Customer\CustomerLoginController;
+use App\Http\Controllers\Customer\CustomerRegisterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +42,17 @@ Route::group(
         Route::get('/brands',[BrandController::class,'index'])->name('brands');
         Route::get('/brands/{brand}',[BrandController::class,'show'])->name('brands.single');
 
+        /*************Customer Account ********************************************************************/
+
+        Route::group(['prefix'=>'app'],function(){
+
+            Route::get('/login',[CustomerLoginController::class,'loginForm'])->name('customer.login');
+            Route::post('/login',[CustomerLoginController::class,'login'])->name('customer.loginPost');
+
+            Route::get('/register',[CustomerRegisterController::class,'showRegistrationForm'])->name('customer.register');
+            Route::post('/register',[CustomerRegisterController::class,'register'])->name('customer.registerPost');
+        });
+
     }
 );
 
@@ -47,3 +60,7 @@ Route::group(
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+//Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('homee');

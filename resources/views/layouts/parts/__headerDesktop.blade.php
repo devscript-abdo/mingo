@@ -89,7 +89,7 @@
                     <div class="ps-panel--search-result">
                         <div class="ps-panel__content">
                             <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="assets/img/products/arrivals/1.jpg" alt=""></a></div>
+                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/arrivals/1.jpg')}}" alt=""></a></div>
                                 <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 32GB</a>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="assets/img/products/arrivals/1.jpg" alt=""></a></div>
+                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/arrivals/1.jpg')}}" alt=""></a></div>
                                 <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 64GB</a>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                             <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="assets/img/products/arrivals/1.jpg" alt=""></a></div>
+                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/arrivals/1.jpg')}}" alt=""></a></div>
                                 <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 128GB</a>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
@@ -134,7 +134,7 @@
                                 </div>
                             </div>
                             <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="assets/img/products/arrivals/2.jpg" alt=""></a></div>
+                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/arrivals/2.jpg')}}" alt=""></a></div>
                                 <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Marshall Kilburn Portable Wireless Speaker</a>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
@@ -149,7 +149,7 @@
                                 </div>
                             </div>
                             <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="assets/img/products/arrivals/3.jpg" alt=""></a></div>
+                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/arrivals/3.jpg')}}" alt=""></a></div>
                                 <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Herschel Leather Duffle Bag In Brown Color</a>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
@@ -164,7 +164,7 @@
                                 </div>
                             </div>
                             <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="assets/img/products/arrivals/4.jpg" alt=""></a></div>
+                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/arrivals/4.jpg')}}" alt=""></a></div>
                                 <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Xbox One Wireless Controller Black Color</a>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
@@ -179,7 +179,7 @@
                                 </div>
                             </div>
                             <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="assets/img/products/arrivals/5.jpg" alt=""></a></div>
+                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/arrivals/5.jpg')}}" alt=""></a></div>
                                 <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Grand Slam Indoor Of Show Jumping Novel</a>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
@@ -194,7 +194,7 @@
                                 </div>
                             </div>
                             <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="assets/img/products/arrivals/6.jpg" alt=""></a></div>
+                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/arrivals/6.jpg')}}" alt=""></a></div>
                                 <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Sound Intone I65 Earphone White Version</a>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
@@ -219,13 +219,13 @@
                         <div class="ps-cart__content">
                             <div class="ps-cart__items">
                                 <div class="ps-product--cart-mobile">
-                                    <div class="ps-product__thumbnail"><a href="#"><img src="assets/img/products/clothing/7.jpg" alt=""></a></div>
+                                    <div class="ps-product__thumbnail"><a href="#"><img src="{{asset('assets/img/products/clothing/7.jpg')}}" alt=""></a></div>
                                     <div class="ps-product__content"><a class="ps-product__remove" href="#"><i class="icon-cross"></i></a><a href="product-default.html">MVMTH Classical Leather Watch In Black</a>
                                         <p><strong>Sold by:</strong> YOUNG SHOP</p><small>1 x $59.99</small>
                                     </div>
                                 </div>
                                 <div class="ps-product--cart-mobile">
-                                    <div class="ps-product__thumbnail"><a href="#"><img src="assets/img/products/clothing/5.jpg" alt=""></a></div>
+                                    <div class="ps-product__thumbnail"><a href="#"><img src="{{asset('assets/img/products/clothing/5.jpg')}}" alt=""></a></div>
                                     <div class="ps-product__content"><a class="ps-product__remove" href="#"><i class="icon-cross"></i></a><a href="product-default.html">Sleeve Linen Blend Caro Pane Shirt</a>
                                         <p><strong>Sold by:</strong> YOUNG SHOP</p><small>1 x $59.99</small>
                                     </div>
@@ -239,7 +239,10 @@
                     </div>
                     <div class="ps-block--user-header">
                         <div class="ps-block__left"><i class="icon-user"></i></div>
-                        <div class="ps-block__right"><a href="my-account.html">Login</a><a href="my-account.html">Register</a></div>
+                        <div class="ps-block__right">
+                            <a href="{{route('customer.login')}}">Login</a>
+                            <a href="{{route('customer.register')}}">Register</a>
+                        </div>
                     </div>
                 </div>
             </div>

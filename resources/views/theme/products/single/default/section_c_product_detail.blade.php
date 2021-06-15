@@ -28,7 +28,9 @@
         <div class="ps-product__info">
             <h1>{{$product->field('name')}}</h1>
             <div class="ps-product__meta">
+                @if($product->brand)
                 <p>Brand : <a href="{{$product->brand->url}}">{{$product->brand->name}}</a></p>
+                @endif
                 <div class="ps-product__rating">
                     <select class="ps-rating" data-read-only="true">
                         <option value="1">1</option>
@@ -41,20 +43,32 @@
             </div>
             <h4 class="ps-product__price">{{$product->price}}</h4>
             <div class="ps-product__desc">
-                <p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>
-                <ul class="ps-list--dot">
-                    <li> Unrestrained and portable active stereo speaker</li>
-                    <li> Free from the confines of wires and chords</li>
-                    <li> 20 hours of portable capabilities</li>
-                    <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
-                    <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
-                </ul>
+                {{--<p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>--}}
+                {{--<ul class="ps-list--dot">
+                    <li> {{$product->field('description')}}</li>
+                  
+                </ul>--}}
+
+                <p>{{$product->field('description')}}</p>
             </div>
             <div class="ps-product__variations">
                 <figure>
                     <figcaption>Color</figcaption>
-                    <div class="ps-variant ps-variant--color color--1"><span class="ps-variant__tooltip">Black</span></div>
-                    <div class="ps-variant ps-variant--color color--2"><span class="ps-variant__tooltip"> Gray</span></div>
+                     @foreach($product->colors as $color)
+                        {{--<div class="ps-variant ps-variant--color" style="background-color: {{$color->code}}; !important">
+                            <span class="ps-variant__tooltip">{{$color->field('name')}}</span>
+                        </div>--}}
+                        <div class="ps-checkbox ps-checkbox--color  ps-checkbox--inline" style="border-radius:30%; background-color: {{$color->code}}; !important">
+                            <input 
+                            class="form-control" 
+                            type="checkbox" 
+                            id="color-{{$color->slug}}" 
+                            name="size"
+                            
+                            >
+                            <label for="color-{{$color->slug}}"></label>
+                        </div>
+                     @endforeach
                 </figure>
             </div>
             <div class="ps-product__shopping">
@@ -70,7 +84,10 @@
             </div>
             <div class="ps-product__specification"><a class="report" href="#">Report Abuse</a>
                 <p><strong>SKU:</strong> {{$product->sku}}</p>
-                <p class="categories"><strong> Categories:</strong><a href="#">Consumer Electronics</a>,<a href="#"> Refrigerator</a>,<a href="#">Babies & Moms</a></p>
+                <p class="categories"><strong> Categories:</strong>
+                    <a href="{{$product->category->url}}">{{$product->category->field('name')}}</a>
+                    {{--<a href="#"> Refrigerator</a>,
+                    <a href="#">Babies & Moms</a></p>--}}
                 <p class="tags"><strong> Tags</strong><a href="#">sofa</a>,<a href="#">technologies</a>,<a href="#">wireless</a></p>
             </div>
             <div class="ps-product__sharing"><a class="facebook" href="#"><i class="fa fa-facebook"></i></a><a class="twitter" href="#"><i class="fa fa-twitter"></i></a><a class="google" href="#"><i class="fa fa-google-plus"></i></a><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></div>
@@ -80,29 +97,15 @@
         <ul class="ps-tab-list">
             <li class="active"><a href="#tab-1">Description</a></li>
             <li><a href="#tab-2">Specification</a></li>
-            <li><a href="#tab-3">Vendor</a></li>
+            {{--<li><a href="#tab-3">Vendor</a></li>--}}
             <li><a href="#tab-4">Reviews (1)</a></li>
-            <li><a href="#tab-5">Questions and Answers</a></li>
-            <li><a href="#tab-6">More Offers</a></li>
+            {{--<li><a href="#tab-5">Questions and Answers</a></li>--}}
+            {{--<li><a href="#tab-6">More Offers</a></li>--}}
         </ul>
         <div class="ps-tabs">
             <div class="ps-tab active" id="tab-1">
                 <div class="ps-document">
-                    <h5>Embodying the Raw, Wayward Spirit of Rock 'N' Roll</h5>
-                    <p>Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn portable active stereo speaker takes the unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road.</p>
-                    <p>Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound that is both articulate and pronounced. The analogue knobs allow you to fine tune the controls to your personal preferences while the guitar-influenced leather strap enables easy and stylish travel.</p><img class="mb-30" src="img/products/detail/content/description.jpg" alt="">
-                    <h5>What do you get</h5>
-                    <p>Sound of Marshall, unplugs the chords, and takes the show on the road.</p>
-                    <p>Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound that is both articulate and pronounced. The analogue knobs allow you to fine tune the controls to your personal preferences while the guitar-influenced leather strap enables easy and stylish travel.</p>
-                    <p>The FM radio is perhaps gone for good, the assumption apparently being that the jury has ruled in favor of streaming over the internet. The IR blaster is another feature due for retirement – the S6 had it, then the Note5 didn’t, and now with the S7 the trend is clear.</p>
-                    <h5>Perfectly Done</h5>
-                    <p>Meanwhile, the IP68 water resistance has improved from the S5, allowing submersion of up to five feet for 30 minutes, plus there’s no annoying flap covering the charging port</p>
-                    <ul class="pl-0">
-                        <li>No FM radio (except for T-Mobile units in the US, so far)</li>
-                        <li>No IR blaster</li>
-                        <li>No stereo speakers</li>
-                    </ul>
-                    <p>If you’ve taken the phone for a plunge in the bath, you’ll need to dry the charging port before plugging in. Samsung hasn’t reinvented the wheel with the design of the Galaxy S7, but it didn’t need to. The Gala S6 was an excellently styled device, and the S7 has managed to improve on that.</p>
+                    {!! $product->field('content') !!}                 
                 </div>
             </div>
             <div class="ps-tab" id="tab-2">
@@ -141,10 +144,10 @@
                     </table>
                 </div>
             </div>
-            <div class="ps-tab" id="tab-3">
+            {{--<div class="ps-tab" id="tab-3">
                 <h4>GoPro</h4>
                 <p>Digiworld US, New York’s no.1 online retailer was established in May 2012 with the aim and vision to become the one-stop shop for retail in New York with implementation of best practices both online</p><a href="#">More Products from gopro</a>
-            </div>
+            </div>--}}
             <div class="ps-tab" id="tab-4">
                 <div class="row">
                     <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 ">
@@ -213,17 +216,17 @@
                     </div>
                 </div>
             </div>
-            <div class="ps-tab" id="tab-5">
+            {{--<div class="ps-tab" id="tab-5">
                 <div class="ps-block--questions-answers">
                     <h3>Questions and Answers</h3>
                     <div class="form-group">
                         <input class="form-control" type="text" placeholder="Have a question? Search for answer?">
                     </div>
                 </div>
-            </div>
-            <div class="ps-tab active" id="tab-6">
+            </div>--}}
+            {{--<div class="ps-tab active" id="tab-6">
                 <p>Sorry no more offers available</p>
-            </div>
+            </div>--}}
         </div>
     </div>
 </div>

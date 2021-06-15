@@ -16,7 +16,7 @@
             </div>
 
         </div>
-        @include('theme.products.single.default.section_f_customer_product')
+        {{--@include('theme.products.single.default.section_f_customer_product')--}}
         @include('theme.products.single.default.section_g_related')
     </div>
 </div>

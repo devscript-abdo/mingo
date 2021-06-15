@@ -6,7 +6,7 @@
     <div class="ps-block__content">
         <div class="owl-slider" id="recommended" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on">
             <div class="ps-product">
-                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/shop/recommended/1.jpg" alt=""></a>
+                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/shop/recommended/1.jpg')}}" alt=""></a>
                     <div class="ps-product__badge">-37%</div>
                     <ul class="ps-product__actions">
                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="ps-product">
-                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/shop/recommended/2.jpg" alt=""></a>
+                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/shop/recommended/2.jpg')}}" alt=""></a>
                     <div class="ps-product__badge">-37%</div>
                     <ul class="ps-product__actions">
                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="ps-product">
-                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/shop/recommended/3.jpg" alt=""></a>
+                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/shop/recommended/3.jpg')}}" alt=""></a>
                     <div class="ps-product__badge">-25%</div>
                     <ul class="ps-product__actions">
                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="ps-product">
-                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/shop/recommended/4.jpg" alt=""></a>
+                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/shop/recommended/4.jpg')}}" alt=""></a>
                     <div class="ps-product__badge">-46%</div>
                     <ul class="ps-product__actions">
                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -118,7 +118,7 @@
                 </div>
             </div>
             <div class="ps-product">
-                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/shop/recommended/5.jpg" alt=""></a>
+                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/shop/recommended/5.jpg')}}" alt=""></a>
                     <div class="ps-product__badge">-46%</div>
                     <ul class="ps-product__actions">
                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -146,7 +146,7 @@
                 </div>
             </div>
             <div class="ps-product">
-                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/shop/recommended/6.jpg" alt=""></a>
+                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/shop/recommended/6.jpg')}}" alt=""></a>
                     <div class="ps-product__badge">-28%</div>
                     <ul class="ps-product__actions">
                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -174,7 +174,7 @@
                 </div>
             </div>
             <div class="ps-product">
-                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/shop/recommended/7.jpg" alt=""></a>
+                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/shop/recommended/7.jpg')}}" alt=""></a>
                     <ul class="ps-product__actions">
                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>

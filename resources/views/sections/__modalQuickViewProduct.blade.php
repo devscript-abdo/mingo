@@ -5,9 +5,9 @@
                 <div class="ps-product__header">
                     <div class="ps-product__thumbnail" data-vertical="false">
                         <div class="ps-product__images" data-arrow="true">
-                            <div class="item"><img src="assets/img/products/detail/fullwidth/1.jpg" alt=""></div>
-                            <div class="item"><img src="assets/img/products/detail/fullwidth/2.jpg" alt=""></div>
-                            <div class="item"><img src="assets/img/products/detail/fullwidth/3.jpg" alt=""></div>
+                            <div class="item"><img src="{{asset('assets/img/products/detail/fullwidth/1.jpg')}}" alt=""></div>
+                            <div class="item"><img src="{{asset('assets/img/products/detail/fullwidth/2.jpg')}}" alt=""></div>
+                            <div class="item"><img src="{{asset('assets/img/products/detail/fullwidth/3.jpg')}}" alt=""></div>
                         </div>
                     </div>
                     <div class="ps-product__info">
