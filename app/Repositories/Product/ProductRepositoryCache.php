@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository\Product;
+namespace App\Repositories\Product;
 
 use App\Models\Product;
 
@@ -66,6 +66,12 @@ class ProductRepositoryCache  implements ProductInterface
         return $this->cache->remember('products_cache_active', $this->timeToLive(), function () {
             return $this->model->active();
         });
+    }
+
+    public function withRelated(array $related){
+
+        return $this->model->withRelated($related);
+
     }
 
     public function randomsHome()

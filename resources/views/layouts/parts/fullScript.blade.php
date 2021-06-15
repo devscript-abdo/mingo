@@ -14,6 +14,6 @@
 <script src="{{asset('assets/plugins/lightGallery-master/dist/js/lightgallery-all.min.js')}}"></script>
 <script src="{{asset('assets/plugins/sticky-sidebar/dist/sticky-sidebar.min.js')}}"></script>
 <script src="{{asset('assets/plugins/select2/dist/js/select2.full.min.js')}}"></script>
-<script src="{{asset('assets/plugins/gmap3.min.js')}}"></script>
+{{--<script src="{{asset('assets/plugins/gmap3.min.js')}}"></script>--}}
 <!-- custom scripts-->
 <script src="{{asset('assets/js/main.js')}}"></script>

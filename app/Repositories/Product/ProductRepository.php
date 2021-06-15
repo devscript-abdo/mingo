@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository\Product;
+namespace App\Repositories\Product;
 
 use App\Models\Product;
 
@@ -49,6 +49,12 @@ class ProductRepository  implements ProductInterface
     public function activeItems()
     {
         return $this->model->active();
+    }
+
+    public function withRelated(array $related){
+
+        return $this->model->withRelated($related);
+
     }
     public function randomsHome()
     {

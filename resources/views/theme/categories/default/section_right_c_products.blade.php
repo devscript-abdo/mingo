@@ -25,7 +25,7 @@
                     @foreach($products as $product)
                         <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 ">
                             <div class="ps-product">
-                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{$product->first_photo}}" alt=""></a>
+                                <div class="ps-product__thumbnail"><a href="{{$product->url}}"><img src="{{$product->first_photo}}" alt=""></a>
                                     <ul class="ps-product__actions">
                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
@@ -35,10 +35,10 @@
                                 </div>
                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">ROBERT’S STORE</a>
                                     <div class="ps-product__content">
-                                        <a class="ps-product__title" href="product-default.html">{{$product->field('name')}}</a>
+                                        <a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
                                         <p class="ps-product__price">$1310.00</p>
                                     </div>
-                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">{{$product->field('name')}}</a>
+                                    <div class="ps-product__content hover"><a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
                                         <p class="ps-product__price">$1310.00</p>
                                     </div>
                                 </div>
@@ -61,10 +61,10 @@
             <div class="ps-shopping-product">
                 @foreach($products as $product)
                     <div class="ps-product ps-product--wide">
-                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{$product->first_photo}}" alt=""></a>
+                        <div class="ps-product__thumbnail"><a href="{{$product->url}}"><img src="{{$product->first_photo}}" alt=""></a>
                         </div>
                         <div class="ps-product__container">
-                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">{{$product->field('name')}}</a>
+                            <div class="ps-product__content"><a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
                                 <p class="ps-product__vendor">Sold by:<a href="#">ROBERT’S STORE</a></p>
                                 <ul class="ps-product__desc">
                                     <li>{{$product->field('description')}}</li>

@@ -364,7 +364,7 @@
                 .marker(function(map) {
                     return {
                         position: map.getCenter(),
-                        icon: 'img/marker.png',
+                        icon: 'assets/img/marker.png',
                     };
                 })
                 .infowindow({

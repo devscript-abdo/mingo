@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Repository\Product;
+namespace App\Repositories\Product;
 
 interface ProductInterface
 {
 
 
     public function activeItems();
+
+    public function withRelated(array $related);
 
     public function all();
 

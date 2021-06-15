@@ -104,6 +104,7 @@ return [
         /*
          * Select default language
          */
+        
         'default' => 'fr',
 
         /*

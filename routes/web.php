@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
@@ -30,11 +31,15 @@ Route::group(
 
         Route::get('/', [SiteController::class, 'index'])->name('home');
 
-        Route::get('/products', [ProductController::class, 'index'])->name('products');
+        Route::get('/products', [ProductController::class, 'indexWithFilters'])->name('products');
+        Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.single');
 
         Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-        
         Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('categories.single');
+
+        Route::get('/brands',[BrandController::class,'index'])->name('brands');
+        Route::get('/brands/{brand}',[BrandController::class,'show'])->name('brands.single');
+
     }
 );
 

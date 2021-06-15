@@ -12,6 +12,11 @@ class Brand extends Model
     use HasFactory;
 
 
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product');
+    }
+
     public function scopeActive($query)
     {
 
@@ -29,5 +34,10 @@ class Brand extends Model
         $image  = Voyager::image($this->logo);
         
         return $image;
+    }
+
+    public function getUrlAttribute()
+    {
+        return route('brands.single',$this->slug);
     }
 }
