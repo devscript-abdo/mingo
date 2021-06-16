@@ -49,4 +49,13 @@ class Customer extends Authenticatable
             :
             $this->avatar;
     }
+
+    /*******Relations */
+
+    public function addresses()
+    {
+
+        return $this->hasMany('App\Models\Addresse');
+    }
+    
 }

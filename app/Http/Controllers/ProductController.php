@@ -7,7 +7,7 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Http\Request;
 use App\Traits\InterfaceHandler;
-
+use Gloudemans\Shoppingcart\Facades\Cart;
 class ProductController extends Controller
 {
 
@@ -101,7 +101,10 @@ class ProductController extends Controller
             ->with(['category'])
             ->get();
 
-       return view('theme.products.single.single',compact('product','products'));
+         $cart = Cart::content();  
+          
+
+       return view('theme.products.single.single',compact('product','products','cart'));
     }
 
     /**

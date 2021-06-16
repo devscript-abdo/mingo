@@ -7,7 +7,10 @@
     <div class="ps-container">
         <div class="ps-page__container">
             <div class="ps-page__left">
-                @include('theme.products.single.default.section_c_product_detail')
+                {{--@include('theme.products.single.default.section_c_product_detail')--}}
+               
+                {{---Pass varibale ($product) to thie livewire view --}}
+                @livewire('product.single-product',['product'=>$product,'cart'=>$cart])
             </div>
 
             <div class="ps-page__right">

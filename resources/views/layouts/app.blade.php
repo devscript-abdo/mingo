@@ -7,6 +7,7 @@
     @include('layouts.parts.meta')
 
     @include('layouts.parts.fullLink')
+    @livewireStyles()
 
 </head>
 
@@ -38,6 +39,8 @@
 
     @include('layouts.parts.fullScript')
     @yield('productsJs')
+    @yield('singleCartJs')
+    @livewireScripts()
 
 </body>
 </html>
