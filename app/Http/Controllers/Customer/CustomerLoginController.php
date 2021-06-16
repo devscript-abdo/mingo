@@ -9,19 +9,19 @@ use Illuminate\Http\Response;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+
 class CustomerLoginController extends Controller
 {
     use AuthenticatesUsers;
 
 
-    protected $redirectTo = RouteServiceProvider::CUSTOMER_DASH;
+    // protected $redirectTo = RouteServiceProvider::CUSTOMER_DASH;
 
-    
+
     public function __construct()
     {
 
         $this->middleware('guest:customer')->except('logout');
-
     }
 
     public function loginForm()
@@ -44,7 +44,7 @@ class CustomerLoginController extends Controller
 
         return $request->wantsJson()
             ? new Response('', 204)
-            : redirect(route('admin.dash'));
+            : redirect(route('home'));
     }
 
 
@@ -78,9 +78,9 @@ class CustomerLoginController extends Controller
         return Auth::guard('customer');
     }
 
-   /* private function redirectTo()
+    private function redirectTo()
     {
         // dd($this->redirectTo);
-        return route('admin.dash');
-    }*/
+        return route('customer.profil');
+    }
 }
