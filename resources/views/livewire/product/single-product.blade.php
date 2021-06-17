@@ -97,7 +97,7 @@
                                 @if($cart->where('id',$product->id)->count())
 
                                     @php 
-                                    $item = $cart->where('id',$product->id)->first() 
+                                     $item = $cart->where('id',$product->id)->first() 
                                     @endphp
                                
                                     <input value="{{$item->qty}}" class="form-control" type="number" disabled>
