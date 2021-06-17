@@ -40,5 +40,7 @@ class Cart extends Component
             MyCart::update($item->rowId, $this->quantity[$item->id]);
         }
         $this->emit('cart_updated');
+
+        redirect()->back();
     }
 }

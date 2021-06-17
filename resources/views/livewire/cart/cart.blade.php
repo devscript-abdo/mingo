@@ -64,9 +64,13 @@
                 </div>
                 <div class="ps-section__cart-actions">
                     <a class="ps-btn" href="{{route('products')}}"><i class="icon-arrow-left"></i> Back to Shop</a>
-                    <a wire:click="updateCart()" class="ps-btn ps-btn--outline" href="#">
+                    <button 
+                      wire:click="updateCart()" 
+                      class="ps-btn ps-btn--outline"
+                      onclick="this.disabled = true;this.setAttribute('style', 'background: #000000')"
+                    >
                         <i class="icon-sync"></i> Update cart
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="ps-section__footer">
