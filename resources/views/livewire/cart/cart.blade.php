@@ -18,7 +18,7 @@
                         </thead>
                         <tbody>
                             @foreach($cartItemes as $item)
-                           
+                                
                                 <tr>
                                     <td data-label="Product">
                                         <div class="ps-product--cart">

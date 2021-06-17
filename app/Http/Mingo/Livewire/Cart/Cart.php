@@ -8,15 +8,15 @@ use Gloudemans\Shoppingcart\Facades\Cart as MyCart;
 class Cart extends Component
 {
 
-    public $cartItemes;
+    public $cartItemess;
 
     public array $quantity = [];
 
     public function mount()
     {
-        $this->cartItemes = MyCart::content();
+        $this->cartItemess = MyCart::content();
 
-        foreach ($this->cartItemes as $item) {
+        foreach ($this->cartItemess as $item) {
             $this->quantity[$item->id] = $item->qty;
         }
     }
