@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </figure>
-                <div class="ps-product__variants" data-item="5" data-md="4" data-sm="4" data-arrow="false">
+                <div class="ps-product__variants" data-item="{{count($product->all_photos)}}" data-md="4" data-sm="4" data-arrow="false">
                     <div class="item">
                         
                         <img src="{{$product->photo}}" alt="{{$product->field('name')}}">
@@ -52,7 +52,7 @@
                         </select><span>(1 review)</span>
                     </div>
                 </div>
-                <h4 class="ps-product__price">{{$product->price}}</h4>
+                <h4 class="ps-product__price">{{$product->price}} MAD</h4>
                 <div class="ps-product__desc">
                     {{--<p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>--}}
                     {{--<ul class="ps-list--dot">
