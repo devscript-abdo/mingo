@@ -68,33 +68,47 @@
                         <figure>
                             <figcaption>Color</figcaption>
                             @foreach($product->colors as $color)
-                                {{--<div class="ps-variant ps-variant--color" style="background-color: {{$color->code}}; !important">
+
+                                <div class="ps-variant ps-variant--color" style="background-color: {{$color->code}}; !important">
                                     <span class="ps-variant__tooltip">{{$color->field('name')}}</span>
-                                </div>--}}
-                                <div class="ps-checkbox ps-checkbox--color  ps-checkbox--inline" style="border-radius:30%; background-color: {{$color->code}}; !important">
+                                </div>
+
+                                {{--<div class="ps-checkbox ps-checkbox--color  ps-checkbox--inline" style="border-radius:30%; background-color: {{$color->code}}; !important">
                                     <input 
                                     class="form-control" 
                                     type="checkbox" 
                                     id="color-{{$color->slug}}" 
                                     name="size"
-                                    
+                                    style=":checked:background-color: #fff"
                                     >
                                     <label for="color-{{$color->slug}}"></label>
-                                </div>
+                                </div>--}}
+                                
                             @endforeach
                         </figure>
                     </div>
                     <div class="ps-product__shopping">
-                        <figure>
+                        <figure >
                             <figcaption>Quantity</figcaption>
                             <div class="form-group--number">
                                 {{--<button class="up"><i class="fa fa-plus"></i></button>
                                 <button class="down"><i class="fa fa-minus"></i></button>--}}
-                                <input wire:model.defer="quantity.{{$product->id}}" class="form-control" type="number" >
+                                
+                                @if($cart->where('id',$product->id)->count())
+
+                                    @php 
+                                    $item = $cart->where('id',$product->id)->first() 
+                                    @endphp
+                               
+                                    <input value="{{$item->qty}}" class="form-control" type="number" disabled>
+                                @else
+                                 <input wire:model.defer="quantity.{{$product->id}}" class="form-control" type="number">
+                                @endif
+                                
                             </div>
                         </figure>
                         @if($cart->where('id',$product->id)->count())
-                        <button class="ps-btn ps-btn--black disabled" disabled>Already in cart</button>
+                        <a href="{{route('shoppingcart')}}" class="ps-btn ps-btn--black">Already in cart</button>
                         @else
                         <button type="submit" class="ps-btn ps-btn--black" href="#">Add to cart</button>
                         @endif

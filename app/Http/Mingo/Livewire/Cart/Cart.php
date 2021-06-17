@@ -12,6 +12,11 @@ class Cart extends Component
 
     public array $quantity = [];
 
+    protected $rules = [
+        'quantity' => 'required|array',
+        'quantity.*' => 'required|integer|min:1',
+    ];
+
     public function mount()
     {
         $this->cartItemess = MyCart::content();
@@ -32,6 +37,7 @@ class Cart extends Component
 
     public function updateCart()
     {
+        $this->validate();
 
         $cartItemess = MyCart::content();
 

@@ -48,6 +48,7 @@
                                               pattern="[0-9]"    
                                               value="{{$item->qty}}"
                                             >
+                                            @error('quantity') <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </td>
                                     
