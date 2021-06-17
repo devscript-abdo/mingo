@@ -24,8 +24,10 @@ class Cart extends Component
     public function render()
     {
         $cartItemes = MyCart::content();
+        $totalPrice = MyCart::priceTotal();
+        $subTotal = MyCart::subtotal();
 
-        return view('livewire.cart.cart', compact('cartItemes'));
+        return view('livewire.cart.cart', compact('cartItemes', 'totalPrice', 'subTotal'));
     }
 
     public function updateCart()

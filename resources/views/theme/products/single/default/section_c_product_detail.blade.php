@@ -4,17 +4,31 @@
             <figure>
                 <div class="ps-wrapper">
                     <div class="ps-product__gallery" data-arrow="true">
+                        <div class="item">
+                            <a href="{{$product->photo}}">
+                                <img src="{{$product->photo}}" alt="{{$product->field('name')}}">
+                            </a>
+                        </div>
                         @foreach($product->all_photos as $photo)
-                            <div class="item">
-                                <a href="{{$product->singlePhoto($photo)}}">
-                                    <img src="{{$product->singlePhoto($photo)}}" alt="{{$product->field('name')}}">
-                                </a>
-                            </div>
+                             @if($loop->first)
+                             
+                             @else
+                                <div class="item">
+                                    <a href="{{$product->singlePhoto($photo)}}">
+                                        <img src="{{$product->singlePhoto($photo)}}" alt="{{$product->field('name')}}">
+                                    </a>
+                                </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
             </figure>
             <div class="ps-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false">
+                <div class="item">
+                        
+                    <img src="{{$product->photo}}" alt="{{$product->field('name')}}">
+                     
+                 </div>
                 @foreach($product->all_photos as $photo)
                     <div class="item">
                         

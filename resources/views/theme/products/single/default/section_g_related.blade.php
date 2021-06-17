@@ -6,7 +6,7 @@
         <div class="ps-carousel--nav owl-slider" data-owl-auto="true" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on">
             @foreach($products as $productt)
                 <div class="ps-product">
-                    <div class="ps-product__thumbnail"><a href="{{$productt->url}}"><img src="{{$productt->first_photo}}" alt=""></a>
+                    <div class="ps-product__thumbnail"><a href="{{$productt->url}}"><img src="{{$productt->photo}}" alt=""></a>
                         <ul class="ps-product__actions">
                             <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
                             <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>

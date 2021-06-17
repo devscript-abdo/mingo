@@ -41,7 +41,7 @@ class SingleProduct extends Component
             [
 
                 //'colors' => $request->colors ?? [],
-                'image' => $product->first_photo,
+                'image' => $product->photo,
                 'url' => $product->url,
             ]
         );

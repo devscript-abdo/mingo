@@ -51,6 +51,11 @@ class Product extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
+    public function getPhotoAttribute()
+    {
+        return Voyager::image($this->image);
+    }
+
     public function getFirstPhotoAttribute()
     {
         $images =  json_decode($this->images);
@@ -72,7 +77,7 @@ class Product extends Model
 
     public function getUrlAttribute()
     {
-        return route('products.single',$this->slug);
+        return route('products.single', $this->slug);
     }
 
     /*******Filters */

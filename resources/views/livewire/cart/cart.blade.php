@@ -93,7 +93,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
                         <div class="ps-block--shopping-total">
                             <div class="ps-block__header">
-                                <p>Subtotal <span> $683.49</span></p>
+                                <p>Subtotal <span> {{$subTotal}} MAD</span></p>
                             </div>
                             <div class="ps-block__content">
                                 <ul class="ps-block__product">
@@ -112,7 +112,7 @@
                                         </span>
                                     </li>
                                 </ul>
-                                <h3>Total <span>$683.49</span></h3>
+                                <h3>Total <span>{{$totalPrice}} MAD</span></h3>
                             </div>
                         </div><a class="ps-btn ps-btn--fullwidth" href="checkout.html">Proceed to checkout</a>
                     </div>
