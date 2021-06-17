@@ -38,9 +38,13 @@
     @include('sections.__modalQuickViewProduct')
 
     @include('layouts.parts.fullScript')
-    @yield('productsJs')
-    @yield('singleCartJs')
+
     @livewireScripts()
+
+    @yield('productsJs')
+
+    @yield('singleCartJs')
+    
 
 </body>
 </html>

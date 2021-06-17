@@ -14,7 +14,9 @@ class CartCounter extends Component
     public function render()
     {
         $cartItemes = Cart::content();
+        $totalPrice = Cart::priceTotal();
+        $subTotal = Cart::subtotal();
 
-        return view('livewire.cart.cart-counter', compact('cartItemes'));
+        return view('livewire.cart.cart-counter', compact('cartItemes','totalPrice','subTotal'));
     }
 }

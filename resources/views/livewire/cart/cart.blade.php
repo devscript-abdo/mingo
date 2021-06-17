@@ -43,10 +43,10 @@
                                               name="quantity"
                                               wire:model.defer="quantity.{{$item->id}}"
                                               id="quantity" 
-                                              min="1" 
-                                             
+                                              min="1"
+                                              step="1"
+                                              pattern="[0-9]"    
                                               value="{{$item->qty}}"
-                                             
                                             >
                                         </div>
                                     </td>

@@ -17,3 +17,9 @@
 {{--<script src="{{asset('assets/plugins/gmap3.min.js')}}"></script>--}}
 <!-- custom scripts-->
 <script src="{{asset('assets/js/main.js')}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+@include('layouts.parts.__eventScript')
+
+@include('layouts.parts.__deleteItemFromCart')

@@ -47,5 +47,10 @@ class SingleProduct extends Component
         );
 
         $this->emit('cart_updated');
+
+        $this->dispatchBrowserEvent('added_to_cart', [
+            'type' => 'success',
+            'message' => 'le produit est ajouté à votre panier'
+        ]);
     }
 }

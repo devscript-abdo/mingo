@@ -13,7 +13,10 @@
                             </a>
                         </div>
                         <div class="ps-product__content">
-                            <a class="ps-product__remove" href="#"><i class="icon-cross"></i></a>
+                            <a class="ps-product__remove deleteProductFromCart" href="#" data-prodid="{{$item->rowId}}">
+                        
+                                <i class="icon-cross"></i>
+                            </a>
                             <a href="{{$item->options->url}}">{{$item->name}}</a>
                             {{--<p><strong>Sold by:</strong> YOUNG SHOP</p>--}}
                             <br>
@@ -24,7 +27,7 @@
             
             </div>
             <div class="ps-cart__footer">
-                <h3>Sub Total:<strong>$59.99</strong></h3>
+                <h3>Total Price:<strong>{{$totalPrice}} MAD</strong></h3>
                 <figure>
                     <a class="ps-btn" href="{{route('shoppingcart')}}">View Cart</a>
                     <a class="ps-btn" href="checkout.html">Checkout</a>
