@@ -10,6 +10,7 @@
             <div class="ps-tabs">
                 <div class="ps-tab active" id="sign-in">
                     <div class="ps-form__content">
+      
                         <h5>Log In Your Account</h5>
                         <div class="form-group">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-mail" required autocomplete="email" autofocus>
@@ -45,6 +46,9 @@
                         </div>
                     </div>
                     <div class="ps-form__footer">
+                        <a href="{{route('checkout.guest')}}"  class="ps-btn ps-btn--fullwidth">
+                            continue as guest
+                        </a>
                         <p>Connect with:</p>
                         <ul class="ps-list--social">
                             <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>

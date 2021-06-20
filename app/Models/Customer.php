@@ -57,5 +57,10 @@ class Customer extends Authenticatable
 
         return $this->hasMany('App\Models\Addresse');
     }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
     
 }

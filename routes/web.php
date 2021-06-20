@@ -3,6 +3,9 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Checkout\CheckoutController;
+use App\Http\Controllers\Checkout\ConfirmationController;
+use App\Http\Controllers\Coupon\CouponController;
 use App\Http\Controllers\Customer\AddresseController;
 use App\Http\Controllers\Customer\CustomerLoginController;
 use App\Http\Controllers\Customer\CustomerProfilController;
@@ -48,7 +51,7 @@ Route::group(
         Route::get('/brands', [BrandController::class, 'index'])->name('brands');
         Route::get('/brands/{brand}', [BrandController::class, 'show'])->name('brands.single');
 
-        /*************Customer Account ********************************************************************/
+        /********************************************   Customer Account  *****************************************************/
 
         Route::group(['prefix' => 'app'], function () {
 
@@ -60,6 +63,17 @@ Route::group(
 
             Route::get('/shopping-cart', [CartController::class, 'index'])->name('shoppingcart');
             Route::delete('/shopping-cart', [CartController::class, 'delete'])->name('shoppingcart.delete');
+
+            Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout')->middleware('auth:customer');
+            Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.post');
+
+            Route::get('/guest-checkout', [CheckoutController::class, 'index'])->name('checkout.guest');
+
+            Route::post('coupon', [CouponController::class, 'store'])->name('coupon.store');
+            Route::delete('coupon', [CouponController::class, 'delete'])->name('coupon.delete');
+
+            Route::get('/thankyou', [ConfirmationController::class, 'index'])->name('checkout.thankyou');
+
             Route::group(['middleware' => 'auth:customer'], function () {
 
                 Route::post('/logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
@@ -69,8 +83,8 @@ Route::group(
 
                 Route::get('/profil/notifications', [NotificationController::class, 'index'])->name('customer.notifications');
 
-                Route::get('/profil/invoices', [InvoiceController::class, 'index'])->name('customer.invoices');
-                Route::get('/profil/invoices/{slug}', [InvoiceController::class, 'show'])->name('customer.invoices.single');
+                Route::get('/profil/orders', [InvoiceController::class, 'index'])->name('customer.invoices');
+                Route::get('/profil/orders/{id}', [InvoiceController::class, 'show'])->name('customer.invoices.single');
 
                 Route::get('/profil/addresses', [AddresseController::class, 'index'])->name('customer.addresses');
 

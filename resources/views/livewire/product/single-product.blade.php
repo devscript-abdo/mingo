@@ -102,7 +102,7 @@
                                
                                     <input value="{{$item->qty}}" class="form-control" type="number" disabled>
                                 @else
-                                 <input wire:model.defer="quantity.{{$product->id}}" class="form-control" type="number">
+                                  <input wire:model.defer="quantity.{{$product->id}}" class="form-control" type="number" min="1" step="1" required >
                                 @endif
                                 
                             </div>

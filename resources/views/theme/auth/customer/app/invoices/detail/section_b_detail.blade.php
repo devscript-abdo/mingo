@@ -2,16 +2,16 @@
     <div class="ps-section__right">
         <div class="ps-section--account-setting">
             <div class="ps-section__header">
-                <h3>Invoice #500884010 -<strong>Successful delivery</strong></h3>
+                <h3>Order #{{$order->full_number}} -<strong>Successful delivery</strong></h3>
             </div>
             <div class="ps-section__content">
                 <div class="row">
                     <div class="col-md-4 col-12">
                         <figure class="ps-block--invoice">
                             <figcaption>Address</figcaption>
-                            <div class="ps-block__content"><strong>John Walker</strong>
-                                <p>Address: 3481 Poe Lane, Westphalia, Kansas</p>
-                                <p>Phone: 913-489-1853</p>
+                            <div class="ps-block__content"><strong>{{$order->billing_name}}</strong>
+                                <p>Address: {{$order->billing_address}}, {{$order->billing_city}}</p>
+                                <p>Phone: {{$order->billing_phone}}</p>
                             </div>
                         </figure>
                     </div>
@@ -27,7 +27,7 @@
                         <figure class="ps-block--invoice">
                             <figcaption>Payment</figcaption>
                             <div class="ps-block__content">
-                                <p>Payment Method: Visa</p>
+                                <p>Payment Method: Cash On delivery</p>
                             </div>
                         </figure>
                     </div>
@@ -43,37 +43,33 @@
                             </tr>
                         </thead>
                         <tbody>
+                           @foreach($order->products as $product)
                             <tr>
                                 <td>
                                     <div class="ps-product--cart">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/shop/5.jpg')}}" alt=""></a></div>
-                                        <div class="ps-product__content"><a href="product-default.html">Grand Slam Indoor Of Show Jumping Novel</a>
+                                        <div class="ps-product__thumbnail"><a href="{{$product->url}}">
+                                            <img src="{{$product->photo}}" alt=""></a>
+                                        </div>
+                                        <div class="ps-product__content"><a href="{{$product->url}}">
+                                            {{$product->field('name')}}
+                                        </a>
                                             <p>Sold By:<strong> YOUNG SHOP</strong></p>
                                         </div>
                                     </div>
                                 </td>
-                                <td><span><i>$</i> 32.99</span></td>
-                                <td>1</td>
-                                <td><span><i>$</i> 32.99</span></td>
+                                <td><span><i>MAD</i> {{$product->price}} </span></td>
+                                <td>{{$product->pivot->quantity}}</td>
+                                <td><span><i>MAD</i> {{$product->pivot->quantity * $product->price}}</span></td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="ps-product--cart">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="{{asset('assets/img/products/shop/6.jpg')}}" alt=""></a></div>
-                                        <div class="ps-product__content"><a href="product-default.html">Sound Intone I65 Earphone White Version</a>
-                                            <p>Sold By:<strong> YOUNG SHOP</strong></p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span><i>$</i> 100.99</span></td>
-                                <td>1</td>
-                                <td><span><i>$</i> 100.99</span></td>
-                            </tr>
+                            @endforeach
+                 
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="ps-section__footer"><a class="ps-btn ps-btn--sm" href="{{route('customer.invoices')}}">Back to invoices</a></div>
+            <div class="ps-section__footer">
+                <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices')}}">Back to invoices</a>
+            </div>
         </div>
     </div>
 </div>

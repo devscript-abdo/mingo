@@ -26,6 +26,8 @@ class CustomerLoginController extends Controller
 
     public function loginForm()
     {
+        session()->put('prevUrl', url()->previous());
+
         return view('theme.auth.customer.login.index');
     }
 
@@ -81,6 +83,12 @@ class CustomerLoginController extends Controller
     private function redirectTo()
     {
         // dd($this->redirectTo);
-        return route('customer.profil');
+
+        if (session()->has('prevUrl')) {
+
+            return str_replace(url('/'), '', session()->get('prevUrl', '/'));
+        } else {
+            return route('customer.profil');
+        }
     }
 }

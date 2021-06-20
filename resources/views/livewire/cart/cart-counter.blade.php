@@ -30,7 +30,7 @@
                 <h3>Total Price:<strong>{{$totalPrice}} MAD</strong></h3>
                 <figure>
                     <a class="ps-btn" href="{{route('shoppingcart')}}">View Cart</a>
-                    <a class="ps-btn" href="checkout.html">Checkout</a>
+                    <a class="ps-btn" href="{{route('checkout')}}">Checkout</a>
                 </figure>
             </div>
         </div>

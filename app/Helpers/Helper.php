@@ -17,6 +17,11 @@ class Helper
         return number_format(($number / 100), 2);
     }
 
+    function presentPrice($price)
+    {
+        return money_format('$%i', $price / 100);
+    }
+
     /***********Local  */
 
     

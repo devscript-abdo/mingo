@@ -219,10 +219,37 @@
                     @livewire('cart.cart-counter')
                     <div class="ps-block--user-header">
                         <div class="ps-block__left"><i class="icon-user"></i></div>
+                        @guest('customer')
                         <div class="ps-block__right">
-                            <a href="{{route('customer.login')}}">Login</a>
-                            <a href="{{route('customer.register')}}">Register</a>
+                           
+                                <a href="{{route('customer.login')}}">Login</a>
+                                <a href="{{route('customer.register')}}">Register</a>
                         </div>
+                        @endguest
+                        @auth('customer')
+                        <div class="ps-block__right">
+                            <a href="{{route('customer.profil')}}">My Account</a>
+                        </div>
+
+                        
+                        <div class="ps-block__right">
+                            <div class="ps-block__left">
+                                <a href="#"  onclick="document.getElementById('logoutMingoo').submit();">
+                                    <i class="icon-power-switch"></i>
+                                </a>
+                            </div>
+                            <form 
+                                action="{{route('customer.logout')}}" 
+                                method="post" 
+                                hidden 
+                                id="logoutMingoo"
+                               
+                            >
+                                @csrf
+                            </form>
+                        </div>
+                        
+                        @endauth
                     </div>
                 </div>
             </div>

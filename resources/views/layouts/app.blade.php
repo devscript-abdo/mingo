@@ -8,6 +8,7 @@
 
     @include('layouts.parts.fullLink')
     @livewireStyles()
+    @yield('checkoutCss')
 
 </head>
 
@@ -30,7 +31,9 @@
     {{--@include('sections.__popup_promo')--}}
 
     @include('layouts.parts.__footer')
+
     <div id="back2top"><i class="icon icon-arrow-up"></i></div>
+    
     <div class="ps-site-overlay"></div>
 
     @include('sections.__loader')
@@ -44,6 +47,8 @@
     @yield('productsJs')
 
     @yield('singleCartJs')
+
+    @yield('checkoutJs')
     
 
 </body>

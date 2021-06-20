@@ -25,3 +25,23 @@
         }
     });
 </script>
+
+
+<script type="text/javascript">
+    $(".deleteCouponFromCart").click(function (e) {
+        e.preventDefault()
+        var ele = $(this);
+        //console.log(this);
+        if(confirm("Are you sure")) {
+            $.ajax({
+                url: '{{route('coupon.delete')}}',
+                method: "DELETE",
+                data: {_token: '{{ csrf_token() }}'},
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        }
+    });
+
+</script>

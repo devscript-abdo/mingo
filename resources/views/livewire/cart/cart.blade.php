@@ -76,18 +76,45 @@
             </div>
             <div class="ps-section__footer">
                 <div class="row">
-    
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
-                        <figure>
-                            <figcaption>Coupon Discount</figcaption>
-                            <div class="form-group">
-                                <input class="form-control" type="text" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <button class="ps-btn ps-btn--outline">Apply</button>
-                            </div>
-                        </figure>
-                    </div>
+                    
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+                            @if(! session()->has('coupon'))
+                            <figure>
+                                <figcaption>Coupon Discount</figcaption>
+                                @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{session()->get('message')}}
+                                    </div>
+                                @endif
+                                
+                                    <form method="post" action="{{route('coupon.store')}}">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input 
+                                                class="form-control @error('coupon_code') is-invalid @enderror" 
+                                                type="text" 
+                                                name="coupon_code"
+                                                id="coupon_code" 
+                                                placeholder=""
+                                            >
+
+                                            @error('coupon_code')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="ps-btn ps-btn--outline">Apply</button>
+                                        </div>
+
+                                    </form>
+                            
+                            </figure>
+                            @endif
+                        </div>
+                 
     
                     {{--@include('theme.shopping-cart.section_c_shipping')--}}
     
@@ -98,24 +125,27 @@
                             </div>
                             <div class="ps-block__content">
                                 <ul class="ps-block__product">
-                                    <li>
-                                        <span class="ps-block__shop">YOUNG SHOP Shipping</span>
-                                        <span class="ps-block__shipping">Free Shipping</span>
-                                        <span class="ps-block__estimate">Estimate for <strong>Viet Nam</strong>
-                                            <a href="#"> MVMTH Classical Leather Watch In Black ×1</a>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="ps-block__shop">ROBERT’S STORE Shipping</span>
-                                        <span class="ps-block__shipping">Free Shipping</span>
-                                        <span class="ps-block__estimate">Estimate for <strong>Viet Nam</strong>
-                                            <a href="#">Apple Macbook Retina Display 12” ×1</a>
-                                        </span>
-                                    </li>
+                                    @if(session()->has('coupon'))
+                                        <li>
+
+                                            <span class="ps-block__shop">
+                                                DISCOUNT({{session()->get('coupon')['name']}}) 
+                                                - {{session()->get('coupon')['discount']/100}} MAD
+                                                <a href="#" class="deleteCouponFromCart">
+                                                    <i class="icon-cross"></i>
+                                                </a>
+                                            </span>
+                                            <span class="ps-block__shipping">
+                                             
+                                            </span>
+                           
+                                        </li>
+                                    @endif
+                         
                                 </ul>
                                 <h3>Total <span>{{$totalPrice}} MAD</span></h3>
                             </div>
-                        </div><a class="ps-btn ps-btn--fullwidth" href="checkout.html">Proceed to checkout</a>
+                        </div><a class="ps-btn ps-btn--fullwidth" href="{{route('checkout')}}">Proceed to checkout</a>
                     </div>
     
                 </div>

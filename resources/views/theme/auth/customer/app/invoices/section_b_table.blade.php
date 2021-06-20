@@ -2,7 +2,7 @@
     <div class="ps-section__right">
         <div class="ps-section--account-setting">
             <div class="ps-section__header">
-                <h3>Invoices</h3>
+                <h3>Orders</h3>
             </div>
             <div class="ps-section__content">
                 <div class="table-responsive">
@@ -10,41 +10,27 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Title</th>
                                 <th>Date</th>
                                 <th>Amount</th>
                                 <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><a href="{{route('customer.invoices.single','alpha-11233')}}">500884010</a></td>
-                                <td><a href="product-default.html">Marshall Kilburn Portable Wireless Speaker</a></td>
-                                <td>20-1-2020</td>
-                                <td>42.99</td>
-                                <td>Successful delivery</td>
-                            </tr>
-                            <tr>
-                                <td><a href="{{route('customer.invoices.single','alpha-11233')}}">593347935</a></td>
-                                <td><a href="product-default.html">Herschel Leather Duffle Bag In Brown Color</a></td>
-                                <td>20-1-2020</td>
-                                <td>199.99</td>
-                                <td>Cancel</td>
-                            </tr>
-                            <tr>
-                                <td><a href="{{route('customer.invoices.single','alpha-11233')}}">593347935</a></td>
-                                <td><a href="product-default.html">Xbox One Wireless Controller Black Color</a></td>
-                                <td>20-1-2020</td>
-                                <td>199.99</td>
-                                <td>Cancel</td>
-                            </tr>
-                            <tr>
-                                <td><a href="{{route('customer.invoices.single','alpha-11233')}}">615397400</a></td>
-                                <td><a href="product-default.html">Grand Slam Indoor Of Show Jumping Novel</a></td>
-                                <td>20-1-2020</td>
-                                <td>41.00</td>
-                                <td>Cancel</td>
-                            </tr>
+                            @foreach($orders as $order)
+                                <tr>
+                                    <td><a href="{{route('customer.invoices.single',$order->id)}}">{{$order->full_number}}</a></td>
+                                    <td>{{$order->created_at}}</td>
+                                    <td>{{$order->billing_total}} MAD</td>
+                                    <td>Successful delivery</td>
+                                    <td>
+                                        <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices.single',$order->id)}}">
+                                          view
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                       
                         </tbody>
                     </table>
                 </div>

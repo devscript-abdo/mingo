@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -12,11 +13,15 @@ class InvoiceController extends Controller
     public  function  index()
     {
 
-        return view('theme.auth.customer.app.invoices.index');
+        $orders = auth()->guard('customer')->user()->orders()->with('products')->get();
+
+        return view('theme.auth.customer.app.invoices.index', compact('orders'));
     }
 
-    public function show()
+    public function show($id)
     {
-        return view('theme.auth.customer.app.invoices.detail.index');
+        $order = Order::findOrFail($id);
+
+        return view('theme.auth.customer.app.invoices.detail.index', compact('order'));
     }
 }
