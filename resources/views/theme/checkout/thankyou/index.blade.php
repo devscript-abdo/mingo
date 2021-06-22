@@ -15,7 +15,17 @@
         <div class="container">
             <div class="ps-block--payment-success">
                 <h3>Order Success !</h3>
-                <p>Thanks for your Order. Please visit<a href="user-information.html"> here</a> to check your order status.</p>
+                <p>
+                    Thanks for your Order. 
+                    @auth('customer')
+                       Please visit
+                            <a href="{{route('customer.invoices.single',$order)}}">
+                                here
+                            </a> 
+                        to check your order status.
+                    @endauth
+               
+                </p>
             </div>
         </div>
     </section>

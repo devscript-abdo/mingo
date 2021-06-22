@@ -19,12 +19,12 @@
                         <tbody>
                             @foreach($orders as $order)
                                 <tr>
-                                    <td><a href="{{route('customer.invoices.single',$order->id)}}">{{$order->full_number}}</a></td>
+                                    <td><a href="{{route('customer.invoices.single',$order->slug)}}">{{$order->full_number}}</a></td>
                                     <td>{{$order->created_at}}</td>
                                     <td>{{$order->billing_total}} MAD</td>
                                     <td>Successful delivery</td>
                                     <td>
-                                        <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices.single',$order->id)}}">
+                                        <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices.single',$order->slug)}}">
                                           view
                                         </a>
                                     </td>

@@ -72,23 +72,42 @@
                     @enderror
                 </div>
             </div>
-            <div class="form-group">
-                <label>Address<sup>*</sup>
-                </label>
-                <div class="form-group__content">
-                    <input 
-                        class="form-control @error('billing_address') is-invalid @enderror" 
-                        type="text" 
-                        name="billing_address"
-                        value="{{old('billing_address')}}"  
-                    >
-                    @error('billing_address')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+            @guest
+                
+            
+                <div class="form-group">
+                    <label>Address<sup>*</sup>
+                    </label>
+                    <div class="form-group__content">
+                        <input 
+                            class="form-control @error('billing_address') is-invalid @enderror" 
+                            type="text" 
+                            name="billing_address"
+                            value="{{old('billing_address')}}"  
+                        >
+                        @error('billing_address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
-            </div>
+            @endguest
+            @auth('customer')
+                <div class="form-group">
+                        <label>addresses</label>
+                        <select class="form-control" name="billing_address">
+                            <option value="">selectionner une address</option>
+                            @forelse (auth()->user()->addresses as $address)
+                            <option value="{{$address->addresse}}">{{$address->addresse}}</option>
+                            @empty
+                      
+                            @endforelse
+                      
+                        </select>
+                </div>
+            @endauth
+   
             <div class="form-group">
                 <label>Télé<sup>*</sup>
                 </label>

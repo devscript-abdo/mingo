@@ -84,9 +84,11 @@ Route::group(
                 Route::get('/profil/notifications', [NotificationController::class, 'index'])->name('customer.notifications');
 
                 Route::get('/profil/orders', [InvoiceController::class, 'index'])->name('customer.invoices');
-                Route::get('/profil/orders/{id}', [InvoiceController::class, 'show'])->name('customer.invoices.single');
+                Route::get('/profil/orders/{slug}', [InvoiceController::class, 'show'])->name('customer.invoices.single');
 
                 Route::get('/profil/addresses', [AddresseController::class, 'index'])->name('customer.addresses');
+                Route::post('/profil/addresses', [AddresseController::class, 'store'])->name('customer.addresses.store');
+                Route::delete('/profil/addresses', [AddresseController::class, 'delete'])->name('customer.addresses.delete');
 
                 Route::get('/profil/wishlist', [WishlistController::class, 'index'])->name('customer.wishlist');
             });

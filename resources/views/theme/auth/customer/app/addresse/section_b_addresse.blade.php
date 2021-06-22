@@ -2,28 +2,122 @@
     <div class="ps-section__right">
         <div class="ps-section--account-setting">
             <div class="ps-section__header">
-                <h3>Address</h3>
+                <h3>Addresses</h3>
             </div>
             <div class="ps-section__content">
                 <div class="row">
-                    <div class="col-md-6 col-12">
-                        <figure class="ps-block--address">
-                            <figcaption>Billing address</figcaption>
-                            <div class="ps-block__content">
-                                <p>You Have Not Set Up This Type Of Address Yet.</p><a href="edit-address.html">Edit</a>
-                            </div>
-                        </figure>
-                    </div>
-                    <div class="col-md-6 col-12">
-                        <figure class="ps-block--address">
-                            <figcaption>Shipping address</figcaption>
-                            <div class="ps-block__content">
-                                <p>You Have Not Set Up This Type Of Address Yet.</p><a href="edit-address.html">Edit</a>
-                            </div>
-                        </figure>
-                    </div>
+
+                    @foreach($addresses as $addresse)
+                        <div class="col-md-6 col-12 mt-10 mb-20">
+                            <figure class="ps-block--address">
+                                <figcaption>{{$addresse->city}}</figcaption>
+                                <div class="ps-block__content">
+                                    <p>{{$addresse->addresse}}</p>
+                                    <a 
+                                        href="#"
+                                        onclick="document.getElementById('deleteAddress').submit();"
+                                        style="color:red !important"
+                                    >
+                                     Supprimer <i class="icon-trash"></i>
+                                    </a>
+                                    <form action="{{route('customer.addresses.delete')}}" method="post" hidden id="deleteAddress">
+                                        @csrf
+                                        <input type="hidden" name="addresse" value="{{$addresse->id}}">
+                                        @method('DELETE')
+                                    </form>
+                                </div>
+                            </figure>
+                        </div>
+                    @endforeach
+
                 </div>
             </div>
+            <form class="ps-form--account-setting" action="{{route('customer.addresses.store')}}" method="post">
+                <div class="ps-form__header">
+                    <h3>Ajouter une Address</h3>
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            <p>{{session()->get('message')}}</p>
+                        </div>
+                    @endif
+                </div>
+                @csrf
+                <div class="ps-form__content">
+                    <div class="form-group">
+                        <label>name </label>
+                        <input 
+                            class="form-control @error('name') is-invalid @enderror" 
+                            name="name" 
+                            type="text" 
+                            value="{{auth()->guard('customer')->user()->name}}"
+                        >
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>email</label>
+                                <input 
+                                class="form-control @error('email') is-invalid @enderror" 
+                                name="email" 
+                                type="email"
+                                value="{{auth()->guard('customer')->user()->email}}"
+
+                                >
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>phone</label>
+                                <input class="form-control @error('phone') is-invalid @enderror" name="phone" type="text" value="">
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+    
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Ville</label>
+                                <input class="form-control @error('city') is-invalid @enderror" name="city" type="text" value="">
+                                @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+    
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Addresse</label>
+                                <input class="form-control @error('addresse') is-invalid @enderror" name="addresse" type="text" value="">
+                                @error('addresse')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+    
+                        <!---------------------------------------------------------->
+                    </div>
+                </div>
+                <div class="form-group submit">
+                    <button type="submit" class="ps-btn">Ajouter</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -18,9 +18,9 @@ class InvoiceController extends Controller
         return view('theme.auth.customer.app.invoices.index', compact('orders'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $order = Order::findOrFail($id);
+        $order = Order::whereSlug($slug)->firstOrFail();
 
         return view('theme.auth.customer.app.invoices.detail.index', compact('order'));
     }

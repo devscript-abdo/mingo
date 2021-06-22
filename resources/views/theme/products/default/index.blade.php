@@ -19,7 +19,10 @@
             <div class="ps-layout__right">
                 {{--@include('theme.products.default.section_right_a_best')
                 @include('theme.products.default.section_right_b_recomanded')--}}
-                @include('theme.products.default.section_right_c_products')
+                {{--@include('theme.products.default.section_right_c_products')--}}
+
+                @livewire('product.products',['products' => $products])
+
             </div>
 
         </div>

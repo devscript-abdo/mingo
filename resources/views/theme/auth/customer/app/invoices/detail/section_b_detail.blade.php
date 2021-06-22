@@ -44,23 +44,23 @@
                         </thead>
                         <tbody>
                            @foreach($order->products as $product)
-                            <tr>
-                                <td>
-                                    <div class="ps-product--cart">
-                                        <div class="ps-product__thumbnail"><a href="{{$product->url}}">
-                                            <img src="{{$product->photo}}" alt=""></a>
+                                <tr>
+                                    <td>
+                                        <div class="ps-product--cart">
+                                            <div class="ps-product__thumbnail"><a href="{{$product->url}}">
+                                                <img src="{{$product->photo}}" alt="{{$product->field('name')}}"></a>
+                                            </div>
+                                            <div class="ps-product__content"><a href="{{$product->url}}">
+                                                {{$product->field('name')}}
+                                            </a>
+                                                <p>Sold By:<strong> YOUNG SHOP</strong></p>
+                                            </div>
                                         </div>
-                                        <div class="ps-product__content"><a href="{{$product->url}}">
-                                            {{$product->field('name')}}
-                                        </a>
-                                            <p>Sold By:<strong> YOUNG SHOP</strong></p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span><i>MAD</i> {{$product->price}} </span></td>
-                                <td>{{$product->pivot->quantity}}</td>
-                                <td><span><i>MAD</i> {{$product->pivot->quantity * $product->price}}</span></td>
-                            </tr>
+                                    </td>
+                                    <td><span><i>MAD</i> {{$product->price}} </span></td>
+                                    <td>{{$product->pivot->quantity}}</td>
+                                    <td><span><i>MAD</i> {{$product->pivot->quantity * $product->price}}</span></td>
+                                </tr>
                             @endforeach
                  
                         </tbody>
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="ps-section__footer">
-                <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices')}}">Back to invoices</a>
+                <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices')}}">Back to Orders</a>
             </div>
         </div>
     </div>

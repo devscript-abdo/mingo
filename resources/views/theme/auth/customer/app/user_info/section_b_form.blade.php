@@ -49,6 +49,30 @@
                         </div>
                     </div>
 
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Ville</label>
+                            <input class="form-control @error('city') is-invalid @enderror" name="city" type="text" value="{{auth()->user()->city}}">
+                            @error('city')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Addresse</label>
+                            <input class="form-control @error('addresse') is-invalid @enderror" name="addresse" type="text" value="{{auth()->user()->addresse}}">
+                            @error('addresse')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
                     <!---------------------------------------------------------->
                     <div class="col-sm-4">
                         <div class="form-group">

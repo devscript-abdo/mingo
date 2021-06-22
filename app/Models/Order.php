@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Order extends Model
 {
@@ -32,6 +33,7 @@ class Order extends Model
         static::creating(function ($model) {
             $number = self::max('id') + 1;
             $model->full_number = "MNG-F-" . str_pad($number, 5, 0, STR_PAD_LEFT);
+            $model->slug = Str::slug($model->full_number);
         });
     }
 }

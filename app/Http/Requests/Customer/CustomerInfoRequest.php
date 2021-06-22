@@ -30,7 +30,8 @@ class CustomerInfoRequest extends FormRequest
             'name' => 'required|string',
             'email' => ['required', 'email', 'string', Rule::unique('customers')->ignore(auth()->user()->id)],
             'phone' => ['nullable', 'numeric', Rule::unique('customers')->ignore(auth()->user()->id)],
-
+            'city' => 'required|string',
+            'addresse' => ['required_with:city','string'],
             'oldpassword' => ['nullable', 'string', 'min:6', new MatchOldPassword],
             'new_password' => ['required_with:oldpassword'],
             'new_confirm_password' => ['same:new_password'],

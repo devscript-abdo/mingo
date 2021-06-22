@@ -28,6 +28,8 @@ class CustomerProfilController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->phone = $request->phone;
+            $user->city = $request->city;
+            $user->addresse = $request->addresse;
             if (
                 $request->has(['oldpassword', 'new_password', 'new_confirm_password']) &&
                 $request->filled(['oldpassword', 'new_password', 'new_confirm_password'])
