@@ -214,40 +214,59 @@
                 </form>
             </div>
             <div class="header__right">
-                <div class="header__actions"><a class="header__extra" href="#"><i class="icon-chart-bars"></i><span><i>104</i></span></a><a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>
+                <div class="header__actions">
+                    <a class="header__extra" href="#">
+                        <i class="icon-chart-bars"></i>
+                        <span><i>104</i></span>
+                    </a>
+                    @auth('customer')
+                        <a class="header__extra" href="{{route('customer.wishlist')}}">
+                            <i class="icon-heart"></i>
+                            <span>
+                                <i>
+                                    {{auth()->guard('customer')->user()->wishlist()->count()}}
+                                </i>
+                            </span>
+                        </a>
+                    @endauth
+                    
                     {{--@include('layouts.parts.__cartHeaderDesktop')--}}
+
                     @livewire('cart.cart-counter')
+
                     <div class="ps-block--user-header">
                         <div class="ps-block__left"><i class="icon-user"></i></div>
-                        @guest('customer')
-                        <div class="ps-block__right">
-                           
-                                <a href="{{route('customer.login')}}">Login</a>
-                                <a href="{{route('customer.register')}}">Register</a>
-                        </div>
-                        @endguest
-                        @auth('customer')
-                        <div class="ps-block__right">
-                            <a href="{{route('customer.profil')}}">My Account</a>
-                        </div>
 
-                        
-                        <div class="ps-block__right">
-                            <div class="ps-block__left">
-                                <a href="#"  onclick="document.getElementById('logoutMingoo').submit();">
-                                    <i class="icon-power-switch"></i>
-                                </a>
+                        @guest('customer')
+                            <div class="ps-block__right">
+                            
+                                    <a href="{{route('customer.login')}}">Login</a>
+                                    <a href="{{route('customer.register')}}">Register</a>
                             </div>
-                            <form 
-                                action="{{route('customer.logout')}}" 
-                                method="post" 
-                                hidden 
-                                id="logoutMingoo"
-                               
-                            >
-                                @csrf
-                            </form>
-                        </div>
+                        @endguest
+
+                        @auth('customer')
+                            <div class="ps-block__right">
+                                <a href="{{route('customer.profil')}}">My Account</a>
+                            </div>
+
+                            
+                            <div class="ps-block__right">
+                                <div class="ps-block__left">
+                                    <a href="#"  onclick="document.getElementById('logoutMingoo').submit();">
+                                        <i class="icon-power-switch"></i>
+                                    </a>
+                                </div>
+                                <form 
+                                    action="{{route('customer.logout')}}" 
+                                    method="post" 
+                                    hidden 
+                                    id="logoutMingoo"
+                                
+                                >
+                                    @csrf
+                                </form>
+                            </div>
                         
                         @endauth
                     </div>

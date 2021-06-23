@@ -60,7 +60,11 @@ class Customer extends Authenticatable
 
     public function orders()
     {
-        return $this->hasMany('App\Models\Order')->orderBy('created_at','DESC');
+        return $this->hasMany('App\Models\Order')->orderBy('created_at', 'DESC');
     }
-    
+
+    public function wishlist()
+    {
+        return $this->hasOne('App\Models\Wishlist');
+    }
 }

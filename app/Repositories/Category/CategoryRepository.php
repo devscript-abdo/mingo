@@ -44,7 +44,17 @@ class CategoryRepository  implements CategoryInterface
     }
     public function getWithChildrens()
     {
-        return $this->query()->with('childrens')->select(['id', 'parent_id', 'slug', 'name','icon'])->get();
+
+
+        return $this->model()->with('childrens')->select(['id', 'parent_id', 'slug', 'name', 'icon'])
+            
+            ->get();
+
+        /*return $this->query()->with(['childrens' => function ($q) {
+            $q->select(['id', 'parent_id', 'slug', 'name', 'icon']);
+        }])->get();*/
+
+        // return $this->model->all()->load('childrens');
     }
     public function randomsHome()
     {

@@ -91,6 +91,7 @@ Route::group(
                 Route::delete('/profil/addresses', [AddresseController::class, 'delete'])->name('customer.addresses.delete');
 
                 Route::get('/profil/wishlist', [WishlistController::class, 'index'])->name('customer.wishlist');
+                Route::delete('/profil/wishlist', [WishlistController::class, 'delete'])->name('customer.wishlist.delete');
             });
         });
     }

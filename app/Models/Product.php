@@ -34,6 +34,11 @@ class Product extends Model
         return $this->belongsToMany('App\Models\Color', 'product_color', 'product_id', 'color_id');
     }
 
+    public function wishlist()
+    {
+        return $this->belongsToMany('App\models\Wishlist', 'wishlists', 'product_id', 'id');
+    }
+
     public function scopeActive($query)
     {
 

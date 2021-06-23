@@ -41,14 +41,29 @@
                                             </li>
 
                                             <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                            @auth('customer')
+                                            <li>
+                                                <a
+                                                wire:click="addToWishList({{$product->id}})"
+                                                href="#" 
+                                                data-toggle="tooltip" 
+                                                data-placement="top" 
+                                                title="Add to Whishlist"
+                                                >
+                                                    <i class="icon-heart"></i>
+                                                </a>
+                                            </li>
+                                            @endauth
+                                            {{--<li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>--}}
                                         </ul>
                                     </div>
-                                    <div class="ps-product__container"><a class="ps-product__vendor" href="{{$product->category->url}}">{{$product->category->field('name')}}</a>
+                                    <div class="ps-product__container">
+                                        <a class="ps-product__vendor" href="{{$product->category->url}}">
+                                            {{$product->category->field('name')}}
+                                        </a>
                                         <div class="ps-product__content">
                                             <a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
-                                            <p class="ps-product__price">{{$product->price}}</p>
+                                            <p class="ps-product__price">{{$product->price}} MAD</p>
                                         </div>
                                         <div class="ps-product__content hover"><a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
                                             <p class="ps-product__price">{{$product->price}}</p>
@@ -73,21 +88,37 @@
                 <div class="ps-shopping-product">
                     @foreach($products as $product)
                         <div class="ps-product ps-product--wide">
-                            <div class="ps-product__thumbnail"><a href="{{$product->url}}"><img src="{{$product->photo}}" alt=""></a>
+                            <div class="ps-product__thumbnail">
+                                <a href="{{$product->url}}">
+                                    <img src="{{$product->photo}}" alt="">
+                                </a>
                             </div>
                             <div class="ps-product__container">
                                 <div class="ps-product__content"><a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
-                                    <p class="ps-product__vendor">Sold by:<a href="#">ROBERT’S STORE</a></p>
+                                    <a class="ps-product__vendor" href="{{$product->category->url}}">
+                                        {{$product->category->field('name')}}
+                                    </a>
                                     <ul class="ps-product__desc">
                                         <li>{{$product->field('description')}}</li>
                                         
                                     </ul>
                                 </div>
                                 <div class="ps-product__shopping">
-                                    <p class="ps-product__price">$1310.00</p><a class="ps-btn" href="#">Add to cart</a>
+                                    <p class="ps-product__price">{{$product->price}} MAD</p>
+                                    <a class="ps-btn" href="#" wire:click="addToCart({{$product->id}})">Add to cart</a>
                                     <ul class="ps-product__actions">
-                                        <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                        <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
+                                        @auth('customer')
+                                            <li>
+                                                <a 
+                                                href="#"
+                                                wire:click="addToWishList({{$product->id}})"
+                                                >
+                                                    <i class="icon-heart"></i> 
+                                                    Wishlist
+                                                </a>
+                                            </li>
+                                        @endauth
+                                        {{--<li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>--}}
                                     </ul>
                                 </div>
                             </div>

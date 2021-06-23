@@ -17,9 +17,9 @@ class SiteController extends Controller
         $sliders  = $this->Slider()->activeItems();
 
         $topAds = $this->Ads()->locationIn('top_slider');
-        
-        return view('theme.home.index', compact('sliders','topAds'));
-    }
 
-    
+        //$categories = $this->Category()->getWithChildrens();
+
+        return view('theme.home.index', compact('sliders', 'topAds'));
+    }
 }

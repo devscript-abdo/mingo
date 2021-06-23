@@ -10,11 +10,14 @@ use App\Traits\Language;
 
 class Category extends Categories
 {
+
     use HasFactory, Language, Translatable;
 
     protected $translatable = ['name', 'description'];
 
-    
+    protected $with = ['childrens'];
+
+
     public function products()
     {
         return $this->hasMany('App\Models\Product');
@@ -22,11 +25,10 @@ class Category extends Categories
 
     public function childrens()
     {
-        return $this->hasMany(self::class, 'parent_id');
+        return $this->hasMany(self::class, 'parent_id', 'id');
     }
     public function subcategory()
     {
-
         return $this->hasMany('App\Models\Category', 'parent_id');
     }
 
