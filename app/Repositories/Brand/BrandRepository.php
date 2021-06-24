@@ -32,4 +32,15 @@ class BrandRepository  implements BrandInterface
     {
         return $this->model->active();
     }
+
+    public function getBrand($slug, $with = null)
+    {
+        if (isset($with) && is_array($with)) {
+            return $this->model->whereSlug($slug)->whereActive(true)
+                ->with($with)
+                ->firstOrFail();
+        }
+        return $this->model->whereSlug($slug)->whereActive(true)
+            ->firstOrFail();
+    }
 }

@@ -64,4 +64,15 @@ class Category extends Categories
             ->inRandomOrder()
             ->first();
     }
+
+    public function scopeInHome($query)
+    {
+        
+        return $query->with(['products.brand' => fn ($q) => $q->whereActive(true)])
+            ->whereShowInHome(true)
+            ->limit(3)
+            ->has('products')
+            ->inRandomOrder()
+            ->get();
+    }
 }

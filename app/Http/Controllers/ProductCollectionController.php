@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brand;
+use App\Models\ProductCollection;
 use Illuminate\Http\Request;
 
-class BrandController extends Controller
+class ProductCollectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = $this->Brand()->activeItems();
-
-        return view('theme.brands.index', compact('topAds', 'brands', 'colors', 'products'));
+        //
     }
 
     /**
@@ -40,29 +38,24 @@ class BrandController extends Controller
         //
     }
 
-
-    public function show($brand)
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\ProductCollection  $productCollection
+     * @return \Illuminate\Http\Response
+     */
+    public function show(ProductCollection $productCollection)
     {
-        $brand = $this->Brand()->getBrand($brand, ['products']);
-
-        $topAds = $this->Ads()->locationIn('top_products_page');
-
-        $products = $brand->products;
-
-        $brands = $this->Brand()->activeItems();
-
-        $colors = $this->Color()->active();
-
-        return view('theme.brands.index', compact('brand','topAds', 'brands', 'colors', 'products'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\ProductCollection  $productCollection
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit(ProductCollection $productCollection)
     {
         //
     }
@@ -71,10 +64,10 @@ class BrandController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\ProductCollection  $productCollection
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(Request $request, ProductCollection $productCollection)
     {
         //
     }
@@ -82,10 +75,10 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\ProductCollection  $productCollection
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand)
+    public function destroy(ProductCollection $productCollection)
     {
         //
     }

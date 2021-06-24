@@ -9,7 +9,7 @@
     @include('layouts.parts.fullLink')
     @livewireStyles()
     @yield('checkoutCss')
-
+    @yield('productsCss')
 </head>
 
 <body>
@@ -40,6 +40,8 @@
     @include('sections.__search')
     
     {{--@include('sections.__modalQuickViewProduct')--}}
+
+
 
     @livewire('product.modal-view')
 

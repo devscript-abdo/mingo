@@ -1,24 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-
       @include('theme.products.single.default.index')
-      
 @endsection
 
 @section('productsJs')
-
-
-
 <script>
-  
-  $(document).ready(function() {$('.singleProductsColors').select2();});
-     
+    window.addEventListener('added_to_cart', event => {
+        
+      // window.location.reload();
+        
+    })
 </script>
-
-@endsection
-
-@section('productsCss')
-
-
 @endsection

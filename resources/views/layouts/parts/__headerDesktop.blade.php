@@ -298,19 +298,42 @@
                     <li><a href="#">Sell on Martfury</a></li>
                     <li><a href="#">Tract your order</a></li>
                     <li>
-                        <div class="ps-dropdown"><a href="#">US Dollar</a>
+                        <div class="ps-dropdown"><a href="#">MAD MAROC</a>
                             <ul class="ps-dropdown-menu">
-                                <li><a href="#">Us Dollar</a></li>
-                                <li><a href="#">Euro</a></li>
+                                <li><a href="#">MAD MAROC</a></li>
+                                
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <div class="ps-dropdown language"><a href="#"><img src="{{asset('assets/img/flag/en.png')}}" alt="">English</a>
+                        <div class="ps-dropdown language">
+                            <a href="#">
+                                @php
+                                $default = Mingo::currentLocale()
+                                @endphp
+                                <img src="{{asset("assets/img/flag/{$default}.png")}}" alt="{{Mingo::currentLocaleName()}}" width="18" height="12">
+                                {{Mingo::currentLocaleName()}}
+                            </a>
                             <ul class="ps-dropdown-menu">
-                                <li><a href="#"><img src="{{asset('assets/img/flag/germany.png')}}" alt=""> Germany</a></li>
-                                <li><a href="#"><img src="{{asset('assets/img/flag/fr.png')}}" alt=""> France</a></li>
+                                {{--<li><a href="#"><img src="{{asset('assets/img/flag/germany.png')}}" alt=""> Germany</a></li>
+                                <li><a href="#"><img src="{{asset('assets/img/flag/fr.png')}}" alt=""> France</a></li>--}}
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                    <li> 
+                                        <a 
+                                            rel="alternate" 
+                                            hreflang="{{ $localeCode }}" 
+                                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                                            class="dropdown-item" 
+                                        >
+                                        <img src="{{asset("assets/img/flag/{$localeCode}.png")}}" alt="{{ $localeCode }}"
+                                         width="18" height="12"
+                                        >
+                                        {{ $properties['native'] }}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
+                            
                         </div>
                     </li>
                 </ul>

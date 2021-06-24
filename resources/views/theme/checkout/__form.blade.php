@@ -74,7 +74,6 @@
             </div>
             @guest
                 
-            
                 <div class="form-group">
                     <label>Address<sup>*</sup>
                     </label>
@@ -92,6 +91,7 @@
                         @enderror
                     </div>
                 </div>
+                
             @endguest
             @auth('customer')
                 <div class="form-group">

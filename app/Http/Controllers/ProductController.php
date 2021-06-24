@@ -6,12 +6,11 @@ use App\Models\Product;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Http\Request;
-use App\Traits\InterfaceHandler;
+
 use Gloudemans\Shoppingcart\Facades\Cart;
 class ProductController extends Controller
 {
 
-    use InterfaceHandler;
     /**
      * Display a listing of the resource.
      *

@@ -41,7 +41,17 @@ class Product extends Model
 
     public function attributes()
     {
-        return $this->belongsToMany('App\Models\Attribute','product_attribute','product_id','attribute_id');
+        return $this->belongsToMany('App\Models\Attribute', 'product_attribute', 'product_id', 'attribute_id');
+    }
+
+    public function productCollections()
+    {
+        return $this->belongsToMany(
+            ProductCollection::class,
+            'product_collection_product',
+            'product_id',
+            'product_collection_id'
+        );
     }
 
     public function scopeActive($query)
@@ -75,7 +85,7 @@ class Product extends Model
 
     public function getAllPhotosAttribute()
     {
-        $images =  json_decode($this->images);
+        $images =  json_decode($this->images) ?? [];
         return $images;
     }
 
@@ -88,6 +98,11 @@ class Product extends Model
     public function getUrlAttribute()
     {
         return route('products.single', $this->slug);
+    }
+
+    public function getBrand($field)
+    {
+        return $this->brand->{$field} ?? null;
     }
 
     /*******Filters */

@@ -14,4 +14,6 @@ interface BrandInterface
 
     public function model();
 
+    public function getBrand($brand, $with = null);
+
 }

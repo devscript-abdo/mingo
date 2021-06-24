@@ -64,9 +64,28 @@
                 </div>
                 <form wire:submit.prevent="addToCart({{$product->id}})">
                     @csrf
+                    
                     <div class="ps-product__variations">
+                        {{--<figure>
+                            <figcaption>Color: <strong> Choose an option</strong></figcaption>
+                            <div class="ps-variant ps-variant--image"><span class="ps-variant__tooltip">Blue</span><img src="img/products/detail/variants/small-1.jpg" alt=""></div>
+                            <div class="ps-variant ps-variant--image"><span class="ps-variant__tooltip"> Dark</span><img src="img/products/detail/variants/small-2.jpg" alt=""></div>
+                            <div class="ps-variant ps-variant--image"><span class="ps-variant__tooltip"> pink</span><img src="img/products/detail/variants/small-3.jpg" alt=""></div>
+                        </figure>--}}
                         <figure>
-                            <figcaption>Color</figcaption>
+                            <figcaption>Sizes</figcaption>
+                            @foreach($product->attributes as $attribute)
+                                <div class="ps-variant ps-variant--size" id="sizeVariant"
+                                  onclick="setSelected(this)"
+                                >
+                                    <span class="ps-variant__tooltip">{{$attribute->name}}</span>
+                                    <span class="ps-variant__size">{{$attribute->code}}</span>
+                                </div>
+                            @endforeach
+                        </figure>
+                 
+                        <figure>
+                            <figcaption>Couleurs</figcaption>
                             @foreach($product->colors as $color)
 
                                 <div class="ps-variant ps-variant--color" style="background-color: {{$color->code}}; !important">
@@ -111,6 +130,18 @@
                         <a href="{{route('shoppingcart')}}" class="ps-btn ps-btn--black">Already in cart</button>
                         @else
                         <button type="submit" class="ps-btn ps-btn--black" href="#">Add to cart</button>
+                        <a 
+                            href="#" 
+                            data-placement="top"
+                            title="Quick View"
+                            data-toggle="modal"
+                            data-target="#product-option"
+
+                            class="ps-btn ps-btn--black"
+                            
+                        >
+                        <i class="icon-eye"></i>
+                    </a>
                         @endif
 
                         <a class="ps-btn" href="#">Buy Now</a>

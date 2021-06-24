@@ -18,7 +18,7 @@
 <!-- custom scripts-->
 <script src="{{asset('assets/js/main.js')}}"></script>
 
-<!--- Notification SCRIPT -------------------------------------------------------------------->
+<!--- Notification SCRIPT-------------------------------------------------------------------->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
@@ -29,3 +29,4 @@
 @include('layouts.parts.__eventScript')
 
 @include('layouts.parts.__deleteItemFromCart')
+

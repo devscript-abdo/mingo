@@ -45,3 +45,31 @@
     });
 
 </script>
+
+<script>
+  
+    $(document).ready(function() {$('.singleProductsColors').select2();});
+       
+
+</script>
+
+<script>
+
+    
+    let clicked = true;
+    function setSelected(e) {
+        
+        if(clicked)
+        {
+            e.style.background='#000000';
+
+        }
+        else{
+
+            e.style.background='#fff'; 
+        }
+        
+        clicked = !clicked;
+    }   
+
+</script>

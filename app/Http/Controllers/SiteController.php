@@ -4,12 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Traits\InterfaceHandler;
-
 class SiteController extends Controller
 {
-
-    use InterfaceHandler;
 
     public function index()
     {
@@ -18,8 +14,8 @@ class SiteController extends Controller
 
         $topAds = $this->Ads()->locationIn('top_slider');
 
-        //$categories = $this->Category()->getWithChildrens();
+        $categories = $this->Category()->randomsHome();
 
-        return view('theme.home.index', compact('sliders', 'topAds'));
+        return view('theme.home.index', compact('sliders', 'topAds', 'categories'));
     }
 }
