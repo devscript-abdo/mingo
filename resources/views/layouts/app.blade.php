@@ -38,7 +38,10 @@
 
     @include('sections.__loader')
     @include('sections.__search')
-    @include('sections.__modalQuickViewProduct')
+    
+    {{--@include('sections.__modalQuickViewProduct')--}}
+
+    @livewire('product.modal-view')
 
     @include('layouts.parts.fullScript')
 

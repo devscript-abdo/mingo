@@ -40,7 +40,19 @@
                                                 </a>
                                             </li>
 
-                                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                            <li>
+                                                <a 
+                                                    {{--wire:click="openModalView({{$product->id}})"--}}
+                                                    href="#" 
+                                                    data-placement="top"
+                                                    title="Quick View"
+                                                    data-toggle="modal"
+                                                    data-target="#product-quickview"
+                                                    
+                                                >
+                                                    <i class="icon-eye"></i>
+                                                </a>
+                                            </li>
                                             @auth('customer')
                                             <li>
                                                 <a

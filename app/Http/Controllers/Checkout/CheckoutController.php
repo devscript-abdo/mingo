@@ -18,7 +18,7 @@ class CheckoutController extends Controller
         if (Cart::instance('default')->count() == 0) {
             return redirect()->route('products');
         }
-        if (auth()->guard('customer')->user() && request()->routeIs('checkout.guest')) {
+        if (auth()->guard('customer')->check() && request()->routeIs('checkout.guest')) {
 
             return redirect()->route('checkout');
         }

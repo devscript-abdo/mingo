@@ -76,6 +76,12 @@ class Products extends Component
                 'message' => 'le produit est deja à votre Favorie'
             ]);*/
         }
+    }
 
+    public function openModalView($productId)
+    {
+        $product = Product::findOrFail($productId);
+
+        $this->emit('viewProduct', $product);
     }
 }
