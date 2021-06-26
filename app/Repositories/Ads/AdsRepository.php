@@ -33,8 +33,8 @@ class AdsRepository  implements AdsInterface
         return $this->model->published();
     }
 
-    public function locationIn($location)
+    public function locationIn($location, $limit)
     {
-        return $this->model->location($location);
+        return $this->model->location($location, $limit);
     }
 }

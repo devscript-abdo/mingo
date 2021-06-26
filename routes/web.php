@@ -13,6 +13,7 @@ use App\Http\Controllers\Customer\CustomerRegisterController;
 use App\Http\Controllers\Customer\InvoiceController;
 use App\Http\Controllers\Customer\NotificationController;
 use App\Http\Controllers\Customer\WishlistController;
+use App\Http\Controllers\ProductCollectionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,9 @@ Route::group(
 
         Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
         Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('categories.single');
+
+        Route::get('/collections', [ProductCollectionController::class, 'index'])->name('collections');
+        Route::get('/collections/{collection}', [ProductCollectionController::class, 'index'])->name('collections.single');
 
         Route::get('/brands', [BrandController::class, 'index'])->name('brands');
         Route::get('/brands/{brand}', [BrandController::class, 'show'])->name('brands.single');

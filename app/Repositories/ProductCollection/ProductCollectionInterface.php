@@ -12,4 +12,6 @@ interface ProductCollectionInterface
 
     public function model();
 
+    
+
 }

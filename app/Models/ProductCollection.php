@@ -28,4 +28,20 @@ class ProductCollection extends Model
             );
         //->where('is_variation', 0);
     }
+
+    public function scopeInHome($query)
+    {
+        return $query->whereActive(true)
+            ->whereShowInHome(true)
+            ->with(['products.category'])
+
+            ->get();
+    }
+
+    /*****Model Getter **************************/
+
+    public function getUrlAttribute()
+    {
+        return route('collections.single', $this->slug);
+    }
 }

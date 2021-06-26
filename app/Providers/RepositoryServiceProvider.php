@@ -30,6 +30,11 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
+            'App\Repositories\ProductCollection\ProductCollectionInterface',
+            'App\Repositories\ProductCollection\ProductCollectionRepository'
+        );
+
+        $this->app->bind(
             'App\Repositories\Slider\SliderInterface',
             'App\Repositories\Slider\SliderRepository'
         );

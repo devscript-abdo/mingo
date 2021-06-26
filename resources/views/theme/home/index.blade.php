@@ -21,7 +21,13 @@
 
          @include('theme.home.section_g_ads')
          @include('theme.home.section_h_app_mobile')
-         @include('theme.home.section_i_products_collections')
+
+         @isset($collections)
+    
+            @each('theme.home.section_i_products_collections',$collections,'collection')
+
+         @endisset
+
          @include('theme.home.section_j_news_letter')
          
     </div>

@@ -3,10 +3,15 @@
         <div class="ps-section__header">
             <h3>{{$category->field('name')}}</h3>
             <ul class="ps-section__links">
-                <li><a href="shop-grid.html">New Arrivals</a></li>
-                <li><a href="shop-grid.html">Best seller</a></li>
-                <li><a href="shop-grid.html">Must Popular</a></li>
-                <li><a href="shop-grid.html">View All</a></li>
+                @foreach($category->products as $product)
+
+                  @foreach ($product->productCollections->unique('productCollections') as $collection )
+
+                    <li><a href="{{$collection->url}}">{{$collection->name}}</a></li>
+
+                  @endforeach
+
+                @endforeach
             </ul>
         </div>
         <div class="ps-section__content">

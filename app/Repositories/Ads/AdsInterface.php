@@ -8,12 +8,11 @@ interface AdsInterface
 
     public function publishedItems();
 
-    public function locationIn($location);
+    public function locationIn($location, $limit);
 
     public function all();
 
     public function query();
 
     public function model();
-
 }

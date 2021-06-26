@@ -25,10 +25,10 @@ class Ads extends Model
         return $query->whereStatus('published')->get();
     }
 
-    public function scopeLocation($query, $location = 'top_slider')
+    public function scopeLocation($query, $location = 'top_slider', $limit = 2)
     {
         return $query->whereLocation($location)
-            ->limit(2)
+            ->limit($limit)
             ->get();
     }
 

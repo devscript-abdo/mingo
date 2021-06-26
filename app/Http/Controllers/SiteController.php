@@ -12,10 +12,14 @@ class SiteController extends Controller
 
         $sliders  = $this->Slider()->activeItems();
 
-        $topAds = $this->Ads()->locationIn('top_slider');
+        $topAds = $this->Ads()->locationIn('top_slider', 2);
+        $centerAds = $this->Ads()->locationIn('center_home', 3);
+        $bottomAds = $this->Ads()->locationIn('bottom_home', 2);
 
         $categories = $this->Category()->randomsHome();
 
-        return view('theme.home.index', compact('sliders', 'topAds', 'categories'));
+        $collections = $this->ProductCollection()->model()->inHome();
+
+        return view('theme.home.index', compact('sliders', 'topAds', 'centerAds', 'bottomAds', 'categories', 'collections'));
     }
 }
