@@ -5,6 +5,7 @@ use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Checkout\ConfirmationController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Coupon\CouponController;
 use App\Http\Controllers\Customer\AddresseController;
 use App\Http\Controllers\Customer\CustomerLoginController;
@@ -42,6 +43,11 @@ Route::group(
     function () {
 
         Route::get('/', [SiteController::class, 'index'])->name('home');
+
+        Route::get('/about-us', [SiteController::class, 'about'])->name('about');
+
+        Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
+        Route::post('/contact-us', [ContactController::class, 'store'])->name('contactPost');
 
         Route::get('/products', [ProductController::class, 'indexWithFilters'])->name('products');
         Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.single');

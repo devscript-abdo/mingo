@@ -22,9 +22,30 @@ class SiteController extends Controller
 
         $categoriesOfYear = $this->Category()->model()->categoryOfYear();
 
+        $productsSearched = $this->Product()->model()->topSearched();
+
         return view(
             'theme.home.index',
-            compact('sliders', 'topAds', 'centerAds', 'bottomAds', 'categories', 'categoriesOfYear', 'collections')
+            compact(
+                'sliders',
+                'topAds',
+                'centerAds',
+                'bottomAds',
+                'categories',
+                'categoriesOfYear',
+                'collections',
+                'productsSearched'
+            )
         );
+    }
+
+
+    public function about()
+    {
+        $about = $this->Page()->getPage('a-propos-de-nous');
+
+        $teams = $this->Team()->activeItems();
+
+        return view('theme.about.index', compact('about', 'teams'));
     }
 }

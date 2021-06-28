@@ -281,16 +281,20 @@
             </div>
             <div class="navigation__right">
                 <ul class="menu">
-                    <li><a href="{{route('home')}}">Home</a>
+                    <li>
+                        <a href="{{route('home')}}">Home</a>
                 
                     </li>
-                    <li><a href="{{route('products')}}">Shop</a>
+                    <li>
+                        <a href="{{route('products')}}">Shop</a>
                 
                     </li>
-                    <li><a href="index.html">About</a>
+                    <li>
+                        <a href="{{route('about')}}">About</a>
                 
                     </li>
-                    <li><a href="index.html">Contact</a>
+                    <li>
+                        <a href="{{route('contact')}}">Contact</a>
                 
                     </li>
                 </ul>

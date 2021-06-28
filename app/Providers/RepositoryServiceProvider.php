@@ -48,6 +48,16 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Brand\BrandInterface',
             'App\Repositories\Brand\BrandRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Page\PageInterface',
+            'App\Repositories\Page\PageRepository'
+        );
+
+        $this->app->bind(
+            'App\Repositories\Team\TeamInterface',
+            'App\Repositories\Team\TeamRepository'
+        );
     }
 
     /**

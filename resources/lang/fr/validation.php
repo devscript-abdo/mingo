@@ -11,6 +11,8 @@ return [
     | as the size rules. Feel free to tweak each of these messages.
     |
     */
+    'validate_domain' => "désolé impossible de trouver l'url ",
+
     'phone' => 'The :attribute field contains an invalid number.',
     /************************************************************ */
     'accepted'        => 'Le champ :attribute doit être accepté.',

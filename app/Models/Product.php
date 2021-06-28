@@ -65,6 +65,11 @@ class Product extends Model
         return $query->whereActive(true)->with($related)->get();
     }
 
+    public function scopeTopSearched($query)
+    {
+        return $query->whereActive(true)->whereTopSearched(true)->get();
+    }
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;
