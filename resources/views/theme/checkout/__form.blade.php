@@ -5,7 +5,7 @@
                 <label>Nom Complet<sup>*</sup>
                 </label>
                 <div class="form-group__content">
-                    @if(auth()->check())
+                    @if(auth()->guard('customer')->check())
                         <input 
                             class="form-control @error('billing_name') is-invalid @enderror" 
                             type="text" 
@@ -32,7 +32,7 @@
                 <label>Email Address<sup>*</sup>
                 </label>
                 <div class="form-group__content">
-                    @if(auth()->check())
+                    @if(auth()->guard('customer')->check())
                     <input 
                         class="form-control @error('billing_email') is-invalid @enderror" 
                         type="email" 

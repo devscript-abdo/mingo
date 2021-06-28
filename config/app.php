@@ -180,6 +180,8 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\HelpersServiceProvider::class,
 
+        Barryvdh\DomPDF\ServiceProvider::class,
+
     ],
 
     /*
@@ -235,6 +237,8 @@ return [
 
         /******Added by Abdelghafour */
         'Mingo' => App\Helpers\HelperFacade::class,
+
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

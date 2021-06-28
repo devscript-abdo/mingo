@@ -20,7 +20,16 @@ class InvoiceController extends Controller
 
     public function show($slug)
     {
-        $order = Order::whereSlug($slug)->firstOrFail();
+        // $order = Order::whereSlug($slug)->firstOrFail();
+        if (auth()->guard('customer')->check()) {
+            $order = auth()
+                ->guard('customer')
+                ->user()->orders()
+                ->whereSlug($slug)
+                ->firstOrFail();
+        } else {
+            $order = Order::whereSlug($slug)->firstOrFail();
+        }
 
         return view('theme.auth.customer.app.invoices.detail.index', compact('order'));
     }

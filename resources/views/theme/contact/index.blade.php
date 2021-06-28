@@ -7,13 +7,16 @@
         @include('theme.contact.section_a_top')
 
         @if(setting('contacts.contact_map'))
+
            @include('theme.contact.section_b_map')
+           
         @endif
  
 
         @include('theme.contact.section_c_info')
 
-        @include('theme.contact.section_d_form')
+        {{--@include('theme.contact.section_d_form')--}}
+        @livewire('contact.contact')
 
     </div>
     

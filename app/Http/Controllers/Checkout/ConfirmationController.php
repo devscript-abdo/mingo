@@ -16,9 +16,14 @@ class ConfirmationController extends Controller
 
             return redirect()->route('home');
         }*/
-        $order = Order::latest('id')
-            ->where('customer_id', auth()->guard('customer')->user()->id)
-            ->firstOrFail()->slug;
+        if (auth()->guard('customer')->check()) {
+
+            $order = Order::latest('id')
+                ->where('customer_id', auth()->guard('customer')->user()->id)
+                ->firstOrFail()->slug ?? 'order-mingo';
+            return view('theme.checkout.thankyou.index', compact('order'));
+        }
+        $order = 'order-alpha';
         return view('theme.checkout.thankyou.index', compact('order'));
     }
 }
