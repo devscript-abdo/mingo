@@ -20,6 +20,7 @@
          @endisset
 
          @include('theme.home.section_g_ads')
+         
          @include('theme.home.section_h_app_mobile')
 
          @isset($collections)

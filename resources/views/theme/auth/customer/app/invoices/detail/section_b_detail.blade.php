@@ -2,7 +2,7 @@
     <div class="ps-section__right">
         <div class="ps-section--account-setting">
             <div class="ps-section__header">
-                <h3>Order #{{$order->full_number}} -<strong>Successful delivery</strong></h3>
+                <h3>Order # {{$order->full_number}} - <strong>{{$order->status}}</strong></h3>
             </div>
             <div class="ps-section__content">
                 <div class="row">
@@ -27,7 +27,7 @@
                         <figure class="ps-block--invoice">
                             <figcaption>Payment</figcaption>
                             <div class="ps-block__content">
-                                <p>Payment Method: Cash On delivery</p>
+                                <p>Payment Method: {{$order->payment_gateway}}</p>
                             </div>
                         </figure>
                     </div>

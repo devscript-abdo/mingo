@@ -67,12 +67,17 @@ class Category extends Categories
 
     public function scopeInHome($query)
     {
-        
+
         return $query->with(['products' => fn ($q) => $q->whereActive(true)])
             ->whereShowInHome(true)
             ->limit(3)
             ->has('products')
             ->inRandomOrder()
             ->get();
+    }
+
+    public function scopeCategoryOfYear($query)
+    {
+        return $query->whereCategoryOfYear(true)->get();
     }
 }

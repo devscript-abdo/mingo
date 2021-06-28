@@ -20,6 +20,11 @@ class SiteController extends Controller
 
         $collections = $this->ProductCollection()->model()->inHome();
 
-        return view('theme.home.index', compact('sliders', 'topAds', 'centerAds', 'bottomAds', 'categories', 'collections'));
+        $categoriesOfYear = $this->Category()->model()->categoryOfYear();
+
+        return view(
+            'theme.home.index',
+            compact('sliders', 'topAds', 'centerAds', 'bottomAds', 'categories', 'categoriesOfYear', 'collections')
+        );
     }
 }

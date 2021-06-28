@@ -2,15 +2,8 @@
 
 namespace App\Helpers;
 
-use App\Repository\Cart\CartInterface;
-
 class Helper
 {
-
-   /* public function myCart()
-    {
-        return app(CartInterface::class);
-    }*/
 
     public function int_to_decimal(int $number)
     {

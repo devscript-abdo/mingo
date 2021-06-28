@@ -8,6 +8,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Http\Request;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
+
 class ProductController extends Controller
 {
 
@@ -18,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $topAds = $this->Ads()->locationIn('top_products_page');
+        $topAds = $this->Ads()->locationIn('top_products_page', 10);
 
         $products = $this->Product()->withRelated(['category']);
 
@@ -51,17 +52,17 @@ class ProductController extends Controller
                 ])
                 ->with(['category', 'translations'])
                 //->paginate(10)
-                 //->appends(request()->query())
-                ->orderBy('created_at','DESC')
+                //->appends(request()->query())
+                ->orderBy('created_at', 'DESC')
                 ->get();
         } else {
-           
+
             $products = $this->Product()->withRelated(['category']);
         }
 
         $colors = $this->Color()->active();
 
-        $topAds = $this->Ads()->locationIn('top_products_page');
+        $topAds = $this->Ads()->locationIn('top_products_page', 10);
 
         $brands = $this->Brand()->activeItems();
 
@@ -92,7 +93,7 @@ class ProductController extends Controller
 
     public function show($product)
     {
-        $product = $this->Product()->getProduct($product, ['category', 'colors','brand']);
+        $product = $this->Product()->getProduct($product, ['category', 'colors', 'brand']);
 
         $products = $this->Product()
             ->model()
@@ -100,10 +101,10 @@ class ProductController extends Controller
             ->with(['category'])
             ->get();
 
-         $cart = Cart::content();  
-          
+        $cart = Cart::content();
 
-       return view('theme.products.single.single',compact('product','products','cart'));
+
+        return view('theme.products.single.single', compact('product', 'products', 'cart'));
     }
 
     /**

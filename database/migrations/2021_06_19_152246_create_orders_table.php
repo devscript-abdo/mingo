@@ -17,8 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')
-            ->references('id')->on('customers')
-            ->onUpdate('cascade')->onDelete('set null');
+                ->references('id')->on('customers')
+                ->onUpdate('cascade')->onDelete('set null');
 
             $table->string('billing_email')->nullable();
             $table->string('billing_name');
@@ -28,11 +28,11 @@ class CreateOrdersTable extends Migration
             $table->string('billing_postalcode')->nullable();
             $table->string('billing_phone');
             $table->string('billing_name_on_card')->nullable();
-            $table->integer('billing_discount')->default(0);
+            $table->unsignedBigInteger('billing_discount')->default(0);
             $table->string('billing_discount_code')->nullable();
-            $table->integer('billing_subtotal')->default(0);
-            $table->integer('billing_tax')->default(0);
-            $table->integer('billing_total');
+            $table->string('billing_subtotal')->nullable();
+            $table->string('billing_tax')->nullable();
+            $table->string('billing_total');
             $table->string('payment_gateway')->default('CMI');
             $table->boolean('shipped')->default(false);
             $table->string('error')->nullable();
