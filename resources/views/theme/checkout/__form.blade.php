@@ -1,8 +1,8 @@
 <div class="col-xl-7 col-lg-8 col-md-12 col-sm-12  ">
     <div class="ps-form__billing-info">
-        <h3 class="ps-form__heading">Billing Details</h3>
+        <h3 class="ps-form__heading">{{__('checkoutPage.check_form_title')}}</h3>
             <div class="form-group">
-                <label>Nom Complet<sup>*</sup>
+                <label>{{__('checkoutPage.check_form_name')}}<sup>*</sup>
                 </label>
                 <div class="form-group__content">
                     @if(auth()->guard('customer')->check())
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Email Address<sup>*</sup>
+                <label>{{__('checkoutPage.check_form_email')}}<sup>*</sup>
                 </label>
                 <div class="form-group__content">
                     @if(auth()->guard('customer')->check())
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Ville<sup>*</sup>
+                <label>{{__('checkoutPage.check_form_ville')}}<sup>*</sup>
                 </label>
                 <div class="form-group__content">
                     <input 
@@ -75,7 +75,7 @@
             @guest
                 
                 <div class="form-group">
-                    <label>Address<sup>*</sup>
+                    <label>{{__('checkoutPage.check_form_address')}}<sup>*</sup>
                     </label>
                     <div class="form-group__content">
                         <input 
@@ -95,7 +95,7 @@
             @endguest
             @auth('customer')
                 <div class="form-group">
-                        <label>addresses</label>
+                        <label>{{__('checkoutPage.check_form_addresses')}}</label>
                         <select class="form-control" name="billing_address">
                             <option value="">selectionner une address</option>
                             @forelse (auth()->user()->addresses as $address)
@@ -109,7 +109,7 @@
             @endauth
    
             <div class="form-group">
-                <label>Télé<sup>*</sup>
+                <label>{{__('checkoutPage.check_form_tele')}}<sup>*</sup>
                 </label>
                 <div class="form-group__content">
                     <input 
@@ -129,18 +129,14 @@
             <div class="form-group">
                 <div class="ps-checkbox">
                     <input class="form-control" type="checkbox" id="create-account">
-                    <label for="create-account">Create an account?</label>
+                    <label for="create-account">
+                        {{__('checkoutPage.check_creat_account')}}
+                    </label>
                 </div>
             </div>
+            <h3 class="mt-40"> {{__('checkoutPage.check_form_order')}}</h3>
             <div class="form-group">
-                <div class="ps-checkbox">
-                    <input class="form-control" type="checkbox" id="cb01">
-                    <label for="cb01">Ship to a different address?</label>
-                </div>
-            </div>
-            <h3 class="mt-40"> Addition information</h3>
-            <div class="form-group">
-                <label>Order Notes</label>
+                <label>{{__('checkoutPage.check_form_order')}}</label>
                 <div class="form-group__content">
                     <textarea 
                         name="billing_notes"

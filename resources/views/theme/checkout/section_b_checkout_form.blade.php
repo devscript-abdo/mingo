@@ -1,7 +1,7 @@
-<div class="ps-checkout ps-section--shopping">
+<div dir="ltr" class="ps-checkout ps-section--shopping">
     <div class="container">
         <div class="ps-section__header">
-            <h1>Checkout OK</h1>
+            <h1>{{__('checkoutPage.checkout_title')}}</h1>
             @if(session()->has('success_message'))
               <div class="alert alert-success">
                   {{session()->get('success_message')}}
@@ -17,12 +17,12 @@
 
                     <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12  ">
                         <div class="ps-form__total">
-                            <h3 class="ps-form__heading">Your Order</h3>
+                            <h3 class="ps-form__heading">{{__('checkoutPage.checkout_details')}}</h3>
                             <div class="content">
                                 <div class="ps-block--checkout-total">
                                     <div class="ps-block__header">
-                                        <p>Product</p>
-                                        <p>Total</p>
+                                        <p>{{__('checkoutPage.checkout_product')}}</p>
+                                        <p>{{__('checkoutPage.checkout_total')}}</p>
                                     </div>
                                     <div class="ps-block__content">
                                         <table class="table ps-block__products">
@@ -42,7 +42,9 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                        <h4 class="ps-block__title">Subtotal <span>{{$subTotal}} MAD</span></h4>
+                                        {{--<h4 class="ps-block__title">
+                                            Subtotal <span>{{$subTotal}} MAD</span>
+                                        </h4>--}}
                                         {{--<div class="ps-block__shippings">
                                             <figure>
                                                 <h4>YOUNG SHOP Shipping</h4>
@@ -53,10 +55,10 @@
                                                 <p>Free shipping</p><a href="#">Apple Macbook Retina Display 12” ×1</a>
                                             </figure>
                                         </div>--}}
-                                        <h3>Total <span>{{$totalPrice}} MAD</span></h3>
+                                        <h3>{{__('checkoutPage.checkout_total')}} <span>{{$totalPrice}} {{__('symbole.mad')}}</span></h3>
                                     </div>
                                 </div>
-                                <button type="submit" class="ps-btn ps-btn--fullwidth">Proceed to checkout</button>
+                                <button type="submit" class="ps-btn ps-btn--fullwidth">{{__('checkoutPage.checkout_button')}}</button>
                             </div>
                         </div>
                     </div>
