@@ -34,7 +34,7 @@
                                                     href="#" 
                                                     data-toggle="tooltip" 
                                                     data-placement="top" 
-                                                    title="Add To Cart"
+                                                    title="{{__('buttons.add_to_cart')}}"
                                                 >
                                                     <i class="icon-bag2"></i>
                                                 </a>
@@ -60,7 +60,7 @@
                                                 href="#" 
                                                 data-toggle="tooltip" 
                                                 data-placement="top" 
-                                                title="Add to Whishlist"
+                                                title="{{__('buttons.add_to_wish')}}"
                                                 >
                                                     <i class="icon-heart"></i>
                                                 </a>
@@ -117,7 +117,9 @@
                                 </div>
                                 <div class="ps-product__shopping">
                                     <p class="ps-product__price">{{$product->price}} MAD</p>
-                                    <a class="ps-btn" href="#" wire:click="addToCart({{$product->id}})">Add to cart</a>
+                                    <a class="ps-btn" href="#" wire:click="addToCart({{$product->id}})">
+                                        {{__('buttons.add_to_cart')}}
+                                    </a>
                                     <ul class="ps-product__actions">
                                         @auth('customer')
                                             <li>
@@ -126,7 +128,7 @@
                                                 wire:click="addToWishList({{$product->id}})"
                                                 >
                                                     <i class="icon-heart"></i> 
-                                                    Wishlist
+                                                    {{__('buttons.add_to_wish')}}
                                                 </a>
                                             </li>
                                         @endauth

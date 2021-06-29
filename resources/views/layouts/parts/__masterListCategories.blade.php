@@ -1,6 +1,6 @@
 
 <div class="menu--product-categories">
-    <div class="menu__toggle"><i class="icon-menu"></i><span> Shop by Department</span></div>
+    <div class="menu__toggle"><i class="icon-menu"></i><span>{{__('navbar.all_categories')}}</span></div>
     <div class="menu__content">
         <ul class="menu--dropdown">
             <li><a href="#"><i class="icon-star"></i> Hot Promotions</a>

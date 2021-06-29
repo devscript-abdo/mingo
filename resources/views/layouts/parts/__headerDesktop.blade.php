@@ -80,29 +80,29 @@
             <div class="navigation__right">
                 <ul class="menu">
                     <li>
-                        <a href="{{route('home')}}">Home</a>
+                        <a href="{{route('home')}}">{{__('navbar.home')}}</a>
                 
                     </li>
                     <li>
-                        <a href="{{route('products')}}">Shop</a>
+                        <a href="{{route('products')}}">{{__('navbar.shop')}}</a>
                 
                     </li>
                     <li>
-                        <a href="{{route('about')}}">About</a>
+                        <a href="{{route('about')}}">{{__('navbar.about')}}</a>
                 
                     </li>
                     <li>
-                        <a href="{{route('contact')}}">Contact</a>
+                        <a href="{{route('contact')}}">{{__('navbar.contact')}}</a>
                 
                     </li>
                 </ul>
                 <ul class="navigation__extra">
-                    <li><a href="#">Sell on Martfury</a></li>
-                    <li><a href="#">Tract your order</a></li>
+                    {{--<li><a href="#">Sell on Martfury</a></li>--}}
+                    <li><a href="#">{{__('navbar.track_order')}}</a></li>
                     <li>
-                        <div class="ps-dropdown"><a href="#">MAD MAROC</a>
+                        <div class="ps-dropdown"><a href="#">{{__('navbar.mad_maroc')}}</a>
                             <ul class="ps-dropdown-menu">
-                                <li><a href="#">MAD MAROC</a></li>
+                                <li><a href="#">{{__('navbar.mad_maroc')}}</a></li>
                                 
                             </ul>
                         </div>

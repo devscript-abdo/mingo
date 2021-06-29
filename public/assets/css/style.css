@@ -661,14 +661,18 @@
   left: 15px;
 }
 
+* {
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+ }
 /*1. RESET AND TYPHOGRAPHY */
 html {
-  font-family: sans-serif;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
   margin: 0;
 }
 
@@ -685,6 +689,7 @@ nav,
 section,
 summary {
   display: block;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 audio,
@@ -711,6 +716,7 @@ template,
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif
 }
 
 a:active,
@@ -728,6 +734,7 @@ abbr[title] {
 b,
 strong {
   font-weight: inherit;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 b,
@@ -742,6 +749,7 @@ dfn {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif
 }
 
 mark {
@@ -923,33 +931,41 @@ h4 a,
 h5 a,
 h6 a {
   color: inherit;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 h1 {
   font-size: 48px;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 h2 {
   font-size: 36px;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 h3 {
   font-size: 24px;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 h4 {
   font-size: 18px;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 h5 {
   font-size: 14px;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 h6 {
   font-size: 12px;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 p {
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
   font-size: 1.4rem;
   line-height: 1.6em;
   color: #666;
@@ -966,6 +982,7 @@ a {
   color: inherit;
   text-decoration: none;
   transition: all 0.4s ease;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 a:hover {
@@ -997,6 +1014,9 @@ input:focus,
 textarea:focus {
   outline: none;
   text-decoration: none;
+}
+li, span{
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 img {
@@ -9001,8 +9021,9 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   padding-left: 30px;
   padding-right: 30px;
   vertical-align: top;
-  max-height: 50px;
+  /*max-height: 50px;*/
   font-size: 18px;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 
 .ps-product--detail .ps-product__shopping .ps-btn.ps-btn--black {

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+    @php
+    $default = Mingo::currentLocale()
+    @endphp
+<html lang="fr" dir="{{$default==='ar'?'rtl':''}}">
 <head>
 
     <title>Mingo - Mingo ecommerce platform</title>

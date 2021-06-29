@@ -40,7 +40,7 @@
                 <h1>{{$product->field('name')}}</h1>
                 <div class="ps-product__meta">
                     @if($product->brand)
-                    <p>Brand : <a href="{{$product->brand->url}}">{{$product->brand->name}}</a></p>
+                    <p>{{__('singleProduct.brands')}} : <a href="{{$product->brand->url}}">{{$product->brand->name}}</a></p>
                     @endif
                     <div class="ps-product__rating">
                         <select class="ps-rating" data-read-only="true">
@@ -72,43 +72,47 @@
                             <div class="ps-variant ps-variant--image"><span class="ps-variant__tooltip"> Dark</span><img src="img/products/detail/variants/small-2.jpg" alt=""></div>
                             <div class="ps-variant ps-variant--image"><span class="ps-variant__tooltip"> pink</span><img src="img/products/detail/variants/small-3.jpg" alt=""></div>
                         </figure>--}}
-                        <figure>
-                            <figcaption>Sizes</figcaption>
-                            @foreach($product->attributes as $attribute)
-                                <div class="ps-variant ps-variant--size" id="sizeVariant"
-                                  onclick="setSelected(this)"
-                                >
-                                    <span class="ps-variant__tooltip">{{$attribute->name}}</span>
-                                    <span class="ps-variant__size">{{$attribute->code}}</span>
-                                </div>
-                            @endforeach
-                        </figure>
-                 
-                        <figure>
-                            <figcaption>Couleurs</figcaption>
-                            @foreach($product->colors as $color)
-
-                                <div class="ps-variant ps-variant--color" style="background-color: {{$color->code}}; !important">
-                                    <span class="ps-variant__tooltip">{{$color->field('name')}}</span>
-                                </div>
-
-                                {{--<div class="ps-checkbox ps-checkbox--color  ps-checkbox--inline" style="border-radius:30%; background-color: {{$color->code}}; !important">
-                                    <input 
-                                    class="form-control" 
-                                    type="checkbox" 
-                                    id="color-{{$color->slug}}" 
-                                    name="size"
-                                    style=":checked:background-color: #fff"
+                        @if($product->attributes->count())
+                            <figure>
+                                <figcaption>{{__('singleProduct.sizes')}}</figcaption>
+                                @foreach($product->attributes as $attribute)
+                                    <div class="ps-variant ps-variant--size" id="sizeVariant"
+                                    onclick="setSelected(this)"
                                     >
-                                    <label for="color-{{$color->slug}}"></label>
-                                </div>--}}
-                                
-                            @endforeach
-                        </figure>
+                                        <span class="ps-variant__tooltip">{{$attribute->name}}</span>
+                                        <span class="ps-variant__size">{{$attribute->code}}</span>
+                                    </div>
+                                @endforeach
+                            </figure>
+                        @endif
+
+                        @if($product->colors->count())
+                            <figure>
+                                <figcaption>{{__('singleProduct.colors')}}</figcaption>
+                                @foreach($product->colors as $color)
+
+                                    <div class="ps-variant ps-variant--color" style="background-color: {{$color->code}}; !important">
+                                        <span class="ps-variant__tooltip">{{$color->field('name')}}</span>
+                                    </div>
+
+                                    {{--<div class="ps-checkbox ps-checkbox--color  ps-checkbox--inline" style="border-radius:30%; background-color: {{$color->code}}; !important">
+                                        <input 
+                                        class="form-control" 
+                                        type="checkbox" 
+                                        id="color-{{$color->slug}}" 
+                                        name="size"
+                                        style=":checked:background-color: #fff"
+                                        >
+                                        <label for="color-{{$color->slug}}"></label>
+                                    </div>--}}
+                                    
+                                @endforeach
+                            </figure>
+                        @endif
                     </div>
                     <div class="ps-product__shopping">
                         <figure >
-                            <figcaption>Quantity</figcaption>
+                            <figcaption>{{__('singleProduct.quantity')}}</figcaption>
                             <div class="form-group--number">
                                 {{--<button class="up"><i class="fa fa-plus"></i></button>
                                 <button class="down"><i class="fa fa-minus"></i></button>--}}
@@ -127,9 +131,9 @@
                             </div>
                         </figure>
                         @if($cart->where('id',$product->id)->count())
-                        <a href="{{route('shoppingcart')}}" class="ps-btn ps-btn--black">Already in cart</button>
+                        <a href="{{route('shoppingcart')}}" class="ps-btn ps-btn--black">{{__('buttons.add_to_cart_exist')}}</button>
                         @else
-                        <button type="submit" class="ps-btn ps-btn--black" href="#">Add to cart</button>
+                        <button type="submit" class="ps-btn ps-btn--black" href="#">{{__('buttons.add_to_cart')}}</button>
                         <a 
                             href="#" 
                             data-placement="top"
@@ -144,31 +148,62 @@
                     </a>
                         @endif
 
-                        <a class="ps-btn" href="#">Buy Now</a>
+                        <a class="ps-btn" href="#">
+                            {{__('buttons.buy_now')}}
+                        </a>
                         <div class="ps-product__actions">
-                            <a href="#"><i class="icon-heart"></i></a>
-                            <a href="#"><i class="icon-chart-bars"></i></a>
+                            @auth('customer')
+                                <a 
+                                    href="#"
+                                    wire:click="addToWishList({{$product->id}})"
+                                >
+                                    <i class="icon-heart"></i>
+                                </a>
+                            @endauth
+                            
                         </div>
                     </div>
                 </form>
 
-                <div class="ps-product__specification"><a class="report" href="#">Report Abuse</a>
-                    <p><strong>SKU:</strong> {{$product->sku}}</p>
-                    <p class="categories"><strong> Categories:</strong>
+                <div class="ps-product__specification">
+                    {{--<a class="report" href="#">Report Abuse</a>--}}
+                    <p><strong>{{__('singleProduct.sku')}}:</strong> {{$product->sku}}</p>
+                    <p class="categories"><strong> {{__('singleProduct.categories')}}:</strong>
                         <a href="{{$product->category->url}}">{{$product->category->field('name')}}</a>
                         {{--<a href="#"> Refrigerator</a>,
                         <a href="#">Babies & Moms</a></p>--}}
-                    <p class="tags"><strong> Tags</strong><a href="#">sofa</a>,<a href="#">technologies</a>,<a href="#">wireless</a></p>
+                    {{--<p class="tags">
+                        <strong> Tags</strong>
+                        <a href="#">sofa</a>,
+                        <a href="#">technologies</a>,
+                        <a href="#">wireless</a>
+                    </p>--}}
                 </div>
-                <div class="ps-product__sharing"><a class="facebook" href="#"><i class="fa fa-facebook"></i></a><a class="twitter" href="#"><i class="fa fa-twitter"></i></a><a class="google" href="#"><i class="fa fa-google-plus"></i></a><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></div>
+                <div class="ps-product__sharing">
+                    <a class="facebook" href="#">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="twitter" href="#">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="google" href="#">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="linkedin" href="#">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a class="instagram" href="#">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="ps-product__content ps-tab-root">
             <ul class="ps-tab-list">
-                <li class="active"><a href="#tab-1">Description</a></li>
-                <li><a href="#tab-2">Specification</a></li>
+                <li class="active"><a href="#tab-1">{{__('singleProduct.description')}}</a></li>
+                <li><a href="#tab-2">{{__('singleProduct.specification')}}</a></li>
                 {{--<li><a href="#tab-3">Vendor</a></li>--}}
-                <li><a href="#tab-4">Reviews (1)</a></li>
+                <li><a href="#tab-4">{{__('singleProduct.reviews')}} (1)</a></li>
                 {{--<li><a href="#tab-5">Questions and Answers</a></li>--}}
                 {{--<li><a href="#tab-6">More Offers</a></li>--}}
             </ul>
