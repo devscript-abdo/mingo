@@ -43,8 +43,12 @@
                             </button>
                         </div>
                     </div>
+     
                     <div class="ps-form__footer">
-                        <a href="{{route('checkout.guest')}}"  class="ps-btn ps-btn--fullwidth">
+                        <a href="{{route('customer.register')}}"  class="ps-btn ps-btn--fullwidth mb-2">
+                            Crée un compte
+                         </a>
+                        <a href="{{route('checkout.guest')}}"  class="ps-btn ps-btn--fullwidth mt-5">
                            {{__('login.form_login_guest')}}
                         </a>
                         <p>{{__('login.form_login_with')}} : </p>

@@ -59,12 +59,21 @@
                 <label>{{__('checkoutPage.check_form_ville')}}<sup>*</sup>
                 </label>
                 <div class="form-group__content">
+                    @if(auth()->guard('customer')->check())
                     <input 
                         class="form-control @error('billing_city') is-invalid @enderror" 
                         type="text" 
                         name="billing_city"
-                        value="{{old('billing_city')}}" 
+                        value="{{auth()->user()->city}}" 
                      >
+                     @else
+                     <input 
+                        class="form-control @error('billing_city') is-invalid @enderror" 
+                        type="text" 
+                        name="billing_city"
+                        value="{{old('billing_city')}}" 
+                    >
+                     @endif
                     @error('billing_city')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

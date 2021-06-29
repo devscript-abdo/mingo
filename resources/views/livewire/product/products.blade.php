@@ -128,7 +128,7 @@
                                                 wire:click="addToWishList({{$product->id}})"
                                                 >
                                                     <i class="icon-heart"></i> 
-                                                    {{__('buttons.add_to_wish')}}
+                                                    {{__('buttons.add_to_whish')}}
                                                 </a>
                                             </li>
                                         @endauth
