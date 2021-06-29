@@ -6,5 +6,9 @@ return [
     'add_to_whish' => 'ajouter au favorie',
     'add_to_cart_exist' => 'deja dans le panier',
     /******************************************* */
-    'buy_now'=>'acheter maintenant'
+    'buy_now'=>'acheter maintenant',
+    
+    'show_all'=>'voir tous',
+
+    'checkout'=>'checkout'
 ];

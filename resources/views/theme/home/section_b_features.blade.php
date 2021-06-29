@@ -4,38 +4,32 @@
             <div class="ps-block__item">
                 <div class="ps-block__left"><i class="icon-rocket"></i></div>
                 <div class="ps-block__right">
-                    <h4>Free Delivery</h4>
-                    <p>For all oders over $99</p>
+                    <h4>{{__('homePage.freeDelivery')}}</h4>
+                    <p>{{__('homePage.freeDelivery_desc')}}</p>
                 </div>
             </div>
             <div class="ps-block__item">
                 <div class="ps-block__left"><i class="icon-sync"></i></div>
                 <div class="ps-block__right">
-                    <h4>90 Days Return</h4>
-                    <p>If goods have problems</p>
+                    <h4>{{__('homePage.90_day')}}</h4>
+                    <p>{{__('homePage.90_day_desc')}}</p>
                 </div>
             </div>
             <div class="ps-block__item">
                 <div class="ps-block__left"><i class="icon-credit-card"></i></div>
                 <div class="ps-block__right">
-                    <h4>Secure Payment</h4>
-                    <p>100% secure payment</p>
+                    <h4>{{__('homePage.paymentSecure')}}</h4>
+                    <p>{{__('homePage.paymentSecure_desc')}}</p>
                 </div>
             </div>
             <div class="ps-block__item">
                 <div class="ps-block__left"><i class="icon-bubbles"></i></div>
                 <div class="ps-block__right">
-                    <h4>24/7 Support</h4>
-                    <p>Dedicated support</p>
+                    <h4>{{__('homePage.supportSystem')}}</h4>
+                   
                 </div>
             </div>
-            <div class="ps-block__item">
-                <div class="ps-block__left"><i class="icon-gift"></i></div>
-                <div class="ps-block__right">
-                    <h4>Gift Service</h4>
-                    <p>Support gift service</p>
-                </div>
-            </div>
+ 
         </div>
     </div>
 </div>

@@ -80,4 +80,11 @@ class Category extends Categories
     {
         return $query->whereCategoryOfYear(true)->get();
     }
+
+    public function scopeShowInMenu($query)
+    {
+        return $query->whereShowInNavbar(true)
+            ->with(['translations'])
+            ->get();
+    }
 }

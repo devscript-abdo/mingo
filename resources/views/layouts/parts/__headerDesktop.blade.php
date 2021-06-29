@@ -38,8 +38,8 @@
                         @guest('customer')
                             <div class="ps-block__right">
                             
-                                    <a href="{{route('customer.login')}}">Login</a>
-                                    <a href="{{route('customer.register')}}">Register</a>
+                                    <a href="{{route('customer.login')}}">{{__('navbar.login_link')}}</a>
+                                    <a href="{{route('customer.register')}}">{{__('navbar.register_link')}}</a>
                             </div>
                         @endguest
 
@@ -87,6 +87,17 @@
                         <a href="{{route('products')}}">{{__('navbar.shop')}}</a>
                 
                     </li>
+
+                    @if($categoriesMenu)
+
+                        @foreach ( $categoriesMenu as $category)
+                            <li>
+                                <a href="{{$category->url}}">{{$category->field('name')}}</a>
+                            </li>
+                        @endforeach
+
+                    @endif
+
                     <li>
                         <a href="{{route('about')}}">{{__('navbar.about')}}</a>
                 

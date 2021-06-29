@@ -1,4 +1,4 @@
-<div class="ps-product-list ps-clothings">
+<div class="ps-product-list ps-clothings" >
     <div class="ps-container">
         <div class="ps-section__header">
             <h3>{{$category->field('name')}}</h3>
@@ -7,7 +7,7 @@
 
                   @foreach ($product->productCollections->unique('productCollections') as $collection )
 
-                    <li><a href="{{$collection->url}}">{{$collection->name}}</a></li>
+                    <li><a href="{{$collection->url}}">{{$collection->field('name')}}</a></li>
 
                   @endforeach
 
@@ -15,7 +15,7 @@
             </ul>
         </div>
         <div class="ps-section__content">
-            <div 
+            <div  dir="ltr"
                 class="ps-carousel--responsive owl-slider" 
                 data-owl-auto="true" 
                 data-owl-loop="true" 

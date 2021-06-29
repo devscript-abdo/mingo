@@ -13,6 +13,10 @@ return [
     'specification' => 'Specification',
     'reviews' => 'reviews',
     /**************************************** */
-    'related' => 'produits dans la même categorie'
+    'related' => 'produits dans la même categorie',
+
+    /***************************** */
+    'shipping_over_maroc'=>'livraison dans tout le maroc',
+    'free_7_day_return'=>''
 
 ];

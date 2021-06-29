@@ -7,7 +7,7 @@ return [
     'quantity' => 'كمية',
     'sku' => 'كود التخزين التعريفي',
     'categories' => 'التصنيفات',
-    'brands' => 'العلامات',
+    'brands' => 'الماركات',
     'partager' => 'شارك',
     'description' => 'الوصف',
     'specification' => 'المعايير',

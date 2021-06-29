@@ -34,9 +34,16 @@ class ViewComposerServiceProvider extends ServiceProvider
 
         $categories = app(CategoryInterface::class)->getWithChildrens();
 
+        $categoriesMenu = app(CategoryInterface::class)->model()->showInMenu();
+
         View::composer($viewsPages, function ($view) use ($categories) {
 
             $view->with('categories', $categories);
+        });
+
+        View::composer('layouts.parts.*', function ($view) use ($categoriesMenu) {
+
+            $view->with('categoriesMenu', $categoriesMenu);
         });
     }
 }

@@ -3,7 +3,7 @@
         <div class="ps-section__header">
             <div class="ps-block--countdown-deal">
                 <div class="ps-block__left">
-                    <h3>Plus recherché</h3>
+                    <h3>{{__('homePage.more_searched')}}</h3>
                 </div>
                 {{--<div class="ps-block__right">
                     <figure>
@@ -16,7 +16,7 @@
                         </ul>
                     </figure>
                 </div>--}}
-            </div><a href="#">View all</a>
+            </div><a href="#">{{__('buttons.show_all')}}</a>
         </div>
         <div class="ps-section__content">
             <div class="ps-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">

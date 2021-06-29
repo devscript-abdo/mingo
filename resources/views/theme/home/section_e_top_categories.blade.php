@@ -1,6 +1,6 @@
 <div class="ps-top-categories">
     <div class="ps-container">
-        <h3>Top categories of the month</h3>
+        <h3>{{__('homePage.top_categories')}}</h3>
         <div class="row {{--justify-content-center--}}">
             @foreach($categoriesOfYear as $category)
 

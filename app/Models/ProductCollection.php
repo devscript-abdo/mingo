@@ -5,10 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use TCG\Voyager\Traits\Translatable;
+use App\Traits\Language;
 
 class ProductCollection extends Model
 {
-    use HasFactory;
+
+    use HasFactory, Translatable, Language;
+
+    protected $translatable = ['name', 'description'];
 
 
     public function setNameAttribute($value)
@@ -16,7 +21,6 @@ class ProductCollection extends Model
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
-
     public function products()
     {
         return $this

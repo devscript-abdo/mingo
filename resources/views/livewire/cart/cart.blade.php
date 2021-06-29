@@ -2,17 +2,17 @@
     <div class="ps-section--shopping ps-shopping-cart">
         <div class="container">
             <div class="ps-section__header">
-                <h1>Shopping Cart</h1>
+                <h1>{{__('navbar.shopping_cart')}}</h1>
             </div>
             <div class="ps-section__content">
                 <div class="table-responsive">
                     <table class="table ps-table--shopping-cart ps-table--responsive">
                         <thead>
                             <tr>
-                                <th>Product name</th>
-                                <th>PRICE</th>
-                                <th>QUANTITY</th>
-                                <th>TOTAL</th>
+                                <th>{{__('cart.product_name')}}</th>
+                                <th>{{__('cart.product_price')}}</th>
+                                <th>{{__('cart.product_qte')}}</th>
+                                <th>{{__('cart.product_total')}}</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -32,7 +32,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="price" data-label="Price">{{$item->price}} MAD</td>
+                                    <td class="price" data-label="Price">{{$item->price}} {{__('symbole.mad')}}</td>
                                     <td data-label="Quantity">
                                         <div class="form-group--number">
                                             <button class="up">+</button>
@@ -64,20 +64,23 @@
                     </table>
                 </div>
                 <div class="ps-section__cart-actions">
-                    <a class="ps-btn" href="{{route('products')}}"><i class="icon-arrow-left"></i> Back to Shop</a>
+                    <a class="ps-btn" href="{{route('products')}}">
+                        <i class="icon-arrow-left"></i> 
+                        {{__('cart.back_to_store')}}
+                    </a>
                     <button 
                       wire:click="updateCart()" 
                       class="ps-btn ps-btn--outline"
                       onclick="this.disabled = true;this.setAttribute('style', 'background: #000000')"
                     >
-                        <i class="icon-sync"></i> Update cart
+                        <i class="icon-sync"></i> {{__('cart.update')}}
                     </button>
                 </div>
             </div>
             <div class="ps-section__footer">
                 <div class="row">
                     
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+                       {{--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
                             @if(! session()->has('coupon'))
                             <figure>
                                 <figcaption>Coupon Discount</figcaption>
@@ -113,16 +116,16 @@
                             
                             </figure>
                             @endif
-                        </div>
+                        </div>--}}
                  
     
                     {{--@include('theme.shopping-cart.section_c_shipping')--}}
     
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
                         <div class="ps-block--shopping-total">
-                            <div class="ps-block__header">
+                            {{--<div class="ps-block__header">
                                 <p>Subtotal <span> {{$subTotal}} MAD</span></p>
-                            </div>
+                            </div>--}}
                             <div class="ps-block__content">
                                 <ul class="ps-block__product">
                                     @if(session()->has('coupon'))
@@ -143,9 +146,10 @@
                                     @endif
                          
                                 </ul>
-                                <h3>Total <span>{{$totalPrice}} MAD</span></h3>
+                                <h3>{{__('cart.product_total')}} <span>{{$totalPrice}} {{__('symbole.mad')}}</span></h3>
                             </div>
-                        </div><a class="ps-btn ps-btn--fullwidth" href="{{route('checkout')}}">Proceed to checkout</a>
+                        </div>
+                        <a class="ps-btn ps-btn--fullwidth" href="{{route('checkout')}}">{{__('buttons.checkout')}}</a>
                     </div>
     
                 </div>

@@ -2,7 +2,7 @@
 
     <div class="ps-container">
         <div class="ps-section__header">
-            <h3>{{$collection->name}}</h3>
+            <h3>{{$collection->field('name')}}</h3>
             <ul class="ps-section__links">
 
                 @foreach($collection->products->unique('category') as $product)
@@ -12,8 +12,8 @@
                         </a>
                     </li>
                 @endforeach
-
-                <li><a href="shop-grid.html">View All</a></li>
+                 ,
+                <li><a href="shop-grid.html">{{__('buttons.show_all')}}</a></li>
             </ul>
         </div>
         <div class="ps-section__content">

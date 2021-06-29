@@ -1,7 +1,7 @@
-<div>
+<div >
     <div class="ps-product--detail ps-product--fullwidth">
         <div class="ps-product__header">
-            <div class="ps-product__thumbnail" data-vertical="true">
+            <div  class="ps-product__thumbnail" data-vertical="true">
                 <figure>
                     <div class="ps-wrapper">
                         <div class="ps-product__gallery" data-arrow="true">
@@ -197,6 +197,8 @@
                     </a>
                 </div>
             </div>
+
+            
         </div>
         <div class="ps-product__content ps-tab-root">
             <ul class="ps-tab-list">

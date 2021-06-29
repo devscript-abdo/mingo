@@ -1,7 +1,7 @@
 <div class="ps-section--shopping ps-shopping-cart">
     <div class="container">
         <div class="ps-section__header">
-            <h1>Shopping Cart</h1>
+            <h1>{{__('navbar.shopping_cart')}}</h1>
         </div>
         <div class="ps-section__content">
             <div class="table-responsive">
