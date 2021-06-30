@@ -45,12 +45,21 @@
                     </div>
      
                     <div class="ps-form__footer">
+
                         <a href="{{route('customer.register')}}"  class="ps-btn ps-btn--fullwidth mb-2">
-                            Crée un compte
+                            {{__('login.form_create_account')}}
                          </a>
-                        <a href="{{route('checkout.guest')}}"  class="ps-btn ps-btn--fullwidth mt-5">
-                           {{__('login.form_login_guest')}}
-                        </a>
+                        
+                        @php
+                            $contains = Str::contains(route('shoppingcart'), session('cartUrl'));
+                        @endphp
+                        {{--@dd(session('prevUrl'),'***',$cartRoute,'****',$contains)--}}
+                        @if($contains)
+                            <a href="{{route('checkout.guest')}}"  class="ps-btn ps-btn--fullwidth mt-5">
+                            {{__('login.form_login_guest')}}
+                            </a>
+                        @endif
+
                         <p>{{__('login.form_login_with')}} : </p>
                         <ul class="ps-list--social">
                             <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>

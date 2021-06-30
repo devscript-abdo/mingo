@@ -2,7 +2,7 @@
     <div class="ps-section__right">
         <div class="ps-section--account-setting">
             <div class="ps-section__header">
-                <h3>Addresses</h3>
+                <h3>{{__('customer.customer_address')}}</h3>
             </div>
             <div class="ps-section__content">
                 <div class="row">
@@ -18,10 +18,12 @@
                                         onclick="document.getElementById('deleteAddress').submit();"
                                         style="color:red !important"
                                     >
-                                     Supprimer <i class="icon-trash"></i>
+                                     {{__('customer.customer_address_delete')}} 
+                                     <i class="icon-trash"></i>
                                     </a>
                                     <form action="{{route('customer.addresses.delete')}}" method="post" hidden id="deleteAddress">
                                         @csrf
+                                        @honeypot
                                         <input type="hidden" name="addresse" value="{{$addresse->id}}">
                                         @method('DELETE')
                                     </form>
@@ -34,7 +36,7 @@
             </div>
             <form class="ps-form--account-setting" action="{{route('customer.addresses.store')}}" method="post">
                 <div class="ps-form__header">
-                    <h3>Ajouter une Address</h3>
+                    <h3>{{__('customer.customer_address_add')}}</h3>
                     @if(session()->has('message'))
                         <div class="alert alert-success">
                             <p>{{session()->get('message')}}</p>
@@ -44,7 +46,7 @@
                 @csrf
                 <div class="ps-form__content">
                     <div class="form-group">
-                        <label>name </label>
+                        <label>{{__('customer.customer_address_form_name')}} </label>
                         <input 
                             class="form-control @error('name') is-invalid @enderror" 
                             name="name" 
@@ -60,7 +62,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>email</label>
+                                <label>{{__('customer.customer_address_form_email')}}</label>
                                 <input 
                                 class="form-control @error('email') is-invalid @enderror" 
                                 name="email" 
@@ -77,7 +79,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>phone</label>
+                                <label>{{__('customer.customer_address_form_tele')}}</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" name="phone" type="text" value="">
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -89,7 +91,7 @@
     
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Ville</label>
+                                <label>{{__('customer.customer_address_form_ville')}}</label>
                                 <input class="form-control @error('city') is-invalid @enderror" name="city" type="text" value="">
                                 @error('city')
                                     <span class="invalid-feedback" role="alert">
@@ -101,7 +103,7 @@
     
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Addresse</label>
+                                <label>{{__('customer.customer_address_form_address')}}</label>
                                 <input class="form-control @error('addresse') is-invalid @enderror" name="addresse" type="text" value="">
                                 @error('addresse')
                                     <span class="invalid-feedback" role="alert">
@@ -115,7 +117,7 @@
                     </div>
                 </div>
                 <div class="form-group submit">
-                    <button type="submit" class="ps-btn">Ajouter</button>
+                    <button type="submit" class="ps-btn">{{__('customer.customer_address_form_add')}}</button>
                 </div>
             </form>
         </div>

@@ -12,9 +12,11 @@ class CartController extends Controller
 
     public function index()
     {
-
-       // $cartItemes = Cart::content();
-
+        if (Cart::content()->count()) {
+            session()->put('cartUrl', route('shoppingcart'));
+        } else {
+            session()->forget('cartUrl');
+        }
         return view('theme.shopping-cart.index');
     }
 

@@ -2,18 +2,18 @@
     <div class="ps-section__right">
         <div class="ps-section--account-setting">
             <div class="ps-section__header">
-                <h3>Orders</h3>
+                <h3>{{__('customer.customer_orders')}}</h3>
             </div>
             <div class="ps-section__content">
                 <div class="table-responsive">
                     <table class="table ps-table ps-table--invoices">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Date</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th>{{__('customer.customer_orders_table_id')}}</th>
+                                <th>{{__('customer.customer_orders_table_date')}}</th>
+                                <th>{{__('customer.customer_orders_table_total')}}</th>
+                                <th>{{__('customer.customer_orders_table_status')}}</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,7 +25,7 @@
                                     <td>{{$order->status}}</td>
                                     <td>
                                         <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices.single',$order->slug)}}">
-                                          view
+                                          {{__('customer.customer_orders_table_view')}}
                                         </a>
                                     </td>
                                 </tr>

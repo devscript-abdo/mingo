@@ -33,10 +33,9 @@ class Products extends Component
             $product->id,
             $product->field('name'),
             $this->quantity,
-            $product->price / 100,
+            $product->price / 1,
             0,
             [
-
                 //'colors' => $request->colors ?? [],
                 'image' => $product->photo,
                 'url' => $product->url,

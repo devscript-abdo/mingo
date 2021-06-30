@@ -2,16 +2,16 @@
     <div class="ps-section__right">
         <div class="ps-section--account-setting">
             <div class="ps-section__header">
-                <h3>Order # {{$order->full_number}} - <strong>{{$order->status}}</strong></h3>
+                <h3>{{__('customer.customer_order')}} # {{$order->full_number}} - <strong>{{$order->status}}</strong></h3>
             </div>
             <div class="ps-section__content">
                 <div class="row">
                     <div class="col-md-4 col-12">
                         <figure class="ps-block--invoice">
-                            <figcaption>Address</figcaption>
+                            <figcaption>{{__('customer.customer_order_detail_name')}}</figcaption>
                             <div class="ps-block__content"><strong>{{$order->billing_name}}</strong>
-                                <p>Address: {{$order->billing_address}}, {{$order->billing_city}}</p>
-                                <p>Phone: {{$order->billing_phone}}</p>
+                                <p>{{__('customer.customer_order_detail_address')}} : {{$order->billing_address}}, {{$order->billing_city}}</p>
+                                <p>{{__('customer.customer_order_detail_tele')}} : {{$order->billing_phone}}</p>
                             </div>
                         </figure>
                     </div>
@@ -25,9 +25,9 @@
                     </div>
                     <div class="col-md-4 col-12">
                         <figure class="ps-block--invoice">
-                            <figcaption>Payment</figcaption>
+                            <figcaption>{{__('customer.customer_order_detail_payment')}}</figcaption>
                             <div class="ps-block__content">
-                                <p>Payment Method: {{$order->payment_gateway}}</p>
+                                <p>{{__('customer.customer_order_detail_payment_method')}} : {{$order->payment_gateway}}</p>
                             </div>
                         </figure>
                     </div>
@@ -36,10 +36,10 @@
                     <table class="table ps-table">
                         <thead>
                             <tr>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Amount</th>
+                                <th>{{__('customer.customer_order_product')}}</th>
+                                <th>{{__('customer.customer_order_price')}}</th>
+                                <th>{{__('customer.customer_order_qte')}}</th>
+                                <th>{{__('customer.customer_order_total')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,7 +68,9 @@
                 </div>
             </div>
             <div class="ps-section__footer">
-                <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices')}}">Back to Orders</a>
+                <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices')}}">
+                    {{__('customer.customer_order_back')}}
+                </a>
             </div>
         </div>
     </div>

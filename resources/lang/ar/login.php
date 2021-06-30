@@ -9,5 +9,6 @@ return [
     'form_login_button' => 'الدخول',
 
     'form_login_guest'=>'الاستمرار دون انشاء الحساب',
-    'form_login_with'=>'تسجيل الدخول بواسطة'
+    'form_login_with'=>'تسجيل الدخول بواسطة',
+    'form_create_account'=>'انشاء حساب'
 ];

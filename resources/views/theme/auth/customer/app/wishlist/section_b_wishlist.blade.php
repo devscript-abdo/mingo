@@ -1,7 +1,7 @@
 <div class="ps-section--shopping ps-whishlist">
     <div class="container">
         <div class="ps-section__header">
-            <h1>Wishlist</h1>
+            <h1>{{__('customer.customer_wishlist')}}</h1>
           
         </div>
         <div class="ps-section__content">
@@ -10,8 +10,8 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Product name</th>
-                            <th> Price</th>
+                            <th>{{__('customer.customer_whislist_table_name')}}</th>
+                            <th> {{__('customer.customer_whislist_table_price')}}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -43,8 +43,8 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="price" data-label="Price">{{$product->price}} MAD</td>
-                                    <td data-label="action"><a class="ps-btn" href="#">Add to cart</a></td>
+                                    <td class="price" data-label="Price">{{$product->price}} {{__('symbole.mad')}}</td>
+                                    <td data-label="action"><a class="ps-btn" href="#">{{__('buttons.add_to_cart')}}</a></td>
                                 </tr>
                             @endforeach
                         @endforeach

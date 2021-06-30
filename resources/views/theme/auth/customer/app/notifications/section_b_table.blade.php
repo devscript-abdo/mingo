@@ -2,16 +2,16 @@
     <div class="ps-section__right">
         <div class="ps-section--account-setting">
             <div class="ps-section__header">
-                <h3>Notitfications</h3>
+                <h3>{{__('customer.customer_notification')}}</h3>
             </div>
             <div class="ps-section__content">
                 <div class="table-responsive">
                     <table class="table ps-table ps-table--notification">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Date</th>
-                                <th>Tag</th>
+                                <th>{{__('customer.customer_notif_table_title')}}</th>
+                                <th>{{__('customer.customer_notif_table_date')}}</th>
+                                <th>{{__('customer.customer_notif_table_tag')}}</th>
                             </tr>
                         </thead>
                         <tbody>
