@@ -32,7 +32,7 @@
                                     {{$product->field('name')}}
 
                                 </a>
-                                <p class="ps-product__price">{{$product->price}} MAD</p>
+                                <p class="ps-product__price">{{$product->price}} {{__('symbole.mad')}} </p>
                             </div>
                         </div>
                     </div>

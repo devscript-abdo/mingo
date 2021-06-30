@@ -35,7 +35,7 @@
                             </ul>
                         </div>
                         <div class="ps-product__container">
-                            <p class="ps-product__price">{{$prod->price}}MAD<small></small></p>
+                            <p class="ps-product__price">{{$prod->price}} {{__('symbole.mad')}}<small></small></p>
                             <div class="ps-product__content">
                                 <a class="ps-product__title" href="{{$prod->url}}">{{$prod->field('name')}}</a>
                                 <div class="ps-product__rating">

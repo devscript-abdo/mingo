@@ -44,7 +44,7 @@
                                         </div>
                                     </td>
                                     <td class="price" data-label="Price">{{$product->price}} {{__('symbole.mad')}}</td>
-                                    <td data-label="action"><a class="ps-btn" href="#">{{__('buttons.add_to_cart')}}</a></td>
+                                    <td data-label="action"><a class="ps-btn" href="{{$product->url}}">{{__('buttons.add_to_cart')}}</a></td>
                                 </tr>
                             @endforeach
                         @endforeach

@@ -10,6 +10,11 @@ return [
     /************************ */
 
     'update' => 'mise a jour',
-    'back_to_store'=>'retour a la boutique',
-    
+    'back_to_store' => 'retour a la boutique',
+
+    /**************************** */
+
+    'show_cart' => 'Voir le panier',
+    'checkout' => 'Passer au paiement'
+
 ];

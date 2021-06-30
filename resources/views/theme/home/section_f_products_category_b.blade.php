@@ -69,11 +69,11 @@
                                         <option value="2">5</option>
                                     </select><span>01</span>
                                 </div>
-                                <p class="ps-product__price sale">{{$product->price}} MAD <del>{{$product->price}} MAD</del></p>
+                                <p class="ps-product__price sale">{{$product->price}} {{__('symbole.mad')}} <del>{{$product->price}} {{__('symbole.mad')}}</del></p>
                             </div>
                             <div class="ps-product__content hover">
                                 <a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
-                                <p class="ps-product__price sale">{{$product->price}} MAD <del>{{$product->price}} MAD</del></p>
+                                <p class="ps-product__price sale">{{$product->price}} {{__('symbole.mad')}} <del>{{$product->price}} {{__('symbole.mad')}}</del></p>
                             </div>
                         </div>
                     </div>

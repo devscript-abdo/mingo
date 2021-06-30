@@ -13,10 +13,10 @@
             </div>
             <div class="header__right">
                 <div class="header__actions">
-                    <a class="header__extra" href="#">
+                    {{--<a class="header__extra" href="#">
                         <i class="icon-chart-bars"></i>
                         <span><i>104</i></span>
-                    </a>
+                    </a>--}}
                     @auth('customer')
                         <a class="header__extra" href="{{route('customer.wishlist')}}">
                             <i class="icon-heart"></i>
@@ -45,7 +45,9 @@
 
                         @auth('customer')
                             <div class="ps-block__right">
-                                <a href="{{route('customer.profil')}}">My Account</a>
+                                <a href="{{route('customer.profil')}}">
+                                {{__('navbar.my_account')}}
+                                </a>
                             </div>
 
                             

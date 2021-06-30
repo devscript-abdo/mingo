@@ -20,17 +20,19 @@
                             <a href="{{$item->options->url}}">{{$item->name}}</a>
                             {{--<p><strong>Sold by:</strong> YOUNG SHOP</p>--}}
                             <br>
-                            <small>{{$item->qty}} x {{$item->price}} MAD</small>
+                            <small>{{$item->qty}} x {{$item->price}} {{__('symbole.mad')}}</small>
                         </div>
                     </div>
                 @endforeach
             
             </div>
             <div class="ps-cart__footer">
-                <h3>Total Price:<strong>{{$totalPrice}} MAD</strong></h3>
+                <h3>{{__('cart.product_total')}}<strong>{{$totalPrice}} {{__('symbole.mad')}} </strong></h3>
                 <figure>
-                    <a class="ps-btn" href="{{route('shoppingcart')}}">View Cart</a>
-                    <a class="ps-btn" href="{{route('checkout')}}">Checkout</a>
+                    <a class="ps-btn" href="{{route('shoppingcart')}}">
+                        {{__('cart.show_cart')}}
+                     </a>
+                    <a class="ps-btn" href="{{route('checkout')}}">{{__('cart.checkout')}}</a>
                 </figure>
             </div>
         </div>

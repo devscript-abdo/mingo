@@ -26,7 +26,7 @@
                         @foreach($products as $product)
                             <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                 <div class="ps-product">
-                                    <div class="ps-product__thumbnail"><a href="{{$product->url}}"><img src="{{$product->photo}}" alt=""></a>
+                                    <div class="ps-product__thumbnail"><a href="{{$product->url}}"><img src="{{$product->photo}}" alt="{{$product->field('name')}}"></a>
                                         <ul class="ps-product__actions">
                                             <li>
                                                 <a 
@@ -75,10 +75,10 @@
                                         </a>
                                         <div class="ps-product__content">
                                             <a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
-                                            <p class="ps-product__price">{{$product->price}} MAD</p>
+                                            <p class="ps-product__price">{{$product->price}} {{__('symbole.mad')}}</p>
                                         </div>
                                         <div class="ps-product__content hover"><a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
-                                            <p class="ps-product__price">{{$product->price}}</p>
+                                            <p class="ps-product__price">{{$product->price}} {{__('symbole.mad')}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                                     </ul>
                                 </div>
                                 <div class="ps-product__shopping">
-                                    <p class="ps-product__price">{{$product->price}} MAD</p>
+                                    <p class="ps-product__price">{{$product->price}} {{__('symbole.mad')}}</p>
                                     <a class="ps-btn" href="#" wire:click="addToCart({{$product->id}})">
                                         {{__('buttons.add_to_cart')}}
                                     </a>
