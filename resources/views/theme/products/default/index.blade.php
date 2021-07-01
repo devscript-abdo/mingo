@@ -21,8 +21,8 @@
                 @include('theme.products.default.section_right_b_recomanded')--}}
                 {{--@include('theme.products.default.section_right_c_products')--}}
 
-                @livewire('product.products',['products' => $products])
-
+                {{--@livewire('product.products',['productsModel' => $productsModel])--}}
+                @livewire('product.products')
             </div>
 
         </div>

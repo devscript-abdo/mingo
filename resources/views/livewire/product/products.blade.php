@@ -3,12 +3,23 @@
         <div class="ps-shopping__header">
             <p><strong> {{count($products)}}</strong> Products found</p>
             <div class="ps-shopping__actions">
-                <select class="ps-select" data-placeholder="Sort Items">
-                    <option>Sort by latest</option>
-                    <option>Sort by popularity</option>
-                    <option>Sort by average rating</option>
-                    <option>Sort by price: low to high</option>
-                    <option>Sort by price: high to low</option>
+                <select class="ps-selecdt"  wire:model="pagesize">
+
+                    <option value="5" selected>5 per page</option>
+                    <option value="10" >10 per page</option>
+                    <option value="15" >15 per page</option>
+                    <option value="20" >20 per page</option>
+                    <option value="25" >25 per page</option>
+                    <option value="30" >30 per page</option>
+                    <option value="35" >35 per page</option>
+            
+                </select>
+                <select class="ps-selecdt"  wire:model="sorting">
+                    <option value="latest">Sort by latest</option>
+                    {{--<option value="populaire">Sort by popularity</option>
+                    <option value="rating">Sort by average rating</option>--}}
+                    <option value="price-desc">Sort by price: low to high</option>
+                    <option value="price">Sort by price: high to low</option>
                 </select>
                 <div class="ps-shopping__view">
                     <p>View</p>
@@ -26,7 +37,9 @@
                         @foreach($products as $product)
                             <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                 <div class="ps-product">
-                                    <div class="ps-product__thumbnail"><a href="{{$product->url}}"><img src="{{$product->photo}}" alt="{{$product->field('name')}}"></a>
+                                    <div class="ps-product__thumbnail">
+                                        <a href="{{$product->url}}">
+                                            <img src="{{$product->photo}}" alt="{{$product->field('name')}}"></a>
                                         <ul class="ps-product__actions">
                                             <li>
                                                 <a 
@@ -86,14 +99,18 @@
                         @endforeach
     
                     </div>
+                 
                 </div>
+               
                 <div class="ps-pagination">
-                    <ul class="pagination">
+                  
+                    {{--<ul class="pagination">
                         <li class="active"><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">Next Page<i class="icon-chevron-right"></i></a></li>
-                    </ul>
+                    </ul>--}}
+                    
                 </div>
             </div>
             <div class="ps-tab" id="tab-2">
@@ -139,15 +156,18 @@
                         </div>
                     @endforeach
                 </div>
+                {{ $products->links('livewire::custom-mingo') }}
                 <div class="ps-pagination">
-                    <ul class="pagination">
+                    {{--<ul class="pagination">
                         <li class="active"><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">Next Page<i class="icon-chevron-right"></i></a></li>
-                    </ul>
+                    </ul>--}}
+                    
                 </div>
             </div>
         </div>
     </div>
+    {{ $products->links() }}
 </div>

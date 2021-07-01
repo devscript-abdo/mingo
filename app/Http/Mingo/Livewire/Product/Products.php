@@ -4,25 +4,48 @@ namespace App\Http\Mingo\Livewire\Product;
 
 use App\Models\Product;
 use App\Models\Wishlist;
+use App\Repositories\Product\ProductInterface;
 use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Livewire\WithPagination;
 
 class Products extends Component
 {
-
-    public $products;
+    use WithPagination;
 
     public $quantity;
 
-    public function render()
-    {
-        return view('livewire.product.products');
-    }
+    public $sorting;
+
+    public $pagesize;
+
+    protected $paginationTheme = 'bootstrap';
 
     public function mount()
     {
         $this->quantity = 1;
+
+        $this->sorting = 'latest';
+
+        $this->pagesize = 5;
     }
+
+    public function render()
+    {
+
+        if ($this->sorting === 'latest') {
+            $products = app(ProductInterface::class)->model()->orderBy('created_at', 'DESC')->paginate($this->pagesize);
+        } elseif ($this->sorting === 'price') {
+            $products = app(ProductInterface::class)->model()->orderBy('price', 'DESC')->paginate($this->pagesize);
+        } elseif ($this->sorting === 'price-desc') {
+            $products = app(ProductInterface::class)->model()->orderBy('price', 'ASC')->paginate($this->pagesize);
+        } else {
+            $products = app(ProductInterface::class)->model()->with(['category'])->paginate($this->pagesize);
+        }
+
+        return view('livewire.product.products', compact('products'));
+    }
+
 
     public function addToCart($product_id)
     {

@@ -35,17 +35,17 @@
                                     <td class="price" data-label="Price">{{$item->price}} {{__('symbole.mad')}}</td>
                                     <td data-label="Quantity">
                                         <div class="form-group--number">
-                                            <button class="up">+</button>
-                                            <button class="down">-</button>
+                                            <button class="up" wire:click="increaseQte('{{$item->rowId}}')">+</button>
+                                            <button class="down" wire:click="decreaseQte('{{$item->rowId}}')">-</button>
                                             <input 
                                               class="form-control"
-                                              type="number"
+                                              type="text"
                                               name="quantity"
-                                              wire:model.defer="quantity.{{$item->id}}"
+                                              {{--wire:model.defer="quantity.{{$item->id}}"
+                                               used when  buuton update cart enabled
+                                              --}}
                                               id="quantity" 
-                                              min="1"
-                                              step="1"
-                                              pattern="[0-9]"    
+                                        
                                               value="{{$item->qty}}"
                                             >
                                             @error('quantity') <span class="error">{{ $message }}</span> @enderror
@@ -68,13 +68,13 @@
                         <i class="icon-arrow-left"></i> 
                         {{__('cart.back_to_store')}}
                     </a>
-                    <button 
+                    {{--<button 
                       wire:click="updateCart()" 
                       class="ps-btn ps-btn--outline"
                       onclick="this.disabled = true;this.setAttribute('style', 'background: #000000')"
                     >
                         <i class="icon-sync"></i> {{__('cart.update')}}
-                    </button>
+                    </button>--}}
                 </div>
             </div>
             <div class="ps-section__footer">

@@ -51,4 +51,18 @@ class Cart extends Component
 
         redirect()->back();
     }
+
+    public function increaseQte($rowId)
+    {
+        $prod = MyCart::get($rowId);
+        $qte = $prod->qty + 1;
+        MyCart::update($rowId, $qte);
+    }
+
+    public function decreaseQte($rowId)
+    {
+        $prod = MyCart::get($rowId);
+        $qte = $prod->qty - 1;
+        MyCart::update($rowId, $qte);
+    }
 }

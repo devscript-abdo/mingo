@@ -57,7 +57,8 @@ class ProductController extends Controller
                 ->get();
         } else {
 
-            $products = $this->Product()->withRelated(['category']);
+            //$products = $this->Product()->withRelated(['category']);
+            $products = $this->Product();
         }
 
         $colors = $this->Color()->active();
