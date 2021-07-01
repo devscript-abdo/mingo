@@ -62,7 +62,9 @@ class Cart extends Component
     public function decreaseQte($rowId)
     {
         $prod = MyCart::get($rowId);
-        $qte = $prod->qty - 1;
-        MyCart::update($rowId, $qte);
+        if ($prod->qty !== 1) {
+            $qte = $prod->qty - 1;
+            MyCart::update($rowId, $qte);
+        }
     }
 }
