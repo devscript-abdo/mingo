@@ -16,7 +16,7 @@ class Category extends Categories
 
     protected $translatable = ['name', 'description'];
 
-    protected $with = ['childrens'];
+    protected $with = ['childrens','translations'];
 
 
     public function products()

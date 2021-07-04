@@ -60,7 +60,7 @@ class CategoryRepositoryCache  implements CategoryInterface
     public function getWithChildrens()
     {
         return $this->cache->remember('categories_cache_childrens', $this->timeToLive(), function () {
-            return $this->query()->with('childrens')->select(['id', 'parent_id', 'slug', 'name','icon'])->get();
+            return $this->query()->with('childrens')->select(['id', 'parent_id', 'slug', 'name', 'icon'])->get();
         });
     }
 
