@@ -22,7 +22,8 @@ class ColorRepository  implements ColorInterface
 
     public function all()
     {
-        return $this->model->all();
+          return $this->model->all();
+    
     }
 
 

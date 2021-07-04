@@ -16,5 +16,10 @@ return [
 
     'supportSystem' => 'مركز مساعدة في الخدمة24/7 ',
 
+    /****************************************************************** */
+
+    'app_mobile_title' => "Télécharger L'application",
+    'app_mobile_desciption' => "Télécharger l'application et profiter de tous les options",
+
 
 ];

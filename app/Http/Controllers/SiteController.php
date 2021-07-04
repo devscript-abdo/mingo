@@ -23,7 +23,7 @@ class SiteController extends Controller
 
         $categoriesOfYear = $this->Category()->model()->categoryOfYear();
 
-        $productsSearched = $this->Product()->model()->topSearched();
+        $productsSearched = $this->Product()->bestSearched();
 
         return view(
             'theme.home.index',
@@ -52,7 +52,7 @@ class SiteController extends Controller
 
     public function getPage($slug)
     {
-        $page = app(PageInterface::class)->getPage($slug);
+        $page = $this->Page()->getPage($slug);
 
         return view('theme.page.index', compact('page'));
     }

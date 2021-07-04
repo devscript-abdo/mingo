@@ -3,21 +3,16 @@
 namespace App\Repositories\Page;
 
 use App\Models\Page;
-
-use Illuminate\Cache\CacheManager;
+use App\Repositories\CacheTrait;
 
 class PageRepositoryCache  implements PageInterface
 {
+    use CacheTrait;
 
     protected $model;
 
-    protected $cache;
-
-    const TTL = 1440; // TTL(Time To Live) 1440 = 1day
-
-    public function __construct(Page $model, CacheManager $cache)
+    public function __construct(Page $model)
     {
-        $this->cache = $cache;
 
         $this->model = $model;
     }
@@ -30,22 +25,23 @@ class PageRepositoryCache  implements PageInterface
 
     public function all()
     {
-        return $this->cache->remember('pages_cache', self::TTL, function () {
+        return $this->setCache()->remember('pages_cache', $this->timeToLive(), function () {
             return $this->model->all();
         });
     }
 
     public function getPage($slug)
     {
-        return $this->cache->remember('page_cache' . $slug, self::TTL, function () use ($slug) {
+        $slg = json_encode($slug);
+        return $this->setCache()->remember("page_cache_slug_{$slg}", $this->timeToLive(), function () use ($slug) {
             return $this->model->whereSlug($slug)->whereStatus('active')->first();
         });
     }
 
     public function getFooters()
     {
-        return $this->cache->remember('page_cache_footers', self::TTL, function () {
-            return $this->model->whereNotIn('slug', ['a-propos-de-nous', 'devenir-partenaire', 'nos-magazines'])
+        return $this->setCache()->remember('page_cache_footers', $this->timeToLive(), function () {
+            return $this->model->whereNotIn('slug', ['a-propos-de-nous'])
                 ->get();
         });
     }

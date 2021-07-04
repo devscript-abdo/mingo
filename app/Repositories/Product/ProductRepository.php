@@ -51,13 +51,18 @@ class ProductRepository  implements ProductInterface
         return $this->model->active();
     }
 
-    public function withRelated(array $related){
+    public function withRelated(array $related)
+    {
 
         return $this->model->withRelated($related);
-
     }
     public function randomsHome()
     {
         return $this->model->randoms();
+    }
+
+    public function bestSearched()
+    {
+        return $this->model()->topSearched();
     }
 }

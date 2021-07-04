@@ -13,6 +13,7 @@
 
             <div class="ps-layout__left">
                 @include('theme.products.default.section_left_a_categories')
+
                 @include('theme.products.default.section_left_b_others')
             </div>
 
@@ -22,7 +23,13 @@
                 {{--@include('theme.products.default.section_right_c_products')--}}
 
                 {{--@livewire('product.products',['productsModel' => $productsModel])--}}
-                @livewire('product.products')
+                
+                @if (request()->has('mingoFilter') && request()->filled('mingoFilter'))
+                   @include('theme.products.default.section_right_c_products')
+                @else
+                    @livewire('product.products')
+                @endif
+
             </div>
 
         </div>

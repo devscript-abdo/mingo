@@ -12,9 +12,10 @@ class WishlistController extends Controller
 
     public  function  index()
     {
-        $lists = Wishlist::where('customer_id', auth()->user()->id)
+       /* $lists = Wishlist::where('customer_id', auth()->user()->id)
             ->with('products')
-            ->get();
+            ->get();*/
+        $lists = $this->Wishlist()->getCustomerWishlist();
 
         return view('theme.auth.customer.app.wishlist.index', compact('lists'));
     }
@@ -22,7 +23,7 @@ class WishlistController extends Controller
     public function delete(Request $request)
     {
         $request->validate(['wisher' => 'required|integer']);
-        
+
         $wish = Wishlist::find($request->wisher);
 
         if ($wish) {

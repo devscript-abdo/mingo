@@ -13,23 +13,14 @@ class InvoiceController extends Controller
     public  function  index()
     {
 
-        $orders = auth()->guard('customer')->user()->orders()->with('products')->get();
+        $orders = $this->Order()->getCustomerOrders();
 
         return view('theme.auth.customer.app.invoices.index', compact('orders'));
     }
 
     public function show($slug)
     {
-        // $order = Order::whereSlug($slug)->firstOrFail();
-        if (auth()->guard('customer')->check()) {
-            $order = auth()
-                ->guard('customer')
-                ->user()->orders()
-                ->whereSlug($slug)
-                ->firstOrFail();
-        } else {
-            $order = Order::whereSlug($slug)->firstOrFail();
-        }
+        $order = $this->Order()->getOrderDetail($slug);
 
         return view('theme.auth.customer.app.invoices.detail.index', compact('order'));
     }

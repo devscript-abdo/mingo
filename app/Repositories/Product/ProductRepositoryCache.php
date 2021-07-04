@@ -68,15 +68,26 @@ class ProductRepositoryCache  implements ProductInterface
         });
     }
 
-    public function withRelated(array $related){
-
-        return $this->model->withRelated($related);
-
+    public function withRelated(array $related)
+    {
+        return $this->cache->remember('products_cache_related', $this->timeToLive(), function () use ($related) {
+            return $this->model->withRelated($related);
+        });
     }
 
     public function randomsHome()
     {
-        return $this->model->randoms();
+        return $this->cache->remember('products_cache_random', $this->timeToLive(), function () {
+
+            return $this->model->randoms();
+        });
+    }
+
+    public function bestSearched()
+    {
+        return $this->cache->remember('products_cache_topsearch', $this->timeToLive(), function () {
+            return $this->model()->topSearched();
+        });
     }
 
     private function timeToLive()

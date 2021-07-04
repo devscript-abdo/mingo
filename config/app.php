@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'mingo'),
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /******MINGO */
+        App\Providers\ObserverServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\HelpersServiceProvider::class,

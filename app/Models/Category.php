@@ -7,6 +7,7 @@ use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Models\Category as Categories;
 use TCG\Voyager\Traits\Translatable;
 use App\Traits\Language;
+use Illuminate\Support\Facades\Cache;
 
 class Category extends Categories
 {
@@ -67,24 +68,47 @@ class Category extends Categories
 
     public function scopeInHome($query)
     {
-
-        return $query->with(['products' => fn ($q) => $q->whereActive(true)])
-            ->whereShowInHome(true)
-            ->limit(3)
-            ->has('products')
-            ->inRandomOrder()
-            ->get();
+        return Cache::remember($this->cacheKey() . ':categoriesHome', $this->timeToLive(), function () use ($query) {
+            return $query->with(['products' => fn ($q) => $q->whereActive(true)])
+                ->whereShowInHome(true)
+                ->limit(3)
+                ->has('products')
+                ->inRandomOrder()
+                ->get();
+       });
     }
 
     public function scopeCategoryOfYear($query)
     {
-        return $query->whereCategoryOfYear(true)->get();
+        return Cache::remember($this->cacheKey() . ':categoriesYEAR', $this->timeToLive(), function () use ($query) {
+            return $query->whereCategoryOfYear(true)->get();
+        });
     }
 
     public function scopeShowInMenu($query)
     {
-        return $query->whereShowInNavbar(true)
-            ->with(['translations'])
-            ->get();
+        return Cache::remember($this->cacheKey() . ':categoriesMenu', $this->timeToLive(), function () use ($query) {
+            return $query->whereShowInNavbar(true)
+                ->with(['translations'])
+                ->get();
+        });
+    }
+
+    /****** */
+
+    public function cacheKey()
+    {
+        return sprintf(
+            "%s/%s",
+            $this->getTable(),
+            $this->getKey(),
+           // $this->updated_at->timestamp
+        );
+    }
+
+    private function timeToLive()
+    {
+
+        return \Carbon\Carbon::now()->addDays(30);
     }
 }

@@ -10,11 +10,10 @@ use Illuminate\Http\Request;
 class AddresseController extends Controller
 {
     //
-
     public  function  index()
     {
 
-        $addresses = Addresse::where('customer_id', auth()->guard('customer')->user()->id)->get();
+        $addresses = $this->Addresse()->getCustomerAddresses();
 
         return view('theme.auth.customer.app.addresse.index', compact('addresses'));
     }

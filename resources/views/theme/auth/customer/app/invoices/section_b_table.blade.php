@@ -21,7 +21,7 @@
                                 <tr>
                                     <td><a href="{{route('customer.invoices.single',$order->slug)}}">{{$order->full_number}}</a></td>
                                     <td>{{$order->created_at}}</td>
-                                    <td>{{$order->billing_total}} MAD</td>
+                                    <td>{{$order->billing_total}} {{__('symbole.mad')}}</td>
                                     <td>{{$order->status}}</td>
                                     <td>
                                         <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices.single',$order->slug)}}">

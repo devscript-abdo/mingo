@@ -3,21 +3,17 @@
 namespace App\Repositories\Team;
 
 use App\Models\Team;
-
-use Illuminate\Cache\CacheManager;
+use App\Repositories\CacheTrait;
 
 class TeamRepositoryCache  implements TeamInterface
 {
 
+    use CacheTrait;
+
     protected $model;
 
-    protected $cache;
-
-    const TTL = 1440; // TTL(Time To Live) 1440 = 1day
-
-    public function __construct(Team $model, CacheManager $cache)
+    public function __construct(Team $model)
     {
-        $this->cache = $cache;
 
         $this->model = $model;
     }
@@ -29,14 +25,14 @@ class TeamRepositoryCache  implements TeamInterface
 
     public function all()
     {
-        return $this->cache->remember('teams_cache', self::TTL, function () {
+        return $this->setCache()->remember('teams_cache', $this->timeToLive(), function () {
             return $this->model->all();
         });
     }
 
     public function activeItems()
     {
-        return $this->cache->remember('teams_cache_active', self::TTL, function () {
+        return $this->setCache()->remember('teams_cache_active', $this->timeToLive(), function () {
             return $this->model->active();
         });
     }
