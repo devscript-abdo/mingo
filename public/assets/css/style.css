@@ -1020,6 +1020,7 @@ textarea:focus {
 li, span, button,option,select,input,form,label,th,td,tr{
   font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
+/***Added by Abdelghafour ***/
 
 img {
   max-width: 100%;

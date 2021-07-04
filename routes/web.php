@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\CategoryController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Customer\WishlistController;
 use App\Http\Controllers\ProductCollectionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
+use App\Models\Archive;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,11 +35,14 @@ use Illuminate\Support\Facades\Route;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+
 Route::get('/tokens/create', function (Request $request) {
     $token = $request->user()->createToken($request->token_name);
 
     return ['token' => $token->plainTextToken];
 });
+
+Route::get('/archive', [ArchiveController::class, 'index']);
 
 Route::group(
     [
@@ -46,6 +51,8 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
+
+        Route::get('/page/{slug}', [SiteController::class, 'getPage'])->name('site.page');
 
         Route::get('/', [SiteController::class, 'index'])->name('home');
 

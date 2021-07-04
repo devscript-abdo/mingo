@@ -17,6 +17,17 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function api()
+    {
+
+        return Product::all();
+    }
+
+    public function apiID($id)
+    {
+        return Product::whereId($id)->first();
+    }
     public function index()
     {
         $topAds = $this->Ads()->locationIn('top_products_page', 10);

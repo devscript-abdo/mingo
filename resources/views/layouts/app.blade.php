@@ -25,12 +25,11 @@
     @include('layouts.parts.__searchMobile')
     @include('layouts.parts.__menuMobile')
 
-    <div id="homepage-1">
 
        @yield('content')
 
-    </div>
-    
+       @livewire('newsletter.newsletter')
+
     {{--@include('sections.__popup_promo')--}}
 
     @include('layouts.parts.__footer')

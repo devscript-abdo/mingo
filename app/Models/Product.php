@@ -17,6 +17,7 @@ class Product extends Model
 
     protected $translatable = ['name', 'description', 'content'];
 
+    protected $with = ['translations'];
 
     public function category()
     {

@@ -29,7 +29,7 @@
 
          @endisset
 
-         @include('theme.home.section_j_news_letter')
+         {{--@include('theme.home.section_j_news_letter')--}}
          
     </div>
 

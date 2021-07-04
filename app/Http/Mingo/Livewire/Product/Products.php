@@ -27,7 +27,7 @@ class Products extends Component
 
         $this->sorting = 'latest';
 
-        $this->pagesize = 5;
+        $this->pagesize = 20;
     }
 
     public function render()

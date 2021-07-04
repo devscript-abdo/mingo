@@ -33,7 +33,7 @@ class PageRepository  implements PageInterface
 
     public function getFooters()
     {
-        return $this->model->whereNotIn('slug', ['a-propos-de-nous', 'devenir-partenaire', 'nos-magazines'])
+        return $this->model->whereNotIn('slug', ['a-propos-de-nous'])
             ->get();
     }
 }

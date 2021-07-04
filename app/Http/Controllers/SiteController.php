@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Page\PageInterface;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -47,5 +48,12 @@ class SiteController extends Controller
         $teams = $this->Team()->activeItems();
 
         return view('theme.about.index', compact('about', 'teams'));
+    }
+
+    public function getPage($slug)
+    {
+        $page = app(PageInterface::class)->getPage($slug);
+
+        return view('theme.page.index', compact('page'));
     }
 }

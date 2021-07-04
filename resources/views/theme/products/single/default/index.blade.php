@@ -28,7 +28,4 @@
 
 </div>
 
-@include('theme.products.single.default.section_h_news_letter')
-
-
 @include('theme.products.single.default._selectOptionOfProduct')

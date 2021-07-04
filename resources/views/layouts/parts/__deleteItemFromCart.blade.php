@@ -9,15 +9,14 @@
   
     $(".deleteProductFromCart").click(function (e) {
         e.preventDefault()
-        console.log('OoOoO');
-       
+
         var ele = $(this);
         //console.log(this);
         if(confirm("Are you sure")) {
             $.ajax({
                 url: '{{route('shoppingcart.delete')}}',
                 method: "DELETE",
-                data: {_token: '{{ csrf_token() }}', id: ele.attr("data-prodid")},
+                data: {_token: '{{  csrf_token() }}', id: ele.attr("data-prodid")},
                 success: function (response) {
                     window.location.reload();
                 }

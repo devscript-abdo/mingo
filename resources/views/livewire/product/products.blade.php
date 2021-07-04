@@ -5,10 +5,10 @@
             <div class="ps-shopping__actions">
                 <select class="ps-selecdt"  wire:model="pagesize">
 
-                    <option value="5" selected>5 per page</option>
+                    <option value="5">5 per page</option>
                     <option value="10" >10 per page</option>
                     <option value="15" >15 per page</option>
-                    <option value="20" >20 per page</option>
+                    <option value="20" selected>20 per page</option>
                     <option value="25" >25 per page</option>
                     <option value="30" >30 per page</option>
                     <option value="35" >35 per page</option>
