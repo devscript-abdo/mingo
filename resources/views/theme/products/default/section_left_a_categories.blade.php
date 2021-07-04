@@ -29,7 +29,7 @@
                     </ul>
                 </li>
 
-            @elseif($categorie->parent_id ===null && $categorie->childrens()->count()===0)
+            @elseif($categorie->parent_id === null)
     
                 <li><a href="{{$categorie->url}}">{{$categorie->field('name')}}</a>
                 </li> 

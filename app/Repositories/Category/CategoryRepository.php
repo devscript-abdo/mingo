@@ -58,4 +58,14 @@ class CategoryRepository  implements CategoryInterface
     {
         return $this->model->inHome();
     }
+
+    public function categoryOfYear()
+    {
+        return $this->model->categoryOfYear();
+    }
+
+    public function categoryInMenu()
+    {
+        return $this->model->showInMenu();
+    }
 }

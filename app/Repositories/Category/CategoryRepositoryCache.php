@@ -60,15 +60,34 @@ class CategoryRepositoryCache  implements CategoryInterface
     public function getWithChildrens()
     {
         return $this->cache->remember('categories_cache_childrens', $this->timeToLive(), function () {
-            return $this->query()->with('childrens')->select(['id', 'parent_id', 'slug', 'name'])->get();
+            return $this->query()->with('childrens')->select(['id', 'parent_id', 'slug', 'name','icon'])->get();
         });
     }
 
     public function randomsHome()
     {
-        return $this->model->inHome();
+        return $this->cache->remember('categories_in_home', $this->timeToLive(), function () {
+
+            return $this->model->inHome();
+        });
     }
-    
+
+    public function categoryOfYear()
+    {
+        return $this->cache->remember('categories_of_year', $this->timeToLive(), function () {
+
+            return $this->model->categoryOfYear();
+        });
+    }
+
+    public function categoryInMenu()
+    {
+        return $this->cache->remember('categories_of_navbar', $this->timeToLive(), function () {
+
+            return $this->model->showInMenu();
+        });
+    }
+
     private function timeToLive()
     {
 

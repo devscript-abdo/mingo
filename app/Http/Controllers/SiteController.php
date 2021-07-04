@@ -21,7 +21,7 @@ class SiteController extends Controller
 
         $collections = $this->ProductCollection()->showInHome();
 
-        $categoriesOfYear = $this->Category()->model()->categoryOfYear();
+        $categoriesOfYear = $this->Category()->categoryOfYear();
 
         $productsSearched = $this->Product()->bestSearched();
 

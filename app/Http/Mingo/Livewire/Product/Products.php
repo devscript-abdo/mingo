@@ -34,11 +34,11 @@ class Products extends Component
     {
 
         if ($this->sorting === 'latest') {
-            $products = app(ProductInterface::class)->model()->orderBy('created_at', 'DESC')->paginate($this->pagesize);
+            $products = app(ProductInterface::class)->model()->with(['category'])->orderBy('created_at', 'DESC')->paginate($this->pagesize);
         } elseif ($this->sorting === 'price') {
-            $products = app(ProductInterface::class)->model()->orderBy('price', 'DESC')->paginate($this->pagesize);
+            $products = app(ProductInterface::class)->model()->with(['category'])->orderBy('price', 'DESC')->paginate($this->pagesize);
         } elseif ($this->sorting === 'price-desc') {
-            $products = app(ProductInterface::class)->model()->orderBy('price', 'ASC')->paginate($this->pagesize);
+            $products = app(ProductInterface::class)->model()->with(['category'])->orderBy('price', 'ASC')->paginate($this->pagesize);
         } else {
             $products = app(ProductInterface::class)->model()->with(['category'])->paginate($this->pagesize);
         }

@@ -19,4 +19,8 @@ interface CategoryInterface
 
     public function randomsHome();
 
+    public function categoryOfYear();
+
+    public function categoryInMenu();
+
 }

@@ -38,7 +38,7 @@ class CategoryComposer
         }));
 
         $view->with('categoriesMenu', $this->cache->remember('categoriesMenu', $this->timeToLive() /* cache expired time(mins) */, function () {
-            return $this->categories->model()->showInMenu();
+            return $this->categories->categoryInMenu();
         }));
     }
 

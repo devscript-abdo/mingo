@@ -68,30 +68,30 @@ class Category extends Categories
 
     public function scopeInHome($query)
     {
-        return Cache::remember($this->cacheKey() . ':categoriesHome', $this->timeToLive(), function () use ($query) {
-            return $query->with(['products' => fn ($q) => $q->whereActive(true)])
-                ->whereShowInHome(true)
-                ->limit(3)
-                ->has('products')
-                ->inRandomOrder()
-                ->get();
-       });
+        //return Cache::remember($this->cacheKey() . ':categoriesHome', $this->timeToLive(), function () use ($query) {
+        return $query->with(['products.productCollections' => fn ($q) => $q->whereActive(true)])
+            ->whereShowInHome(true)
+            ->limit(3)
+            ->has('products')
+            ->inRandomOrder()
+            ->get();
+        // });
     }
 
     public function scopeCategoryOfYear($query)
     {
-        return Cache::remember($this->cacheKey() . ':categoriesYEAR', $this->timeToLive(), function () use ($query) {
-            return $query->whereCategoryOfYear(true)->get();
-        });
+        //return Cache::remember($this->cacheKey() . ':categoriesYEAR', $this->timeToLive(), function () use ($query) {
+        return $query->whereCategoryOfYear(true)->get();
+        // });
     }
 
     public function scopeShowInMenu($query)
     {
-        return Cache::remember($this->cacheKey() . ':categoriesMenu', $this->timeToLive(), function () use ($query) {
-            return $query->whereShowInNavbar(true)
-                ->with(['translations'])
-                ->get();
-        });
+        // return Cache::remember($this->cacheKey() . ':categoriesMenu', $this->timeToLive(), function () use ($query) {
+        return $query->whereShowInNavbar(true)
+            ->with(['translations'])
+            ->get();
+        // });
     }
 
     /****** */
@@ -102,7 +102,7 @@ class Category extends Categories
             "%s/%s",
             $this->getTable(),
             $this->getKey(),
-           // $this->updated_at->timestamp
+            // $this->updated_at->timestamp
         );
     }
 
