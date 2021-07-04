@@ -4,38 +4,37 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class RepositoryServiceProvider extends ServiceProvider
+class RepositoryCacheServiceProvider extends ServiceProvider
 {
-
 
     private $repositories = [
         [
             'abstract' => "App\Repositories\Category\CategoryInterface",
-            'concrete' => "App\Repositories\Category\CategoryRepository"
+            'concrete' => "App\Repositories\Category\CategoryRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Color\ColorInterface",
-            'concrete' => "App\Repositories\Color\ColorRepository"
+            'concrete' => "App\Repositories\Color\ColorRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Product\ProductInterface",
-            'concrete' => "App\Repositories\Product\ProductRepository"
+            'concrete' => "App\Repositories\Product\ProductRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Category\CategoryRepositoryInterface",
-            'concrete' => "App\Repositories\Category\CategoryRepository"
+            'concrete' => "App\Repositories\Category\CategoryRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Product\ProductRepositoryInterface",
-            'concrete' => "App\Repositories\Product\ProductRepository"
+            'concrete' => "App\Repositories\Product\ProductRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\ProductCollection\ProductCollectionInterface",
-            'concrete' => "App\Repositories\ProductCollection\ProductCollectionRepository"
+            'concrete' => "App\Repositories\ProductCollection\ProductCollectionRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Slider\SliderInterface",
-            'concrete' => "App\Repositories\Slider\SliderRepository"
+            'concrete' => "App\Repositories\Slider\SliderRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Ads\AdsInterface",
@@ -43,27 +42,27 @@ class RepositoryServiceProvider extends ServiceProvider
         ],
         [
             'abstract' => "App\Repositories\Brand\BrandInterface",
-            'concrete' => "App\Repositories\Brand\BrandRepository"
+            'concrete' => "App\Repositories\Brand\BrandRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Page\PageInterface",
-            'concrete' => "App\Repositories\Page\PageRepository"
+            'concrete' => "App\Repositories\Page\PageRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Team\TeamInterface",
-            'concrete' => "App\Repositories\Team\TeamRepository"
+            'concrete' => "App\Repositories\Team\TeamRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Addresse\AddresseInterface",
-            'concrete' => "App\Repositories\Addresse\AddresseRepository"
+            'concrete' => "App\Repositories\Addresse\AddresseRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Order\OrderInterface",
-            'concrete' => "App\Repositories\Order\OrderRepository"
+            'concrete' => "App\Repositories\Order\OrderRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Wishlist\WishlistInterface",
-            'concrete' => "App\Repositories\Wishlist\WishlistRepository"
+            'concrete' => "App\Repositories\Wishlist\WishlistRepositoryCache"
         ],
     ];
 
@@ -80,11 +79,6 @@ class RepositoryServiceProvider extends ServiceProvider
                 $repo['concrete'],
             );
         }
-
-        /* $this->app->bind(
-            'App\Repositories\Category\CategoryInterface',
-            'App\Repositories\Category\CategoryRepository'
-        );*/
     }
 
     /**

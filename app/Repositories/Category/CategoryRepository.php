@@ -44,7 +44,7 @@ class CategoryRepository  implements CategoryInterface
     }
     public function getWithChildrens()
     {
-        return $this->model()->with('childrens')->select(['id', 'parent_id', 'slug', 'name', 'icon'])
+        return $this->model()->where('parent_id', null)->with('childrens')->select(['id', 'parent_id', 'slug', 'name', 'icon'])
 
             ->get();
 

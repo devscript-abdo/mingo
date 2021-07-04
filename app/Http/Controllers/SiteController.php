@@ -19,7 +19,7 @@ class SiteController extends Controller
 
         $categories = $this->Category()->randomsHome();
 
-        $collections = $this->ProductCollection()->model()->inHome();
+        $collections = $this->ProductCollection()->showInHome();
 
         $categoriesOfYear = $this->Category()->model()->categoryOfYear();
 
@@ -38,6 +38,13 @@ class SiteController extends Controller
                 'productsSearched'
             )
         );
+    }
+
+    public function test()
+    {
+        $products = $this->Product()->all();
+        
+        dd($products);
     }
 
 

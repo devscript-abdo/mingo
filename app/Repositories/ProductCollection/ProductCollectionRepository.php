@@ -29,4 +29,9 @@ class ProductCollectionRepository  implements ProductCollectionInterface
     {
         return $this->model->all();
     }
+
+    public function showInHome()
+    {
+        return $this->model()->inHome();
+    }
 }

@@ -178,7 +178,13 @@ return [
         /******MINGO */
         App\Providers\ObserverServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
-        App\Providers\RepositoryServiceProvider::class,
+
+        /**** used to call  RepositoryServiceProvider or RepositoryCacheServiceProvider***/
+        App\Providers\RepositoryAdapterServiceProvider::class,
+
+        //App\Providers\RepositoryServiceProvider::class,
+        //App\Providers\RepositoryCacheServiceProvider::class,
+
         App\Providers\HelpersServiceProvider::class,
 
         Barryvdh\DomPDF\ServiceProvider::class,

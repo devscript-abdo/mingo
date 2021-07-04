@@ -37,7 +37,7 @@ class ProductCollection extends Model
     {
         return $query->whereActive(true)
             ->whereShowInHome(true)
-            ->with(['products.category'])
+            ->with(['products.category.childrens'])
 
             ->get();
     }
@@ -46,6 +46,8 @@ class ProductCollection extends Model
 
     public function getUrlAttribute()
     {
-        return route('collections.single', $this->slug);
+        // return route('collections.single', $this->slug);
+
+        return route('products');
     }
 }

@@ -43,19 +43,18 @@
                             <div class="ps-product__badge">-16%</div>
                             <ul class="ps-product__actions">
                                 <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="{{__('buttons.add_to_cart')}}">
+                                    <a href="{{$product->url}}" data-toggle="tooltip" data-placement="top" title="{{__('buttons.add_to_cart')}}">
                                         <i class="icon-bag2"></i>
                                     </a>
                                 </li>
                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
                             </ul>
                         </div>
                         <div class="ps-product__container">
-                            <a class="ps-product__vendor" href="{{$product->getBrand('url')}}">
+                            {{--<a class="ps-product__vendor" href="{{$product->getBrand('url')}}">
                                 {{$product->getBrand('name')}}
-                            </a>
+                            </a>--}}
                             <div class="ps-product__content">
                                 <a class="ps-product__title" href="{{$product->url}}">
                                     {{$product->field('name')}}

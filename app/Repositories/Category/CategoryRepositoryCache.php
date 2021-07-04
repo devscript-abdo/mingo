@@ -66,8 +66,9 @@ class CategoryRepositoryCache  implements CategoryInterface
 
     public function randomsHome()
     {
-        return $this->model->randoms();
+        return $this->model->inHome();
     }
+    
     private function timeToLive()
     {
 

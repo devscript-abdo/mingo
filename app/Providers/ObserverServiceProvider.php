@@ -10,6 +10,7 @@ use App\Models\Color;
 use App\Models\Order;
 use App\Models\Page;
 use App\Models\Product;
+use App\Models\ProductCollection;
 use App\Models\Team;
 use App\Models\Wishlist;
 use App\Observers\AddresseObserver;
@@ -19,6 +20,7 @@ use App\Observers\CategoryObserver;
 use App\Observers\ColorObserver;
 use App\Observers\OrderObserver;
 use App\Observers\PageObserver;
+use App\Observers\ProductCollectionObserver;
 use App\Observers\ProductObserver;
 use App\Observers\TeamObserver;
 use App\Observers\WishlistObserver;
@@ -59,5 +61,7 @@ class ObserverServiceProvider extends ServiceProvider
         ModelsPage::observe(PageObserver::class);
 
         Wishlist::observe(WishlistObserver::class);
+
+        ProductCollection::observe(ProductCollectionObserver::class);
     }
 }

@@ -3,22 +3,20 @@
 namespace App\Repositories\ProductCollection;
 
 use App\Models\ProductCollection;
-
+use App\Repositories\CacheTrait;
 use Illuminate\Cache\CacheManager;
 
 class ProductCollectionRepositoryCache  implements ProductCollectionInterface
 {
 
+    use CacheTrait;
+
     protected $model;
 
-    protected $cache;
-
-    public function __construct(ProductCollection $model, CacheManager $cache)
+    public function __construct(ProductCollection $model)
     {
 
         $this->model = $model;
-
-        $this->cache = $cache;
     }
 
     public function model()
@@ -33,14 +31,16 @@ class ProductCollectionRepositoryCache  implements ProductCollectionInterface
 
     public function all()
     {
-        return $this->cache->remember('productsCollection_cache', $this->timeToLive(), function () {
+        return $this->setCache()->remember('productsCollection_cache', $this->timeToLive(), function () {
             return $this->model->all();
         });
     }
 
-
-    private function timeToLive()
+    public function showInHome()
     {
-        return \Carbon\Carbon::now()->addDays(30);
+        return $this->setCache()->remember('productsCollection_cache_home', $this->timeToLive(), function () {
+
+            return $this->model()->inHome();
+        });
     }
 }

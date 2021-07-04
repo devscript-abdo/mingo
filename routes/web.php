@@ -42,7 +42,7 @@ Route::get('/tokens/create', function (Request $request) {
     return ['token' => $token->plainTextToken];
 });
 
-Route::get('/archive', [ArchiveController::class, 'index']);
+Route::get('/test', [SiteController::class, 'test']);
 
 Route::group(
     [

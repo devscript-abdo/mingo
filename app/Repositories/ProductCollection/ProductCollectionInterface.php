@@ -12,6 +12,7 @@ interface ProductCollectionInterface
 
     public function model();
 
-    
+    public function showInHome();
+
 
 }
