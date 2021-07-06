@@ -93,7 +93,7 @@ class GenerateInvoiceController extends Controller
             ->currencyFormat('{VALUE} {SYMBOL}')
             ->currencyThousandsSeparator('.')
             ->currencyDecimalPoint(',')
-            ->filename($client->name . '-' . Str::slug($customer->name) . '-' . $order->full_number . '-#-' . date('Y-m-d'))
+            ->filename($client->name . '-' . Str::slug($customer->name) . '-' . $order->full_number . '-' . date('Y-m-d'))
             ->addItems($items)
             ->notes($notes)
             ->logo($this->invoiceLogo)

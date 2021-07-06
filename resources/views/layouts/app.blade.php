@@ -55,6 +55,8 @@
     @yield('singleCartJs')
 
     @yield('checkoutJs')
+
+    @yield('javascript')
     
 
 </body>

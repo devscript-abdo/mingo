@@ -34,7 +34,7 @@ return [
     'customer_orders_table_status' => 'الحالة',
     'customer_orders_table_action' => 'الحدث',
     'customer_orders_table_view' => 'عرض التفاصيل',
-    'customer_orders_table_delete'=>'الغاء الطلب',
+    'customer_orders_table_delete' => 'الغاء الطلب',
     /*-----------------------------------------------------*/
     'customer_order' => 'الطلب',
     'customer_order_product' => 'المنتج',
@@ -67,6 +67,8 @@ return [
     'customer_whislist_table_price' => 'الثمن',
 
     /****************************************************** */
+    'customer_factures' => 'الفواتير',
+
 
     'customer_logout' => 'الخروج'
 ];

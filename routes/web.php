@@ -12,6 +12,7 @@ use App\Http\Controllers\Customer\AddresseController;
 use App\Http\Controllers\Customer\CustomerLoginController;
 use App\Http\Controllers\Customer\CustomerProfilController;
 use App\Http\Controllers\Customer\CustomerRegisterController;
+use App\Http\Controllers\Customer\FactureController;
 use App\Http\Controllers\Customer\GenerateInvoiceController;
 use App\Http\Controllers\Customer\InvoiceController;
 use App\Http\Controllers\Customer\NotificationController;
@@ -121,6 +122,9 @@ Route::group(
 
                 Route::get('/profil/orders/{slug}', [InvoiceController::class, 'show'])->name('customer.invoices.single');
                 Route::post('/profil/orders/{slug}', [GenerateInvoiceController::class, 'generate'])->name('customer.invoices.generate');
+
+                Route::get('/profil/invoices',[FactureController::class,'index'])->name('customer.factures');
+                Route::get('/profil/invoices/{serial}',[FactureController::class,'viewPdf'])->name('customer.factures.view');
 
                 Route::get('/profil/addresses', [AddresseController::class, 'index'])->name('customer.addresses');
                 Route::post('/profil/addresses', [AddresseController::class, 'store'])->name('customer.addresses.store');

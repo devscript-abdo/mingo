@@ -68,5 +68,7 @@ return [
 
     /****************************************************** */
 
+    'customer_factures'=>'Factures',
+
     'customer_logout' => 'Se deconnecter'
 ];

@@ -36,6 +36,12 @@
                             {{__('customer.customer_orders')}}
                         </a>
                     </li>
+                    <li class="{{request()->routeIs(['customer.factures']) ? 'active':''}}">
+                        <a href="{{route('customer.factures')}}">
+                            <i class="icon-papers"></i> 
+                            {{__('customer.customer_factures')}}
+                        </a>
+                    </li>
                     <li class="{{request()->routeIs('customer.addresses') ? 'active':''}}">
                         <a href="{{route('customer.addresses')}}">
                             <i class="icon-map-marker"></i> 
