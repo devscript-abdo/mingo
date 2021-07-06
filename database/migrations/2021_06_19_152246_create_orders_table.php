@@ -33,7 +33,7 @@ class CreateOrdersTable extends Migration
             $table->string('billing_subtotal')->nullable();
             $table->string('billing_tax')->nullable();
             $table->string('billing_total');
-            $table->string('payment_gateway')->default('CMI');
+            $table->string('payment_gateway')->default('COD');
             $table->boolean('shipped')->default(false);
             $table->string('error')->nullable();
 

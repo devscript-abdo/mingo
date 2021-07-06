@@ -21,7 +21,6 @@ use App\Http\Controllers\Customer\WishlistController;
 use App\Http\Controllers\ProductCollectionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
-use App\Models\Archive;
 use Illuminate\Support\Facades\Route;
 
 /*

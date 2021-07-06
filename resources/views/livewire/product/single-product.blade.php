@@ -180,7 +180,11 @@
                     </p>--}}
                 </div>
                 <div class="ps-product__sharing">
-                    <a class="facebook" href="#">
+                    <a 
+                       class="facebook" 
+                       href="https://www.facebook.com/sharer/sharer.php?u={{request()->fullUrl()}}"
+                       target="_blank"
+                    >
                         <i class="fa fa-facebook"></i>
                     </a>
                     <a class="twitter" href="#">

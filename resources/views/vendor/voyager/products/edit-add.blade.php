@@ -92,6 +92,14 @@
                             @endforeach
 
                             <!-------------------By Elmarzougui Abdelghafour ---------------------->
+                            
+                               
+                                 @include('vendor.voyager.products.attributes')
+                                 {{--@include('vendor.voyager.products.categoryTreeview')--}}
+                                
+                           
+                            <br>
+                            <hr>
                             <div class="form-group">
                                 <label>Categories</label>
                                 <br>
@@ -99,6 +107,7 @@
                                  {{--@include('vendor.voyager.products.categoryTreeview')--}}
                                 
                             </div> <!-- end form-group -->
+  
 
                         </div><!-- panel-body -->
 

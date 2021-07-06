@@ -29,7 +29,7 @@ class FactureController extends Controller
         //$url = $pdf->url;
         //dd($url);
         return redirect($pdf->url);
-       /* return response()->file($url, [
+        /*return response()->file($url, [
             'Content-Type' => 'application/pdf',
             //'Content-Disposition' => 'inline; filename="'.$serial.'"'
         ]);*/

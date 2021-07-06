@@ -40,9 +40,14 @@ class Product extends Model
         return $this->belongsToMany('App\models\Wishlist', 'wishlists', 'product_id', 'id');
     }
 
-    public function attributes()
+    /*public function attributes()
     {
         return $this->belongsToMany('App\Models\Attribute', 'product_attribute', 'product_id', 'attribute_id');
+    }*/
+
+    public function attributes()
+    {
+        return $this->hasMany('App\Models\Attribute');
     }
 
     public function productCollections()

@@ -18,7 +18,7 @@
                         <tbody>
                             @foreach($factures as $facture)
                                 <tr>
-                                    <td><a href="{{route('customer.factures.view',$facture->serial_code)}}">{{$facture->serial_code}}</a></td>
+                                    <td><a href="{{route('customer.factures.view',$facture->serial_code)}}">{{$facture->serial_numer}}</a></td>
                                     <td>{{$facture->created_at}}</td>
                                 
                                     <td>{{$facture->count_download}}</td>

@@ -102,20 +102,38 @@
                 </div>
                 
             @endguest
-            @auth('customer')
+            @if(auth()->guard('customer')->check() && count(auth()->guard('customer')->user()->addresses))
+               
+                    <div class="form-group">
+                            <label>{{__('checkoutPage.check_form_addresses')}}</label>
+                            <select class="form-control" name="billing_address">
+                                @forelse (auth()->user()->addresses as $address)
+                                 <option value="{{$address->addresse}}">{{$address->addresse}}</option>
+                                @empty
+                        
+                                @endforelse
+                        
+                            </select>
+                    </div>
+            @else
                 <div class="form-group">
-                        <label>{{__('checkoutPage.check_form_addresses')}}</label>
-                        <select class="form-control" name="billing_address">
-                            <option value="">selectionner une address</option>
-                            @forelse (auth()->user()->addresses as $address)
-                            <option value="{{$address->addresse}}">{{$address->addresse}}</option>
-                            @empty
-                      
-                            @endforelse
-                      
-                        </select>
+                    <label>{{__('checkoutPage.check_form_address')}}<sup>*</sup>
+                    </label>
+                    <div class="form-group__content">
+                        <input 
+                            class="form-control @error('billing_address') is-invalid @enderror" 
+                            type="text" 
+                            name="billing_address"
+                            value="{{old('billing_address')}}"  
+                        >
+                        @error('billing_address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
-            @endauth
+            @endif
    
             <div class="form-group">
                 <label>{{__('checkoutPage.check_form_tele')}}<sup>*</sup>
