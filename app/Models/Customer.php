@@ -73,4 +73,9 @@ class Customer extends Authenticatable
     {
         return $this->hasMany('App\Models\Review');
     }
+
+    public function invoices()
+    {
+        return $this->hasMany('App\Models\Invoice');
+    }
 }

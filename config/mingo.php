@@ -20,5 +20,9 @@ return [
     /***
      * Dashboard URL
      */
-    'admin' => env('APP_ADMIN_URL', 'admin')
+    'admin' => env('APP_ADMIN_URL', 'admin'),
+
+
+    /**************Order setting *******************/
+    'days_befor_cancel_order' => 3
 ];

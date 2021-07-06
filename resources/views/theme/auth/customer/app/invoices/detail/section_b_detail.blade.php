@@ -68,10 +68,18 @@
                 </div>
             </div>
             <div class="ps-section__footer">
+                <a class="ps-btn ps-btn--sm" href="#" onclick="document.getElementById('generateInvoice').submit();">
+                   Imprimer
+                </a>
                 <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices')}}">
                     {{__('customer.customer_order_back')}}
                 </a>
             </div>
+            <form action="{{route('customer.invoices.generate',$order->slug)}}" method="post" hidden id="generateInvoice">
+                @csrf
+                @honeypot
+                <input type="hidden" name="order" value="{{$order->slug}}">
+            </form>
         </div>
     </div>
 </div>

@@ -34,6 +34,7 @@ return [
     'customer_orders_table_status' => 'Etat',
     'customer_orders_table_action' => 'Action',
     'customer_orders_table_view' => 'voir les détails',
+    'customer_orders_table_delete'=>'Annuler',
     /*-----------------------------------------------------*/
     'customer_order' => 'Commande',
     'customer_order_product' => 'Produit',

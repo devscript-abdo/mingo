@@ -7,6 +7,7 @@ use App\Models\Ads;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Invoice;
 use App\Models\Order;
 use App\Models\Page;
 use App\Models\Product;
@@ -18,6 +19,7 @@ use App\Observers\AdsObserver;
 use App\Observers\BrandObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\ColorObserver;
+use App\Observers\InvoiceObserver;
 use App\Observers\OrderObserver;
 use App\Observers\PageObserver;
 use App\Observers\ProductCollectionObserver;
@@ -63,5 +65,9 @@ class ObserverServiceProvider extends ServiceProvider
         Wishlist::observe(WishlistObserver::class);
 
         ProductCollection::observe(ProductCollectionObserver::class);
+
+        /****************** */
+
+        Invoice::observe(InvoiceObserver::class);
     }
 }

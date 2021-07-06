@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        
+
         'customer_id', 'billing_email', 'billing_name', 'billing_address', 'billing_city',
         'billing_province', 'billing_postalcode', 'billing_phone', 'billing_name_on_card', 'billing_discount', 'billing_discount_code', 'billing_subtotal', 'billing_tax', 'billing_total', 'payment_gateway', 'error',
     ];
@@ -25,6 +26,11 @@ class Order extends Model
     public function products()
     {
         return $this->belongsToMany('App\Models\Product')->withPivot('quantity');
+    }
+
+    public function invoice()
+    {
+        return $this->hasOne('App\Models\Invoice');
     }
 
     public static function boot()

@@ -50,12 +50,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" onclick="document.getElementById('logoutMingo').submit();">
+                        <a href="#" onclick="document.getElementById('logoutM').submit();">
                             <i class="icon-power-switch"></i>{{__('customer.customer_logout')}}
                         </a>
                     </li>
 
-                    <form action="{{route('customer.logout')}}" method="post" hidden id="logoutMingo">
+                    <form action="{{route('customer.logout')}}" method="post" hidden id="logoutM">
                         @csrf
                         @honeypot
                     </form>

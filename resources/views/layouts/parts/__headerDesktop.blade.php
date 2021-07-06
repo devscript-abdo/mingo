@@ -53,7 +53,7 @@
                             
                             <div class="ps-block__right">
                                 <div class="ps-block__left">
-                                    <a href="#"  onclick="document.getElementById('logoutMingoo').submit();">
+                                    <a href="#"  onclick="document.getElementById('logoutMing').submit();">
                                         <i class="icon-power-switch"></i>
                                     </a>
                                 </div>
@@ -61,7 +61,7 @@
                                     action="{{route('customer.logout')}}" 
                                     method="post" 
                                     hidden 
-                                    id="logoutMingoo"
+                                    id="logoutMing"
                                 
                                 >
                                     @csrf

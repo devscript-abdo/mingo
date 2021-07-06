@@ -12,6 +12,7 @@ use App\Http\Controllers\Customer\AddresseController;
 use App\Http\Controllers\Customer\CustomerLoginController;
 use App\Http\Controllers\Customer\CustomerProfilController;
 use App\Http\Controllers\Customer\CustomerRegisterController;
+use App\Http\Controllers\Customer\GenerateInvoiceController;
 use App\Http\Controllers\Customer\InvoiceController;
 use App\Http\Controllers\Customer\NotificationController;
 use App\Http\Controllers\Customer\SocialController;
@@ -46,11 +47,13 @@ Route::get('/tokens/create', function (Request $request) {
 /*******************Social Login */
 Route::get('/redirect/{service}', [SocialController::class, 'redirect'])
     ->name('customer.service.login');
-    //->where('service', 'facebook|google');
+//->where('service', 'facebook|google');
 
 Route::get('/callback/{service}', [SocialController::class, 'callback']);
-    //->name('customer.service.login');
-    //->where('service', 'facebook|google');
+//->name('customer.service.login');
+//->where('service', 'facebook|google');
+
+
 
 Route::group(
     [
@@ -114,7 +117,10 @@ Route::group(
                 Route::get('/profil/notifications', [NotificationController::class, 'index'])->name('customer.notifications');
 
                 Route::get('/profil/orders', [InvoiceController::class, 'index'])->name('customer.invoices');
+                Route::delete('/profil/orders', [InvoiceController::class, 'delete'])->name('customer.invoices.delete');
+
                 Route::get('/profil/orders/{slug}', [InvoiceController::class, 'show'])->name('customer.invoices.single');
+                Route::post('/profil/orders/{slug}', [GenerateInvoiceController::class, 'generate'])->name('customer.invoices.generate');
 
                 Route::get('/profil/addresses', [AddresseController::class, 'index'])->name('customer.addresses');
                 Route::post('/profil/addresses', [AddresseController::class, 'store'])->name('customer.addresses.store');

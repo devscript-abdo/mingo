@@ -13,7 +13,7 @@
                                 <th>{{__('customer.customer_orders_table_date')}}</th>
                                 <th>{{__('customer.customer_orders_table_total')}}</th>
                                 <th>{{__('customer.customer_orders_table_status')}}</th>
-                                <th></th>
+                                <th colspan="2"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,12 +24,36 @@
                                     <td>{{$order->billing_total}} {{__('symbole.mad')}}</td>
                                     <td>{{$order->status}}</td>
                                     <td>
+
                                         <a class="ps-btn ps-btn--sm" href="{{route('customer.invoices.single',$order->slug)}}">
                                           {{__('customer.customer_orders_table_view')}}
                                         </a>
+
+
+
+                                    </td>
+                                    <td>
+                                        @if(\Mingo::daysBeforCancelOrder($order->created_at))
+                                            <a 
+                                                class="ps-btn ps-btn--sm" 
+                                                href="#"
+                                                onclick="document.getElementById('{{$order->slug}}').submit();"
+                                            >
+                                                {{__('customer.customer_orders_table_delete')}}
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
+                                @if(\Mingo::daysBeforCancelOrder($order->created_at))
+                                    <form action="{{route('customer.invoices.delete')}}" method="post" hidden id="{{$order->slug}}">
+                                        @csrf
+                                        @honeypot
+                                        @method('DELETE')
+                                        <input type="hidden" name="ordercancel" value="{{$order->slug}}">
+                                    </form>
+                                @endif
                             @endforeach
+           
                        
                         </tbody>
                     </table>

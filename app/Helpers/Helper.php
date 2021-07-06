@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use TCG\Voyager\Facades\Voyager;
+
 class Helper
 {
 
@@ -17,7 +19,7 @@ class Helper
 
     /***********Local  */
 
-    
+
     public function currentLocale()
     {
         return \LaravelLocalization::getCurrentLocale();
@@ -28,4 +30,18 @@ class Helper
         return \LaravelLocalization::getCurrentLocaleName();
     }
 
+    public function getInvoiceLogo()
+    {
+        return public_path('storage/' . setting('site.logo'))
+            ??
+            public_path('vendor/invoices/sample-logo.png');
+    }
+
+    public function daysBeforCancelOrder($date)
+    {
+        $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $date);
+        $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', now());
+        $diff_in_days = $to->diffInDays($from);
+        return $diff_in_days >= config('mingo.days_befor_cancel_order'); 
+    }
 }

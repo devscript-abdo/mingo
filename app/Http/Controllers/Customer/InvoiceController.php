@@ -24,4 +24,20 @@ class InvoiceController extends Controller
 
         return view('theme.auth.customer.app.invoices.detail.index', compact('order'));
     }
+
+    public function delete(Request $request)
+    {
+        $order = $this->Order()
+            ->model()
+            ->whereSlug($request->ordercancel)
+            ->where('customer_id', auth()->guard('customer')->user()->id)
+            ->firstOrFail();
+        if ($order) {
+            $order->delete(); // SoftDeletes
+            //$order->foreceDelete(); // Hard Delete
+            return redirect()->back();
+        }
+
+        return back();
+    }
 }
