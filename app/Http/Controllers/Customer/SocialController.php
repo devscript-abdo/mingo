@@ -38,7 +38,8 @@ class SocialController extends Controller
                 'name' => $user->getName(),
                 'email_verified_at' => now(),
                 'avatar' => $user->getAvatar(),
-                'remember_token' => $token
+                'remember_token' => $token,
+                'registred_by' => $service
             ]
         );
         Auth::guard('customer')->login($customer, true);

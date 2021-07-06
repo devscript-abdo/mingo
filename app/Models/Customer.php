@@ -22,7 +22,8 @@ class Customer extends Authenticatable
         'name',
         'email',
         'password',
-        'avatar'
+        'avatar',
+        'registred_by'
     ];
 
     /**
