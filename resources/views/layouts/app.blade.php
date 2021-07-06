@@ -44,7 +44,6 @@
     {{--@include('sections.__modalQuickViewProduct')--}}
 
 
-
     @livewire('product.modal-view')
 
     @include('layouts.parts.fullScript')

@@ -1,6 +1,6 @@
 <div class="ps-panel--sidebar" id="menu-mobile">
     <div class="ps-panel__header">
-        <h3>Menu</h3>
+        <h3>{{__('navbar.list')}}</h3>
     </div>
     <div class="ps-panel__content">
         <ul class="menu--mobile">

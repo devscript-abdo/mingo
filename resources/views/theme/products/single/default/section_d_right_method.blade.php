@@ -1,12 +1,21 @@
+
 <aside class="widget widget_product widget_features">
-    <p><i class="icon-network"></i> Shipping worldwide</p>
-    <p><i class="icon-3d-rotate"></i> Free 7-day return if eligible, so easy</p>
-    <p><i class="icon-receipt"></i> Supplier give bills for this product.</p>
-    <p><i class="icon-credit-card"></i> Pay online or when receiving goods</p>
+    <p><i class="icon-network"></i> {{__('singleProduct.shipping_worldwide')}}</p>
+    <p><i class="icon-3d-rotate"></i>{{__('singleProduct.retour_7_days')}}</p>
+    <p><i class="icon-receipt"></i> {{__('singleProduct.facture_disponible')}}</p>
+    <p><i class="icon-credit-card"></i> {{__('singleProduct.payer_online_bon')}}</p>
 </aside>
 
 <aside class="widget widget_sell-on-site">
-    <p><i class="icon-store"></i> Sell on Martfury?<a href="#"> Register Now !</a></p>
+    <p>
+        <i class="icon-store"></i> 
+        {{__('singleProduct.create_account')}}
+        <a href="{{route('customer.register')}}"> {{__('singleProduct.create_account_register')}}</a>
+    </p>
 </aside>
 
-<aside class="widget widget_ads"><a href="#"><img src="{{asset('assets/img/ads/product-ads.png')}}" alt=""></a></aside>
+<aside class="widget widget_ads">
+    <a href="{{$ad->url}}">
+        <img src="{{$ad->photo}}" alt="{{$ad->name}}">
+    </a>
+</aside>

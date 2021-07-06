@@ -1,7 +1,7 @@
 <div>
     <div class="ps-shopping ps-tab-root">
         <div class="ps-shopping__header">
-            <p><strong> {{count($products)}}</strong> Products found</p>
+            <p>{!!__('products.products_count',['numero'=>count($products)])!!}</p>
             <div class="ps-shopping__actions">
                 <select class="ps-selecdt"  wire:model="pagesize">
 
@@ -15,14 +15,14 @@
             
                 </select>
                 <select class="ps-selecdt"  wire:model="sorting">
-                    <option value="latest">Sort by latest</option>
+                    <option value="latest">{{__('products.short_latest')}}</option>
                     {{--<option value="populaire">Sort by popularity</option>
                     <option value="rating">Sort by average rating</option>--}}
-                    <option value="price-desc">Sort by price: low to high</option>
-                    <option value="price">Sort by price: high to low</option>
+                    <option value="price-desc">{{__('products.short_price_desc')}}</option>
+                    <option value="price">{{__('products.short_price')}}</option>
                 </select>
                 <div class="ps-shopping__view">
-                    <p>View</p>
+                    <p>{{__('products.vew_style')}}</p>
                     <ul class="ps-tab-list">
                         <li class="active"><a href="#tab-1"><i class="icon-grid"></i></a></li>
                         <li><a href="#tab-2"><i class="icon-list4"></i></a></li>

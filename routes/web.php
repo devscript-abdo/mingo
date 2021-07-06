@@ -14,6 +14,7 @@ use App\Http\Controllers\Customer\CustomerProfilController;
 use App\Http\Controllers\Customer\CustomerRegisterController;
 use App\Http\Controllers\Customer\InvoiceController;
 use App\Http\Controllers\Customer\NotificationController;
+use App\Http\Controllers\Customer\SocialController;
 use App\Http\Controllers\Customer\WishlistController;
 use App\Http\Controllers\ProductCollectionController;
 use App\Http\Controllers\ProductController;
@@ -42,7 +43,14 @@ Route::get('/tokens/create', function (Request $request) {
     return ['token' => $token->plainTextToken];
 });
 
-Route::get('/test', [SiteController::class, 'test']);
+/*******************Social Login */
+Route::get('/redirect/{service}', [SocialController::class, 'redirect'])
+    ->name('customer.service.login');
+    //->where('service', 'facebook|google');
+
+Route::get('/callback/{service}', [SocialController::class, 'callback']);
+    //->name('customer.service.login');
+    //->where('service', 'facebook|google');
 
 Route::group(
     [
@@ -120,7 +128,7 @@ Route::group(
 );
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => config('mingo.admin')], function () {
     Voyager::routes();
 });
 

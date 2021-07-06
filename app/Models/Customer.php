@@ -22,6 +22,7 @@ class Customer extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar'
     ];
 
     /**
@@ -45,10 +46,8 @@ class Customer extends Authenticatable
 
     public function getProfilAvatarAttribute()
     {
-        return setting('customers.default_avatar') ?
-            Voyager::image(setting('customers.default_avatar'))
-            :
-            $this->avatar;
+        return $this->avatar ??
+            Voyager::image(setting('customers.default_avatar'));
     }
 
     /*******Relations */
@@ -67,5 +66,10 @@ class Customer extends Authenticatable
     public function wishlist()
     {
         return $this->hasOne('App\Models\Wishlist');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
     }
 }

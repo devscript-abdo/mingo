@@ -1,5 +1,5 @@
 <aside class="widget widget_shop">
-    <h4 class="widget-title">Categories</h4>
+    <h4 class="widget-title">{{__('products.product_categories')}}</h4>
     <ul class="ps-list--categories">
         @foreach($categories as $categorie)
             @if($categorie->parent_id === null && count($categorie->childrens))

@@ -23,4 +23,9 @@ return [
     /****************************************** */
     'shopping_cart' => 'Panier',
 
+    /*************** */
+
+    'list' => 'Menu',
+    'search'=>'Rechecher'
+
 ];

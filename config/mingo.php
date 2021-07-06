@@ -14,5 +14,11 @@ return [
      * 
      * */
 
-    'datasource' => env('APP_DATA_SOURCE', 'cache')
+    'datasource' => env('APP_DATA_SOURCE', 'cache'),
+
+
+    /***
+     * Dashboard URL
+     */
+    'admin' => env('APP_ADMIN_URL', 'admin')
 ];

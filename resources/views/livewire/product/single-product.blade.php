@@ -52,7 +52,7 @@
                         </select><span>(1 review)</span>
                     </div>
                 </div>
-                <h4 class="ps-product__price">{{$product->price}} MAD</h4>
+                <h4 class="ps-product__price">{{$product->price}} {{__('symbole.mad')}}</h4>
                 <div class="ps-product__desc">
                     {{--<p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>--}}
                     {{--<ul class="ps-list--dot">
@@ -186,9 +186,6 @@
                     <a class="twitter" href="#">
                         <i class="fa fa-twitter"></i>
                     </a>
-                    <a class="google" href="#">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
                     <a class="linkedin" href="#">
                         <i class="fa fa-linkedin"></i>
                     </a>
@@ -287,7 +284,7 @@
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 ">
-                            <form class="ps-form--review" action="http://nouthemes.net/html/martfury/index.html" method="get">
+                            <form class="ps-form--review" action="" method="get">
                                 <h4>Submit Your Review</h4>
                                 <p>Your email address will not be published. Required fields are marked<sup>*</sup></p>
                                 <div class="form-group form-group__rating">

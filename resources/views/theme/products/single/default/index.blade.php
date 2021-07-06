@@ -14,7 +14,7 @@
 
             <div class="ps-page__right">
                 @include('theme.products.single.default.section_d_right_method')
-                @include('theme.products.single.default.section_e_right_same_brand')
+                {{--@include('theme.products.single.default.section_e_right_same_brand')--}}
                 
             </div>
 

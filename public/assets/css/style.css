@@ -1017,7 +1017,7 @@ textarea:focus {
 }
 
 /***Added by Abdelghafour ***/
-li, span, button,option,select,input,form,label,th,td,tr{
+li, span, button,option,select,input,form,label,th,td,tr,textarea{
   font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 /***Added by Abdelghafour ***/

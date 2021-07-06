@@ -115,8 +115,9 @@ class ProductController extends Controller
 
         $cart = Cart::content();
 
+        $ad = $this->Ads()->model()->where('location', 'single_product')->first();
 
-        return view('theme.products.single.single', compact('product', 'products', 'cart'));
+        return view('theme.products.single.single', compact('product', 'products', 'cart', 'ad'));
     }
 
     /**

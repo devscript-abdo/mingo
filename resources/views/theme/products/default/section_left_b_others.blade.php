@@ -1,5 +1,5 @@
 <aside class="widget widget_shop">
-    <h4 class="widget-title">Marque</h4>
+    <h4 class="widget-title">{{__('products.product_brands')}}</h4>
     {{--<form class="ps-form--widget-search" action="" method="get">
         <input class="form-control" type="text" placeholder="">
         <button><i class="icon-magnifier"></i></button>
@@ -22,11 +22,11 @@
         @endforeach
       
     </figure>
-    <figure>
+    {{--<figure>
         <h4 class="widget-title">Prix</h4>
         <div id="nonlinear"></div>
         <p class="ps-slider__meta">Prix:<span class="ps-slider__value">$<span class="ps-slider__min"></span></span>-<span class="ps-slider__value">$<span class="ps-slider__max"></span></span></p>
-    </figure>
+    </figure>--}}
 
     {{--<figure>
         <h4 class="widget-title">Prix</h4>
@@ -38,7 +38,7 @@
     </figure>--}}
 
     <figure>
-        <h4 class="widget-title">By Color</h4>
+        <h4 class="widget-title">{{__('products.product_color')}}</h4>
         @foreach($colors as $color)
         
             <div class="ps-checkbox ps-checkbox--color  ps-checkbox--inline" style="background-color: {{$color->code}}; !important">
@@ -59,7 +59,7 @@
         @endforeach
      
     </figure>
-    <figure class="sizes">
+    {{--<figure class="sizes">
         <h4 class="widget-title">BY SIZE</h4><a href="#">L</a><a href="#">M</a><a href="#">S</a><a href="#">XL</a>
-    </figure>
+    </figure>--}}
 </aside>
