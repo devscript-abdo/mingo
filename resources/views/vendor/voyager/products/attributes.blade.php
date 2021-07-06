@@ -16,16 +16,20 @@
 
             <td><button type="button" name="add" id="add" class="btn btn-success">Ajouter</button></td>
         </tr>
-        @foreach ($attrs as $attr)
-            <tr>
+        @isset($attrs)
+            
+            @foreach ($attrs as $attr)
+                <tr>
 
-                <td><input type="text" name="attrs[{{$attr->id}}][{{$attr->name}}]" value="{{$attr->name}}" class="form-control" /></td>
-                <td><input type="text" name="attrs[{{$attr->id}}][{{$attr->quantity}}]" value="{{$attr->quantity}}" class="form-control" /></td>
-                <td><input type="text" name="attrs[{{$attr->id}}][{{$attr->price}}]" value="{{$attr->price}}" class="form-control" /></td>
+                    <td><input type="text" name="attrs[{{$attr->id}}][{{$attr->name}}]" value="{{$attr->name}}" class="form-control" /></td>
+                    <td><input type="text" name="attrs[{{$attr->id}}][{{$attr->quantity}}]" value="{{$attr->quantity}}" class="form-control" /></td>
+                    <td><input type="text" name="attrs[{{$attr->id}}][{{$attr->price}}]" value="{{$attr->price}}" class="form-control" /></td>
 
-                <td><button type="button" name="add" id="add" class="btn btn-danger">supprimer</button></td>
-            </tr>
-        @endforeach
+                    <td><button type="button" name="add" id="add" class="btn btn-danger">supprimer</button></td>
+                </tr>
+            @endforeach
+            
+        @endisset
     </table>
     <br>
   </div><!-- /.col-lg-6 -->
