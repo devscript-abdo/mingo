@@ -72,14 +72,17 @@ class AttributeController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Attribute  $attribute
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Attribute $attribute)
+
+    public function destroy(Request $request)
     {
-        //
+        // dd($request);
+
+        $attr = Attribute::findOrFail($request->id);
+
+        if ($attr) {
+            $attr->delete();
+            return response()->json(['status' => "L'attribute a été supprimé avec succès"]);
+        }
+        return response()->json(['status' => "problem l'ors de la supprission"]);
     }
 }

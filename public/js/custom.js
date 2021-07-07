@@ -7,3 +7,25 @@
     $(document).on('click', '.remove-tr', function(){
          $(this).parents('tr').remove();
     });
+
+    /******************************************************* */
+    /******************************************************* */
+    /******************************************************* */
+    console.log(deleteAttrRoute,csrfToken);
+    $(".deleteAttr").click(function (e) {
+        e.preventDefault()
+
+        var ele = $(this);
+        //console.log(this);
+        if(confirm("Are you sure")) {
+            $.ajax({
+                url: deleteAttrRoute,
+                method: "DELETE",
+                data: {_token: csrfToken , id: ele.attr("data-attrid")},
+                success: function (response) {
+                    console.log(response);
+                   // window.location.reload();
+                }
+            });
+        }
+    });

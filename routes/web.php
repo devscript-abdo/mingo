@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArchiveController;
+use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\CategoryController;
@@ -122,8 +123,8 @@ Route::group(
                 Route::get('/profil/orders/{slug}', [InvoiceController::class, 'show'])->name('customer.invoices.single');
                 Route::post('/profil/orders/{slug}', [GenerateInvoiceController::class, 'generate'])->name('customer.invoices.generate');
 
-                Route::get('/profil/invoices',[FactureController::class,'index'])->name('customer.factures');
-                Route::get('/profil/invoices/{serial}',[FactureController::class,'viewPdf'])->name('customer.factures.view');
+                Route::get('/profil/invoices', [FactureController::class, 'index'])->name('customer.factures');
+                Route::get('/profil/invoices/{serial}', [FactureController::class, 'viewPdf'])->name('customer.factures.view');
 
                 Route::get('/profil/addresses', [AddresseController::class, 'index'])->name('customer.addresses');
                 Route::post('/profil/addresses', [AddresseController::class, 'store'])->name('customer.addresses.store');
@@ -139,6 +140,8 @@ Route::group(
 
 Route::group(['prefix' => config('mingo.admin')], function () {
     Voyager::routes();
+
+    Route::delete('/attr/delete', [AttributeController::class, 'destroy'])->name('admin.attrs.delete');
 });
 
 //Auth::routes();

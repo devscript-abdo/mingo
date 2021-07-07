@@ -321,7 +321,6 @@ class ProductsController extends VoyagerBaseController
     public function update(Request $request, $id)
     {
 
-        //dd($request);
         $slug = $this->getSlug($request);
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
@@ -347,9 +346,13 @@ class ProductsController extends VoyagerBaseController
         $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
 
         /****this part is added by abdelghafour to add attribute to products */
-        // dd($request->attrs);
-        foreach ($request->attrs as $attr) {
-            $product->attributes()->create($attr);
+        // dd($request);
+
+        if ($request->has('attrs.0.name') &&  $request->filled('attrs.0.name')) {
+           // dd('oui filled');
+            foreach ($request->attrs as $attr) {
+                $product->attributes()->create($attr);
+            }
         }
         //  $result = $product->attributes()->create($request->attrs);
         //dd($result); 
@@ -386,7 +389,7 @@ class ProductsController extends VoyagerBaseController
 
     public function create(Request $request)
     {
-       // dd('Oui create');
+        // dd('Oui create');
         $slug = $this->getSlug($request);
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
@@ -433,25 +436,27 @@ class ProductsController extends VoyagerBaseController
      */
     public function store(Request $request)
     {
-       // dd('oui store');
-       
+        // dd('oui store');
+
         $slug = $this->getSlug($request);
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('add', app($dataType->model_name));
-       
+
         // Validate fields with ajax
         $val = $this->validateBread($request->all(), $dataType->addRows)->validate();
         $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());
         //dd($data);
         /****this part is added by abdelghafour to add attribute to products */
-         
-        foreach ($request->attrs as $attr) {
-            $data->attributes()->create($attr);
+
+        if ($request->has('attrs.0.name') &&  $request->filled('attrs.0.name')) {
+            foreach ($request->attrs as $attr) {
+                $data->attributes()->create($attr);
+            }
         }
-        //  $result = $product->attributes()->create($request->attrs);
+            //  $result = $product->attributes()->create($request->attrs);
         //dd($result); 
         /**************end by abdelghafour *********************************/
         event(new BreadDataAdded($dataType, $data));

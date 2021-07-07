@@ -21,11 +21,11 @@
             @foreach ($attrs as $attr)
                 <tr>
 
-                    <td><input type="text" name="attrs[{{$attr->id}}][{{$attr->name}}]" value="{{$attr->name}}" class="form-control" /></td>
-                    <td><input type="text" name="attrs[{{$attr->id}}][{{$attr->quantity}}]" value="{{$attr->quantity}}" class="form-control" /></td>
-                    <td><input type="text" name="attrs[{{$attr->id}}][{{$attr->price}}]" value="{{$attr->price}}" class="form-control" /></td>
+                    <td><input type="text" name="attrsof[{{$attr->id}}][name]" value="{{$attr->name}}" class="form-control" /></td>
+                    <td><input type="text" name="attrsof[{{$attr->id}}][quantity]" value="{{$attr->quantity}}" class="form-control" /></td>
+                    <td><input type="text" name="attrsof[{{$attr->id}}][price]" value="{{$attr->price}}" class="form-control" /></td>
 
-                    <td><button type="button" name="add" id="add" class="btn btn-danger">supprimer</button></td>
+                    <td><button data-attrid="{{$attr->id}}" type="button" class="btn btn-danger remove-tr deleteAttr">supprimer</button></td>
                 </tr>
             @endforeach
             
@@ -33,3 +33,9 @@
     </table>
     <br>
   </div><!-- /.col-lg-6 -->
+
+  <script>
+      /*********** define Global variable to use it in customeJs file ***/
+      window.deleteAttrRoute = "{{route('admin.attrs.delete')}}";
+      window.csrfToken = "{{  csrf_token() }}";
+  </script>
