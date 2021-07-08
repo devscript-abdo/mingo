@@ -38,7 +38,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
@@ -51,6 +51,15 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+        ],
+
+        // Here is your custom disk 
+        'static' => [
+            'driver' => 'local',
+            'url' => env('ASSET_URL') . '/storage',
+            // This should be a correct absolute path, so change it with yours
+            'root'   => env('FILESYSTEM_DRIVER_STATIC_ROUTE','/home/mingo/public_html/static-files/storage/'),
+            'visibility' => 'public',
         ],
 
     ],

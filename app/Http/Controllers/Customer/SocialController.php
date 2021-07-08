@@ -25,10 +25,10 @@ class SocialController extends Controller
         //  return response()->json($user);
         $token = $user->token;
 
-        $user->getId();
+        /* $user->getId();
         $user->getName();
         $user->getEmail();
-        $user->getAvatar();
+        $user->getAvatar();*/
 
         $customer = Customer::firstOrCreate(
             ['email' => $user->getEmail()],
@@ -42,7 +42,7 @@ class SocialController extends Controller
                 'registred_by' => $service
             ]
         );
-        
+
         Auth::guard('customer')->login($customer, true);
 
         return redirect()->route('customer.profil');

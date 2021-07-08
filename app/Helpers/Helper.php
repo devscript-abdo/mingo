@@ -2,8 +2,6 @@
 
 namespace App\Helpers;
 
-use TCG\Voyager\Facades\Voyager;
-
 class Helper
 {
 
