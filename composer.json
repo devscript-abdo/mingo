@@ -25,6 +25,7 @@
         "league/flysystem-sftp": "~1.0",
         "livewire/livewire": "^2.5",
         "mcamara/laravel-localization": "^1.6",
+        "mehdirochdi/cmi-payment-php": "^1.0",
         "predis/predis": "^1.1",
         "propaganistas/laravel-phone": "^4.3",
         "renatomarinho/laravel-page-speed": "^2.0",

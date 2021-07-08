@@ -46,26 +46,7 @@ class SiteController extends Controller
 
     public function test()
     {
-        /*$products = Product::all()->toArray();
-        
-       // dd($products);
-        foreach($products as $prod)
-        {
-            //dd($prod);
-             Archive::create($prod);
-        }*/
-
-        // $collection = collect([]);
-
-        $sliders = Slider::all();
-        $products = Product::all();
-
-        $collection = $products->concat($sliders);
-
-        $datasliders = $collection->whereInstanceOf(Slider::class);
-        $dataproducts = $collection->whereInstanceOf(Product::class);
-
-        dd($datasliders, '***********************', $dataproducts);
+       return view('payment.cmi');
     }
 
 

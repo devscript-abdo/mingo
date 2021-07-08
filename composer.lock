@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4356be4f0634aa8ea41a8359cad472b3",
+    "content-hash": "e6c9f901c6b757cb61339a8aa0a04c82",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -3681,6 +3681,63 @@
                 }
             ],
             "time": "2020-10-01T07:45:06+00:00"
+        },
+        {
+            "name": "mehdirochdi/cmi-payment-php",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mehdirochdi/cmi-payment-php.git",
+                "reference": "f6690081721a8a1320ae710880e48e61543f241c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mehdirochdi/cmi-payment-php/zipball/f6690081721a8a1320ae710880e48e61543f241c",
+                "reference": "f6690081721a8a1320ae710880e48e61543f241c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "2.17.1",
+                "phpunit/phpunit": "^9.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CMI\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mehdi rochdi",
+                    "email": "mehdi.rochdi@gmail.com",
+                    "homepage": "https://github.com/mehdirochdi/cmi-php/graphs/contributors"
+                }
+            ],
+            "description": "PHP package to communicate with the CMI payment plateform in Morocco",
+            "keywords": [
+                "cmi",
+                "cmi payment",
+                "morocco payment",
+                "paiement au maroc",
+                "paiement en ligne cmi",
+                "payment in morocco",
+                "payment processing"
+            ],
+            "support": {
+                "issues": "https://github.com/mehdirochdi/cmi-payment-php/issues",
+                "source": "https://github.com/mehdirochdi/cmi-payment-php/tree/1.0.0"
+            },
+            "time": "2021-06-14T12:32:50+00:00"
         },
         {
             "name": "monolog/monolog",

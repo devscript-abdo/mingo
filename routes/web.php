@@ -21,6 +21,7 @@ use App\Http\Controllers\Customer\InvoiceController;
 use App\Http\Controllers\Customer\NotificationController;
 use App\Http\Controllers\Customer\SocialController;
 use App\Http\Controllers\Customer\WishlistController;
+use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\ProductCollectionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
@@ -49,6 +50,9 @@ Route::get('/tokens/create', function (Request $request) {
 
 Route::get('/test', [SiteController::class, 'test']);
 
+Route::post('proccess',[PaymentController::class,'proccess'])->name('payment.proccess');
+//Route::post('proccess-done',[PaymentController::class,'proccessDone'])->name('payment.proccess.done');
+Route::post('proccess-fail',[PaymentController::class,'proccessDone'])->name('payment.proccess.fail');
 /*******************Social Login */
 Route::get('/redirect/{service}', [SocialController::class, 'redirect'])
     ->name('customer.service.login');

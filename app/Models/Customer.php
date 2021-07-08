@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 //use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use TCG\Voyager\Facades\Voyager;
+
 use Laravel\Sanctum\HasApiTokens;
 
 class Customer extends Authenticatable

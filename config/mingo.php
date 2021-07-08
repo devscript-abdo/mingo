@@ -24,5 +24,11 @@ return [
 
 
     /**************Order setting *******************/
-    'days_befor_cancel_order' => 3
+    'days_befor_cancel_order' => 3,
+
+    /******************************************** */
+
+    /*****Method de payment ****************/
+
+    'paymentMethod' => env('PAYMENT_METHOD', 'cmi'),
 ];
