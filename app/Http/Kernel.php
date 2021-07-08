@@ -47,7 +47,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
-            \Spatie\ResponseCache\Middlewares\CacheResponse::class,///for cache every response 
+            \Spatie\ResponseCache\Middlewares\CacheResponse::class, ///for cache every response 
         ],
 
         'api' => [
@@ -83,5 +83,7 @@ class Kernel extends HttpKernel
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
 
         'doNotCacheResponse'      => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
+        
+        'verifyApiAccess' => \App\Http\Middleware\VerifyAPIAccess::class
     ];
 }
