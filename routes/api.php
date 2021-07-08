@@ -38,6 +38,7 @@ Route::group(['middleware' => 'api'], function () {
 
         Route::get('/products', [ProductController::class, 'index'])->name('api.products.ar');
         Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show.ar');
+        
     });
 });
 

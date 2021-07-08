@@ -33,6 +33,7 @@
         "spatie/laravel-newsletter": "^4.10",
         "spatie/laravel-query-builder": "^3.4",
         "spatie/laravel-responsecache": "^6.6",
+        "spatie/laravel-searchable": "^1.10",
         "tcg/voyager": "^1.4"
     },
     "require-dev": {

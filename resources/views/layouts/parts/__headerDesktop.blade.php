@@ -9,7 +9,8 @@
                     style="width: 180px; !important"></a>
             </div>
             <div class="header__center">
-                   @include('layouts.parts.__searchForm')
+                   {{--@include('layouts.parts.__searchForm')--}}
+                   @livewire('search.search')
             </div>
             <div class="header__right">
                 <div class="header__actions">

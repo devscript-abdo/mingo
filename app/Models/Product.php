@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Traits\Translatable;
-use App\Traits\Language;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
+use TCG\Voyager\Facades\Voyager;
+use TCG\Voyager\Traits\Translatable;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+use App\Traits\Language;
 
-class Product extends Model
+class Product extends Model implements Searchable
 {
 
     use HasFactory, Translatable, Language;
@@ -116,6 +118,11 @@ class Product extends Model
         return route('products.single', $this->slug);
     }
 
+    public function getUrl()
+    {
+       return route('products');
+    }
+
     public function getBrand($field)
     {
         return $this->brand->{$field} ?? null;
@@ -146,5 +153,19 @@ class Product extends Model
         $query->whereHas('colors', function ($q) use ($colorId) {
             $q->where('color_id', $colorId);
         });
+    }
+
+
+    /************************** */
+
+    public function getSearchResult(): SearchResult
+    {
+
+        $url = $this->url;
+        return new \Spatie\Searchable\SearchResult(
+            $this,
+            $this->field('name'),
+            $url
+        );
     }
 }
