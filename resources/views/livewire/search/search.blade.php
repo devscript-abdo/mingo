@@ -15,16 +15,11 @@
                 type="text" 
                 name="query" 
                 wire:model.defer="query" 
-                placeholder="" 
+                placeholder=" @error('query') {{ $message }} @enderror" 
                 id="input-search"
             >
-                @error('query')
                 
-                    <span class="invalid-feedback" role="alert" >
-                        <strong style="color:white !important">{{ $message }}</strong>
-                    </span>
-                @enderror
-        
+            
         <button wire:click.prevent="submit()">{{__('navbar.search_button')}}</button>
         @if($results) 
             <div class="ps-panel--search-result @if(isset($class)){{$class}}@endif">
@@ -32,9 +27,8 @@
                     <div class="ps-panel__content">
                         @foreach($results->groupByType() as $type => $modelSearchResults)
                         
-                        
-                            <div class="ps-panel__footer text-center">
-                                <a href="{{$modelSearchResults[0]->searchable->getUrl()}}">{{ $type }}</a>
+                            <div class="text-center">
+                                <a href="#">{{ $type }}</a>
                             </div>
                             @foreach($modelSearchResults as $searchResult)
                                 <div class="ps-product ps-product--wide ps-product--search-result">

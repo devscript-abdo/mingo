@@ -2,6 +2,7 @@
 
 namespace App\Http\Mingo\Livewire\Search;
 
+use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
 use Spatie\Searchable\Search as Searchable;
@@ -35,12 +36,12 @@ class Search extends Component
     {
         $searchResults = (new Searchable())
             ->registerModel(Product::class, ['name', 'content', 'description'])
-            // ->registerModel(Service::class, ['title', 'excerpt'])
-            //  ->registerModel(Post::class, ['title', 'excerpt', 'body'])
+            ->registerModel(Category::class, ['name', 'slug'])
+
             ->search($q);
 
         $this->class = "active";
-        
+
         return $searchResults;
     }
 }

@@ -2,21 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Models\Category as Categories;
 use TCG\Voyager\Traits\Translatable;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use App\Traits\Language;
-use Illuminate\Support\Facades\Cache;
 
-class Category extends Categories
+class Category extends Categories implements Searchable
 {
 
     use HasFactory, Language, Translatable;
 
     protected $translatable = ['name', 'description'];
 
-    protected $with = ['childrens','translations'];
+    protected $with = ['childrens', 'translations'];
 
 
     public function products()
@@ -52,6 +54,10 @@ class Category extends Categories
     {
         $image  = Voyager::image($this->image);
         return $image;
+    }
+    public function getUrl()
+    {
+       return route('products');
     }
 
     public function scopeRandoms($query)
@@ -110,5 +116,20 @@ class Category extends Categories
     {
 
         return \Carbon\Carbon::now()->addDays(30);
+    }
+
+
+
+    /************************** */
+
+    public function getSearchResult(): SearchResult
+    {
+
+        $url = $this->url;
+        return new \Spatie\Searchable\SearchResult(
+            $this,
+            $this->field('name'),
+            $url
+        );
     }
 }
