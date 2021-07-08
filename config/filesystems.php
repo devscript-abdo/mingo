@@ -58,7 +58,7 @@ return [
             'driver' => 'local',
             'url' => env('ASSET_URL') . '/storage',
             // This should be a correct absolute path, so change it with yours
-            'root'   => env('FILESYSTEM_DRIVER_STATIC_ROUTE','/home/mingo/public_html/static-files/storage/'),
+            'root'   => env('FILESYSTEM_DRIVER_STATIC_ROOT','/home/mingo/public_html/static-files/storage/'),
             'visibility' => 'public',
         ],
 

@@ -1,0 +1,15 @@
+$user = App\Models\User::all();
+
+dd($user);
+$user = App\Models\User::all();
+
+dd($user);
+$user = App\Models\User::all();
+
+dd($user);
+$user = App\Models\User::all();
+
+$user
+$user = App\Models\User::all();
+
+$userd

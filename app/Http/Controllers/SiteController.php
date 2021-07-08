@@ -6,7 +6,7 @@ use App\Models\Ads;
 use App\Models\Archive;
 use App\Models\Product;
 use App\Models\Slider;
-
+use App\Services\Payment\PaymentInterface;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -46,6 +46,8 @@ class SiteController extends Controller
 
     public function test()
     {
+        $payment = app(PaymentInterface::class)->getPayment();
+        dd($payment);
        return view('payment.cmi');
     }
 

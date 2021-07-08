@@ -6,4 +6,6 @@ interface PaymentInterface
 {
 
     
+
+    public function getPayment();
 }
