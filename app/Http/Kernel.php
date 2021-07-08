@@ -47,7 +47,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
-            \Spatie\ResponseCache\Middlewares\CacheResponse::class,
+            \Spatie\ResponseCache\Middlewares\CacheResponse::class,///for cache every response 
         ],
 
         'api' => [
@@ -82,6 +82,6 @@ class Kernel extends HttpKernel
         'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
 
-        'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
+        'doNotCacheResponse'      => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
     ];
 }

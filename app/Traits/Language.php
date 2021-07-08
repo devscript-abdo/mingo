@@ -13,9 +13,9 @@ trait Language
      * *
      **/
 
-    public function field($field)
+    public function field($field, $lng = null)
     {
-        return $this->getTranslatedAttribute($field, $this->currentLocale(), 'fallbackLocale')
+        return $this->getTranslatedAttribute($field, $lng ?? $this->currentLocale(), 'fallbackLocale')
 
             ?? $this->{$field};
     }
