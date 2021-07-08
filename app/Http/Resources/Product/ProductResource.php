@@ -22,9 +22,9 @@ class ProductResource extends JsonResource
         //return parent::toArray($request);
 
         return [
+            
             'id' => $this->id,
             'name' => $this->name,
-            'email' => $this->slug,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'categories' => new CategoryResource($this->category),

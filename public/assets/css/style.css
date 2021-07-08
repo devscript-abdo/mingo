@@ -1,48 +1,5 @@
 @charset "UTF-8";
-/*
-    Project: Martfury - Marketplace html template.
-    Version: 2.1.1
-    Date Created: 06/12/2018
-    Date Updated: 2020-12-14T14:10:47+07:00
-    Author: Nouthemes
-    Developed by: diaryforlife
-    Homepage: https://themeforest.net/user/nouthemes/portfolio
-*/
-/*
-    TABLE OF CONTENT
-        1. RESET AND TYPHOGRAPHY
-            1.1 reset
-            1.2 typhography
-        2. ELEMENTS
-            2.1 grid
-            2.2 list
-            2.3 button
-            2.4 form
-            2.5 post
-            2.6 pagination
-            2.7 breadcrumb
-            2.8 block
-            2.9 widget
-            2.10 slider
-            2.11 masonry
-            2.12 product
-            2.13 banner
-            2.14 filter
-            2.15 table
-            2.16 loader
-            2.17 modal
-        3. COMPONENTS
-             3.1 Cart
-             3.2 forms
-             3.3 search
-             3.4 section
-             3.5 pages
-        4. MODULES
-            4.1 header
-            4.2 footer
-        5. HELPERS
-        6. CUSTOM
-*/
+
 .masonry-wrapper .grid-item .grid-item__inner, .setting .grid-item .grid-item__inner {
   position: relative;
 }

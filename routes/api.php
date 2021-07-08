@@ -1,11 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProductController;
-use App\Http\Resources\Category\CategoryResource;
-use App\Http\Resources\Product\ProductResource;
-use App\Models\Category;
-use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,22 +20,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
+
 });
 
-Route::get('/categories/{id}', function ($id) {
-    return new CategoryResource(Category::findOrFail($id));
+/********************************** Products API  **********************************************/
+Route::group(['prefix'=>'fr'],function(){
+
+    Route::get('/products',[ProductController::class,'index'])->name('api.products');
+    Route::get('/products/{id}',[ProductController::class,'show'])->name('api.products.show');
 });
 
-Route::get('/products/{id}', function ($id) {
-    return new ProductResource(Product::findOrFail($id));
-});
-/*Route::group(
-    [
-        'prefix' =>'fr'
-
-    ],
-    function () {
-        Route::get('/products', [ProductController::class, 'api'])->name('api');
-        Route::get('/products/{id}', [ProductController::class, 'apiID'])->name('api');
-    }
-);*/

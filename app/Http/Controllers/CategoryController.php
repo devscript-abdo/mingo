@@ -14,7 +14,7 @@ class CategoryController extends Controller
 
         $categorie =  $this->Category()->getCategory($category);
 
-        $products = $categorie->products()->active();
+        $products = $categorie->products()->active()->get();
 
         $brands = $this->Brand()->activeItems();
 
