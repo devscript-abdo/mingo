@@ -1,5 +1,5 @@
 <div class="col-lg-12">
-    <label>Attributes</label>
+    <label>Attributes (Size,...)</label>
     <br>
     <table class="table table-bordered" id="dynamicTable">
         <tr>

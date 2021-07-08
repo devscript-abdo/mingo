@@ -24,7 +24,11 @@ class ContactController extends Controller
 
         if ($email) {
 
-            Mail::to($email)->send(new ContactMail($data));
+            dispatch(function () use ($email, $data) {
+
+                Mail::to($email)->send(new ContactMail($data));
+                
+            })->afterResponse();
 
             return redirect()->route('contact')->with('isSent', 'merci pour votre message');
         }

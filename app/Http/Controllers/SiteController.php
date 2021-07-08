@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Page\PageInterface;
+use App\Models\Ads;
+use App\Models\Archive;
+use App\Models\Product;
+use App\Models\Slider;
+
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -42,9 +46,26 @@ class SiteController extends Controller
 
     public function test()
     {
-        $products = $this->Product()->all();
+        /*$products = Product::all()->toArray();
         
-        dd($products);
+       // dd($products);
+        foreach($products as $prod)
+        {
+            //dd($prod);
+             Archive::create($prod);
+        }*/
+
+        // $collection = collect([]);
+
+        $sliders = Slider::all();
+        $products = Product::all();
+
+        $collection = $products->concat($sliders);
+
+        $datasliders = $collection->whereInstanceOf(Slider::class);
+        $dataproducts = $collection->whereInstanceOf(Product::class);
+
+        dd($datasliders, '***********************', $dataproducts);
     }
 
 

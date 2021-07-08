@@ -42,6 +42,7 @@ class SocialController extends Controller
                 'registred_by' => $service
             ]
         );
+        
         Auth::guard('customer')->login($customer, true);
 
         return redirect()->route('customer.profil');

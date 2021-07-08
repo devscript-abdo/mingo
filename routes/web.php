@@ -10,9 +10,11 @@ use App\Http\Controllers\Checkout\ConfirmationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Coupon\CouponController;
 use App\Http\Controllers\Customer\AddresseController;
+use App\Http\Controllers\Customer\CustomerForgotPasswordController;
 use App\Http\Controllers\Customer\CustomerLoginController;
 use App\Http\Controllers\Customer\CustomerProfilController;
 use App\Http\Controllers\Customer\CustomerRegisterController;
+use App\Http\Controllers\Customer\CustomerResetPasswordController;
 use App\Http\Controllers\Customer\FactureController;
 use App\Http\Controllers\Customer\GenerateInvoiceController;
 use App\Http\Controllers\Customer\InvoiceController;
@@ -44,6 +46,8 @@ Route::get('/tokens/create', function (Request $request) {
 
     return ['token' => $token->plainTextToken];
 });
+
+Route::get('/test', [SiteController::class, 'test']);
 
 /*******************Social Login */
 Route::get('/redirect/{service}', [SocialController::class, 'redirect'])
@@ -87,13 +91,38 @@ Route::group(
 
         /********************************************   Customer Account  *****************************************************/
 
+
         Route::group(['prefix' => 'app'], function () {
+
 
             Route::get('/login', [CustomerLoginController::class, 'loginForm'])->name('customer.login');
             Route::post('/login', [CustomerLoginController::class, 'login'])->name('customer.loginPost');
 
+
+            Route::get('password/request', [CustomerForgotPasswordController::class, 'showLinkRequestForm'])
+            ->middleware('guest:customer')
+            ->name('customer.forgotpassword');
+
+            Route::post('password/request', [CustomerForgotPasswordController::class, 'sendResetLinkEmail'])
+            ->middleware('guest:customer')
+                ->name('customer.forgotpasswordPost');
+
+            Route::get('/password/reset/{token}', [CustomerResetPasswordController::class, 'showResetForm'])
+            ->middleware('guest:customer')
+                ->name('password.reset');
+
+            Route::post('/password/reset/', [CustomerResetPasswordController::class, 'reset'])
+            ->middleware('guest:customer')
+                ->name('password.update');
+
             Route::get('/register', [CustomerRegisterController::class, 'showRegistrationForm'])->name('customer.register');
             Route::post('/register', [CustomerRegisterController::class, 'register'])->name('customer.registerPost');
+
+
+
+
+
+
 
             Route::get('/shopping-cart', [CartController::class, 'index'])->name('shoppingcart');
             Route::delete('/shopping-cart', [CartController::class, 'delete'])->name('shoppingcart.delete');

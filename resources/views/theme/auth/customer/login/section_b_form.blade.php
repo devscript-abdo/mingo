@@ -25,8 +25,8 @@
                                 </span>
                             @enderror
                            
-                            @if (Route::has('password.request'))
-                                <a  href="{{ route('password.request') }}">
+                            @if (Route::has('customer.forgotpassword'))
+                                <a  href="{{ route('customer.forgotpassword') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             @endif

@@ -17,7 +17,7 @@ class Product extends Model
 
     protected $translatable = ['name', 'description', 'content'];
 
-    protected $with = ['translations'];
+    //protected $with = ['translations'];
 
     public function category()
     {
@@ -68,17 +68,17 @@ class Product extends Model
     public function scopeActive($query)
     {
 
-        return $query->whereActive(true)->get();
+        return $query->whereActive(true);
     }
 
-    public function scopeWithRelated($query, $related)
+    public function scopeWithRelated($related)
     {
-        return $query->whereActive(true)->with($related)->get();
+        return $this->active()->with($related)->get();
     }
 
-    public function scopeTopSearched($query)
+    public function scopeTopSearched()
     {
-        return $query->whereActive(true)->whereTopSearched(true)->get();
+        return $this->active()->whereTopSearched(true)->get();
     }
 
     public function setNameAttribute($value)

@@ -26,7 +26,7 @@ class Category extends Categories
 
     public function childrens()
     {
-        return $this->hasMany(self::class, 'parent_id', 'id');
+        return $this->hasMany(self::class, 'parent_id', 'id')->with('childrens');
     }
     public function subcategory()
     {

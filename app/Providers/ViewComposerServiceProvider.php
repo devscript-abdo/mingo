@@ -17,7 +17,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function register()
     {
         // $this->app->singleton(\App\Http\View\Composers\CategoryComposer::class);
-        //$this->app->singleton(\App\Http\View\Composers\PageComposer::class);
+        // $this->app->singleton(\App\Http\View\Composers\PageComposer::class);
     }
 
     /**

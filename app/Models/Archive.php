@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Archive extends Model
 {
     use HasFactory;
+
+  
+    protected $guarded  = [];
 }
