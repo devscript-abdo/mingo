@@ -17,13 +17,13 @@ class VerifyAPIAccess
     public function handle(Request $request, Closure $next)
     {
         if (
-            !(app()->environment('local'))
+            (app()->environment('local'))   //!(app()->environment('local'))
             && (
-                !$request->header('access-token')
-                || $request->header('access-token') !== env('APP_API_TOKEN')
+                !$request->header('mingo-access-token')
+                || $request->header('mingo-access-token') !== config('mingo.api_access_token')
             )
         ) {
-            return response()->json(['Message' => 'You do not access to this api.'], 403);
+            return response()->json(['Message' => "you don't have permission to access this API."], 403);
         }
 
         return $next($request);

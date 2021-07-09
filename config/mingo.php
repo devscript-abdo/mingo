@@ -3,8 +3,13 @@
 return [
 
 
-    'elequont_cache_days' => 30,
+    /**************************API ACCESS TOKEN for app mobile */
 
+    'api_access_token' => env('APP_API_TOKEN', 'mingo.ma'),
+
+
+
+    'elequont_cache_days' => 30,
 
     /***
      * used in RepositoryCacheServiceProvider
