@@ -9,7 +9,7 @@
                 @if($categorie->parent_id === null && count($categorie->childrens))
                 <li class="menu-item-has-children has-mega-menu">
                     <a href="{{$categorie->url}}">
-                      <i class="{{$categorie->icon}}"></i> {{$categorie->field('name')}}
+                      <i class="{{$categorie->icon ??'icon-star'}}"></i> {{$categorie->field('name')}}
                     </a>
                     <div class="mega-menu">
                    

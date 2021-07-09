@@ -64,8 +64,7 @@
                         <ul class="ps-list--social">
                             <li><a class="facebook" href="{{route('customer.service.login','facebook')}}"><i class="fa fa-facebook"></i></a></li>
                             <li><a class="google" href="{{route('customer.service.login','facebook')}}"><i class="fa fa-google"></i></a></li>
-                            <li><a class="twitter" href="{{route('customer.service.login','facebook')}}"><i class="fa fa-twitter"></i></a></li>
-                           
+                        
                         </ul>
                     </div>
                 </div>

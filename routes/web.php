@@ -145,26 +145,26 @@ Route::group(
 
                 Route::post('/logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
 
-                Route::get('/profil', [CustomerProfilController::class, 'index'])->name('customer.profil');
-                Route::post('/profil', [CustomerProfilController::class, 'updateInfo'])->name('customer.profilUpdate');
+                Route::get('/account', [CustomerProfilController::class, 'index'])->name('customer.profil');
+                Route::post('/account', [CustomerProfilController::class, 'updateInfo'])->name('customer.profilUpdate');
 
-                Route::get('/profil/notifications', [NotificationController::class, 'index'])->name('customer.notifications');
+                Route::get('/account/notifications', [NotificationController::class, 'index'])->name('customer.notifications');
 
-                Route::get('/profil/orders', [InvoiceController::class, 'index'])->name('customer.invoices');
-                Route::delete('/profil/orders', [InvoiceController::class, 'delete'])->name('customer.invoices.delete');
+                Route::get('/account/orders', [InvoiceController::class, 'index'])->name('customer.invoices');
+                Route::delete('/account/orders', [InvoiceController::class, 'delete'])->name('customer.invoices.delete');
 
-                Route::get('/profil/orders/{slug}', [InvoiceController::class, 'show'])->name('customer.invoices.single');
-                Route::post('/profil/orders/{slug}', [GenerateInvoiceController::class, 'generate'])->name('customer.invoices.generate');
+                Route::get('/account/orders/{slug}', [InvoiceController::class, 'show'])->name('customer.invoices.single');
+                Route::post('/account/orders/{slug}', [GenerateInvoiceController::class, 'generate'])->name('customer.invoices.generate');
 
-                Route::get('/profil/invoices', [FactureController::class, 'index'])->name('customer.factures');
-                Route::get('/profil/invoices/{serial}', [FactureController::class, 'viewPdf'])->name('customer.factures.view');
+                Route::get('/account/invoices', [FactureController::class, 'index'])->name('customer.factures');
+                Route::get('/account/invoices/{serial}', [FactureController::class, 'viewPdf'])->name('customer.factures.view');
 
-                Route::get('/profil/addresses', [AddresseController::class, 'index'])->name('customer.addresses');
-                Route::post('/profil/addresses', [AddresseController::class, 'store'])->name('customer.addresses.store');
-                Route::delete('/profil/addresses', [AddresseController::class, 'delete'])->name('customer.addresses.delete');
+                Route::get('/account/addresses', [AddresseController::class, 'index'])->name('customer.addresses');
+                Route::post('/account/addresses', [AddresseController::class, 'store'])->name('customer.addresses.store');
+                Route::delete('/account/addresses', [AddresseController::class, 'delete'])->name('customer.addresses.delete');
 
-                Route::get('/profil/wishlist', [WishlistController::class, 'index'])->name('customer.wishlist');
-                Route::delete('/profil/wishlist', [WishlistController::class, 'delete'])->name('customer.wishlist.delete');
+                Route::get('/account/wishlist', [WishlistController::class, 'index'])->name('customer.wishlist');
+                Route::delete('/account/wishlist', [WishlistController::class, 'delete'])->name('customer.wishlist.delete');
             });
         });
     }

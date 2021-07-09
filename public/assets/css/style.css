@@ -1726,7 +1726,7 @@ button {
 .ps-btn, button.ps-btn {
   display: inline-block;
   padding: 15px 45px;
-  font-size: 16px;
+  /*font-size: 16px;*/
   font-weight: 600;
   line-height: 20px;
   color: #000;
@@ -8982,7 +8982,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   padding-right: 30px;
   vertical-align: top;
   /*max-height: 50px;*/
-  font-size: 18px;
+  /*font-size: 18px;*/
   font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
 

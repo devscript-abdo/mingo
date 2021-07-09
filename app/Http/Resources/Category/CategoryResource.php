@@ -22,7 +22,8 @@ class CategoryResource extends JsonResource
             'name' => $this->name,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            //'products' =>  ProductResource::collection($this->products),
+            'childrens' => $this->childrens,
+            'products' =>  ProductResource::collection($this->products),
         ];
     }
 }

@@ -20,6 +20,7 @@ class ProductResource extends JsonResource
     public function toArray($request)
     {
         //return parent::toArray($request);
+       // dd($request->route()->action);
         $lng = explode('/', $request->route()->action['prefix']);
 
         return [
@@ -30,7 +31,8 @@ class ProductResource extends JsonResource
             'picture'=>$this->photo,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'categories' => new CategoryResource($this->category),
+            //'category' => new CategoryResource($this->category),
+            'category' => $this->category,
         ];
     }
 }

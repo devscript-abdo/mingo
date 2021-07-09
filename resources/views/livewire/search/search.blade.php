@@ -1,12 +1,12 @@
 <div>
     <form class="ps-form--quick-search" action="" method="get">
+        @csrf
+        @honeypot
         <div class="form-group--icon"><i class="icon-chevron-down"></i>
             <select class="form-control">
                 <option value="0" selected="selected">{{__('navbar.search_all')}}</option>
                 <option class="level-0" value="babies-moms">Babies & Moms</option>
-                <option class="level-0" value="books-office">Books & Office</option>
-                <option class="level-0" value="cars-motocycles">Cars & Motocycles</option>
-                <option class="level-0" value="clothing-apparel">Clothing & Apparel</option>
+
             </select>
         </div>
       
