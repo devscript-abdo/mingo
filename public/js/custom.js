@@ -11,7 +11,7 @@
     /******************************************************* */
     /******************************************************* */
     /******************************************************* */
-    console.log(deleteAttrRoute,csrfToken);
+    //console.log(deleteAttrRoute,csrfToken);
     $(".deleteAttr").click(function (e) {
         e.preventDefault()
 

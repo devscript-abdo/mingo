@@ -15,11 +15,11 @@ class CreateAttributesTable extends Migration
     {
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
             $table->string('name');
+            $table->string('slug');
             $table->integer('quantity')->default(0);
             $table->bigInteger('price')->default(0);
-           // $table->enum('frontend_type', ['select','muli_select','color_selector', 'radio', 'text', 'text_area']);
+            $table->enum('frontend_type', ['select','muli_select','color_selector', 'radio', 'text', 'text_area'])->default('select');
            // $table->boolean('is_filterable')->default(0);
            // $table->boolean('is_required')->default(0);
             $table->boolean('active')->default(true);
