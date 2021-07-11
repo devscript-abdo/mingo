@@ -175,6 +175,8 @@ Route::group(['prefix' => config('mingo.admin')], function () {
     Voyager::routes();
 
     Route::delete('/attr/delete', [AttributeController::class, 'destroy'])->name('admin.attrs.delete');
+
+    Route::get('/attrs/{slug}', [AttributeController::class, 'getC'])->name('admin.attrs.get');
 });
 
 //Auth::routes();

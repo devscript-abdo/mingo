@@ -94,8 +94,9 @@
                             <!-------------------By Elmarzougui Abdelghafour ---------------------->
                             
                                
-                                 @include('vendor.voyager.products.attributes')
-                                 {{--@include('vendor.voyager.products.categoryTreeview')--}}
+                                {{--@include('vendor.voyager.products.attributes')--}}
+                                 @include('vendor.voyager.products._p_attributes')
+                               
                                 
                            
                             <br>

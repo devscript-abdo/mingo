@@ -16,7 +16,10 @@ class CreateAttributeValuesTable extends Migration
         Schema::create('attribute_values', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('attribute_id');
+           // $table->unsignedBigInteger('product_id');
             $table->foreign('attribute_id')->references('id')->on('attributes');
+           // $table->foreign('product_id')->references('id')->on('products');
+            
             $table->text('value');
             $table->integer('quantity')->default(0);
             $table->bigInteger('price')->default(0);

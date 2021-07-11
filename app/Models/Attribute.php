@@ -11,7 +11,7 @@ class Attribute extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code', 'name', 'quantity', 'price', 'product_id'
+        'slug', 'name', 'quantity', 'price', 'product_id'
     ];
 
     /*protected $casts  = [
@@ -20,17 +20,17 @@ class Attribute extends Model
     ];*/
 
 
-    /*public function products()
+    public function products()
     {
       
         return $this->belongsToMany('App\Models\Product','product_attribute','attribute_id','product_id');
 
-    }*/
+    }
 
-    public function product()
+    /*public function product()
     {
         return $this->belongsTo('App\Models\Product');
-    }
+    }*/
 
     public function values()
     {
@@ -40,6 +40,6 @@ class Attribute extends Model
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;
-        $this->attributes['code'] = Str::slug($value);
+        $this->attributes['slug'] = Str::slug($value);
     }
 }

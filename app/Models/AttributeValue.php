@@ -18,7 +18,7 @@ class AttributeValue extends Model
      * @var array
      */
     protected $fillable = [
-        'attribute_id', 'value', 'price'
+        'attribute_id', 'value', 'price', 'quantity'
     ];
 
     /**
@@ -33,4 +33,16 @@ class AttributeValue extends Model
     {
         return $this->belongsTo(Attribute::class);
     }
+
+    public function products()
+    {
+      
+        return $this->belongsToMany('App\Models\Product','product_attribute_value','attribute_value_id','product_id');
+
+    }
+
+    /*public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
+    }*/
 }

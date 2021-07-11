@@ -314,7 +314,9 @@ class ProductsController extends VoyagerBaseController
 
         $attrs = $product->attributes()->get();
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct', 'attrs'));
+        $attributesData = Attribute::select(['id', 'name', 'slug'])->get();
+
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct', 'attrs', 'attributesData'));
     }
 
     // POST BR(E)AD
@@ -346,10 +348,22 @@ class ProductsController extends VoyagerBaseController
         $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
 
         /****this part is added by abdelghafour to add attribute to products */
-        // dd($request);
+        //dd($request);
+        // dd($request->attrset, '""""""""oUI FILLED"""""""""', $request->attributeData);
+        $attr = Attribute::whereSlug($request->attributeData)->first();
+        if ($attr) {
 
-        if ($request->has('attrs.0.name') &&  $request->filled('attrs.0.name')) {
-           // dd('oui filled');
+            foreach ($request->attrset as $attrset) {
+                $attr->values()->create($attrset);
+            }
+            $at = $attr->products()->whereIn('product_id', [$product->id])->exists();
+            if (!$at) {
+                $attr->products()->attach($product);
+            }
+        }
+
+        if ($request->has('attrset.*') &&  $request->filled('attrset.*')) {
+
             foreach ($request->attrs as $attr) {
                 $product->attributes()->create($attr);
             }
@@ -389,7 +403,7 @@ class ProductsController extends VoyagerBaseController
 
     public function create(Request $request)
     {
-        // dd('Oui create');
+        //dd('Oui create');
         $slug = $this->getSlug($request);
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
@@ -417,14 +431,19 @@ class ProductsController extends VoyagerBaseController
         $view = 'voyager::bread.edit-add';
 
         /*****by abdelghafour  fo specifec setting in mingo.ma */
+
+        $attributesData = Attribute::select(['id', 'name', 'slug'])->get();
         $allCategories = Category::all();
         $categoriesForProduct = 0;
         //$allAttributes = Attribute::all();
+
+        /**************end by abdelghafour *********************************/
+
         if (view()->exists("voyager::$slug.edit-add")) {
             $view = "voyager::$slug.edit-add";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct'));
+        return Voyager::view($view, compact('attributesData', 'dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct'));
     }
 
     /**
@@ -452,11 +471,12 @@ class ProductsController extends VoyagerBaseController
         /****this part is added by abdelghafour to add attribute to products */
 
         if ($request->has('attrs.0.name') &&  $request->filled('attrs.0.name')) {
+            dd($request->attrs);
             foreach ($request->attrs as $attr) {
                 $data->attributes()->create($attr);
             }
         }
-            //  $result = $product->attributes()->create($request->attrs);
+        //  $result = $product->attributes()->create($request->attrs);
         //dd($result); 
         /**************end by abdelghafour *********************************/
         event(new BreadDataAdded($dataType, $data));

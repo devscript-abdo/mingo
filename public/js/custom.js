@@ -29,3 +29,18 @@
             });
         }
     });
+
+var id = 0;
+function getAttributes(select) 
+{
+ // alert(select.options[select.selectedIndex].text);
+  id = select.options[select.selectedIndex].id;
+  var attrsValue = document.getElementById('attrs-value');
+  attrsValue.setAttribute('name',`attrset[${id}][value]`);
+
+  var attrsQte = document.getElementById('attrs-quantity');
+  attrsQte.setAttribute('name',`attrset[${id}][quantity]`);
+
+  var attrsPrice = document.getElementById('attrs-price');
+  attrsPrice.setAttribute('name',`attrset[${id}][price]`);
+}

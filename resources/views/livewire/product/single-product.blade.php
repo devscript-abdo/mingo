@@ -73,17 +73,19 @@
                             <div class="ps-variant ps-variant--image"><span class="ps-variant__tooltip"> pink</span><img src="img/products/detail/variants/small-3.jpg" alt=""></div>
                         </figure>--}}
                         @if($product->attributes->count())
-                            <figure>
-                                <figcaption>{{__('singleProduct.sizes')}}</figcaption>
-                                @foreach($product->attributes as $attribute)
-                                    <div class="ps-variant ps-variant--size" id="sizeVariant"
-                                    onclick="setSelected(this)"
-                                    >
-                                        <span class="ps-variant__tooltip">{{$attribute->name}}</span>
-                                        <span class="ps-variant__size">{{$attribute->code}}</span>
-                                    </div>
-                                @endforeach
-                            </figure>
+                            @foreach($product->attributes as $attribute)
+                                <figure>
+                                    <figcaption>{{$attribute->name}}</figcaption>
+                                    @foreach($attribute->values as $value)
+                                        <div class="ps-variant ps-variant--size" id="sizeVariant"
+                                        onclick="setSelected(this)"
+                                        >
+                                            <span class="ps-variant__tooltip">{{$value->value}}</span>
+                                            <span class="ps-variant__size">{{$value->value}}</span>
+                                        </div>
+                                    @endforeach
+                                </figure>
+                            @endforeach
                         @endif
 
                         @if($product->colors->count())
