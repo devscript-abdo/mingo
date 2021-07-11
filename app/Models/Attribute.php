@@ -14,28 +14,25 @@ class Attribute extends Model
         'slug', 'name', 'quantity', 'price', 'product_id'
     ];
 
+
     /*protected $casts  = [
         'is_filterable' =>  'boolean',
         'is_required'   =>  'boolean',
     ];*/
 
+    protected $with = ['values'];
 
     public function products()
     {
-      
-        return $this->belongsToMany('App\Models\Product','product_attribute','attribute_id','product_id');
 
+        return $this->belongsToMany('App\Models\Product', 'product_attribute', 'attribute_id', 'product_id');
     }
-
-    /*public function product()
-    {
-        return $this->belongsTo('App\Models\Product');
-    }*/
 
     public function values()
     {
         return $this->hasMany(AttributeValue::class);
     }
+
 
     public function setNameAttribute($value)
     {

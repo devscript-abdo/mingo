@@ -40,7 +40,7 @@
 
                     </td>
                     <td><input id="attrs-value" type="text" name="attrset[0][value]" placeholder="Enter your value" class="form-control" /></td>
-                    <td><input id="attrs-quantity" type="text" name="attrset[0][quantity]" value="" class="form-control" /></td>
+                    <td><input id="attrs-quantity" type="text" name="attrset[0][qte]" value="" class="form-control" /></td>
                     <td><input id="attrs-price" type="text" name="attrset[0][price]" value="" class="form-control" /></td>
 
                     <td><button data-attrid="" type="button" class="btn btn-danger remove-tr deleteAttr">supprimer</button></td>

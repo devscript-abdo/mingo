@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Voyager;
 
 use App\Models\Attribute;
+use App\Models\AttributeValue;
 use App\Models\Category;
 use App\Models\Product;
 use Exception;
@@ -314,7 +315,7 @@ class ProductsController extends VoyagerBaseController
 
         $attrs = $product->attributes()->get();
 
-        $attributesData = Attribute::select(['id', 'name', 'slug'])->get();
+        $attributesData = Attribute::select(['id', 'name', 'slug'])->with('values')->get();
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct', 'attrs', 'attributesData'));
     }
@@ -345,29 +346,39 @@ class ProductsController extends VoyagerBaseController
 
         // Validate fields with ajax
         $val = $this->validateBread($request->all(), $dataType->editRows, $dataType->name, $id)->validate();
+          //dd($request->request);
+       // $allData = array_merge($request,['attributes'=>$request->attributes]);
+ 
         $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
 
         /****this part is added by abdelghafour to add attribute to products */
-        //dd($request);
-        // dd($request->attrset, '""""""""oUI FILLED"""""""""', $request->attributeData);
+        //dd($request->attributeData);
+         //$product->update(['attributes' => json_encode($request->attributeData)]); because is casted in Model Product
+         //$product->update(['attributes' => $request->attributeData]);
+        
         $attr = Attribute::whereSlug($request->attributeData)->first();
         if ($attr) {
 
             foreach ($request->attrset as $attrset) {
-                $attr->values()->create($attrset);
+
+                $data = array_merge($attrset,['product_id'=>$product->id]);
+                //dd($data);
+                $attr->values()->create($data);
+                //$product->attributeValues()->create($data);
             }
             $at = $attr->products()->whereIn('product_id', [$product->id])->exists();
             if (!$at) {
                 $attr->products()->attach($product);
             }
+           // $product->sync(AttributeValue::where('attribute_id',$attr->id));
         }
 
-        if ($request->has('attrset.*') &&  $request->filled('attrset.*')) {
+       /* if ($request->has('attrset.*') &&  $request->filled('attrset.*')) {
 
             foreach ($request->attrs as $attr) {
                 $product->attributes()->create($attr);
             }
-        }
+        }*/
         //  $result = $product->attributes()->create($request->attrs);
         //dd($result); 
         /**************end by abdelghafour *********************************/

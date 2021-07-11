@@ -19,8 +19,13 @@ class Product extends Model implements Searchable
 
     protected $translatable = ['name', 'description', 'content'];
 
+   // protected $guarded = [];
+
     //protected $with = ['translations'];
 
+    /*protected $casts  = [
+        'attributes' =>  'array',
+    ];*/
     public function category()
     {
         return $this->belongsTo('App\Models\Category');
@@ -46,16 +51,6 @@ class Product extends Model implements Searchable
     {
         return $this->belongsToMany('App\Models\Attribute', 'product_attribute', 'product_id', 'attribute_id');
     }
-
-    public function attributeValues()
-    {
-        return $this->hasMany('App\Models\AttributeValue');
-    }
-
-    /*public function attributes()
-    {
-        return $this->hasMany('App\Models\Attribute');
-    }*/
 
     public function productCollections()
     {
@@ -125,7 +120,7 @@ class Product extends Model implements Searchable
 
     public function getUrl()
     {
-       return route('products');
+        return route('products');
     }
 
     public function getBrand($field)
@@ -173,4 +168,19 @@ class Product extends Model implements Searchable
             $url
         );
     }
+
+
+
+    /*protected static function booted()
+    {
+        static::creating(function($product){
+        
+            $product->attributes = json_encode(request('attributeData'));
+        });
+
+        static::updated(function($product){
+      
+            $product->attributes = json_encode(request('attributeData'));
+        });
+    }*/
 }

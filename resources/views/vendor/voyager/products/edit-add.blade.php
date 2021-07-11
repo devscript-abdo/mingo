@@ -94,8 +94,11 @@
                             <!-------------------By Elmarzougui Abdelghafour ---------------------->
                             
                                
-                                {{--@include('vendor.voyager.products.attributes')--}}
-                                 @include('vendor.voyager.products._p_attributes')
+                               {{-- @include('vendor.voyager.products.attributes')--}}
+                               
+                                @include('vendor.voyager.products._p_attributes')
+
+                                 {{--@include('vendor.voyager.products.__attributes_json')--}}
                                
                                 
                            
