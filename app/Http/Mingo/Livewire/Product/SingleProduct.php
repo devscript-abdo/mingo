@@ -13,7 +13,7 @@ class SingleProduct extends Component
     public array $quantity = [];
 
     public $product;
-
+    public $colorss;
     public $cart;
 
     public function mount($product)
@@ -31,6 +31,7 @@ class SingleProduct extends Component
     public function addToCart($product_id)
     {
 
+        dd($this->colorss);
         $product = Product::findOrFail($product_id);
 
         Cart::add(

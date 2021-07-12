@@ -44,6 +44,7 @@ class Category extends Categories implements Searchable
     {
         return route('categories.single', $this->slug);
     }
+    
 
     public function getAvatarAttribute()
     {

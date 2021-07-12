@@ -47,7 +47,7 @@
 
 <script>
   
-    $(document).ready(function() {$('.singleProductsColors').select2();});
+   // $(document).ready(function() {$('.singleProductsColors').select2();});
        
 
 </script>

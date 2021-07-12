@@ -1,4 +1,4 @@
-<div >
+<div>
     <div class="ps-product--detail ps-product--fullwidth">
         <div class="ps-product__header">
             <div  class="ps-product__thumbnail" data-vertical="true">
@@ -72,29 +72,20 @@
                             <div class="ps-variant ps-variant--image"><span class="ps-variant__tooltip"> Dark</span><img src="img/products/detail/variants/small-2.jpg" alt=""></div>
                             <div class="ps-variant ps-variant--image"><span class="ps-variant__tooltip"> pink</span><img src="img/products/detail/variants/small-3.jpg" alt=""></div>
                         </figure>--}}
-                        @if($product->attributes->count())
-                            @foreach($product->attributes as $attribute)
-                           
-                                <figure>
-                                    <figcaption>{{$attribute->name}}</figcaption>
-                                    @foreach($attribute->values->whereIn('product_id',[$product->id]) as $value)
-                                        <div class="ps-variant ps-variant--size" id="sizeVariant"
-                                        onclick="setSelected(this)"
-                                        >
-                                            <span class="ps-variant__tooltip" id="{{$value->product_id}}">{{$value->value}}</span>
-                                            <span class="ps-variant__size">{{$value->value}}</span>
-                                        </div>
-                                    @endforeach
-                                </figure>
-                            @endforeach
-                        @endif
+
+                        @include('theme.products.single.default.__product_attributes_handler')
 
                         @if($product->colors->count())
                             <figure>
                                 <figcaption>{{__('singleProduct.colors')}}</figcaption>
+                                <input  type="hidden" id="setColor" name="colors[]" wire:model.defer="colorss" value="rgg">
                                 @foreach($product->colors as $color)
-
-                                    <div class="ps-variant ps-variant--color" style="background-color: {{$color->code}}; !important">
+                                    <div 
+                                      id="{{$color->slug}}"
+                                      class="ps-variant ps-variant--color selectColor"
+                                      style="background-color: {{$color->code}}; !important"
+                                      onclick="getColor(this);setSelected(this)"
+                                    >
                                         <span class="ps-variant__tooltip">{{$color->field('name')}}</span>
                                     </div>
 

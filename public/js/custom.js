@@ -39,7 +39,7 @@ function getAttributes(select)
   attrsValue.setAttribute('name',`attrset[${id}][value]`);
 
   var attrsQte = document.getElementById('attrs-quantity');
-  attrsQte.setAttribute('name',`attrset[${id}][qte]`);
+  attrsQte.setAttribute('name',`attrset[${id}][quantity]`);
 
   var attrsPrice = document.getElementById('attrs-price');
   attrsPrice.setAttribute('name',`attrset[${id}][price]`);

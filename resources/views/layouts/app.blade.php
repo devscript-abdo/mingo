@@ -9,7 +9,8 @@
 
     @include('layouts.parts.meta')
 
-    @include('layouts.parts.fullLink')
+    {{--@include('layouts.parts.fullLink')--}}
+    @include('layouts.parts.singleLink')
     @livewireStyles()
     @yield('checkoutCss')
     @yield('productsCss')
@@ -44,9 +45,10 @@
     {{--@include('sections.__modalQuickViewProduct')--}}
 
 
-    @livewire('product.modal-view')
+    {{--@livewire('product.modal-view')--}}
 
-    @include('layouts.parts.fullScript')
+    {{--@include('layouts.parts.fullScript')--}}
+    @include('layouts.parts.singleScript')
 
     @livewireScripts()
 
