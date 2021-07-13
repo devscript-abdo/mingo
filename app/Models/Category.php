@@ -40,11 +40,17 @@ class Category extends Categories implements Searchable
         return $this->hasMany(self::class, 'id', 'parent_id');
     }
 
+    public function providers()
+    {
+        return $this->belongsToMany('App\Models\Provider', 'provider_category', 'category_id', 'provider_id');
+    }
+
+
     public function getUrlAttribute()
     {
         return route('categories.single', $this->slug);
     }
-    
+
 
     public function getAvatarAttribute()
     {
@@ -58,7 +64,7 @@ class Category extends Categories implements Searchable
     }
     public function getUrl()
     {
-       return route('products');
+        return route('products');
     }
 
     public function scopeRandoms($query)

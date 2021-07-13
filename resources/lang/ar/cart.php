@@ -6,6 +6,7 @@ return [
     'product_price' => 'الثمن',
     'product_qte' => 'الكميه',
     'product_total' => 'المجموع',
+    'product_attr' => 'المتغيرات',
 
     /************************ */
 
@@ -15,5 +16,5 @@ return [
 
     'show_cart' => ' عرض السلة',
     'checkout' => 'اكمال الطلب'
-    
+
 ];

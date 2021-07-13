@@ -47,78 +47,79 @@
                 </tr>
         @endisset
 
- 
+        @isset($attributesDataExist)
             @foreach ($attributesDataExist as $attr)
-                @php 
-                $values = $attr->values->whereIn('product_id',$product->id);
-                @endphp
-                        <tr>
+                    @php 
+                    $values = $attr->values->whereIn('product_id',$product->id);
+                    @endphp
+                            <tr>
 
-                            <td>
-                            
-                                <div class="col-sm-6 col-md-12">
-                                    <select id="itemsData{{$attr->id}}" class="form-control">
-                
-                                    <option id="{{$attr->id}}" value="{{$attr->slug}}">{{$attr->name}}</option>
+                                <td>
                                 
-                                    </select> 
-                                </div>
-
-                            </td>
-                            <td>
-                                @foreach($values as $value )
-                                
-                                    <div class="col-sm-2 col-md-2 col-lg-2">
-                                            <input 
-                                                id="attrs-value" 
-                                                type="text" 
-                                                name="attrsets[{{$attr->id}}][{{$attr->value}}]" 
-                                                value="{{$value->value}}" 
-                                                
-                                                class="form-control"
-                                                readonly
-
-                                            />
-                                    </div>
+                                    <div class="col-sm-6 col-md-12">
+                                        <select id="itemsData{{$attr->id}}" class="form-control">
+                    
+                                        <option id="{{$attr->id}}" value="{{$attr->slug}}">{{$attr->name}}</option>
                                     
-                                @endforeach
-                            </td>
-                            <td>
-                            
+                                        </select> 
+                                    </div>
+
+                                </td>
+                                <td>
                                     @foreach($values as $value )
+                                    
                                         <div class="col-sm-2 col-md-2 col-lg-2">
-                                        <input 
-                                            
-                                            type="text" 
-                                            name="attrsets[{{$attr->id}}][{{$attr->quantity}}]" 
-                                            value="{{$value->quantity}}" 
-                                            class="form-control" 
-                                            readonly
-                                        />
+                                                <input 
+                                                    id="attrs-value" 
+                                                    type="text" 
+                                                    name="attrsets[{{$attr->id}}][{{$attr->value}}]" 
+                                                    value="{{$value->value}}" 
+                                                    
+                                                    class="form-control"
+                                                    readonly
+
+                                                />
                                         </div>
+                                        
                                     @endforeach
-                            
-                            </td>
-                            <td>
-                            
-                                    @foreach($values as $value )
-                                        <div class="col-sm-2 col-md-2 col-lg-2">
+                                </td>
+                                <td>
+                                
+                                        @foreach($values as $value )
+                                            <div class="col-sm-2 col-md-2 col-lg-2">
                                             <input 
-                                               
+                                                
                                                 type="text" 
-                                                name="attrsets[{{$attr->id}}][{{$attr->price}}]" 
-                                                value="{{$value->price}}" 
+                                                name="attrsets[{{$attr->id}}][{{$attr->quantity}}]" 
+                                                value="{{$value->quantity}}" 
                                                 class="form-control" 
                                                 readonly
                                             />
-                                        </div>
-                                    @endforeach
+                                            </div>
+                                        @endforeach
                                 
-                            </td>
+                                </td>
+                                <td>
+                                
+                                        @foreach($values as $value )
+                                            <div class="col-sm-2 col-md-2 col-lg-2">
+                                                <input 
+                                                
+                                                    type="text" 
+                                                    name="attrsets[{{$attr->id}}][{{$attr->price}}]" 
+                                                    value="{{$value->price}}" 
+                                                    class="form-control" 
+                                                    readonly
+                                                />
+                                            </div>
+                                        @endforeach
+                                    
+                                </td>
 
-                            <td><button data-attrid="" type="button" class="btn btn-danger remove-tr deleteAttr">supprimer</button></td>
-                        </tr>
+                                <td><button data-attrid="" type="button" class="btn btn-danger remove-tr deleteAttr">supprimer</button></td>
+                            </tr>
             @endforeach
+        @endisset
     
     </table>
     <br>

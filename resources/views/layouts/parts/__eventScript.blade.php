@@ -1,7 +1,9 @@
 
 <script>
-    /*window.addEventListener('added_to_cart', event => {
-
+    var openCartButton = document.getElementById('cart-mobile');
+    //console.log(openCartButton);
+    window.addEventListener('added_to_cart', event => {
+     
         toastr[event.detail.type](event.detail.message)
         toastr.options = {
             "closeButton": true,
@@ -10,15 +12,17 @@
 
         }
         if (event.detail.type === 'success') {
-
+            openCartButton.classList.add("active");
             setTimeout(function () {
-                location.reload();
-            }, 1000);
+               
+                //window.location.assign("{{route('shoppingcart')}}")
+                openCartButton.classList.remove("active");
+            }, 4000);
 
         }
-    })*/
+    })
 
-    window.addEventListener('added_to_cart', event => {
+    /*window.addEventListener('added_to_cart', event => {
 
         swal({
             position: 'top-end',
@@ -36,12 +40,12 @@
             }, 1000);
 
         }
-        /*.then((willDelete)=>{
+        .then((willDelete)=>{
             if(willDelete){
                 window.livewire.emit('deleteLead',event.detail.id);
             }
-        });*/
-    });
+        });
+    });*/
 </script>
 
 

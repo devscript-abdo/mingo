@@ -9,7 +9,7 @@
         <a class="navigation__item ps-toggle--sidebar" href="#search-sidebar">
             <i class="icon-magnifier"></i><span> {{__('navbar.search')}}</span>
         </a>
-        <a class="navigation__item ps-toggle--sidebar" href="#cart-mobile">
+        <a id="openCart" class="navigation__item ps-toggle--sidebar" href="#cart-mobile">
             <i class="icon-bag2"></i><span> {{__('navbar.shopping_cart')}}</span>
         </a>
     </div>

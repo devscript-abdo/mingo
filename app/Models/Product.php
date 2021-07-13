@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\ProviderProductsScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -14,18 +15,18 @@ use App\Traits\Language;
 
 class Product extends Model implements Searchable
 {
-
+    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
     use HasFactory, Translatable, Language;
 
     protected $translatable = ['name', 'description', 'content'];
 
-   // protected $guarded = [];
+    // protected $guarded = [];
 
     //protected $with = ['translations'];
 
-    /*protected $casts  = [
-        'attributes' =>  'array',
-    ];*/
+    protected $casts = [
+        'formated_price' => 'decimal:2',
+    ];
     public function category()
     {
         return $this->belongsTo('App\Models\Category');
@@ -50,6 +51,13 @@ class Product extends Model implements Searchable
     public function attributes()
     {
         return $this->belongsToMany('App\Models\Attribute', 'product_attribute', 'product_id', 'attribute_id');
+    }
+
+    public function attributesValues()
+    {
+       // return $this->hasManyThrough(AttributeValue::class, Attribute::class);
+
+        return $this->hasManyThrough('App\Models\AttributeValue','App\Models\Attribute','attribute_id','product_id','id');
     }
 
     public function productCollections()
@@ -87,6 +95,11 @@ class Product extends Model implements Searchable
     {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
+    }
+
+    public function getFormatedPriceAttribute()
+    {
+        return $this->castAttribute('formated_price', $this->price);
     }
 
     public function getPhotoAttribute()
@@ -170,17 +183,19 @@ class Product extends Model implements Searchable
     }
 
 
-
-    /*protected static function booted()
+    protected static function booted()
     {
-        static::creating(function($product){
-        
-            $product->attributes = json_encode(request('attributeData'));
-        });
+        static::addGlobalScope(new ProviderProductsScope);
+    }
 
-        static::updated(function($product){
-      
-            $product->attributes = json_encode(request('attributeData'));
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $prefix = self::max('id') + 1;
+            $model->sku = str_pad($prefix . 'MNGP', 5, 0, STR_PAD_LEFT);
+            // $model->serial_code = Str::uuid();
         });
-    }*/
+    }
 }

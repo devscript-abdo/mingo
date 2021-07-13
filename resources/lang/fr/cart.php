@@ -6,7 +6,7 @@ return [
     'product_price' => 'Prix',
     'product_qte' => 'Quantité',
     'product_total' => 'Total',
-
+    'product_attr' => 'Attributes',
     /************************ */
 
     'update' => 'mise a jour',

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AttributeValue extends Model
 {
     use HasFactory;
-
+    use \Znck\Eloquent\Traits\BelongsToThrough;
     /**
      * @var string
      */
@@ -32,6 +32,11 @@ class AttributeValue extends Model
     public function attribute()
     {
         return $this->belongsTo(Attribute::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsToThrough('App\Models\Product', 'App\Models\Attribute');
     }
 
 }

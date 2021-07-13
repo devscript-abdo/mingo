@@ -27,11 +27,19 @@
                                                     <img src="{{$item->options->image}}" alt="">
                                                 </a>
                                             </div>
-                                            <div class="ps-product__content"><a href="{{$item->options->url}}">{{$item->name}}</a>
-                                                {{--<p>Sold By:<strong> YOUNG SHOP</strong></p>--}}
+                                            <div class="ps-product__content">
+                                                <a href="{{$item->options->url}}">{{$item->name}}</a>
+                                                {{--<p>{{__('cart.product_attr')}}</p>--}}
+                                                @foreach ($item->options->attributesData as $key => $value)
+                                                
+                                                 <p> {{$key}} : <strong> {{$value}}</strong></p>
+                                                
+                                                @endforeach
+                                               
                                             </div>
                                         </div>
                                     </td>
+                                    
                                     <td class="price" data-label="Price">{{$item->price}} {{__('symbole.mad')}}</td>
                                     <td data-label="Quantity">
                                         <div class="form-group--number">
@@ -52,7 +60,7 @@
                                         </div>
                                     </td>
                                     
-                                    <td data-label="Total">{{$item->price * $item->qty}} MAD</td>
+                                    <td data-label="Total">{{$item->price * $item->qty}} {{__('symbole.mad')}}</td>
                                     <td data-label="Actions">
                                         <a href="#" data-prodid="{{$item->rowId}}" class="deleteProductFromCart">
                                             <i class="icon-cross"></i>

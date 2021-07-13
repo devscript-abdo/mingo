@@ -88,10 +88,10 @@
                                         </a>
                                         <div class="ps-product__content">
                                             <a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
-                                            <p class="ps-product__price">{{$product->price}} {{__('symbole.mad')}}</p>
+                                            <p class="ps-product__price">{{$product->formated_price}} {{__('symbole.mad')}}</p>
                                         </div>
                                         <div class="ps-product__content hover"><a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
-                                            <p class="ps-product__price">{{$product->price}} {{__('symbole.mad')}}</p>
+                                            <p class="ps-product__price">{{$product->formated_price}} {{__('symbole.mad')}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@
                                     </ul>
                                 </div>
                                 <div class="ps-product__shopping">
-                                    <p class="ps-product__price">{{$product->price}} {{__('symbole.mad')}}</p>
+                                    <p class="ps-product__price">{{$product->formated_price}} {{__('symbole.mad')}}</p>
                                     <a class="ps-btn" href="#" wire:click="addToCart({{$product->id}})">
                                         {{__('buttons.add_to_cart')}}
                                     </a>

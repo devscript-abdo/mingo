@@ -14,6 +14,7 @@
     @livewireStyles()
     @yield('checkoutCss')
     @yield('productsCss')
+
 </head>
 
 <body>
@@ -40,6 +41,7 @@
     <div class="ps-site-overlay"></div>
 
     @include('sections.__loader')
+
     @include('sections.__search')
     
     {{--@include('sections.__modalQuickViewProduct')--}}
@@ -60,6 +62,6 @@
 
     @yield('javascript')
     
-
+  <!-------Powered By Haymacproduction (Elmarzougui Abdelghafour) ------>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <div>
     <div class="ps-product--detail ps-product--fullwidth">
         <div class="ps-product__header">
-            <div  class="ps-product__thumbnail" data-vertical="true">
+            <div class="ps-product__thumbnail" data-vertical="true">
                 <figure>
                     <div class="ps-wrapper">
                         <div class="ps-product__gallery" data-arrow="true">
@@ -52,7 +52,7 @@
                         </select><span>(1 review)</span>
                     </div>
                 </div>
-                <h4 class="ps-product__price">{{$product->price}} {{__('symbole.mad')}}</h4>
+                <h4 class="ps-product__price">{{$product->formated_price}} {{__('symbole.mad')}}</h4>
                 <div class="ps-product__desc">
                     {{--<p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>--}}
                     {{--<ul class="ps-list--dot">
@@ -78,9 +78,16 @@
                         @if($product->colors->count())
                             <figure>
                                 <figcaption>{{__('singleProduct.colors')}}</figcaption>
-                                <input  type="hidden" id="setColor" name="colors[]" wire:model.defer="colorss" value="rgg">
+                                <input  
+                                    type="hidden"
+                                    id="setColor"
+                                    name="colors[]"
+                                    wire:model.defer="attributesData.colors"
+                                    value="rgg"
+                                   
+                                    >
                                 @foreach($product->colors as $color)
-                                    <div 
+                                    <div
                                       id="{{$color->slug}}"
                                       class="ps-variant ps-variant--color selectColor"
                                       style="background-color: {{$color->code}}; !important"
