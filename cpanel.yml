@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/maillete/public_html/mailletexpro/
+    - export DEPLOYPATH=/home/ecomgwch/demo.mingo.ma/mingo/
     - /bin/cp -R * $DEPLOYPATH

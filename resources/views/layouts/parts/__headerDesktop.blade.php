@@ -101,17 +101,17 @@
 
                     @endif
 
-                    <li>
+                    {{--<li>
                         <a href="{{route('about')}}">{{__('navbar.about')}}</a>
                 
                     </li>
                     <li>
                         <a href="{{route('contact')}}">{{__('navbar.contact')}}</a>
                 
-                    </li>
+                    </li>--}}
                 </ul>
                 <ul class="navigation__extra">
-                    {{--<li><a href="#">Sell on Martfury</a></li>--}}
+                    {{--<li><a href="#">Sell on Martfury</a></li>
                     <li><a href="#">{{__('navbar.track_order')}}</a></li>
                     <li>
                         <div class="ps-dropdown"><a href="#">{{__('navbar.mad_maroc')}}</a>
@@ -120,7 +120,7 @@
                                 
                             </ul>
                         </div>
-                    </li>
+                    </li>--}}
                     <li>
                         <div class="ps-dropdown language">
                             <a href="#">

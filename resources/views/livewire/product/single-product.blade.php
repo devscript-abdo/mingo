@@ -145,8 +145,8 @@
                             class="ps-btn ps-btn--black"
                             
                         >
-                        <i class="icon-eye"></i>
-                    </a>
+                            <i class="icon-eye"></i>
+                        </a>
                         @endif
 
                         <a class="ps-btn" href="#">

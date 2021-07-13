@@ -30,11 +30,14 @@
                                             <div class="ps-product__content">
                                                 <a href="{{$item->options->url}}">{{$item->name}}</a>
                                                 {{--<p>{{__('cart.product_attr')}}</p>--}}
-                                                @foreach ($item->options->attributesData as $key => $value)
+                                                @isset($item->options->attributesData)      
                                                 
-                                                 <p> {{$key}} : <strong> {{$value}}</strong></p>
-                                                
-                                                @endforeach
+                                                    @foreach ($item->options->attributesData as $key => $value)
+                                                    
+                                                    <p> {{$key}} : <strong> {{$value}}</strong></p>
+                                                    
+                                                    @endforeach
+                                                @endisset
                                                
                                             </div>
                                         </div>

@@ -124,10 +124,6 @@ Route::group(
 
 
 
-
-
-
-
             Route::get('/shopping-cart', [CartController::class, 'index'])->name('shoppingcart');
             Route::delete('/shopping-cart', [CartController::class, 'delete'])->name('shoppingcart.delete');
 
