@@ -19,7 +19,7 @@
        @include('layouts.parts.singleLink')
     @endif
 
-    {{--<link rel="stylesheet" href="{{asset('assets/css/_header_a.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('assets/css/_header_a.css')}}">
     @livewireStyles()
     @yield('checkoutCss')
     @yield('productsCss')
