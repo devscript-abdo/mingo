@@ -6,7 +6,7 @@
 
     const tryTosetUrl = async (element) => 
      {
-        await delay(4000);
+        await delay(3000);
         setUrlToLink(element);
      }
 
