@@ -12,3 +12,5 @@
 @include('layouts.parts.__eventScript')
 
 @include('layouts.parts.__deleteItemFromCart')
+
+@include('layouts.parts.__similare_products_javascript')

@@ -69,4 +69,11 @@ class ProductRepository  implements ProductInterface
         
         return $this->model()->exploreProducts();
     }
+
+    public function similaire()
+    {
+        $products = $this->model()->pluck('slug');
+        
+       return $products->all();
+    }
 }

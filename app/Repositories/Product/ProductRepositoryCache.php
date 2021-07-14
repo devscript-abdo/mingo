@@ -96,6 +96,13 @@ class ProductRepositoryCache  implements ProductInterface
         return $this->model()->exploreProducts();
     }
 
+    public function similaire()
+    {
+        $products = $this->model()->pluck('slug');
+
+        return $products->all();
+    }
+
     private function timeToLive()
     {
         return \Carbon\Carbon::now()->addDays(30);

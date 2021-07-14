@@ -20,7 +20,7 @@
 
 <body>
 
-    {{--@include('sections.__promo')--}}
+    @include('sections.__promo')
 
     {{--@include('layouts.parts._header_a.__headerDesktop')--}}
     @include('layouts.parts.__headerDesktop')

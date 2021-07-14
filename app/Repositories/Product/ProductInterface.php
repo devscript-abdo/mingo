@@ -25,4 +25,6 @@ interface ProductInterface
     public function bestSearched();
 
     public function explore();
+
+    public function similaire();
 }
