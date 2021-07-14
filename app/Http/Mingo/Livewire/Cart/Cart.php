@@ -52,6 +52,13 @@ class Cart extends Component
         redirect()->back();
     }
 
+    public function removeCart()
+    {
+        MyCart::destroy();
+        $this->emit('cart_updated');
+        redirect()->back();
+    }
+
     public function increaseQte($rowId)
     {
         $prod = MyCart::get($rowId);

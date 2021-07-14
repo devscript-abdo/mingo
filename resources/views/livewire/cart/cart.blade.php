@@ -78,13 +78,16 @@
                         <i class="icon-arrow-left"></i> 
                         {{__('cart.back_to_store')}}
                     </a>
-                    {{--<button 
-                      wire:click="updateCart()" 
+                    <button 
+                      
                       class="ps-btn ps-btn--outline"
-                      onclick="this.disabled = true;this.setAttribute('style', 'background: #000000')"
+                     
+                      onclick="return confirm('Vous voulez vraiment vider le panier ?');"
+
+                      wire:click="removeCart()" 
                     >
-                        <i class="icon-sync"></i> {{__('cart.update')}}
-                    </button>--}}
+                        <i class="icon-cross"></i> {{__('cart.remove')}}
+                    </button>
                 </div>
             </div>
             <div class="ps-section__footer">
