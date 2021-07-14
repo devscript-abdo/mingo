@@ -68,14 +68,71 @@
             </div>
             <div class="header__content-right">
                 <div class="header__actions">
-                    <a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>
+                        @auth('customer')
+                            <a class="header__extra" href="{{route('customer.wishlist')}}">
+                                <i class="icon-heart"></i>
+                                <span>
+                                    <i>
+                                        {{auth()->guard('customer')->user()->wishlist()->count()}}
+                                    </i>
+                                </span>
+                            </a>
+                        @endauth
+                        @guest('customer')
+                                <a 
+                                    href="#"
+                                    class="header__extra" 
+                                    data-placement="top"
+                                    data-toggle="modal"
+                                    data-target="#product-wishlistGuest"
+                                    title="{{__('buttons.add_to_wish')}}"
+                                >
+                                    <i class="icon-heart"></i>
+                                    <span>
+                                        <i>
+                                        0
+                                        </i>
+                                    </span>
+                                </a>
+                        @endguest
                     {{--@include('layouts.parts._header_a._header_cart')--}}
                     @livewire('cart.cart-counter')
                     <div class="ps-block--user-header">
                         <div class="ps-block__left"><i class="icon-user"></i></div>
-                        <div class="ps-block__right">
-                            <a href="{{route('customer.login')}}">{{__('navbar.login_link')}}</a>
-                            <a href="{{route('customer.register')}}">{{__('navbar.register_link')}}</a></div>
+                        @guest('customer')
+                            <div class="ps-block__right">
+                            
+                                    <a href="{{route('customer.login')}}">{{__('navbar.login_link')}}</a>
+                                    <a href="{{route('customer.register')}}">{{__('navbar.register_link')}}</a>
+                            </div>
+                        @endguest
+
+                        @auth('customer')
+                            <div class="ps-block__right">
+                                <a href="{{route('customer.profil')}}">
+                                {{__('navbar.my_account')}}
+                                </a>
+                            </div>
+
+                            
+                            <div class="ps-block__right">
+                                <div class="ps-block__left">
+                                    <a href="#"  onclick="document.getElementById('logoutMing').submit();">
+                                        <i class="icon-power-switch"></i>
+                                    </a>
+                                </div>
+                                <form 
+                                    action="{{route('customer.logout')}}" 
+                                    method="post" 
+                                    hidden 
+                                    id="logoutMing"
+                                
+                                >
+                                    @csrf
+                                </form>
+                            </div>
+                        
+                        @endauth
                     </div>
                 </div>
             </div>

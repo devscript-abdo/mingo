@@ -1,5 +1,5 @@
 
-@include('theme.products.single.default.section_a_nav_add')
+{{--@include('theme.products.single.default.section_a_nav_add')--}}
 @include('theme.products.single.default.section_b_top')
 
 <div class="ps-page--product">
