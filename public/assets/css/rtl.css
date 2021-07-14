@@ -631,6 +631,7 @@ html {
 body {
   font-family:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
   margin: 0;
+  text-align: right;
 }
 
 article,
@@ -1517,7 +1518,7 @@ body {
 .ps-list--categories li .sub-toggle i {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 100%;
   transform: translate(-50%, -50%);
 }
 
@@ -5496,7 +5497,7 @@ textarea.form-control {
 .ps-block--shopping-total h3 span {
   color: #ff3300;
   font-weight: 600;
-  float: right;
+  /*float: right;*/
 }
 
 .ps-block--shopping-total .ps-block__header {
@@ -9547,10 +9548,12 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .ps-product--detail .ps-product__header .ps-product__info {
   max-width: 57%;
   padding-left: 30px;
+  text-align: right;
 }
 
 .ps-product--detail > .ps-product__content {
   padding-top: 100px;
+  text-align: right;
 }
 
 .ps-product--detail .ps-tab-list {
@@ -11142,7 +11145,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 .ps-table--shopping-cart thead tr th:first-child {
-  text-align: left;
+  text-align: right;
 }
 
 .ps-table--shopping-cart tbody tr td {
@@ -15369,7 +15372,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
  
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   z-index: 100;
   z-index: 1000;
   min-width: 100%;
@@ -15378,6 +15381,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   opacity: 0;
   transition: all .3s ease;
   transform: scale3d(1, 1, 0) translateY(30px);
+  text-align: right;
 }
 
 .menu--product-categories .menu--dropdown {
@@ -17388,4 +17392,9 @@ html .bg--parallax {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+/****Custom settings by Abdelghafour ***/
+
+.lg-outer {
+  direction: ltr;
 }

@@ -27,7 +27,7 @@
                             <input class="form-control @error('phone') is-invalid @enderror" name="phone" type="text" @if(auth()->user()->phone)
                                     value="{{auth()->user()->phone}}"
                                     @else
-                                    placeholder="{{__('customer.customer_form_name')}}"
+                                    placeholder="{{__('customer.customer_form_tele')}}"
                                     @endif
                             >
                                 @error('phone')

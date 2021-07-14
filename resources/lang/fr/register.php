@@ -8,6 +8,8 @@ return [
 
     'form_email' => 'E-mail',
 
+    'form_telephone' => 'Téléphone',
+
     'form_password' => 'Mot de pass',
 
     'form_password_confirm' => 'Confirmé le Mot de pass',

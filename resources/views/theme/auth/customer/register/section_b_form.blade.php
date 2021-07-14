@@ -3,6 +3,9 @@
         <form class="ps-form--account ps-tab-root" action="{{route('customer.registerPost')}}" method="post">
             @csrf
             @honeypot
+            {{--@if(isset($errors))
+             {{$errors}}
+            @endif--}}
             <div class="ps-tabs">
                 <div class="ps-tab active" id="register">
                     <div class="ps-form__content">
@@ -10,6 +13,14 @@
                         <div class="form-group">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{__('register.form_name')}}" required autocomplete="name" autofocus>
                             @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="{{__('register.form_telephone')}}" required  autofocus>
+                            @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

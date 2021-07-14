@@ -9,11 +9,12 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+
 class CustomerRegisterController extends Controller
 {
 
 
-        /*
+    /*
     |--------------------------------------------------------------------------
     | Register Controller
     |--------------------------------------------------------------------------
@@ -31,7 +32,7 @@ class CustomerRegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::CUSTOMER_DASH;
+    //protected $redirectTo = RouteServiceProvider::CUSTOMER_DASH;
 
     /**
      * Create a new controller instance.
@@ -60,6 +61,7 @@ class CustomerRegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:customers'],
+            'phone' => ['required', 'numeric', 'phone:MA', 'unique:customers'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
@@ -75,6 +77,7 @@ class CustomerRegisterController extends Controller
         return Customer::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -82,5 +85,11 @@ class CustomerRegisterController extends Controller
     protected function guard()
     {
         return Auth::guard('customer');
+    }
+
+    private function redirectTo()
+    {
+
+        return route('customer.profil');
     }
 }

@@ -40,7 +40,7 @@
                 <h1>{{$product->field('name')}}</h1>
                 <div class="ps-product__meta">
                     @if($product->brand)
-                    <p>{{__('singleProduct.brands')}} : <a href="{{$product->brand->url}}">{{$product->brand->name}}</a></p>
+                    <p>{{__('singleProduct.brands')}} : <a href="{{$product->url}}">{{$product->brand->name}}</a></p>
                     @endif
                     <div class="ps-product__rating">
                         <select class="ps-rating" data-read-only="true">

@@ -159,7 +159,7 @@
                                     @endif
                          
                                 </ul>
-                                <h3>{{__('cart.product_total')}} <span>{{$totalPrice}} {{__('symbole.mad')}}</span></h3>
+                                <h3>{{__('cart.product_total')}} <br><hr> <span>{{$totalPrice}} {{__('symbole.mad')}}</span></h3>
                             </div>
                         </div>
                         <a class="ps-btn ps-btn--fullwidth" href="{{route('checkout')}}">{{__('buttons.checkout')}}</a>

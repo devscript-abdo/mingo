@@ -103,7 +103,14 @@
                             class="form-control @error('billing_address') is-invalid @enderror" 
                             type="text" 
                             name="billing_address"
-                            value="{{old('billing_address')}}"  
+                            value="
+                               {{
+                                auth()->guard('customer')->check()
+                                    ?
+                                auth()->guard('customer')->user()->addresse
+                                    : 
+                                old('billing_address')
+                               }}"  
                         >
                         @error('billing_address')
                             <span class="invalid-feedback" role="alert">
@@ -122,7 +129,14 @@
                         class="form-control @error('billing_phone') is-invalid @enderror" 
                         type="text" 
                         name="billing_phone" 
-                        value="{{old('billing_phone')}}"
+                        value="
+                        {{
+                         auth()->guard('customer')->check()
+                             ?
+                         auth()->guard('customer')->user()->phone
+                             : 
+                         old('billing_phone')
+                        }}" 
                     >
                     @error('billing_phone')
                         <span class="invalid-feedback" role="alert">

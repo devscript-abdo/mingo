@@ -26,6 +26,21 @@ const mix = require('laravel-mix');
      ],
      "public/assets/css/app.css"
  )
+ .styles(
+    [
+        "public/assets/plugins/font-awesome/css/font-awesome.min.css",
+        "public/assets/fonts/Linearicons/Linearicons/Font/demo-files/demo.css",
+        "public/assets/plugins/bootstrap/css/bootstrap.min.css",
+        "public/assets/plugins/owl-carousel/assets/owl.carousel.min.css",
+        "public/assets/plugins/owl-carousel/assets/owl.theme.default.min.css",
+        "public/assets/plugins/slick/slick/slick.css",
+        "public/assets/plugins/lightGallery-master/dist/css/lightgallery.min.css",
+        "public/assets/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css",
+
+        "public/assets/css/rtl.css"
+    ],
+    "public/assets/css/app_rtl.css"
+)
  .scripts(
      [
         "public/assets/plugins/jquery.min.js",

@@ -3,8 +3,9 @@
     <ul class="ps-list--categories">
         @foreach($categories as $categorie)
             @if($categorie->parent_id === null && count($categorie->childrens))
-                <li class="menu-item-has-children">
-                    <a href="{{$categorie->url}}">{{$categorie->field('name')}}</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                <li class="menu-item-has-children" >
+                    <a href="{{$categorie->url}}">{{$categorie->field('name')}}</a>
+                    <span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
                     <ul class="sub-menu">
                         @foreach ($categorie->childrens as $categoriee)
                           
