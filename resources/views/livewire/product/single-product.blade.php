@@ -135,18 +135,7 @@
                         <a href="{{route('shoppingcart')}}" class="ps-btn ps-btn--black">{{__('buttons.add_to_cart_exist')}}</button>
                         @else
                         <button type="submit" class="ps-btn ps-btn--black" href="#">{{__('buttons.add_to_cart')}}</button>
-                        <a 
-                            href="#" 
-                            data-placement="top"
-                            title="Quick View"
-                            data-toggle="modal"
-                            data-target="#product-option"
-
-                            class="ps-btn ps-btn--black"
-                            
-                        >
-                            <i class="icon-eye"></i>
-                        </a>
+           
                         @endif
 
                         <a class="ps-btn" href="#">
