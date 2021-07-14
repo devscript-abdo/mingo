@@ -6,6 +6,7 @@
 
     const tryTosetUrl = async (element) => 
      {
+        element.innerHTML='<i class="fa fa-spinner fa-spin"></i>';
         await delay(3000);
         setUrlToLink(element);
      }
