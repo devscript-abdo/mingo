@@ -206,6 +206,14 @@ Route::group(['prefix' => config('mingo.admin')], function () {
         Route::get('/clear-view', function () {
             Artisan::call('view:clear');
         });
+
+        Route::get('/app-dwon',function(){
+            Artisan::call('down');
+        });
+
+        Route::get('/app-up',function(){
+            Artisan::call('up');
+        });
     });
 });
 
