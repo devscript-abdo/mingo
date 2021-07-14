@@ -59,7 +59,8 @@
                 @include('layouts.parts._header_a._header_categories')
             </div>
             <div class="header__content-center">
-                @include('layouts.parts._header_a._header_search_form')
+                {{--@include('layouts.parts._header_a._header_search_form')--}}
+                @livewire('search.search')
                 {{--<p>
                     <a href="#">iphone x</a>
                     <a href="#">virtual</a>
