@@ -12,6 +12,9 @@
                 @endforeach
 
             @endif
+            <li>
+                <a href="{{route('products.explore')}}">{{__('navbar.explore')}}</a>
+            </li>
         </ul>
     </div>
 </nav>
