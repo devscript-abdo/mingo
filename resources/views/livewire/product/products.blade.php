@@ -53,33 +53,33 @@
                                                 </a>
                                             </li>
 
-                                            <li>
-                                                <a 
-                                                    {{--wire:click="openModalView({{$product->id}})"--}}
-                                                    href="#" 
-                                                    data-placement="top"
-                                                    title="Quick View"
-                                                    data-toggle="modal"
-                                                    data-target="#product-quickview"
-                                                    
-                                                >
-                                                    <i class="icon-eye"></i>
-                                                </a>
-                                            </li>
                                             @auth('customer')
-                                            <li>
-                                                <a
-                                                wire:click="addToWishList({{$product->id}})"
-                                                href="#" 
-                                                data-toggle="tooltip" 
-                                                data-placement="top" 
-                                                title="{{__('buttons.add_to_wish')}}"
-                                                >
-                                                    <i class="icon-heart"></i>
-                                                </a>
-                                            </li>
+                                                <li>
+                                                    <a
+                                                    wire:click="addToWishList({{$product->id}})"
+                                                    href="#" 
+                                                    data-toggle="tooltip" 
+                                                    data-placement="top" 
+                                                    title="{{__('buttons.add_to_wish')}}"
+                                                    >
+                                                        <i class="icon-heart"></i>
+                                                    </a>
+                                                </li>
                                             @endauth
-                                            {{--<li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>--}}
+                                            @guest('customer')
+                                        
+                                                <li>
+                                                    <a 
+                                                        href="#" 
+                                                        data-placement="top"
+                                                        title="{{__('buttons.add_to_wish')}}"
+                                                        data-toggle="modal"
+                                                        data-target="#product-wishlistGuest">
+                                                        <i class="icon-heart"></i>
+                                                    </a>
+                                                </li>
+
+                                            @endguest
                                         </ul>
                                     </div>
                                     <div class="ps-product__container">
@@ -147,8 +147,20 @@
                                                     <i class="icon-heart"></i> 
                                                     {{__('buttons.add_to_whish')}}
                                                 </a>
+                                           
+
                                             </li>
                                         @endauth
+                                        <li>
+                                            <a 
+                                                href="#" 
+                                                data-placement="top"
+                                                title="Quick View"
+                                                data-toggle="modal"
+                                                data-target="#product-wishlistGuest">
+                                                <i class="icon-eye"></i>
+                                            </a>
+                                        </li>
                                         {{--<li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>--}}
                                     </ul>
                                 </div>

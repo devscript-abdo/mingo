@@ -17,7 +17,7 @@ class ProviderProductsScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (auth()->guard('customer')->check()) {
+        if (auth()->check() && auth()->guard() !== 'customer') {
 
             $builder->where('provider_id', auth()->guard('customer')->user()->id);
         }

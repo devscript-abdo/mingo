@@ -44,7 +44,9 @@
 
     @include('sections.__search')
     
-    {{--@include('sections.__modalQuickViewProduct')--}}
+    @include('sections.__modalQuickViewProduct')
+
+    @include('sections.__wishListGuest')
 
 
     {{--@livewire('product.modal-view')--}}
