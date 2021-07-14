@@ -19,7 +19,7 @@
 
 <body>
 
-    @include('sections.__promo')
+    {{--@include('sections.__promo')--}}
 
     @include('layouts.parts.__headerDesktop')
     @include('layouts.parts.__headerMobile') 
