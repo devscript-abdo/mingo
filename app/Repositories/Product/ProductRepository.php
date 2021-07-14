@@ -65,4 +65,8 @@ class ProductRepository  implements ProductInterface
     {
         return $this->model()->topSearched();
     }
+    public function explore(){
+        
+        return $this->model()->exploreProducts();
+    }
 }

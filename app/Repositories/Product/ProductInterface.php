@@ -23,4 +23,6 @@ interface ProductInterface
     public function randomsHome();
 
     public function bestSearched();
+
+    public function explore();
 }

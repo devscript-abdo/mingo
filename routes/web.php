@@ -21,6 +21,7 @@ use App\Http\Controllers\Customer\InvoiceController;
 use App\Http\Controllers\Customer\NotificationController;
 use App\Http\Controllers\Customer\SocialController;
 use App\Http\Controllers\Customer\WishlistController;
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\ProductCollectionController;
 use App\Http\Controllers\ProductController;
@@ -83,6 +84,8 @@ Route::group(
 
         Route::get('/products', [ProductController::class, 'indexWithFilters'])->name('products');
         Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.single');
+
+        Route::get('/explore',[ExploreController::class,'index'])->name('products.explore');
 
         Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
         Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('categories.single');

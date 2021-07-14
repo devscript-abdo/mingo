@@ -90,6 +90,12 @@ class ProductRepositoryCache  implements ProductInterface
         });
     }
 
+    public function explore()
+    {
+
+        return $this->model()->exploreProducts();
+    }
+
     private function timeToLive()
     {
         return \Carbon\Carbon::now()->addDays(30);

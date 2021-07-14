@@ -55,9 +55,9 @@ class Product extends Model implements Searchable
 
     public function attributesValues()
     {
-       // return $this->hasManyThrough(AttributeValue::class, Attribute::class);
+        // return $this->hasManyThrough(AttributeValue::class, Attribute::class);
 
-        return $this->hasManyThrough('App\Models\AttributeValue','App\Models\Attribute','attribute_id','product_id','id');
+        return $this->hasManyThrough('App\Models\AttributeValue', 'App\Models\Attribute', 'attribute_id', 'product_id', 'id');
     }
 
     public function productCollections()
@@ -89,6 +89,13 @@ class Product extends Model implements Searchable
     public function scopeTopSearched()
     {
         return $this->active()->whereTopSearched(true)->get();
+    }
+
+    /*****Explore page scope methode */
+
+    public function scopeExploreProducts()
+    {
+        return $this->active()->with('translations')->inRandomOrder()->get();
     }
 
     public function setNameAttribute($value)
