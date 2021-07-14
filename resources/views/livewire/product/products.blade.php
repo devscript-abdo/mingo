@@ -70,11 +70,12 @@
                                         
                                                 <li>
                                                     <a 
-                                                        href="#" 
+                                                        href="#"
                                                         data-placement="top"
-                                                        title="{{__('buttons.add_to_wish')}}"
                                                         data-toggle="modal"
-                                                        data-target="#product-wishlistGuest">
+                                                        data-target="#product-wishlistGuest"
+                                                        title="{{__('buttons.add_to_wish')}}"
+                                                    >
                                                         <i class="icon-heart"></i>
                                                     </a>
                                                 </li>

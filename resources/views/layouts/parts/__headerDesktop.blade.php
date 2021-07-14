@@ -28,6 +28,23 @@
                             </span>
                         </a>
                     @endauth
+                    @guest('customer')
+                        <a 
+                            href="#"
+                            class="header__extra" 
+                            data-placement="top"
+                            data-toggle="modal"
+                            data-target="#product-wishlistGuest"
+                            title="{{__('buttons.add_to_wish')}}"
+                        >
+                            <i class="icon-heart"></i>
+                            <span>
+                                <i>
+                                   0
+                                </i>
+                            </span>
+                        </a>
+                   @endguest
                     
                     {{--@include('layouts.parts.__cartHeaderDesktop')--}}
 
