@@ -19,6 +19,7 @@
                 wire:keydown.debounce.900ms="submit()"
                 placeholder=" @error('query') {{ $message }} @enderror" 
                 id="input-search"
+                style="border : 1px solid #e1e1e1;"
             >
                 
             
