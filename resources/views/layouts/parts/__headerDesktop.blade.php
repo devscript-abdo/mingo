@@ -117,6 +117,9 @@
                         @endforeach
 
                     @endif
+                    <li>
+                        <a href="{{route('products.explore')}}">{{__('navbar.explore')}}</a>
+                    </li>
 
                     {{--<li>
                         <a href="{{route('about')}}">{{__('navbar.about')}}</a>

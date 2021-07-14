@@ -26,6 +26,9 @@ return [
     /*************** */
 
     'list' => 'Menu',
-    'search'=>'Rechecher'
+    'search' => 'Rechecher',
+
+    /***************** */
+    'explore' => 'Explore'
 
 ];
