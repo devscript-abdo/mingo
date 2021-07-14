@@ -6,8 +6,9 @@
             </div>
             <div class="header__right">
                 <ul class="header__top-links">
-                    <li><a href="#">Store Location</a></li>
-                    {{--<li><a href="#">Track Your Order</a></li>--}}
+                   
+                    <li><a href="{{route('about')}}">{{__('navbar.about')}}</a></li>
+                    <li><a href="{{route('contact')}}">{{__('navbar.contact')}}</a></li>
                      {{--<li>
                         <div class="ps-dropdown"><a href="#">US Dollar</a>
                             <ul class="ps-dropdown-menu">
