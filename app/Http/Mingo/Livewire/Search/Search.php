@@ -11,7 +11,7 @@ class Search extends Component
 {
 
     public $query;
-
+    public $search;
     public $results;
     public $class;
 
@@ -22,24 +22,44 @@ class Search extends Component
     ];
     public function render()
     {
-        return view('livewire.search.search', ['results' => $this->results]);
+        return view('livewire.search.searchTow', ['results' => $this->results]);
     }
 
     public function submit()
     {
         $this->validate();
-
-        $this->results = $this->runSearcher($this->query);
+        if (isset($this->query)) {
+            $this->results = $this->getData($this->query);
+        }
     }
 
     public function runSearcher($q)
     {
-        $searchResults = (new Searchable())
-            ->registerModel(Product::class, ['name', 'content', 'description'])
-            ->registerModel(Category::class, ['name', 'slug'])
+        if (isset($this->query)) {
 
-            ->search($q);
 
+            $searchResults = (new Searchable())
+                ->registerModel(Product::class, ['name', 'content', 'description'])
+                ->registerModel(Category::class, ['name', 'slug'])
+
+                ->search($q);
+
+            $this->class = "active";
+
+            return $searchResults;
+        }
+    }
+
+    public function getData($query)
+    {
+        $search = '%' . $query . '%';
+        // $search = '%' . $this->search . '%';
+        $searchResults = Product::where('name', 'like', $search)
+            ->orWhere('description', 'like', $search)
+            ->orWhere('content', 'like', $search)
+            ->get();
+
+        /*$this->cats     = Category::where('name', 'like', $search)->get();*/
         $this->class = "active";
 
         return $searchResults;

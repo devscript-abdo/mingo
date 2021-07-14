@@ -1,5 +1,5 @@
 <div>
-    <form class="ps-form--quick-search" action="" method="get">
+    <form class="ps-form--quick-search" action="" method="post" autocomplete="off">
         @csrf
         @honeypot
         {{--<div class="form-group--icon">
@@ -15,7 +15,7 @@
                 class="form-control @error('query') is-invalid @enderror"
                 type="text" 
                 name="query" 
-                wire:model.debounce.800ms="query" 
+                wire:model.debounce.900ms="query" 
                 wire:keydown.debounce.900ms="submit()"
                 placeholder=" @error('query') {{ $message }} @enderror" 
                 id="input-search"
@@ -27,25 +27,24 @@
             <div class="ps-panel--search-result @if(isset($class)){{$class}}@endif">
                 
                     <div class="ps-panel__content">
-                        @foreach($results->groupByType() as $type => $modelSearchResults)
-                        
-                            <div class="text-center">
-                                <a href="#">{{ $type }}</a>
-                            </div>
-                            @foreach($modelSearchResults as $searchResult)
+                    
+
+                            @foreach($results as $searchResult)
                                 <div class="ps-product ps-product--wide ps-product--search-result">
                                     <div class="ps-product__thumbnail">
                                         <a href="{{ $searchResult->url }}">
-                                            <img src="{{$searchResult->searchable->photo}}" alt="{{ $searchResult->title }}">
+                                            <img src="{{$searchResult->photo}}" alt="{{ $searchResult->field('name') }}">
                                         </a>
                                     </div>
                                     <div class="ps-product__content">
-                                        <a class="ps-product__title" href="{{ $searchResult->url }}">{{ $searchResult->title }}</a>
-                                        <p class="ps-product__price">{{$searchResult->searchable->price}} {{__('symbole.mad')}}</p>
+                                        <a class="ps-product__title" href="{{ $searchResult->url }}">
+                                            {{ $searchResult->field('name') }}
+                                        </a>
+                                        <p class="ps-product__price">{{$searchResult->price}} {{__('symbole.mad')}}</p>
                                     </div>
                                 </div>
                             @endforeach
-                        @endforeach
+                     
         
                     </div>
                     <div class="ps-panel__footer text-center"><a href="{{route('products')}}">See all results</a></div>

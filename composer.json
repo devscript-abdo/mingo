@@ -29,6 +29,7 @@
         "predis/predis": "^1.1",
         "propaganistas/laravel-phone": "^4.3",
         "renatomarinho/laravel-page-speed": "^2.0",
+        "spatie/laravel-collection-macros": "^7.2",
         "spatie/laravel-honeypot": "^3.0",
         "spatie/laravel-newsletter": "^4.10",
         "spatie/laravel-query-builder": "^3.4",
