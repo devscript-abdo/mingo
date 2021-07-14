@@ -192,7 +192,7 @@ class Product extends Model implements Searchable
 
     protected static function booted()
     {
-        static::addGlobalScope(new ProviderProductsScope);
+       // static::addGlobalScope(new ProviderProductsScope);
     }
 
     public static function boot()

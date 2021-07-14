@@ -11,6 +11,7 @@
 
     {{--@include('layouts.parts.fullLink')--}}
     @include('layouts.parts.singleLink')
+    <link rel="stylesheet" href="{{asset('assets/css/_header_a.css')}}">
     @livewireStyles()
     @yield('checkoutCss')
     @yield('productsCss')
@@ -21,7 +22,8 @@
 
     {{--@include('sections.__promo')--}}
 
-    @include('layouts.parts.__headerDesktop')
+    @include('layouts.parts._header_a.__headerDesktop')
+    {{--@include('layouts.parts.__headerDesktop')--}}
     @include('layouts.parts.__headerMobile') 
     @include('layouts.parts.__cartMobile')
     @include('layouts.parts.__categoriesMobile')

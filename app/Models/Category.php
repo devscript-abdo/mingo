@@ -101,15 +101,16 @@ class Category extends Categories implements Searchable
     public function scopeShowInMenu($query)
     {
         // return Cache::remember($this->cacheKey() . ':categoriesMenu', $this->timeToLive(), function () use ($query) {
-        return $query->whereShowInNavbar(true)
-            ->with(['translations'])
-            ->get();
+   
         // });
+        return $query->whereShowInNavbar(true)
+        ->with(['translations'])
+        ->get();
     }
 
     /****** */
 
-    public function cacheKey()
+    /*public function cacheKey()
     {
         return sprintf(
             "%s/%s",
@@ -117,7 +118,7 @@ class Category extends Categories implements Searchable
             $this->getKey(),
             // $this->updated_at->timestamp
         );
-    }
+    }*/
 
     private function timeToLive()
     {

@@ -21,6 +21,7 @@ class CategoryObserver
         cache()->pull('categories_cache_childrens');
         cache()->pull('categories_in_home');
         cache()->pull('categories_of_navbar');
+        cache()->pull('categoriesMenu');
     }
 
     /**
@@ -38,6 +39,7 @@ class CategoryObserver
         cache()->pull('categories_cache_childrens');
         cache()->pull('categories_in_home');
         cache()->pull('categories_of_navbar');
+        cache()->pull('categoriesMenu');
     }
 
     /**
@@ -55,6 +57,7 @@ class CategoryObserver
         cache()->pull('categories_cache_childrens');
         cache()->pull('categories_in_home');
         cache()->pull('categories_of_navbar');
+        cache()->pull('categoriesMenu');
     }
 
     /**
@@ -72,6 +75,7 @@ class CategoryObserver
         cache()->pull('categories_cache_childrens');
         cache()->pull('categories_in_home');
         cache()->pull('categories_of_navbar');
+        cache()->pull('categoriesMenu');
     }
 
     /**
@@ -89,5 +93,6 @@ class CategoryObserver
         cache()->pull('categories_cache_childrens');
         cache()->pull('categories_in_home');
         cache()->pull('categories_of_navbar');
+        cache()->pull('categoriesMenu');
     }
 }
