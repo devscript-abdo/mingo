@@ -1,14 +1,12 @@
-<div>
+
     <li>
-        <a 
-            href="#"
-            data-toggle="tooltip"
-            data-placement="top"
+        <a
+             href="#"
             title="{{__('buttons.add_to_cart')}}"
-            class="addToCartDeals"
-            wire:click="addToCart({{$prod}})"
+            wire:click="addToCartHome({{$prod}})"
+            onclick="return false;"
         >
-        <i class="icon-bag2"></i>
+          <i class="icon-bag2"></i>
         </a>
     </li>
-</div>
+

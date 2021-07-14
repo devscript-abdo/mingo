@@ -13,7 +13,6 @@ class Cart extends Component
 
     public array $quantity = [];
 
-    protected $listeners = ['addToCartHome' => 'fromTest'];
 
     protected $rules = [
         'quantity' => 'required|array',
@@ -62,11 +61,6 @@ class Cart extends Component
             'type' => 'success',
             'message' => 'le produit est ajouté à votre panier'
         ]);
-    }
-
-    public function fromTest()
-    {
-        dd('Iyuiiuiu');
     }
 
     public function updateCart()

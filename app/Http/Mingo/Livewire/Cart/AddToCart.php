@@ -20,7 +20,7 @@ class AddToCart extends Component
         return view('livewire.cart.add-to-cart');
     }
 
-    public function addToCart($product_id)
+    public function addToCartHome($product_id)
     {
 
         $product = Product::findOrFail($product_id);
