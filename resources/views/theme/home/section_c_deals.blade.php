@@ -29,9 +29,17 @@
                             </a>
                             {{--<div class="ps-product__badge out-stock">Out Of Stock</div>--}}
                             <ul class="ps-product__actions">
-                                <li><a href="{{$prod->url}}" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                
+                                @livewire('cart.add-to-cart',['prod'=>$prod->id])
+                                
+                                <li>
+                                    <a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="{{__('buttons.add_to_wish')}}">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div class="ps-product__container">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Mingo\Livewire\Cart;
 
+use App\Models\Product;
 use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart as MyCart;
 
@@ -11,6 +12,8 @@ class Cart extends Component
     public $cartItemess;
 
     public array $quantity = [];
+
+    protected $listeners = ['addToCartHome' => 'fromTest'];
 
     protected $rules = [
         'quantity' => 'required|array',
@@ -33,6 +36,37 @@ class Cart extends Component
         $subTotal = MyCart::subtotal();
 
         return view('livewire.cart.cart', compact('cartItemes', 'totalPrice', 'subTotal'));
+    }
+
+    public function addToCart($product_id)
+    {
+
+        $product = Product::findOrFail($product_id);
+
+        MyCart::add(
+            $product->id,
+            $product->field('name'),
+            $this->quantity,
+            $product->formated_price / 1,
+            0,
+            [
+                //'colors' => $request->colors ?? [],
+                'image' => $product->photo,
+                'url' => $product->url,
+            ]
+        );
+
+        $this->emit('cart_updated');
+
+        $this->dispatchBrowserEvent('added_to_cart', [
+            'type' => 'success',
+            'message' => 'le produit est ajouté à votre panier'
+        ]);
+    }
+
+    public function fromTest()
+    {
+        dd('Iyuiiuiu');
     }
 
     public function updateCart()

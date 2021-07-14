@@ -74,11 +74,11 @@
                     </table>
                 </div>
                 <div class="ps-section__cart-actions">
-                    <a class="ps-btn" href="{{route('products')}}">
-                        <i class="icon-arrow-left"></i> 
-                        {{__('cart.back_to_store')}}
-                    </a>
-                    <button 
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
+                        <a class="ps-btn ps-btn--fullwidth" href="{{route('checkout')}}">{{__('buttons.checkout')}}</a>
+                    </div>
+
+                    {{--<button 
                       
                       class="ps-btn ps-btn--outline"
                      
@@ -87,7 +87,7 @@
                       wire:click="removeCart()"
                     >
                         <i class="icon-cross"></i> {{__('cart.remove')}}
-                    </button>
+                    </button>--}}
                 </div>
             </div>
             <div class="ps-section__footer">
@@ -162,7 +162,16 @@
                                 <h3>{{__('cart.product_total')}} <br><hr> <span>{{$totalPrice}} {{__('symbole.mad')}}</span></h3>
                             </div>
                         </div>
-                        <a class="ps-btn ps-btn--fullwidth" href="{{route('checkout')}}">{{__('buttons.checkout')}}</a>
+                        <a class="ps-btn" href="{{route('products')}}">
+                            <i class="icon-arrow-left"></i> 
+                            {{__('cart.back_to_store')}}
+                        </a>
+                        <a class="ps-btn" href="{{route('products')}}"
+                            onclick="return confirm('Vous voulez vraiment vider le panier ?');"
+                            wire:click="removeCart()"
+                        >
+                        <i class="icon-cross"></i> {{__('cart.remove')}}
+                        </a>
                     </div>
     
                 </div>

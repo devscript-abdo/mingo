@@ -13,7 +13,7 @@
                     </li>
                 @endforeach
                  ,
-                <li><a href="shop-grid.html">{{__('buttons.show_all')}}</a></li>
+                <li><a href="{{route('categories')}}">{{__('buttons.show_all')}}</a></li>
             </ul>
         </div>
         <div class="ps-section__content">

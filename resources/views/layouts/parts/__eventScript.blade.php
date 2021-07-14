@@ -48,4 +48,28 @@
     });*/
 </script>
 
+<script>
+    /*var addToCart = document.getElementsByClassName('addToCartDeals');
+    addToCart.addEventListener('click', function() {
+        console.log('Ouiiii');
+    });*/
+
+    function addToCartDeals(ele)
+    {
+      
+        let productId = ele.dataset.id
+
+        console.log('Ouiiii',productId);
+        window.Livewire.emit('postAdded');
+
+
+    
+    }
+
+    /*Livewire.on('add_toCartFromHome', postId => {
+      alert('A post was added with the id of: ' + postId);
+     })*/
+</script>
+
+
 

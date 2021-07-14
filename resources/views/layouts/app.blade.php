@@ -62,12 +62,13 @@
 
 
     {{--@livewire('product.modal-view')--}}
-
-    {{--@include('layouts.parts.fullScript')--}}
-    @include('layouts.parts.singleScript')
-
     @livewireScripts()
 
+    {{--@include('layouts.parts.fullScript')--}}
+    
+    @include('layouts.parts.singleScript')
+
+   
     @yield('productsJs')
 
     @yield('singleCartJs')
