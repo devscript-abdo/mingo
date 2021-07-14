@@ -19,6 +19,8 @@
 
 <body>
 
+    @include('sections.__promo')
+
     @include('layouts.parts.__headerDesktop')
     @include('layouts.parts.__headerMobile') 
     @include('layouts.parts.__cartMobile')
@@ -44,7 +46,7 @@
 
     @include('sections.__search')
     
-    @include('sections.__modalQuickViewProduct')
+    {{--@include('sections.__modalQuickViewProduct')--}}
 
     @include('sections.__wishListGuest')
 
