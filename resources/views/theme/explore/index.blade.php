@@ -10,7 +10,7 @@
 
         @include('theme.explore.section_b_banner')
         @include('theme.explore.section_c_brand')
-        @include('theme.explore.section_d_products')
+        @include('theme.explore.section_d_products_b')
 
     </div>
 </div>

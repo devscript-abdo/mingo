@@ -6,6 +6,7 @@
 
          @include('theme.home.section_a_slider')
          @include('theme.home.section_b_features')
+         
          @include('theme.home.section_c_deals')
          @include('theme.home.section_d_collections')
 

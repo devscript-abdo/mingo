@@ -11,7 +11,7 @@
 
     {{--@include('layouts.parts.fullLink')--}}
     @include('layouts.parts.singleLink')
-    {{--<link rel="stylesheet" href="{{asset('assets/css/_header_a.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('assets/css/_home_8.css')}}">
     @livewireStyles()
     @yield('checkoutCss')
     @yield('productsCss')
@@ -68,6 +68,6 @@
 
     @yield('javascript')
     
-  <!-------Powered By Haymacproduction (Elmarzougui Abdelghafour) ------>
+  <!-------Powered By Haymacproduction (Elmarzougui Abdelghafour)------>
 </body>
 </html>
