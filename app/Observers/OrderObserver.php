@@ -14,7 +14,7 @@ class OrderObserver
      */
     public function created(Order $order)
     {
-        $this->clearAllCache(auth()->guard('customer')->user()->id);
+        $this->clearAllCache();
     }
 
     /**
@@ -25,7 +25,7 @@ class OrderObserver
      */
     public function updated(Order $order)
     {
-        $this->clearAllCache(auth()->guard('customer')->user()->id);
+        $this->clearAllCache();
     }
 
     /**
@@ -36,7 +36,7 @@ class OrderObserver
      */
     public function deleted(Order $order)
     {
-        $this->clearAllCache(auth()->guard('customer')->user()->id);
+        $this->clearAllCache();
     }
 
     /**
@@ -47,7 +47,7 @@ class OrderObserver
      */
     public function restored(Order $order)
     {
-        $this->clearAllCache(auth()->guard('customer')->user()->id);
+        $this->clearAllCache();
     }
 
     /**
@@ -58,14 +58,17 @@ class OrderObserver
      */
     public function forceDeleted(Order $order)
     {
-        $this->clearAllCache(auth()->guard('customer')->user()->id);
+        $this->clearAllCache();
     }
 
-    private function clearAllCache($id)
+    private function clearAllCache()
     {
-        $id = json_encode($id);
+        if (auth()->guard('customer')->check()) {
 
-        cache()->pull("orders_cache_{$id}");
-        cache()->pull("orders_cache_slug_{$id}");
+            $id = json_encode(auth()->guard('customer')->user()->id);
+
+            cache()->pull("orders_cache_{$id}");
+            cache()->pull("orders_cache_slug_{$id}");
+        }
     }
 }

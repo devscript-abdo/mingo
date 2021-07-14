@@ -34,9 +34,17 @@
                                                             <a href="{{$item->options->url}}"> {{$item->name}}</a>
                                                             <br>
                                                             {{$item->price}} × {{$item->qty}}
-                                                            {{--<p>Sold By:<strong>YOUNG SHOP</strong></p>--}}
+                                                            
+                                                            @if($item->options->attributesData)      
+                                                                <p> <i> variants :</i></p>
+                                                                @foreach ($item->options->attributesData as $key => $value)
+                                                                
+                                                                <p> {{$key}} : <strong> {{$value}}</strong></p>
+                                                                
+                                                                @endforeach
+                                                            @endif
                                                         </td>
-                                                        <td>{{$item->price * $item->qty}} MAD</td>
+                                                        <td>{{$item->price * $item->qty}} {{__('symbole.mad')}}</td>
                                                     </tr>
                       
                                                 @endforeach

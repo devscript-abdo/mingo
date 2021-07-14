@@ -5,7 +5,7 @@
     <div class="ps-breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="{{route('home')}}">Home</a></li>
+                <li><a href="{{route('home')}}">{{__('navbar.home')}}</a></li>
                 <li>Order Success</li>
             </ul>
         </div>
@@ -19,12 +19,13 @@
                     Thanks for your Order. 
                     @auth('customer')
                        Please visit
-                            <a href="{{route('customer.invoices.single',$order)}}">
+                            <a href="{{route('customer.invoices.single',$order->slug)}}">
                                 here
                             </a> 
                         to check your order status.
                     @endauth
-               
+                    <br> 
+                    to check your order status: <strong>{{$order->full_number}}</strong>
                 </p>
             </div>
         </div>

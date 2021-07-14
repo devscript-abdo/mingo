@@ -81,27 +81,6 @@
                     @enderror
                 </div>
             </div>
-            @guest
-                
-                <div class="form-group">
-                    <label>{{__('checkoutPage.check_form_address')}}<sup>*</sup>
-                    </label>
-                    <div class="form-group__content">
-                        <input 
-                            class="form-control @error('billing_address') is-invalid @enderror" 
-                            type="text" 
-                            name="billing_address"
-                            value="{{old('billing_address')}}"  
-                        >
-                        @error('billing_address')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-                
-            @endguest
             @if(auth()->guard('customer')->check() && count(auth()->guard('customer')->user()->addresses))
                
                     <div class="form-group">
