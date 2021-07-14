@@ -40,7 +40,7 @@ class SingleProduct extends Component
             $product->id,
             $product->field('name'),
             $this->quantity[$product_id],
-            $product->price / 1,
+            $product->formated_price / 1,
             0,
             [
 

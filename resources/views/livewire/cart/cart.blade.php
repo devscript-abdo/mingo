@@ -83,8 +83,6 @@
                       class="ps-btn ps-btn--outline"
                      
                       onclick="return confirm('Vous voulez vraiment vider le panier ?');"
-
-                      wire:click="removeCart()" 
                     >
                         <i class="icon-cross"></i> {{__('cart.remove')}}
                     </button>
