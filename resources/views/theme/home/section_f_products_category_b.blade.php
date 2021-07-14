@@ -46,7 +46,34 @@
                                 @livewire('cart.add-to-cart',['prod'=>$product->id])
                                 
                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                @auth('customer')
+                                    <li>
+                                        <a
+                                        wire:click="addToWishList({{$product->id}})"
+                                        href="#" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top" 
+                                        title="{{__('buttons.add_to_wish')}}"
+                                        >
+                                            <i class="icon-heart"></i>
+                                        </a>
+                                    </li>
+                                @endauth
+                                @guest('customer')
+                            
+                                    <li>
+                                        <a 
+                                            href="#"
+                                            data-placement="top"
+                                            data-toggle="modal"
+                                            data-target="#product-wishlistGuest"
+                                            title="{{__('buttons.add_to_wish')}}"
+                                        >
+                                            <i class="icon-heart"></i>
+                                        </a>
+                                    </li>
+
+                                @endguest
                             </ul>
                         </div>
                         <div class="ps-product__container">
