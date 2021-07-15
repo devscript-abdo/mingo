@@ -38,7 +38,7 @@
                                 @auth('customer')
                                     <li>
                                         <a
-                                        wire:click="addToWishList({{$product->id}})"
+                                        wire:click="addToWishList({{$prod->id}})"
                                         href="#" 
                                         data-toggle="tooltip" 
                                         data-placement="top" 
