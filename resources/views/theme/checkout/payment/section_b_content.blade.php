@@ -55,7 +55,8 @@
                                             - Soyez certain d'avoir le montant exact du paiement.
                                             - Nous acceptons uniquement le paiement en Dirham Marocain.
                                           </p>
-                                          <button type="submit" class="ps-btn">Proceed with cash on delivery</button>
+                                          <input  id="cod_payment_method" type="hidden" name="payment_method" value="">
+                                          <a href="#" data-payment="cod" onclick="setPaymentMethod(this); return false;" class="ps-btn">Proceed with cash on delivery</a>
                                         </div>
                                     </div>
                                 </div>

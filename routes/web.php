@@ -136,10 +136,10 @@ Route::group(
             Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.post');
 
             Route::get('/checkout/payment',[PaymentController::class,'index'])
-            ->middleware('verifyCanPayment')
+           // ->middleware('verifyCanPayment')
             ->name('checkout.payment');
             Route::post('/checkout/payment',[PaymentController::class,'store'])
-            ->middleware('verifyCanPayment')
+            //->middleware('verifyCanPayment')
             ->name('checkout.paymentPost');
 
             Route::get('/guest-checkout', [CheckoutController::class, 'index'])->name('checkout.guest');

@@ -68,7 +68,6 @@
     
     @include('layouts.parts.singleScript')
 
-   
     @yield('productsJs')
 
     @yield('singleCartJs')
