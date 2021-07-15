@@ -49,6 +49,8 @@ Route::get('/tokens/create', function (Request $request) {
     return ['token' => $token->plainTextToken];
 });
 
+Route::get('/payment',[PaymentController::class,'index'])->name('checkout.payment');
+
 Route::get('/test', [SiteController::class, 'test']);
 
 Route::post('proccess',[PaymentController::class,'proccess'])->name('payment.proccess');
@@ -132,6 +134,13 @@ Route::group(
 
             Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout')->middleware('auth:customer');
             Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.post');
+
+            Route::get('/checkout/payment',[PaymentController::class,'index'])
+            ->middleware('verifyCanPayment')
+            ->name('checkout.payment');
+            Route::post('/checkout/payment',[PaymentController::class,'store'])
+            ->middleware('verifyCanPayment')
+            ->name('checkout.paymentPost');
 
             Route::get('/guest-checkout', [CheckoutController::class, 'index'])->name('checkout.guest');
 

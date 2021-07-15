@@ -15,7 +15,9 @@ class CheckoutController extends Controller
 
     public function index()
     {
+        
         if (Cart::instance('default')->count() == 0) {
+
             return redirect()->route('products');
         }
         if (auth()->guard('customer')->check() && request()->routeIs('checkout.guest')) {
@@ -37,10 +39,14 @@ class CheckoutController extends Controller
             return $item->options->url . ', ' . $item->qty;
         })->values()->toJson();*/
 
-        $this->addToOrdersTables($request, null);
+        $order = $this->addToOrdersTables($request, null);
 
-        Cart::instance('default')->destroy();
+        if ($order) {
 
+           // Cart::instance('default')->destroy();
+
+            return redirect()->route('checkout.payment');
+        }
         return redirect()->route('checkout.thankyou')->with('success_message', 'Merci pour votre Command');
     }
 

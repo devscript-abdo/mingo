@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Payment\PaymentRequest;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use CMI\CmiClient;
+use Gloudemans\Shoppingcart\Facades\Cart;
+
 class PaymentController extends Controller
 {
     //
@@ -36,5 +40,21 @@ class PaymentController extends Controller
     public function proccessDone(Request $request)
     {
         dd($request->all());
+    }
+
+    public function index()
+    {
+        $itemes = Cart::content();
+        $totalPrice = Cart::priceTotal();
+        $subTotal = Cart::subtotal();
+
+        $order = Order::latest('created_at')->first();
+
+        return view('theme.checkout.payment.index', compact('itemes', 'totalPrice', 'subTotal', 'order'));
+    }
+
+    public function store(PaymentRequest $request)
+    {
+        
     }
 }

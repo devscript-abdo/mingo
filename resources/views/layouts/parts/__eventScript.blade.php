@@ -54,17 +54,32 @@
         console.log('Ouiiii');
     });*/
 
-    function addToCartDeals(ele)
+    function showCartByTime()
     {
-      
-        let productId = ele.dataset.id
+        var openCartButton = document.getElementById('cart-mobile');
+        var status = false; 
+        const intervala = setInterval(function () {
+            status = true;
+            console.log(status);  
+            }, 3000);
+     
+        clearInterval(intervala); // thanks @Luca D'Amico
 
-        console.log('Ouiiii',productId);
-        window.Livewire.emit('postAdded');
+        const interval = setInterval(function () {
+                if(status){
+                    openCartButton.classList.add("active");
+                    console.log('Ouii');
+                }else{
+                    openCartButton.classList.remove("active");
+                    console.log('Ouii false');
+                }
 
-
-    
+               
+            }, 8000);
+            clearInterval(interval); // thanks @Luca D'Amico
     }
+
+    showCartByTime();
 
     /*Livewire.on('add_toCartFromHome', postId => {
       alert('A post was added with the id of: ' + postId);

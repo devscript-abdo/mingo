@@ -84,6 +84,7 @@ class Kernel extends HttpKernel
 
         'doNotCacheResponse'      => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
         
-        'verifyApiAccess' => \App\Http\Middleware\VerifyAPIAccess::class
+        'verifyApiAccess' => \App\Http\Middleware\VerifyAPIAccess::class,
+        'verifyCanPayment'=>\App\Http\Middleware\PaymentMiddleware::class,
     ];
 }
