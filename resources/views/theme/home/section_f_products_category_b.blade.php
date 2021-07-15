@@ -3,7 +3,7 @@
         <div class="ps-section__header">
             <h3>{{$category->field('name')}}</h3>
             <ul class="ps-section__links">
-                @foreach($category->products as $product)
+                {{--@foreach($category->products as $product)
 
                   @foreach ($product->productCollections->unique('productCollections') as $collection )
 
@@ -11,7 +11,8 @@
 
                   @endforeach
 
-                @endforeach
+                @endforeach--}}
+                <li><a href="{{$category->url}}">{{__('buttons.show_all')}}</a></li>
             </ul>
         </div>
         <div class="ps-section__content">
