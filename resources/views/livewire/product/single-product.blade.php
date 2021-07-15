@@ -150,6 +150,21 @@
                                     <i class="icon-heart"></i>
                                 </a>
                             @endauth
+                            @guest('customer')
+                                            
+                                <li>
+                                    <a 
+                                        href="#"
+                                        data-placement="top"
+                                        data-toggle="modal"
+                                        data-target="#product-wishlistGuest"
+                                        title="{{__('buttons.add_to_wish')}}"
+                                    >
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </li>
+
+                            @endguest
                             
                         </div>
                     </div>
