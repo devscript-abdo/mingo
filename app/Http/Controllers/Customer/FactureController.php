@@ -14,7 +14,11 @@ class FactureController extends Controller
 
     public function index()
     {
-        $factures = auth()->guard('customer')->user()->invoices()->get();
+        $factures = auth()
+        ->guard('customer')
+        ->user()
+        ->invoices()
+        ->get();
         /* $facts = $factures->map(function($fct,$key){
            return Storage::disk('public')->exists($fct->url);
        });

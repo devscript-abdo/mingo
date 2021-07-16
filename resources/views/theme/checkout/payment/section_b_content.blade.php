@@ -33,9 +33,9 @@
                                         <li  class="active">
                                             <a class="ps-btn ps-btn--sm" href="#cod_payment">Paiement à la livraison</a>
                                         </li>
-                                        <li>
+                                        {{--<li>
                                             <a class="ps-btn ps-btn--sm" href="#paypal">Paypal</a>
-                                        </li>
+                                        </li>--}}
                                         <li>
                                             <a class="ps-btn ps-btn--sm" href="#visa">Visa / Master Card</a>
                                         </li>
@@ -56,7 +56,9 @@
                                             - Nous acceptons uniquement le paiement en Dirham Marocain.
                                           </p>
                                           <input  id="cod_payment_method" type="hidden" name="payment_method" value="">
-                                          <a href="#" data-payment="cod" onclick="setPaymentMethod(this); return false;" class="ps-btn">Proceed with cash on delivery</a>
+                                          {{--<button type="submit" data-payment="cod" onclick="setPaymentMethod(this); return false;" class="ps-btn">Proceed with cash on delivery</a>--}}
+                                            <button type="submit" data-payment="cod" class="ps-btn">Proceed with cash on delivery</a>
+
                                         </div>
                                     </div>
                                 </div>

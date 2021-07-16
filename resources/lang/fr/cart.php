@@ -11,7 +11,7 @@ return [
 
     'update' => 'mise a jour',
     'remove'=>'Vider le panier',
-    'back_to_store' => 'retour a la boutique',
+    'back_to_store' => 'Poursuivre vos achats',
 
     /**************************** */
 

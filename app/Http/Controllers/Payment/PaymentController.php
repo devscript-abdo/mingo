@@ -55,6 +55,7 @@ class PaymentController extends Controller
 
     public function store(PaymentRequest $request)
     {
-        
+        return redirect()->route('checkout.thankyou')->with('success_message', 'Merci pour votre Command');
+
     }
 }
