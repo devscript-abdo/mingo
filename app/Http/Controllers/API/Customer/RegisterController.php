@@ -52,6 +52,7 @@ class RegisterController extends Controller
                 'photo_link' => $user->profil_avatar,
 
                 'token' => $token,
+                
             ],
             '_response' => ['msg' => 'user created with success']
         ], 201);
