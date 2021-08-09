@@ -17,16 +17,19 @@ class CategoryResource extends JsonResource
      */
     public function toArray($request)
     {
+        //return parent::toArray($request);
+        // dd($request->route()->action);
+        $lng = explode('/', $request->route()->action['prefix']);
+
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'name' => $this->field('name', $lng[1]),
             'icon' => $this->icon,
             'childes' => $this->childes,
-           // 'products' => ProductResource::collection($this->products)
+            // 'products' => ProductResource::collection($this->products)
             /*'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,*/
         ];
 
-        // $response = ["_respooonse" => ["msg" => 'successfully']];
     }
 }

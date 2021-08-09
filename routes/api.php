@@ -27,20 +27,28 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
 Route::group(['middleware' => 'verifyApiAccess'], function () {
-    
+
     /********************************** Products API  **********************************************/
     Route::group(['middleware' => 'api'], function () {
 
         Route::group(['prefix' => 'fr'], function () {
 
             Route::get('/products', [ProductController::class, 'index'])->name('api.products.fr');
-            Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show.fr');
+            Route::get('/products/{id}', [ProductController::class, 'show'])
+                ->whereNumber('id')
+                ->name('api.products.show.fr');
+
+            Route::get('/products-latest', [ProductController::class, 'latest'])
+                
+                ->name('api.products.latest.fr');
         });
 
         Route::group(['prefix' => 'ar'], function () {
 
             Route::get('/products', [ProductController::class, 'index'])->name('api.products.ar');
             Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show.ar');
+
+            Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.latest.ar');
         });
     });
 

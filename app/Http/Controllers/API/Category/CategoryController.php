@@ -45,10 +45,9 @@ class CategoryController extends Controller
 
         if ($category) {
           
-
             return response()->json(
 
-                ['payload' => ProductResource::collection($category->products), '_response' => ['message' => 'done']
+                ['payload' => ProductResource::collection($category->products), '_response' => ['message' => 'successfully products of category']
                 
             ], 200);
         }

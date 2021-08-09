@@ -27,6 +27,17 @@ class ProductController extends Controller
         );
     }
 
+    public function latest()
+    {
+        return response()->json(
+            [
+                'payload' =>  ProductResource::collection(Product::latest('created_at')->get()),
+                '_response' => ['msg' => 'successfully']
+            ],
+            200
+        ); 
+    }
+
 
     /**
      * Display the specified resource.
