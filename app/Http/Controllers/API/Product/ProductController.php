@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Product\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -25,6 +26,19 @@ class ProductController extends Controller
             ],
             200
         );
+
+        /*****Using Cache ****/
+
+        /*return response()->json(
+            [
+                'payload' =>  ProductResource::collection(Cache::remember('api-products', $this->timeToLiveForCache(), function () {
+                    return Product::all();
+                })),
+
+                '_response' => ['msg' => 'successfully']
+            ],
+            200
+        );*/
     }
 
     public function latest()
@@ -35,7 +49,20 @@ class ProductController extends Controller
                 '_response' => ['msg' => 'successfully']
             ],
             200
-        ); 
+        );
+
+        /*****Using Cache ****/
+
+        /*return response()->json(
+            [
+                'payload' =>  ProductResource::collection(Cache::remember('api-products-latest', $this->timeToLiveForCache(), function () {
+                    return Product::latest('created_at')->get();
+                })),
+
+                '_response' => ['msg' => 'successfully']
+            ],
+            200
+        );*/
     }
 
 

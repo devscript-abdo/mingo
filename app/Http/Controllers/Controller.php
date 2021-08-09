@@ -12,4 +12,10 @@ use App\Traits\InterfaceHandler;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, InterfaceHandler;
+
+
+    public function timeToLiveForCache()
+    {
+        return \Carbon\Carbon::now()->addDays(30);
+    }
 }
