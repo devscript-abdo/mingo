@@ -7,6 +7,7 @@ use App\Http\Resources\Category\CategoryResource;
 use App\Http\Resources\Product\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductCollection;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -40,12 +41,16 @@ class CategoryController extends Controller
 
     public function getProductsOfCategory($id)
     {
-        $category = Category::find($id);
+        $category = Category::without(['childrens', 'translations'])->find($id);
 
         if ($category) {
-            //  return    CategoryResource::collection(Product::all());
+          
 
-            return response()->json(['payload' => $category->products, '_response' => ['message' => 'done']], 200);
+            return response()->json(
+
+                ['payload' => ProductResource::collection($category->products), '_response' => ['message' => 'done']
+                
+            ], 200);
         }
         return response()->json(['error' => 'product not found'], 404);
     }

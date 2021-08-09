@@ -22,10 +22,11 @@ class CategoryResource extends JsonResource
             'name' => $this->name,
             'icon' => $this->icon,
             'childes' => $this->childes,
+           // 'products' => ProductResource::collection($this->products)
             /*'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,*/
         ];
 
-       // $response = ["_respooonse" => ["msg" => 'successfully']];
+        // $response = ["_respooonse" => ["msg" => 'successfully']];
     }
 }
