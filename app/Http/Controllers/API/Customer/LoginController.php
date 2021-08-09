@@ -31,8 +31,14 @@ class LoginController extends Controller
             'payload' =>
             [
                 'id' => $user->id,
-                'name' => $user->name,
+                'nom' => $user->name,
+                'prenom' => $user->name,
                 'email' => $user->email,
+                'address' => $user->addresse,
+                'ville' => $user->city,
+                'zip' => '12345600',
+                'photo_link' => $user->profil_avatar,
+
                 'token' => $token,
             ],
             '_response' => ['msg' => 'user logged with success']

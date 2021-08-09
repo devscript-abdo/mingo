@@ -43,9 +43,13 @@ class RegisterController extends Controller
             'payload' =>
             [
                 'id' => $user->id,
-                'name' => $user->name,
+                'nom' => $user->name,
+                'prenom' => $user->name,
                 'email' => $user->email,
-                'token' => $token,
+                'address' => $user->addresse,
+                'ville' => $user->city,
+                'zip' => '12345600',
+                'photo_link' => $user->profil_avatar,
             ],
             '_response' => ['msg' => 'user created with success']
         ], 201);
