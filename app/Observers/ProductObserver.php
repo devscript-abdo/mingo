@@ -73,5 +73,8 @@ class ProductObserver
         cache()->pull('products_cache_related');
         cache()->pull('products_cache_random');
         cache()->pull('products_cache_topsearch');
+        
+        cache()->pull('api-products');
+        cache()->pull('api-products-latest');
     }
 }
