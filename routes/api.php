@@ -34,13 +34,10 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::group(['prefix' => 'fr'], function () {
 
             Route::get('/products', [ProductController::class, 'index'])->name('api.products.fr');
-            Route::get('/products/{id}', [ProductController::class, 'show'])
-                ->whereNumber('id')
-                ->name('api.products.show.fr');
+            Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show.fr');
 
-            Route::get('/products-latest', [ProductController::class, 'latest'])
-                
-                ->name('api.products.latest.fr');
+            Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.latest.fr');
+            Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.fr');
         });
 
         Route::group(['prefix' => 'ar'], function () {
@@ -48,7 +45,8 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
             Route::get('/products', [ProductController::class, 'index'])->name('api.products.ar');
             Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show.ar');
 
-            Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.latest.ar');
+            Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.deals.ar');
+            Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.fr');
         });
     });
 
