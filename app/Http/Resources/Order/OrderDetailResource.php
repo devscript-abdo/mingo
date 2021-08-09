@@ -29,10 +29,10 @@ class OrderDetailResource extends JsonResource
             'qty' => $this->products_all,
             'price' => $this->billing_discount,
             'discount' => $this->name,
-            'delivery_status' => $this->created_at,
+            'delivery_status' => $this->delivery_status,
             'order_status' => $this->status,
             'payment_status' => $this->is_payed,
-            'shipping_method_id' => $this->status,
+            'shipping_method_id' => 1,
             'created_at' => $this->created_at,
         ];
     }
