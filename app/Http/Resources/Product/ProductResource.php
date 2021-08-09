@@ -30,7 +30,7 @@ class ProductResource extends JsonResource
             'addedBy' => 'mingo',
             'userId' => 1,
             'name' => $this->field('name', $lng[1]),
-            'slug' => '',
+            'slug' => $this->slug,
             'categoryIds' => [$this->category->id],
             'brandId' => $this->brand->id ?? '',
             'unit' => '',
@@ -42,14 +42,31 @@ class ProductResource extends JsonResource
             'flashDeal' => '',
             'videoProvider' => '',
             'videoUrl' => '',
-            'colors' => [],
-            
-            'price' => $this->price,
-            'picture' => $this->photo,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            //'category' => new CategoryResource($this->category),
-            'category' => $this->category,
+            'colors' => $this->all_colors,
+            'variantProduct' => '',
+            'attributes' => $this->all_attributes,
+            'choiceOptions' => [],
+            'variation' => [],
+            'published' => '',
+            'unitPrice' => $this->formated_price,
+            'purchasePrice' => $this->formated_price,
+            'tax' => '5',
+            'taxType' => 'percent',
+            'discount' => '20',
+            'discountType' => 'percent',
+            'currentStock' => '10',
+            'details' => $this->field('description', $lng[1]),
+            'freeShipping' => '',
+            'attachment' => '',
+            'createdAt' => $this->created_at,
+            'updatedAt' => $this->updated_at,
+            'status' => '',
+            'featuredStatus' => '',
+            "rating" => [
+
+                (object)["average" => "4.7", "productId" => "$this->id"]
+            ]
+            //'category' => $this->category,
         ];
     }
 }

@@ -1,6 +1,6 @@
 
-@if($product->attributes->count())
-   @foreach($product->attributes as $attribute)
+@if($product->attributesVariant->count())
+   @foreach($product->attributesVariant as $attribute)
 
       @php
                $attrs = $attribute->values->whereIn('product_id',[$product->id]);

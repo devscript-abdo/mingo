@@ -18,7 +18,13 @@ class ProductController extends Controller
     {
         //return   ProductResource::collection(Product::all());
         // return  new ProductResource(Product::all()->toArray());
-        return response()->json(['payload' =>  ProductResource::collection(Product::all())], 200);
+        return response()->json(
+            [
+                'payload' =>  ProductResource::collection(Product::all()),
+                '_response' => ['msg' => 'successfully']
+            ],
+            200
+        );
     }
 
 
@@ -38,7 +44,4 @@ class ProductController extends Controller
         }
         return response()->json(['error' => 'product not found'], 404);
     }
-
-
-
 }

@@ -26,6 +26,7 @@ class Product extends Model implements Searchable
 
     protected $casts = [
         'formated_price' => 'decimal:2',
+        ///'all_colors'=>'json',
     ];
     public function category()
     {
@@ -48,7 +49,7 @@ class Product extends Model implements Searchable
         return $this->belongsToMany('App\models\Wishlist', 'wishlists', 'product_id', 'id');
     }
 
-    public function attributes()
+    public function attributesVariant()
     {
         return $this->belongsToMany('App\Models\Attribute', 'product_attribute', 'product_id', 'attribute_id');
     }
@@ -135,6 +136,44 @@ class Product extends Model implements Searchable
         return $imagesPaths->all();
         //return $images;
     }
+
+    /******************** 09-08-2021 ***************************/
+    // this accessor is used For IP route
+    public function getAllColorsAttribute()
+    {
+        if ($this->colors->count()) {
+            $colors = collect($this->colors);
+
+            $result = $colors->map(function ($item, $key) {
+
+                $return = ['name' => $item->name, 'code' => $item->code];
+                return (object)$return;
+            });
+
+            return $result->all();
+        }
+        return [];
+    }
+
+    // this accessor is used For IP route
+    public function getAllAttributesAttribute()
+    {
+        if ($this->attributesVariant->count()) {
+
+            $attrs = collect($this->attributesVariant);
+
+            $result = $attrs->map(function ($item, $key) {
+                //return  $item->values->whereIn('product_id', [$this->id]);
+                return [
+                    'name' => $item->name,
+                    'values' => $item->values->whereIn('product_id', [$this->id])
+                ];
+            });
+            return $result->all();
+        }
+        return [];
+    }
+
 
     public function getUrlAttribute()
     {
