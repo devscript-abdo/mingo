@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Banner\BannerController;
+use App\Http\Controllers\API\Brand\BrandController;
 use App\Http\Controllers\API\Category\CategoryController;
 use App\Http\Controllers\API\Customer\LoginController;
 use App\Http\Controllers\API\Customer\LogoutController;
@@ -69,6 +70,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::get('category/{id}/products', [CategoryController::class, 'getProductsOfCategory'])->name('api.categories.products.ar');
     });
 
+    /********************************** END Categories API  **********************************************/
 
     /******************************Banner Routes **************************************/
 
@@ -82,7 +84,17 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::get('/banners', [BannerController::class, 'index'])->name('api.banners.index.fr');
     });
 
-    /********************************** END Categories API  **********************************************/
+    /******************************Brand Routes **************************************/
+
+    Route::group(['prefix' => 'ar'], function () {
+
+        Route::get('/brands', [BrandController::class, 'index'])->name('api.brands.index.ar');
+    });
+
+    Route::group(['prefix' => 'fr'], function () {
+
+        Route::get('/brands', [BrandController::class, 'index'])->name('api.brands.index.fr');
+    });
 
 
     /***********************************************Customer Login API ********************************/
