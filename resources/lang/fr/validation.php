@@ -13,7 +13,7 @@ return [
     */
     'validate_domain' => "désolé impossible de trouver l'url ",
 
-    'phone' => 'The :attribute field contains an invalid number.',
+    'phone'           => 'Tle numéro de téléphone entré ne correspond A quel opérateur marocain',
     /************************************************************ */
     'accepted'        => 'Le champ :attribute doit être accepté.',
     'active_url'      => "Le champ :attribute n'est pas une URL valide.",
