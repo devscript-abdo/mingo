@@ -18,7 +18,7 @@
                 <p>
                     Thanks for your Order. 
                     @auth('customer')
-                       Please visit
+                        Please visit
                             <a href="{{route('customer.invoices.single',$order->slug)}}">
                                 here
                             </a> 

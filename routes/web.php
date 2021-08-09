@@ -216,7 +216,7 @@ Route::group(['prefix' => config('mingo.admin')], function () {
             Artisan::call('view:clear');
         });
 
-        Route::get('/app-dwon',function(){
+        Route::get('/app-down',function(){
             Artisan::call('down');
         });
 
