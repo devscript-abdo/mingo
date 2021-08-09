@@ -45,7 +45,15 @@ class Category extends Categories implements Searchable
         return $this->belongsToMany('App\Models\Provider', 'provider_category', 'category_id', 'provider_id');
     }
 
-
+    /******This function is used fo API Route */
+    public function getChildesAttribute()
+    {
+        return $this->subcategory()
+            ->where('parent_id', $this->id)
+            ->without(['childrens', 'translations'])
+            ->select(['id', 'name', 'icon'])
+            ->get();
+    }
     public function getUrlAttribute()
     {
         return route('categories.single', $this->slug);
@@ -101,11 +109,11 @@ class Category extends Categories implements Searchable
     public function scopeShowInMenu($query)
     {
         // return Cache::remember($this->cacheKey() . ':categoriesMenu', $this->timeToLive(), function () use ($query) {
-   
+
         // });
         return $query->whereShowInNavbar(true)
-        ->with(['translations'])
-        ->get();
+            ->with(['translations'])
+            ->get();
     }
 
     /****** */

@@ -26,7 +26,6 @@ class ProductResource extends JsonResource
         return [
 
             'id' => $this->id,
-
             'addedBy' => 'mingo',
             'userId' => 1,
             'name' => $this->field('name', $lng[1]),

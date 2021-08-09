@@ -14,16 +14,26 @@ class CategoryController extends Controller
 
     public function index()
     {
-        return response()->json(['payload' =>  CategoryResource::collection(Category::all()), '_response' => ['message' => 'done']], 200);
+        return response()->json(
+            [
+                'payload' =>  CategoryResource::collection(Category::all()),
+                '_response' => ['msg' => 'successfully']
+            ],
+            200
+        );
     }
 
     public function show($id)
     {
-
-        $category = Category::find($id);
+        $category = Category::without(['childrens', 'translations'])->find($id);
 
         if ($category) {
-            return new CategoryResource($category);
+
+            return response()->json([
+                'payload' =>   new CategoryResource($category),
+                '_response' => ['msg' => 'successfully single category']
+            ], 200);
+             // return new CategoryResource($category);
         }
         return response()->json(['error' => 'category not found'], 404);
     }
@@ -33,7 +43,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         if ($category) {
-           //  return    CategoryResource::collection(Product::all());
+            //  return    CategoryResource::collection(Product::all());
 
             return response()->json(['payload' => $category->products, '_response' => ['message' => 'done']], 200);
         }

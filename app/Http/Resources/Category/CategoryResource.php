@@ -20,10 +20,12 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'childrens' => $this->childrens,
-            'products' =>  ProductResource::collection($this->products),
+            'icon' => $this->icon,
+            'childes' => $this->childes,
+            /*'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,*/
         ];
+
+       // $response = ["_respooonse" => ["msg" => 'successfully']];
     }
 }

@@ -138,6 +138,7 @@ class Product extends Model implements Searchable
     }
 
     /******************** 09-08-2021 ***************************/
+    
     // this accessor is used For IP route
     public function getAllColorsAttribute()
     {
