@@ -89,8 +89,6 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::post('/logout', [LogoutController::class, 'logout'])->name('api.customer.logout');
     });
 
-
-
     Route::group(['prefix' => 'fr'], function () {
 
         Route::post('/register', [RegisterController::class, 'create'])->name('api.customer.create');

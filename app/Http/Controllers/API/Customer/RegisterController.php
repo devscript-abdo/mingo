@@ -33,6 +33,7 @@ class RegisterController extends Controller
         $user = Customer::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
 
