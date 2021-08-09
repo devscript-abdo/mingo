@@ -10,10 +10,11 @@
                                     <img src="{{$product->photo}}" alt="{{$product->field('name')}}">
                                 </a>
                             </div>
+                           
                             @foreach($product->all_photos as $photo)
                                 <div class="item">
-                                    <a href="{{$product->singlePhoto($photo)}}">
-                                        <img src="{{$product->singlePhoto($photo)}}" alt="{{$product->field('name')}}">
+                                    <a href="{{$photo}}">
+                                        <img src="{{$photo}}" alt="{{$product->field('name')}}">
                                     </a>
                                 </div>
                             @endforeach
@@ -29,7 +30,7 @@
                     @foreach($product->all_photos as $photo)
                         <div class="item">
                             
-                           <img src="{{$product->singlePhoto($photo)}}" alt="{{$product->field('name')}}">
+                           <img src="{{$photo}}" alt="{{$product->field('name')}}">
                             
                         </div>
                         
@@ -42,7 +43,7 @@
                     @if($product->brand)
                     <p>{{__('singleProduct.brands')}} : <a href="{{$product->url}}">{{$product->brand->name}}</a></p>
                     @endif
-                    <div class="ps-product__rating">
+                    {{--<div class="ps-product__rating">
                         <select class="ps-rating" data-read-only="true">
                             <option value="1">1</option>
                             <option value="1">2</option>
@@ -50,7 +51,7 @@
                             <option value="1">4</option>
                             <option value="2">5</option>
                         </select><span>(1 review)</span>
-                    </div>
+                    </div>--}}
                 </div>
                 <h4 class="ps-product__price">{{$product->formated_price}} {{__('symbole.mad')}}</h4>
                 <div class="ps-product__desc">

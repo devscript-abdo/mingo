@@ -20,15 +20,32 @@ class ProductResource extends JsonResource
     public function toArray($request)
     {
         //return parent::toArray($request);
-       // dd($request->route()->action);
+        // dd($request->route()->action);
         $lng = explode('/', $request->route()->action['prefix']);
 
         return [
 
             'id' => $this->id,
+
+            'addedBy' => 'mingo',
+            'userId' => 1,
             'name' => $this->field('name', $lng[1]),
-            'price'=>$this->price,
-            'picture'=>$this->photo,
+            'slug' => '',
+            'categoryIds' => [$this->category->id],
+            'brandId' => $this->brand->id ?? '',
+            'unit' => '',
+            'minQty' => '1',
+            'refundable' => '',
+            'images' => $this->all_photos,
+            'thumbnail' => $this->photo,
+            'featured' => '',
+            'flashDeal' => '',
+            'videoProvider' => '',
+            'videoUrl' => '',
+            'colors' => [],
+            
+            'price' => $this->price,
+            'picture' => $this->photo,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             //'category' => new CategoryResource($this->category),

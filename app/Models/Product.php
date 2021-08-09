@@ -124,13 +124,16 @@ class Product extends Model implements Searchable
     public function getAllPhotosAttribute()
     {
         $images =  json_decode($this->images) ?? [];
-        return $images;
-    }
 
-    public function singlePhoto($value)
-    {
+        $collection = collect($images);
 
-        return Voyager::image($value);
+        $imagesPaths = $collection->map(function ($item, $key) {
+
+            return Voyager::image($item);
+        });
+
+        return $imagesPaths->all();
+        //return $images;
     }
 
     public function getUrlAttribute()
@@ -192,7 +195,7 @@ class Product extends Model implements Searchable
 
     protected static function booted()
     {
-       // static::addGlobalScope(new ProviderProductsScope);
+        // static::addGlobalScope(new ProviderProductsScope);
     }
 
     public static function boot()
