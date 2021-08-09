@@ -50,6 +50,8 @@ class RegisterController extends Controller
                 'ville' => $user->city,
                 'zip' => '12345600',
                 'photo_link' => $user->profil_avatar,
+
+                'token' => $token,
             ],
             '_response' => ['msg' => 'user created with success']
         ], 201);
