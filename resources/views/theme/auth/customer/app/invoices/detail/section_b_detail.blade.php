@@ -53,7 +53,7 @@
                                             <div class="ps-product__content"><a href="{{$product->url}}">
                                                 {{$product->field('name')}}
                                             </a>
-                                                <p>Sold By:<strong> YOUNG SHOP</strong></p>
+                                                <p>Sold By : <strong> YOUNG SHOP </strong></p>
                                             </div>
                                         </div>
                                     </td>

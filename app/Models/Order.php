@@ -27,6 +27,20 @@ class Order extends Model
     {
         return $this->belongsToMany('App\Models\Product')->withPivot('quantity');
     }
+    public function getProductsAllAttribute()
+    {
+        if ($this->products->count()) {
+
+            $attrs = collect($this->products);
+
+            $result = $attrs->map(function ($item, $key) {
+                return  $item->pivot->quantity;
+
+            });
+            return $result;
+        }
+        return [];
+    }
 
     public function invoice()
     {

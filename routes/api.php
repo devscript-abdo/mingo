@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Category\CategoryController;
 use App\Http\Controllers\API\Customer\LoginController;
 use App\Http\Controllers\API\Customer\LogoutController;
 use App\Http\Controllers\API\Customer\RegisterController;
+use App\Http\Controllers\API\Order\OrderController;
 use App\Http\Controllers\API\Product\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -127,5 +128,19 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
     Route::group(['prefix' => 'ar'], function () {
 
         Route::post('/register', [RegisterController::class, 'create'])->name('api.customer.create');
+    });
+
+    Route::group(['middleware' => 'auth:sanctum'], function () {
+
+        Route::group(['prefix' => 'fr'], function () {
+
+            Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.fr');
+            Route::get('/orders/{id}', [OrderController::class, 'show'])->name('api.orders.single.fr');
+        });
+        Route::group(['prefix' => 'ar'], function () {
+
+            Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.ar');
+            Route::get('/orders/{id}', [OrderController::class, 'show'])->name('api.orders.single.ar');
+        });
     });
 });
