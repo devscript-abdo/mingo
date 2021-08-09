@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Banner\BannerController;
 use App\Http\Controllers\API\Category\CategoryController;
 use App\Http\Controllers\API\Customer\LoginController;
 use App\Http\Controllers\API\Customer\LogoutController;
@@ -69,11 +70,22 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
     });
 
 
+    /******************************Banner Routes **************************************/
+
+    Route::group(['prefix' => 'ar'], function () {
+
+        Route::get('/banners', [BannerController::class, 'index'])->name('api.banners.index.ar');
+    });
+
+    Route::group(['prefix' => 'fr'], function () {
+
+        Route::get('/banners', [BannerController::class, 'index'])->name('api.banners.index.fr');
+    });
 
     /********************************** END Categories API  **********************************************/
 
 
-    /************Customer Login API ********************************/
+    /***********************************************Customer Login API ********************************/
 
     Route::group(['prefix' => 'fr'], function () {
 
