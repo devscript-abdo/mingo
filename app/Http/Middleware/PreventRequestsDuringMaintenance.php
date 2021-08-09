@@ -13,6 +13,8 @@ class PreventRequestsDuringMaintenance extends Middleware
      */
     protected $except = [
         'theadmin',
-        'theadmin/*'
+        'theadmin/*',
+        'api',
+        'api/'
     ];
 }
