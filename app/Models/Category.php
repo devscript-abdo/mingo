@@ -59,6 +59,7 @@ class Category extends Categories implements Searchable
                     'id' => $category->id,
                     'name' => $category->name,
                     'icon' => $category->icon_mobile_link,
+                    'childes' => $category->childes
                 ];
             })
             ->toArray();
