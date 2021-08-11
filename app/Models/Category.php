@@ -20,6 +20,7 @@ class Category extends Categories implements Searchable
 
     protected $with = ['childrens', 'translations'];
 
+    // protected $appends = ['icon_mobile_link'];
 
     public function products()
     {
@@ -51,8 +52,16 @@ class Category extends Categories implements Searchable
         return $this->subcategory()
             ->where('parent_id', $this->id)
             ->without(['childrens', 'translations'])
-            ->select(['id', 'name', 'icon'])
-            ->get();
+            ->select(['id', 'name', 'icon_mobile'])
+            ->get()
+            ->map(function ($category) {
+                return [
+                    'id' => $category->id,
+                    'name' => $category->name,
+                    'icon' => $category->icon_mobile_link,
+                ];
+            })
+            ->toArray();
     }
     public function getUrlAttribute()
     {
