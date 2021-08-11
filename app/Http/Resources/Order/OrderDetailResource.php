@@ -28,12 +28,12 @@ class OrderDetailResource extends JsonResource
             'product_details' => ProductResource::collection($this->products),
             'qty' => $this->products_all,
             'price' => $this->billing_discount,
-            'discount' => $this->name,
+            'discount' => $this->billing_discount_code,
             'delivery_status' => $this->delivery_status,
             'order_status' => $this->status,
             'payment_status' => $this->is_payed,
             'shipping_method_id' => 1,
-            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
+            'created_at' => $this->created_at->format('Y-m-d'),
         ];
     }
 }
