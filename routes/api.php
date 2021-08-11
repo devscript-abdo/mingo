@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\Banner\BannerController;
 use App\Http\Controllers\API\Brand\BrandController;
 use App\Http\Controllers\API\Category\CategoryController;
+use App\Http\Controllers\API\Customer\AdresseController;
 use App\Http\Controllers\API\Customer\LoginController;
 use App\Http\Controllers\API\Customer\LogoutController;
 use App\Http\Controllers\API\Customer\RegisterController;
@@ -148,9 +149,17 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
         Route::group(['prefix' => 'fr/account'], function () {
             Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.fr');
+
+            Route::get('/addresses',[AdresseController::class,'index'])->name('api.addresses.update.fr');
         });
+        
         Route::group(['prefix' => 'ar/account'], function () {
-            Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.fr');
+            Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.ar');
+
+            Route::get('/addresses',[AdresseController::class,'index'])->name('api.addresses.update.ar');
+
         });
+
+      
     });
 });
