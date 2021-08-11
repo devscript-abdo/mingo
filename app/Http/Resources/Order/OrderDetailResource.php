@@ -33,7 +33,7 @@ class OrderDetailResource extends JsonResource
             'order_status' => $this->status,
             'payment_status' => $this->is_payed,
             'shipping_method_id' => 1,
-            'created_at' => $this->created_at,
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
         ];
     }
 }

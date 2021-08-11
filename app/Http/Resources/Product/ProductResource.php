@@ -57,8 +57,8 @@ class ProductResource extends JsonResource
             'details' => $this->field('description', $lng[1]),
             'freeShipping' => '',
             'attachment' => '',
-            'createdAt' => $this->created_at,
-            'updatedAt' => $this->updated_at,
+            'createdAt' => $this->created_at->format('Y-m-d H:i:s'),
+            'updatedAt' => $this->updated_at->format('Y-m-d H:i:s'),
             'status' => '',
             'featuredStatus' => '',
             "rating" => [

@@ -27,7 +27,7 @@ class OrderResource extends JsonResource
             'shipping_address' => $this->billing_address,
             'discount_amount' => $this->billing_discount,
             'discount_type' => $this->name,
-            'created_at' => $this->created_at,
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'order_status' => $this->status,
         ];
     }
