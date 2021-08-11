@@ -24,7 +24,7 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->field('name', $lng[1]),
-            'icon' => $this->icon,
+            'icon' => $this->icon_mobile_link,
             'childes' => $this->childes,
             // 'products' => ProductResource::collection($this->products)
             /*'created_at' => $this->created_at,

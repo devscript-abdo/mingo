@@ -70,6 +70,12 @@ class Category extends Categories implements Searchable
         $image  = Voyager::image($this->image);
         return $image;
     }
+
+    public function getIconMobileLinkAttribute()
+    {
+        return $this->icon_mobile ?? "https://ma.jumia.is/cms/000_2021/00quicklinks/ICONE_FOOD-.png";
+    }
+
     public function getUrl()
     {
         return route('products');
