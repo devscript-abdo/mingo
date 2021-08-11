@@ -34,10 +34,12 @@ class Order extends Model
             $attrs = collect($this->products);
 
             $result = $attrs->map(function ($item, $key) {
-                return (array) $item->pivot->quantity;
+
+                return $item->pivot->quantity;
 
             });
-            return array_sum($result);
+
+            return $result;
         }
         return [];
     }
