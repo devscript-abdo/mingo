@@ -26,7 +26,7 @@ class OrderResource extends JsonResource
             'order_amount' => str_replace(',','.',$this->billing_total),
             'shipping_address' => $this->billing_address,
             'discount_amount' => $this->billing_discount,
-            'discount_type' => $this->name,
+            'discount_type' => $this->billing_discount_code,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'order_status' => $this->status,
         ];
