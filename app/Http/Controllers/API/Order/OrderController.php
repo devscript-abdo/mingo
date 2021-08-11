@@ -16,10 +16,13 @@ class OrderController extends Controller
             ->user()
             ->orders()
             ->get();
+       // dd(count($orders));
+       // $message = '';
+        count($orders) ? $message = 'successfully Orders' : $message = 'no Orders';
         return response()->json(
             [
                 'payload' =>  OrderResource::collection($orders),
-                '_response' => ['msg' => 'successfully Orders']
+                '_response' => ['msg' => $message]
             ],
             200
         );

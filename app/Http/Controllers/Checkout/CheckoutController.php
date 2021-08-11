@@ -68,6 +68,7 @@ class CheckoutController extends Controller
             'billing_subtotal' => Cart::subtotal(),
             'billing_tax' => 0,
             'billing_total' => Cart::priceTotal(),
+            'payment_gateway'=>'COD',
             'error' => $error,
         ]);
 

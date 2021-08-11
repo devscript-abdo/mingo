@@ -18,7 +18,7 @@ class CategoryController extends Controller
         return response()->json(
             [
                 'payload' =>  CategoryResource::collection(Category::whereNull('parent_id')->get()),
-                '_response' => ['msg' => 'successfully']
+                '_response' => ['msg' => 'successfully Catégories']
             ],
             200
         );

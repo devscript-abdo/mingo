@@ -51,7 +51,7 @@ class Category extends Categories implements Searchable
     {
         return $this->subcategory()
             ->where('parent_id', $this->id)
-            ->without(['childrens', 'translations'])
+            ->without(['childrens'])
             ->select(['id', 'name', 'icon_mobile'])
             ->get()
             ->map(function ($category) {
