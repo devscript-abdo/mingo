@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Category\CategoryController;
 use App\Http\Controllers\API\Customer\LoginController;
 use App\Http\Controllers\API\Customer\LogoutController;
 use App\Http\Controllers\API\Customer\RegisterController;
+use App\Http\Controllers\API\Customer\UpdateController;
 use App\Http\Controllers\API\Order\OrderController;
 use App\Http\Controllers\API\Product\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -141,6 +142,15 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
             Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.ar');
             Route::get('/orders/{id}', [OrderController::class, 'show'])->name('api.orders.single.ar');
+        });
+
+        /*********Profile */
+
+        Route::group(['prefix' => 'fr/account'], function () {
+            Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.fr');
+        });
+        Route::group(['prefix' => 'ar/account'], function () {
+            Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.fr');
         });
     });
 });
