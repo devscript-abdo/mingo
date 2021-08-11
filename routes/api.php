@@ -150,16 +150,15 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::group(['prefix' => 'fr/account'], function () {
             Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.fr');
 
-            Route::get('/addresses',[AdresseController::class,'index'])->name('api.addresses.update.fr');
+            Route::get('/addresses', [AdresseController::class, 'index'])->name('api.addresses.update.fr');
+            Route::post('/addresses/create', [AdresseController::class, 'create'])->name('api.addresses.create.fr');
         });
-        
+
         Route::group(['prefix' => 'ar/account'], function () {
             Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.ar');
 
-            Route::get('/addresses',[AdresseController::class,'index'])->name('api.addresses.update.ar');
-
+            Route::get('/addresses', [AdresseController::class, 'index'])->name('api.addresses.update.ar');
+            Route::post('/addresses/create', [AdresseController::class, 'create'])->name('api.addresses.create.fr');
         });
-
-      
     });
 });

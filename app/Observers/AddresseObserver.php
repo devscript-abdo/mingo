@@ -14,7 +14,7 @@ class AddresseObserver
      */
     public function created(Addresse $addresse)
     {
-        $this->clearAllCache(auth()->guard('customer')->user()->id);
+        $this->clearAllCache();
     }
 
     /**
@@ -25,7 +25,7 @@ class AddresseObserver
      */
     public function updated(Addresse $addresse)
     {
-        $this->clearAllCache(auth()->guard('customer')->user()->id);
+        $this->clearAllCache();
     }
 
     /**
@@ -36,7 +36,7 @@ class AddresseObserver
      */
     public function deleted(Addresse $addresse)
     {
-        $this->clearAllCache(auth()->guard('customer')->user()->id);
+        $this->clearAllCache();
     }
 
     /**
@@ -47,7 +47,7 @@ class AddresseObserver
      */
     public function restored(Addresse $addresse)
     {
-        $this->clearAllCache(auth()->guard('customer')->user()->id);
+        $this->clearAllCache();
     }
 
     /**
@@ -58,15 +58,17 @@ class AddresseObserver
      */
     public function forceDeleted(Addresse $addresse)
     {
-        $this->clearAllCache(auth()->guard('customer')->user()->id);
+        $this->clearAllCache();
     }
 
-    private function clearAllCache($id)
+    private function clearAllCache()
     {
-        $id = json_encode($id);
+        if (!request()->routeIs('api.addresses.create.fr', 'api.addresses.create.ar')) {
+            $id = json_encode(auth()->guard('customer')->user()->id);
 
-        cache()->pull('addresse_cache');
+            cache()->pull('addresse_cache');
 
-        cache()->pull("addresse_customer_cache_{$id}");
+            cache()->pull("addresse_customer_cache_{$id}");
+        }
     }
 }
