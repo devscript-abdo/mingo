@@ -51,7 +51,7 @@ class AdresseController extends Controller
 
             $user->addresses()->create([
                 'name' => $user->name,
-                'addressType'=>'Maroc',
+                'addressType' => 'Maroc',
                 'addresse' => $data['address'],
                 'city' => $data['city'],
                 'zip' => $data['zip'],
@@ -59,6 +59,6 @@ class AdresseController extends Controller
 
             return response()->json(['_response' => ['msg' => 'address added succesufully']], 201);
         }
-        return response()->json(['_response' => ['msg' => 'user Not Found ']], 404);
+        return response()->json(['_response' => ['code' => 'code_404', 'message' => 'error 404']], 404);
     }
 }

@@ -36,7 +36,7 @@ class CategoryController extends Controller
             ], 200);
              // return new CategoryResource($category);
         }
-        return response()->json(['error' => 'category not found'], 404);
+        return response()->json(['_response' => ['code' => 'code_404', 'message' => 'error 404']], 404);
     }
 
     public function getProductsOfCategory($id)
@@ -51,6 +51,6 @@ class CategoryController extends Controller
                 
             ], 200);
         }
-        return response()->json(['error' => 'product not found'], 404);
+        return response()->json(['_response' => ['code' => 'code_404', 'message' => 'error 404']], 404);
     }
 }
