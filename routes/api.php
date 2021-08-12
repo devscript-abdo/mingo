@@ -160,11 +160,13 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
     Route::group(['prefix' => 'fr/account'], function () {
 
-        Route::post('/password/email', [ForgetPasswordController::class, 'forget']);
+        Route::post('/password/email', [ForgetPasswordController::class, 'forget'])
+            ->name('api.account.forget-password.fr');
     });
 
     Route::group(['prefix' => 'ar/account'], function () {
 
-        Route::post('/password/email', [ForgetPasswordController::class, 'forget']);
+        Route::post('/password/email', [ForgetPasswordController::class, 'forget'])
+            ->name('api.account.forget-password.ar');
     });
 });

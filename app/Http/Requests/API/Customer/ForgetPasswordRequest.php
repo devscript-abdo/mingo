@@ -13,7 +13,7 @@ class ForgetPasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return request()->routeIs('api.account.forget-password.ar', 'api.account.forget-password.fr');
     }
 
     /**
@@ -24,7 +24,7 @@ class ForgetPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=>'required|email'
+            'email' => 'required|email'
         ];
     }
 }
