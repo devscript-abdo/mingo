@@ -9,6 +9,7 @@ use App\Http\Controllers\API\Customer\LoginController;
 use App\Http\Controllers\API\Customer\LogoutController;
 use App\Http\Controllers\API\Customer\RegisterController;
 use App\Http\Controllers\API\Customer\UpdateController;
+use App\Http\Controllers\API\Customer\WishListController;
 use App\Http\Controllers\API\Order\OrderController;
 use App\Http\Controllers\API\Product\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -148,13 +149,18 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
             Route::get('/addresses', [AdresseController::class, 'index'])->name('api.addresses.update.fr');
             Route::post('/addresses/create', [AdresseController::class, 'create'])->name('api.addresses.create.fr');
+
+            Route::get('/wishlist',[WishListController::class,'index'])->name('api.account.wishlist.ar');
+
         });
 
         Route::group(['prefix' => 'ar/account'], function () {
             Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.ar');
 
             Route::get('/addresses', [AdresseController::class, 'index'])->name('api.addresses.update.ar');
-            Route::post('/addresses/create', [AdresseController::class, 'create'])->name('api.addresses.create.fr');
+            Route::post('/addresses/create', [AdresseController::class, 'create'])->name('api.addresses.create.ar');
+
+            Route::get('/wishlist',[WishListController::class,'index'])->name('api.account.wishlist.ar');
         });
     });
 
