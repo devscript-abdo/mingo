@@ -134,12 +134,12 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
     Route::group(['middleware' => 'auth:sanctum'], function () {
 
-        Route::group(['prefix' => 'fr'], function () {
+        Route::group(['prefix' => 'fr/account'], function () {
 
             Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.fr');
             Route::get('/orders/{id}', [OrderController::class, 'show'])->name('api.orders.single.fr');
         });
-        Route::group(['prefix' => 'ar'], function () {
+        Route::group(['prefix' => 'ar/account'], function () {
 
             Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.ar');
             Route::get('/orders/{id}', [OrderController::class, 'show'])->name('api.orders.single.ar');

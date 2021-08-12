@@ -54,13 +54,5 @@ class UpdateController extends Controller
             '_response' => ['msg' => 'user updated with success']
         ], 201);
 
-        /*"nom": "Houcine",
-        "prenom": "Labied",
-        "email": "hlabied@gmail.com",
-        "address": "rue 12 , beauséjour",
-        "ville": "Casablanca",
-        "zip": "123456",
-        "photo_link": "cdn.domain.com/... ",
-        "token": "azqs125qsqsqsqsqsqsqs",*/
     }
 }
