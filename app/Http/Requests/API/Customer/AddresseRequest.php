@@ -14,7 +14,7 @@ class AddresseRequest extends FormRequest
     public function authorize()
     {
         return auth('sanctum')
-        ->user()->currentAccessToken()  === request()->user()->currentAccessToken();
+            ->user()->currentAccessToken()  === request()->user()->currentAccessToken();
     }
 
     /**
@@ -25,10 +25,13 @@ class AddresseRequest extends FormRequest
     public function rules()
     {
         return [
-            'addressType' => ['required', 'string', 'max:255'],
+
+            'country' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
+            'phone' => ['nullable', 'phone:MA'],
             'city' => ['required', 'string', 'max:255'],
             'zip' => ['nullable', 'numeric'],
+
         ];
     }
 }
