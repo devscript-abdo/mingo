@@ -16,8 +16,8 @@ class WishListController extends Controller
             ->user()
             ->wishlist()
             ->with('products')
-            ->get()
-            ->map(function ($list) {
+            ->get();
+            /*->map(function ($list) {
                 // dd($list->products);
                 return [
                     'id' => $list->id,
@@ -31,9 +31,9 @@ class WishListController extends Controller
                     })->toArray()
 
                 ];
-            })
-            ->toArray();
-        dd($list);
+            });*/
+           
+        //dd($list);
         // $message = '';
         count($list) ? $message = 'successfully wishlist' : $message = 'no wishlist';
         return response()->json(
