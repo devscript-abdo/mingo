@@ -51,7 +51,7 @@ class AdresseController extends Controller
 
             $user->addresses()->create([
                 'name' => $user->name,
-                'country' => $data['country'],
+               // 'country' => $data['country'],
                 'addresse' => $data['address'],
                 'phone'=> $data['phone'],
                 'city' => $data['city'],
