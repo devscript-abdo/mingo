@@ -7,7 +7,7 @@
             <li><a href="#">Hot Promotions</a>
             </li>
             @foreach($categories as $categorie)
-                @if($categorie->nestedChilds->isNotEmpty())
+                @if(count($categorie->nestedChilds))
                 <li class="menu-item-has-children has-mega-menu">
                     <a href="{{$categorie->url}}">
                     <i class="{{$categorie->icon}}"></i> {{$categorie->field('name')}}

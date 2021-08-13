@@ -2,13 +2,13 @@
     <h4 class="widget-title">Categories</h4>
     <ul class="ps-list--categories">
         @foreach($categories as $categorie)
-            @if($categorie->nestedChilds->isNotEmpty())
+            @if(count($categorie->nestedChilds))
                 <li class="menu-item-has-children">
                     <a href="{{$categorie->url}}">{{$categorie->field('name')}}</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
                     <ul class="sub-menu">
                         @foreach ($categorie->nestedChilds as $categoriee)
                           
-                            @if($categoriee->nestedChilds->isNotEmpty())
+                            @if(count($categoriee->nestedChilds))
                             
                                 <li class="menu-item-has-children"><a href="{{$categoriee->url}}">{{$categoriee->field('name')}}</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
                                     <ul class="sub-menu">

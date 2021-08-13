@@ -7,7 +7,7 @@
             </li>
             
             @foreach($categories as $categorie)
-                @if($categorie->nestedChilds->isNotEmpty())
+                @if(count($categorie->nestedChilds))
 
                 <li class="menu-item-has-children has-mega-menu">
                     <a href="{{$categorie->url}}">
