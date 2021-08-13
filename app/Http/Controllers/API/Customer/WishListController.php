@@ -25,13 +25,15 @@ class WishListController extends Controller
                         'photo'=>$product->photo
                     ];
                 })->toArray();
-            });
 
+            })->collapse(); //The collapse method collapses a collection of arrays into a single, flat collection
+              ///https://laravel.com/docs/8.x/collections#method-collapse
+              
         count($lists) ? $message = 'successfully wishlist' : $message = 'no wishlist';
         return response()->json(
             [
                 //'payload' =>  WishlistResource::collection($lists),
-                'payload' =>   $lists->collapse(), //The collapse method collapses a collection of arrays into a single, flat collection
+                'payload' =>   $lists, //The collapse method collapses a collection of arrays into a single, flat collection
                 '_response' => ['msg' => $message]
             ],
             200
