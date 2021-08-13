@@ -67,6 +67,11 @@ class WishlistObserver
             $idd = json_encode(auth()->guard('customer')->user()->id);
 
             cache()->pull("customer_wishlist_{$idd}");
+        } else {
+
+            $id = json_encode(auth('sanctum')->user()->id);
+
+            cache()->pull("customer_wishlist_{$id}");
         }
     }
 }
