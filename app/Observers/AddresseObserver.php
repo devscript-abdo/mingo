@@ -63,7 +63,7 @@ class AddresseObserver
 
     private function clearAllCache()
     {
-        if (!request()->routeIs('api.addresses.create.fr', 'api.addresses.create.ar')) {
+        if (!request()->routeIs('api.addresses.create.fr', 'api.addresses.create.ar', 'api.addresses.delete.fr', 'api.addresses.delete.ar')) {
             $id = json_encode(auth()->guard('customer')->user()->id);
 
             cache()->pull('addresse_cache');

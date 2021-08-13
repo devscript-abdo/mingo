@@ -153,6 +153,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
             Route::get('/addresses', [AdresseController::class, 'index'])->name('api.addresses.update.fr');
             Route::post('/addresses/create', [AdresseController::class, 'create'])->name('api.addresses.create.fr');
+            Route::post('/addresses/delete', [AdresseController::class, 'delete'])->name('api.addresses.delete.fr');
 
             Route::get('/wishlist',[WishListController::class,'index'])->name('api.account.wishlist-create.fr');
             Route::post('/wishlist/create',[WishListController::class,'store'])->name('api.account.wishlist-create.fr');
@@ -168,6 +169,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
             Route::get('/addresses', [AdresseController::class, 'index'])->name('api.addresses.update.ar');
             Route::post('/addresses/create', [AdresseController::class, 'create'])->name('api.addresses.create.ar');
+            Route::post('/addresses/delete', [AdresseController::class, 'delete'])->name('api.addresses.delete.ar');
 
             Route::get('/wishlist',[WishListController::class,'index'])->name('api.account.wishlist.ar');
             Route::post('/wishlist/create',[WishListController::class,'store'])->name('api.account.wishlist.ar');

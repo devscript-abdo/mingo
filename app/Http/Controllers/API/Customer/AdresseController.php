@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Customer\AddresseRequest;
 use App\Http\Resources\Addresse\AddresseResource;
+use App\Models\Addresse;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -51,9 +52,9 @@ class AdresseController extends Controller
 
             $user->addresses()->create([
                 'name' => $user->name,
-               // 'country' => $data['country'],
+                // 'country' => $data['country'],
                 'addresse' => $data['address'],
-                'phone'=> $data['phone'],
+                'phone' => $data['phone'],
                 'city' => $data['city'],
                 'zip' => $data['zip'],
             ]);
@@ -61,5 +62,36 @@ class AdresseController extends Controller
             return response()->json(['_response' => ['msg' => 'address added succesufully']], 201);
         }
         return response()->json(['_response' => ['code' => 'code_404', 'message' => 'error 404']], 404);
+    }
+
+    public function delete(Request $request)
+    {
+        $request->validate(['addresseId' => 'required|integer']);
+
+        $addresse = Addresse::whereId($request->addresseId)
+            ->where('customer_id', auth('sanctum')->user()->id)
+            ->first();
+
+        if ($addresse) {
+
+            $addresse->delete();
+
+            return response()->json(
+                [
+
+                    'payload' =>   [],
+                    '_response' => ['msg' => 'Cette adresse a été supprimer']
+                ],
+                200
+            );
+        }
+        return response()->json(
+            [
+
+                'payload' =>   [],
+                '_response' => ['msg' => 'error']
+            ],
+            200
+        );
     }
 }
