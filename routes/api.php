@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\Banner\BannerController;
 use App\Http\Controllers\API\Brand\BrandController;
 use App\Http\Controllers\API\Category\CategoryController;
+use App\Http\Controllers\API\Checkout\CheckoutController;
 use App\Http\Controllers\API\Customer\AdresseController;
 use App\Http\Controllers\API\Customer\ForgetPasswordController;
 use App\Http\Controllers\API\Customer\LoginController;
@@ -148,6 +149,8 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::group(['prefix' => 'fr/account'], function () {
             Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.fr');
 
+            Route::post('/update/change-password', [UpdateController::class, 'updatePassword'])->name('api.account.update-pass.fr');
+
             Route::get('/addresses', [AdresseController::class, 'index'])->name('api.addresses.update.fr');
             Route::post('/addresses/create', [AdresseController::class, 'create'])->name('api.addresses.create.fr');
 
@@ -156,8 +159,11 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         });
 
         Route::group(['prefix' => 'ar/account'], function () {
-            
+
             Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.ar');
+
+            Route::post('/update/change-password', [UpdateController::class, 'updatePassword'])->name('api.account.update-pass.ar');
+
 
             Route::get('/addresses', [AdresseController::class, 'index'])->name('api.addresses.update.ar');
             Route::post('/addresses/create', [AdresseController::class, 'create'])->name('api.addresses.create.ar');
@@ -177,4 +183,8 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::post('/password/email', [ForgetPasswordController::class, 'forget'])
             ->name('api.account.forget-password.ar');
     });
+
+    Route::post('fr/checkout',[CheckoutController::class,'store'])->name('api.checkout.fr');
+    Route::post('ar/checkout',[CheckoutController::class,'store'])->name('api.checkout.ar');
+
 });

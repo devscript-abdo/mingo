@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\API\Customer\UpdatePasswordRequest;
 use App\Http\Requests\API\Customer\UpdateRequest;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -53,6 +54,30 @@ class UpdateController extends Controller
             ],
             '_response' => ['msg' => 'user updated with success']
         ], 201);
+    }
 
+    public function updatePassword(UpdatePasswordRequest $request)
+    {
+        $data = $request->validated();
+
+        $user = Customer::whereId($request->user()->currentAccessToken()->tokenable_id)->first();
+
+        if (!$user || !Hash::check($data['oldpassword'], $user->password)) {
+
+            return response()->json(['_response' => ['msg' => 'Sorry old password not Match']], 401);
+
+        }
+
+        if ($user) {
+            if (
+                $request->has(['oldpassword', 'new_password', 'new_confirm_password']) &&
+                $request->filled(['oldpassword', 'new_password', 'new_confirm_password'])
+            ) {
+
+                $user->password = Hash::make($request->new_password);
+            }
+            $user->save();
+            return response()->json(['_response' => ['msg' => 'password updated succesufully']], 201);
+        }
     }
 }
