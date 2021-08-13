@@ -37,8 +37,7 @@ class ProductCollection extends Model
     {
         return $query->whereActive(true)
             ->whereShowInHome(true)
-            ->with(['products.category.childrens'])
-
+            ->with(['products.category'])
             ->get();
     }
 

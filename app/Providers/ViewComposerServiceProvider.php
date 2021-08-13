@@ -32,6 +32,5 @@ class ViewComposerServiceProvider extends ServiceProvider
         View::composer(['theme.products.*', 'theme.categories.*', 'layouts.parts.*'], CategoryComposer::class);
         View::composer('layouts.parts.__footer', PageComposer::class);
         View::composer('layouts.parts.*', ProductComposer::class);
-        
     }
 }

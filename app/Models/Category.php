@@ -46,6 +46,34 @@ class Category extends Categories implements Searchable
         return $this->belongsToMany('App\Models\Provider', 'provider_category', 'category_id', 'provider_id');
     }
 
+    /*****Adedd at 13-08-2021 for query performance  */
+    public static function tree()
+    {
+        $allCategories = Category::without(['childrens'])
+            ->select(['id', 'parent_id', 'slug', 'name', 'icon'])
+            ->get();
+
+        $rootCategories = $allCategories->whereNull('parent_id');
+
+        self::formatTree($rootCategories, $allCategories);
+
+        return $rootCategories;
+    }
+
+    private static function formatTree($categories, $allCategories)
+    {
+
+        foreach ($categories as $category) {
+
+            $category->nestedChilds = $allCategories->where('parent_id', $category->id)->values();
+
+            if ($category->nestedChilds->isNotEmpty()) {
+                self::formatTree($category->nestedChilds, $allCategories);
+            }
+        }
+    }
+    /******************************************************************************** */
+
     /******This function is used fo API Route */
     public function getChildesAttribute()
     {
@@ -82,9 +110,9 @@ class Category extends Categories implements Searchable
 
     public function getIconMobileLinkAttribute()
     {
-        return $this->icon_mobile ?? 
-        //"https://ma.jumia.is/cms/000_2021/00quicklinks/ICONE_FOOD-.png";
-        Voyager::image(setting('categories.icon_app_mobile'));
+        return $this->icon_mobile ??
+            //"https://ma.jumia.is/cms/000_2021/00quicklinks/ICONE_FOOD-.png";
+            Voyager::image(setting('categories.icon_app_mobile'));
     }
 
     public function getUrl()
@@ -112,6 +140,7 @@ class Category extends Categories implements Searchable
             ->limit(3)
             ->has('products')
             ->inRandomOrder()
+            ->without(['childrens'])
             ->get();
         // });
     }
@@ -119,7 +148,7 @@ class Category extends Categories implements Searchable
     public function scopeCategoryOfYear($query)
     {
         //return Cache::remember($this->cacheKey() . ':categoriesYEAR', $this->timeToLive(), function () use ($query) {
-        return $query->whereCategoryOfYear(true)->get();
+        return $query->whereCategoryOfYear(true)->without(['childrens'])->get();
         // });
     }
 
@@ -129,7 +158,8 @@ class Category extends Categories implements Searchable
 
         // });
         return $query->whereShowInNavbar(true)
-            ->with(['translations'])
+            // ->with(['translations'])
+            ->without(['childrens'])
             ->get();
     }
 

@@ -2,18 +2,18 @@
     <h4 class="widget-title">{{__('products.product_categories')}}</h4>
     <ul class="ps-list--categories">
         @foreach($categories as $categorie)
-            @if($categorie->parent_id === null && count($categorie->childrens))
+            @if(count($categorie->nestedChilds))
                 <li class="menu-item-has-children" >
                     <a href="{{$categorie->url}}">{{$categorie->field('name')}}</a>
                     <span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
                     <ul class="sub-menu">
-                        @foreach ($categorie->childrens as $categoriee)
+                        @foreach ($categorie->nestedChilds as $categoriee)
                           
-                           @if(count($categoriee->childrens))
+                           @if(count($categoriee->nestedChilds))
                             
                                 <li class="menu-item-has-children"><a href="{{$categoriee->url}}">{{$categoriee->field('name')}}</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
                                     <ul class="sub-menu">
-                                        @foreach ($categoriee->childrens as $categorieee)
+                                        @foreach ($categoriee->nestedChilds as $categorieee)
                                             <li><a href="{{$categorieee->url}}">{{$categorieee->field('name')}}</a>
                                             </li>
                                         @endforeach
@@ -30,9 +30,10 @@
                     </ul>
                 </li>
 
-            @elseif($categorie->parent_id === null)
+            @else
     
-                <li><a href="{{$categorie->url}}">{{$categorie->field('name')}}</a>
+                <li>
+                    <a href="{{$categorie->url}}">{{$categorie->field('name')}}</a>
                 </li> 
 
             @endif

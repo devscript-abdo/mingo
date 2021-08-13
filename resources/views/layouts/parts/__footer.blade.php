@@ -50,10 +50,10 @@
         <div class="ps-footer__links">
 
             @foreach($categories as $categorie)
-                @if($categorie->parent_id === null && count($categorie->childrens))
+                @if(count($categorie->nestedChilds))
                     <p>
                         <strong>{{$categorie->field('name')}}:</strong>
-                        @foreach ($categorie->childrens as $categoriee)
+                        @foreach ($categorie->nestedChilds as $categoriee)
                          <a href="{{$categoriee->url}}">{{$categoriee->field('name')}}</a>
                         @endforeach
                     </p>
@@ -62,7 +62,7 @@
 
         </div>
         <div dir="ltr" class="ps-footer__copyright">
-            <p>© {{date('Y')}} Mingo. All Rights Reserved | powered by <a href="">Haymacproduction</a></p>
+            <p>© {{date('Y')}} MinGo. All Rights Reserved | powered by <a href="">Haymacproduction</a></p>
             <p>
                 <span>{{__('footer.payment-method')}}</span>
                 <a href="#"><img src="{{asset('assets/img/payment-method/1.jpg')}}" alt=""></a>

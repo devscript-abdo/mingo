@@ -7,7 +7,7 @@
             <li><a href="#">Hot Promotions</a>
             </li>
             @foreach($categories as $categorie)
-                @if($categorie->parent_id === null && count($categorie->childrens))
+                @if(count($categorie->nestedChilds))
                 <li class="menu-item-has-children has-mega-menu">
                     <a href="{{$categorie->url}}">
                     <i class="{{$categorie->icon}}"></i> {{$categorie->field('name')}}
@@ -20,7 +20,7 @@
                             <h4>{{$categorie->field('name')}}<span class="sub-toggle"></span></h4>
 
                             <ul class="mega-menu__list">
-                                @foreach ($categorie->childrens as $categoriee)
+                                @foreach ($categorie->nestedChilds as $categoriee)
                                 <li><a href="{{$categoriee->url}}">{{$categoriee->field('name')}}</a></li>
                                 @endforeach
                         
@@ -32,7 +32,7 @@
                 </li>
 
                 {{--@elseif($categorie->parent_id ===null && $categorie->childrens()->count()===0)--}}
-                @elseif($categorie->parent_id === null)
+                @else
                 <li>
                     <a href="{{$categorie->url}}">
                         <i class="{{$categorie->icon}}"></i> 
