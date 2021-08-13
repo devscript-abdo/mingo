@@ -22,7 +22,7 @@ class Wishlist extends Model
 
     public function products()
     {
-        return $this->belongsToMany('App\models\Product','wishlists','id');
+        return $this->belongsToMany('App\models\Product', 'wishlists', 'id');
     }
 
     public static function boot()

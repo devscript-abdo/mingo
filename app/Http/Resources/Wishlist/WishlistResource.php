@@ -14,13 +14,14 @@ class WishlistResource extends JsonResource
      */
     public function toArray($request)
     {
-      //  return parent::toArray($request);
+        //  return parent::toArray($request);
 
-      return [
-        'id' => $this->id,
-        //'customerId'=>$this->customer_id,
-        'products' => $this->products,
-        //'photo' => $this->photo,
-    ];
+        return [
+
+            'id' => $this->id,
+            //'customerId'=>$this->customer_id,
+            //'products' => $this->products,
+            //'photo' => $this->photo,
+        ];
     }
 }

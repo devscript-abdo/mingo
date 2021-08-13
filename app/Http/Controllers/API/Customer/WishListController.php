@@ -12,33 +12,26 @@ class WishListController extends Controller
 
     public function index()
     {
-        $list = auth('sanctum')
+        $lists = auth('sanctum')
             ->user()
             ->wishlist()
             ->with('products')
-            ->get();
-            /*->map(function ($list) {
-                // dd($list->products);
-                return [
-                    'id' => $list->id,
-                    'products' => $list->products->map(function ($product) {
-                        // dd($product);
-                        return [
-                            'productId' => $product->id,
-                            'name' => $product->name,
-                            'photo' => $product->photo,
-                        ];
-                    })->toArray()
+            ->get()
+            ->map(function ($list) {
+                return $list->products->map(function ($product) {
+                    return [
+                        'id' => $product->id,
+                        'name' => $product->name,
+                        'photo'=>$product->photo
+                    ];
+                })->toArray();
+            });
 
-                ];
-            });*/
-           
-        //dd($list);
-        // $message = '';
-        count($list) ? $message = 'successfully wishlist' : $message = 'no wishlist';
+        count($lists) ? $message = 'successfully wishlist' : $message = 'no wishlist';
         return response()->json(
             [
-                'payload' =>  WishlistResource::collection($list),
+                //'payload' =>  WishlistResource::collection($lists),
+                'payload' =>   $lists->collapse(), //The collapse method collapses a collection of arrays into a single, flat collection
                 '_response' => ['msg' => $message]
             ],
             200
