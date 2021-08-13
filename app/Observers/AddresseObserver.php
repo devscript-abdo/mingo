@@ -69,6 +69,13 @@ class AddresseObserver
             cache()->pull('addresse_cache');
 
             cache()->pull("addresse_customer_cache_{$id}");
+        } else {
+
+            $id = json_encode(auth('sanctum')->user()->id);
+
+            cache()->pull('addresse_cache');
+
+            cache()->pull("addresse_customer_cache_{$id}");
         }
     }
 }
