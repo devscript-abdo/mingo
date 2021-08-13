@@ -20,7 +20,7 @@ class WishListController extends Controller
             ->map(function ($list) {
                 return $list->products->map(function ($product) {
                     return [
-                        'customerId'=>auth('sanctum')->user()->id,
+                        'customerId' => auth('sanctum')->user()->id,
                         'id' => $product->id,
                         'name' => $product->name,
                         'photo' => $product->photo
