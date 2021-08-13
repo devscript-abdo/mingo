@@ -77,6 +77,9 @@ class UpdateController extends Controller
                 $user->password = Hash::make($request->new_password);
             }
             $user->save();
+
+            $user->tokens()->delete(); // delete old token
+            
             return response()->json(['_response' => ['msg' => 'password updated succesufully']], 201);
         }
     }
