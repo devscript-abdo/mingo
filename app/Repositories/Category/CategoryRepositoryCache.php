@@ -61,9 +61,7 @@ class CategoryRepositoryCache  implements CategoryInterface
     {
         return $this->cache->remember('categories_cache_childrens', $this->timeToLive(), function () {
 
-            return $this->model()->where('parent_id', null)->with('childrens')->select(['id', 'parent_id', 'slug', 'name', 'icon'])
-
-                ->get();
+            return $this->model()::tree();
         });
     }
 

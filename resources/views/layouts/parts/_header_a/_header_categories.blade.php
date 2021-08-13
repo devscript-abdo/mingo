@@ -7,7 +7,7 @@
             </li>
             
             @foreach($categories as $categorie)
-            @dd($categorie->nestedChilds)
+            
                 @if(count($categorie->nestedChilds))
 
                 <li class="menu-item-has-children has-mega-menu">

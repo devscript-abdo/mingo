@@ -2,7 +2,7 @@
     <h4 class="widget-title">{{__('products.product_categories')}}</h4>
     <ul class="ps-list--categories">
         @foreach($categories as $categorie)
-            @if(!is_null($categorie->nestedChilds))
+            @if(count($categorie->nestedChilds))
                 <li class="menu-item-has-children" >
                     <a href="{{$categorie->url}}">{{$categorie->field('name')}}</a>
                     <span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
