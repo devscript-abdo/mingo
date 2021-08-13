@@ -93,4 +93,35 @@ class WishListController extends Controller
             }
         }
     }
+
+    public function delete(Request $request)
+    {
+        $request->validate(['productId' => 'required|integer']);
+
+        $wish = Wishlist::where('product_id', $request->productId)
+            ->where('customer_id', auth('sanctum')->user()->id)
+            ->first();
+
+        if ($wish) {
+
+            $wish->delete();
+
+            return response()->json(
+                [
+
+                    'payload' =>   [],
+                    '_response' => ['msg' => 'les produit a été supprimé depuis votre favori']
+                ],
+                200
+            );
+        }
+        return response()->json(
+            [
+
+                'payload' =>   [],
+                '_response' => ['msg' => 'error']
+            ],
+            200
+        );
+    }
 }

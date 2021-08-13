@@ -156,6 +156,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
             Route::get('/wishlist',[WishListController::class,'index'])->name('api.account.wishlist-create.fr');
             Route::post('/wishlist/create',[WishListController::class,'store'])->name('api.account.wishlist-create.fr');
+            Route::post('/wishlist/delete',[WishListController::class,'delete'])->name('api.account.wishlist-delete.fr');
 
         });
 
@@ -170,6 +171,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
             Route::get('/wishlist',[WishListController::class,'index'])->name('api.account.wishlist.ar');
             Route::post('/wishlist/create',[WishListController::class,'store'])->name('api.account.wishlist.ar');
+            Route::post('/wishlist/delete',[WishListController::class,'delete'])->name('api.account.wishlist-delete.ar');
         });
     });
 

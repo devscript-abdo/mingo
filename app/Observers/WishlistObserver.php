@@ -63,7 +63,12 @@ class WishlistObserver
 
     private function clearAllCache()
     {
-        if (!request()->routeIs('api.account.wishlist-create.fr', 'api.account.wishlist-create.ar')) {
+        if (!request()->routeIs(
+            'api.account.wishlist-create.fr',
+             'api.account.wishlist-create.ar',
+             'api.account.wishlist-delete.ar',
+             'api.account.wishlist-delete.fr',
+             )) {
             $idd = json_encode(auth()->guard('customer')->user()->id);
 
             cache()->pull("customer_wishlist_{$idd}");
