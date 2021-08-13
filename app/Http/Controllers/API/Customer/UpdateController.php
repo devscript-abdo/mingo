@@ -65,7 +65,6 @@ class UpdateController extends Controller
         if (!$user || !Hash::check($data['oldpassword'], $user->password)) {
 
             return response()->json(['_response' => ['msg' => 'Sorry old password not Match']], 401);
-
         }
 
         if ($user) {
@@ -79,7 +78,7 @@ class UpdateController extends Controller
             $user->save();
 
             $user->tokens()->delete(); // delete old token
-            
+
             return response()->json(['_response' => ['msg' => 'password updated succesufully']], 201);
         }
     }
