@@ -20,15 +20,15 @@ class WishListController extends Controller
             ->map(function ($list) {
                 return $list->products->map(function ($product) {
                     return [
+                        'customerId'=>auth('sanctum')->user()->id,
                         'id' => $product->id,
                         'name' => $product->name,
-                        'photo'=>$product->photo
+                        'photo' => $product->photo
                     ];
                 })->toArray();
-
             })->collapse(); //The collapse method collapses a collection of arrays into a single, flat collection
-              ///https://laravel.com/docs/8.x/collections#method-collapse
-              
+        ///https://laravel.com/docs/8.x/collections#method-collapse
+
         count($lists) ? $message = 'successfully wishlist' : $message = 'no wishlist';
         return response()->json(
             [
