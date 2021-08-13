@@ -82,7 +82,9 @@ class Category extends Categories implements Searchable
 
     public function getIconMobileLinkAttribute()
     {
-        return $this->icon_mobile ?? "https://ma.jumia.is/cms/000_2021/00quicklinks/ICONE_FOOD-.png";
+        return $this->icon_mobile ?? 
+        //"https://ma.jumia.is/cms/000_2021/00quicklinks/ICONE_FOOD-.png";
+        Voyager::image(setting('categories.icon_app_mobile'));
     }
 
     public function getUrl()

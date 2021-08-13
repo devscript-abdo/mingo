@@ -136,6 +136,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
             Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.fr');
             Route::get('/orders/{id}', [OrderController::class, 'show'])->name('api.orders.single.fr');
         });
+
         Route::group(['prefix' => 'ar/account'], function () {
 
             Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.ar');
@@ -155,6 +156,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         });
 
         Route::group(['prefix' => 'ar/account'], function () {
+            
             Route::post('/update', [UpdateController::class, 'update'])->name('api.account.update.ar');
 
             Route::get('/addresses', [AdresseController::class, 'index'])->name('api.addresses.update.ar');
