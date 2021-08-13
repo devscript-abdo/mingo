@@ -33,7 +33,7 @@ class UpdateController extends Controller
         ]);
 
         // $request->user()->currentAccessToken()->delete(); // delete old token
-        $user->tokens()->delete(); // delete old token
+       // $user->tokens()->delete(); // delete old token
 
         $token = $user->createToken($data['email'])->plainTextToken; // generate new token
 

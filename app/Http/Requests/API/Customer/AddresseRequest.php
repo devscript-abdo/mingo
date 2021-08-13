@@ -13,8 +13,8 @@ class AddresseRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth('sanctum')
-            ->user()->currentAccessToken()  === request()->user()->currentAccessToken();
+        return auth('sanctum')->user()->currentAccessToken()->token  === request()->user()->currentAccessToken()->token ;
+
     }
 
     /**

@@ -14,7 +14,8 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth('sanctum')->user()->currentAccessToken()->token  === request()->user()->currentAccessToken()->token ;
+
     }
 
     /**
@@ -30,9 +31,9 @@ class UpdateRequest extends FormRequest
             'phone' => ['nullable', 'numeric', Rule::unique('customers')->ignore(request()->user()->currentAccessToken()->tokenable_id)],
             'city' => 'required|string',
             'addresse' => ['required_with:city','string'],
-            'oldpassword' => ['nullable', 'string', 'min:6', new MatchOldPassword],
-            'new_password' => ['required_with:oldpassword'],
-            'new_confirm_password' => ['same:new_password'],
+            //'oldpassword' => ['nullable', 'string', 'min:6', new MatchOldPassword],
+            //'new_password' => ['required_with:oldpassword'],
+           // 'new_confirm_password' => ['same:new_password'],
             //'password' => ['required', 'string', 'min:8'],
         ];
     }
