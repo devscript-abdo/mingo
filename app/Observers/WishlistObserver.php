@@ -14,7 +14,7 @@ class WishlistObserver
      */
     public function created(Wishlist $wishlist)
     {
-        return $this->clearAllCache(auth()->guard('customer')->user()->id);
+        return $this->clearAllCache();
     }
 
     /**
@@ -25,7 +25,7 @@ class WishlistObserver
      */
     public function updated(Wishlist $wishlist)
     {
-        return $this->clearAllCache(auth()->guard('customer')->user()->id);
+        return $this->clearAllCache();
     }
 
     /**
@@ -36,7 +36,7 @@ class WishlistObserver
      */
     public function deleted(Wishlist $wishlist)
     {
-        return $this->clearAllCache(auth()->guard('customer')->user()->id);
+        return $this->clearAllCache();
     }
 
     /**
@@ -47,7 +47,7 @@ class WishlistObserver
      */
     public function restored(Wishlist $wishlist)
     {
-        return $this->clearAllCache(auth()->guard('customer')->user()->id);
+        return $this->clearAllCache();
     }
 
     /**
@@ -58,14 +58,15 @@ class WishlistObserver
      */
     public function forceDeleted(Wishlist $wishlist)
     {
-        return $this->clearAllCache(auth()->guard('customer')->user()->id);
+        return $this->clearAllCache();
     }
 
-    private function clearAllCache($id)
+    private function clearAllCache()
     {
+        if (!request()->routeIs('api.account.wishlist-create.fr', 'api.account.wishlist-create.ar')) {
+            $idd = json_encode(auth()->guard('customer')->user()->id);
 
-        $idd = json_encode($id);
-
-        cache()->pull("customer_wishlist_{$idd}");
+            cache()->pull("customer_wishlist_{$idd}");
+        }
     }
 }

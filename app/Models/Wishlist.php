@@ -29,7 +29,10 @@ class Wishlist extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            $model->customer_id = auth()->guard('customer')->user()->id ?? 0;
+            $model->customer_id = auth()->guard('customer')->user()->id
+                ??
+                $model->customer_id = auth('sanctum')->user()->id
+                ?? 0;
         });
     }
 }

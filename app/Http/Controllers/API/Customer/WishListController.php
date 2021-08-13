@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\API\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\API\Customer\WishlistRequest;
 use App\Http\Resources\Wishlist\WishlistResource;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
 class WishListController extends Controller
@@ -51,5 +53,44 @@ class WishListController extends Controller
         ],
         200
     );*/
+    }
+
+    public function store(WishlistRequest $request)
+    {
+        if (auth('sanctum')->check()) {
+            $id = $request->user()->currentAccessToken()->tokenable_id;
+
+            $wish = Wishlist::where('customer_id', $id)
+
+                ->whereIn('product_id', [$request->productId]);
+            //dd($wish->toSql());
+            //dd($wish->exists());
+            if (!$wish->exists()) {
+                $wishlist = new Wishlist();
+                $wishlist->product_id = $request->productId;
+                //$wishlist->customer_id = 5;
+                $wishlist->save();
+
+                $message = 'le produit est ajouté à votre Favorie';
+                return response()->json(
+                    [
+
+                        'payload' =>   [],
+                        '_response' => ['msg' => $message]
+                    ],
+                    200
+                );
+            } else {
+                $message = 'le produit est deja dans votre Favorie';
+                return response()->json(
+                    [
+
+                        'payload' =>   [],
+                        '_response' => ['msg' => $message]
+                    ],
+                    200
+                );
+            }
+        }
     }
 }
