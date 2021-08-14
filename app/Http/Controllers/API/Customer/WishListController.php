@@ -21,14 +21,17 @@ class WishListController extends Controller
             ->get()
             ->map(function ($list) {
                 return $list->products->map(function ($product) {
-                    return [
+                    /*return [
                         'customerId' => auth('sanctum')->user()->id,
                         'id' => $product->id,
                         'name' => $product->name,
                         'photo' => $product->photo
-                    ];
+                    ];*/
+                   return $this->formatedObject($product);
+
                 })->toArray();
-            })->collapse(); //The collapse method collapses a collection of arrays into a single, flat collection
+            })->collapse(); 
+            //The collapse method collapses a collection of arrays into a single, flat collection
         ///https://laravel.com/docs/8.x/collections#method-collapse
 
         count($lists) ? $message = 'successfully wishlist' : $message = 'no wishlist';
@@ -41,18 +44,53 @@ class WishListController extends Controller
             200
         );
 
-        /*****Using Cache ****/
+    }
 
-        /*return response()->json(
-        [
-            'payload' =>  OrderResource::collection(Cache::remember('api-orders', $this->timeToLiveForCache(), function () {
-                return $orders;
-            })),
+    private function formatedObject($product)
+    {
+        return [
 
-            '_response' => ['msg' => 'successfully orders']
-        ],
-        200
-    );*/
+            'id' => $product->id,
+            'addedBy' => 'mingo',
+            'userId' => 1,
+            'name' => $product->field('name'),
+            'slug' => $product->slug,
+            'categoryIds' => [$product->category->id],
+            'brandId' => $product->brand->id ?? '',
+            'unit' => '',
+            'minQty' => '1',
+            'refundable' => '',
+            'images' => $product->all_photos,
+            'thumbnail' => $product->photo,
+            'featured' => '',
+            'flashDeal' => '',
+            'videoProvider' => '',
+            'videoUrl' => '',
+            'colors' => $product->all_colors,
+            'variantProduct' => '',
+            'attributes' => $product->all_attributes,
+            'choiceOptions' => [],
+            'variation' => [],
+            'published' => '',
+            'unitPrice' => $product->formated_price,
+            'purchasePrice' => $product->formated_price,
+            'tax' => '5',
+            'taxType' => 'percent',
+            'discount' => '20',
+            'discountType' => 'percent',
+            'currentStock' => '10',
+            'details' => $product->field('description'),
+            'freeShipping' => '',
+            'attachment' => '',
+            'createdAt' => $product->created_at->format('Y-m-d H:i:s'),
+            'updatedAt' => $product->updated_at->format('Y-m-d H:i:s'),
+            'status' => '',
+            'featuredStatus' => '',
+            "rating" => [
+
+                (object)["average" => "4.7", "productId" => "$product->id"]
+            ]
+        ];
     }
 
     public function store(WishlistRequest $request)
