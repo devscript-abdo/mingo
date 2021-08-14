@@ -4,7 +4,7 @@
             <div class="ps-section__header">
                 <h3>{{__('customer.customer_logged')}}</h3>
             </div>
-         
+          
             <div class="ps-section__content">
                 <div class="table-responsive">
                     <table class="table ps-table ps-table--notification">
@@ -33,6 +33,25 @@
                                    
                                 </td>
                             </tr>
+                            
+                            {{--@foreach ($sessionsAll as $session)
+                                <tr>
+                                   
+                                    <td>{{$session->lastLogin->logged_in_at}}</td>
+                                    <td>
+                                        <span class="badge badge-primary" style="font-size: 17px;">
+                                            {{$session->lastLogin->ip}}
+                                        </span>
+                                        | Last login
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-danger" style="font-size: 17px;">
+                                            {{$session->lastLogin->device}}
+                                        </span>
+                                    
+                                    </td>
+                                </tr>
+                            @endforeach--}}
                    
                         </tbody>
                     </table>

@@ -13,6 +13,8 @@ class LoggedInController extends Controller
     {
 
         $sessions = auth()->guard('customer')->user()->withLastLogin() ?? [];
+        
+      //  $sessionsAll = auth()->guard('customer')->user()->withAllLogin() ?? [];
 
         return view('theme.auth.customer.app.logged.index', compact('sessions'));
     }
