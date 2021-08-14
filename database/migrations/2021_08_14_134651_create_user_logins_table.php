@@ -15,7 +15,7 @@ class CreateUserLoginsTable extends Migration
     {
         Schema::create('user_logins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->after('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
 
             $table->string('ip', 20);
             $table->enum('type', ['Customer', 'User'])->default('Customer');
