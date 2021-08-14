@@ -316,7 +316,7 @@ class ProductsController extends VoyagerBaseController
       //  $attrs = $product->attributes()->get();
 
         $attributesData = Attribute::select(['id', 'name', 'slug'])->with('values')->get();
-        $attributesDataExist = $product->attributes()->whereIn('product_id',[$product->id])->get();
+        $attributesDataExist = $product->attributesVariant()->whereIn('product_id',[$product->id])->get();
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct', 'attributesData','product','attributesDataExist'));
     }
