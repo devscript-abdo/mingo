@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\WithoutTranslationScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -37,7 +38,8 @@ class ProductCollection extends Model
     {
         return $query->whereActive(true)
             ->whereShowInHome(true)
-            ->with(['products.category'])
+            //->with(['products.category:id,slug,name'])
+            ->with(['products'])
             ->get();
     }
 
@@ -49,4 +51,8 @@ class ProductCollection extends Model
 
         return route('products');
     }
+
+    /***********Global Scope added 14-08-2021 */
+
+ 
 }

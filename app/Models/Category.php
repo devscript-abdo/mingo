@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\WithoutTranslationScope;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use TCG\Voyager\Facades\Voyager;
@@ -18,7 +19,7 @@ class Category extends Categories implements Searchable
 
     protected $translatable = ['name', 'description'];
 
-    protected $with = ['childrens', 'translations'];
+    protected $with = ['childrens'];
 
     // protected $appends = ['icon_mobile_link'];
 
@@ -194,5 +195,13 @@ class Category extends Categories implements Searchable
             $this->field('name'),
             $url
         );
+    }
+
+
+    /***********Global Scope added 14-08-2021 */
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new WithoutTranslationScope);
     }
 }

@@ -18,9 +18,9 @@ class OrderDetailResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
+        return parent::toArray($request);
 
-        return [
+        /*return [
             'id' => $this->id,
             'order_id' => $this->id,
             'product_id' =>1,
@@ -34,6 +34,6 @@ class OrderDetailResource extends JsonResource
             'payment_status' => $this->is_payed,
             'shipping_method_id' => 1,
             'created_at' => $this->created_at->format('Y-m-d'),
-        ];
+        ];*/
     }
 }

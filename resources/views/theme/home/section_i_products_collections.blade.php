@@ -4,16 +4,16 @@
         <div class="ps-section__header">
             <h3>{{$collection->field('name')}}</h3>
             <ul class="ps-section__links">
-
-                @foreach($collection->products->unique('category') as $product)
+              
+                {{--@foreach($collection->products->unique('category') as $product)
                     <li>
                         <a href="{{$product->category->url}}">
                             {{$product->category->field('name')}}
                         </a>
                     </li>
-                @endforeach
-                 ,
-                <li><a href="{{route('categories')}}">{{__('buttons.show_all')}}</a></li>
+                @endforeach--}}
+                 
+                <li><a href="{{route('products')}}">{{__('buttons.show_all')}}</a></li>
             </ul>
         </div>
         <div class="ps-section__content">

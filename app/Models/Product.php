@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Scopes\ProviderProductsScope;
+use App\Scopes\WithoutTranslationScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -22,7 +23,7 @@ class Product extends Model implements Searchable
 
     // protected $guarded = [];
 
-    //protected $with = ['translations'];
+    protected $with = ['translations'];
 
     protected $casts = [
         'formated_price' => 'decimal:2',
@@ -138,7 +139,7 @@ class Product extends Model implements Searchable
     }
 
     /******************** 09-08-2021 ***************************/
-    
+
     // this accessor is used For IP route
     public function getAllColorsAttribute()
     {
@@ -233,11 +234,7 @@ class Product extends Model implements Searchable
     }
 
 
-    protected static function booted()
-    {
-        // static::addGlobalScope(new ProviderProductsScope);
-    }
-
+  
     public static function boot()
     {
         parent::boot();
@@ -247,5 +244,12 @@ class Product extends Model implements Searchable
             $model->sku = str_pad($prefix . 'MNGP', 5, 0, STR_PAD_LEFT);
             // $model->serial_code = Str::uuid();
         });
+    }
+
+    /***********Global Scope added 14-08-2021 */
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new WithoutTranslationScope);
     }
 }

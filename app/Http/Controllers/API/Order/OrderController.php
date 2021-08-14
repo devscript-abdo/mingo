@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Order;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Order\OrderDetailResource;
 use App\Http\Resources\Order\OrderResource;
+use App\Http\Resources\Product\ProductResource;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -16,8 +17,8 @@ class OrderController extends Controller
             ->user()
             ->orders()
             ->get();
-       // dd(count($orders));
-       // $message = '';
+        // dd(count($orders));
+        // $message = '';
         count($orders) ? $message = 'successfully Orders' : $message = 'no Orders';
         return response()->json(
             [
@@ -47,10 +48,12 @@ class OrderController extends Controller
         $order = auth('sanctum')
             ->user()
             ->orders()
+            ->with(['products'])
             ->find($id);
 
         if ($order) {
             return new OrderDetailResource($order);
+            // return ProductResource::collection($order->products);
         }
         return response()->json(['error' => 'Order not found'], 404);
     }

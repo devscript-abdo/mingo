@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\WithoutTranslationScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Illuminate\Database\Eloquent\Model;
@@ -33,7 +34,14 @@ class Color extends Model
     {
 
         $this->attributes['name'] = $value;
-        
+
         $this->attributes['slug'] = Str::slug($value);
+    }
+
+    /***********Global Scope added 14-08-2021 */
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new WithoutTranslationScope);
     }
 }
