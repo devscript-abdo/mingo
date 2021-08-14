@@ -14,24 +14,25 @@ class WishListController extends Controller
 
     public function index()
     {
+        $lng = explode('/', request()->route()->action['prefix']);
+        //dd($lng);
         $lists = auth('sanctum')
             ->user()
             ->wishlist()
             ->with('products')
             ->get()
-            ->map(function ($list) {
-                return $list->products->map(function ($product) {
+            ->map(function ($list)  use ($lng) {
+                return $list->products->map(function ($product)  use ($lng) {
                     /*return [
                         'customerId' => auth('sanctum')->user()->id,
                         'id' => $product->id,
                         'name' => $product->name,
                         'photo' => $product->photo
                     ];*/
-                   return $this->formatedObject($product);
-
+                    return $this->formatedObject($product, $lng);
                 })->toArray();
-            })->collapse(); 
-            //The collapse method collapses a collection of arrays into a single, flat collection
+            })->collapse();
+        //The collapse method collapses a collection of arrays into a single, flat collection
         ///https://laravel.com/docs/8.x/collections#method-collapse
 
         count($lists) ? $message = 'successfully wishlist' : $message = 'no wishlist';
@@ -43,17 +44,16 @@ class WishListController extends Controller
             ],
             200
         );
-
     }
 
-    private function formatedObject($product)
+    private function formatedObject($product, $lng)
     {
         return [
 
             'id' => $product->id,
             'addedBy' => 'mingo',
             'userId' => 1,
-            'name' => $product->field('name'),
+            'name' => $product->field('name', $lng[1]),
             'slug' => $product->slug,
             'categoryIds' => [$product->category->id],
             'brandId' => $product->brand->id ?? '',
@@ -79,7 +79,7 @@ class WishListController extends Controller
             'discount' => '20',
             'discountType' => 'percent',
             'currentStock' => '10',
-            'details' => $product->field('description'),
+            'details' => $product->field('description', $lng[1]),
             'freeShipping' => '',
             'attachment' => '',
             'createdAt' => $product->created_at->format('Y-m-d H:i:s'),
