@@ -70,6 +70,7 @@ return [
     'customer_logged'=>'Sessions',
     'customer_logged_date'=>'Date ',
     'customer_logged_ip'=>'IP',
+    'customer_logged_device'=>'Périphérique',
 
     'customer_factures'=>'Factures',
 

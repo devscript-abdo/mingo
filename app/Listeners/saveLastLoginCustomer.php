@@ -32,6 +32,7 @@ class saveLastLoginCustomer
             'ip' => request()->ip(),
             'customer_id' => auth()->guard('customer')->user()->id,
             'logged_in_at' => Carbon::now(),
+            'device'=>'web_Browser'
         ]);
     }
 }

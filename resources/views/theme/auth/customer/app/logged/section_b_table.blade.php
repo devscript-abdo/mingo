@@ -13,6 +13,7 @@
                                 {{--<th>{{__('customer.customer_notif_table_title')}}</th>--}}
                                 <th>{{__('customer.customer_logged_date')}}</th>
                                 <th>{{__('customer.customer_logged_ip')}}</th>
+                                <th>{{__('customer.customer_logged_device')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,6 +25,12 @@
                                         {{$sessions->lastLogin->ip}}
                                     </span>
                                     | Last login
+                                </td>
+                                <td>
+                                    <span class="badge badge-danger" style="font-size: 17px;">
+                                        {{$sessions->lastLogin->device}}
+                                    </span>
+                                   
                                 </td>
                             </tr>
                    

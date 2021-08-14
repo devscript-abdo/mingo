@@ -70,6 +70,7 @@ return [
     'customer_logged'=>'Sessions',
     'customer_logged_date'=>'التاريخ',
     'customer_logged_ip'=>'عنوان الايبي ادريس',
+    'customer_logged_device'=>'الحهاز',
     
     'customer_factures' => 'الفواتير',
 
