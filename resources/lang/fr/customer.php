@@ -67,6 +67,9 @@ return [
     'customer_whislist_table_price' => 'Prix',
 
     /****************************************************** */
+    'customer_logged'=>'Sessions',
+    'customer_logged_date'=>'Date ',
+    'customer_logged_ip'=>'IP',
 
     'customer_factures'=>'Factures',
 

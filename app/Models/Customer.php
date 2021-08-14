@@ -92,4 +92,20 @@ class Customer extends Authenticatable
     {
         $this->notify(new ResetPasswordNotification($token));
     }
+
+    public function scopeWithLastLogin($query)
+    {
+        return $query->addSelect([
+            'last_logged_in_id' => UserLogin::select('id')
+               // ->whereColumn('customer_id', 'customers.id')
+                ->where('customer_id',auth()->guard('customer')->user()->id)
+                ->orderBy('logged_in_at', 'desc')
+                ->limit(1),
+        ])->with(['lastLogin'])->first();
+    }
+
+    public function lastLogin()
+    {
+        return $this->belongsTo(UserLogin::class, 'last_logged_in_id');
+    }
 }

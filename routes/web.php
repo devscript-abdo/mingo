@@ -18,6 +18,7 @@ use App\Http\Controllers\Customer\CustomerResetPasswordController;
 use App\Http\Controllers\Customer\FactureController;
 use App\Http\Controllers\Customer\GenerateInvoiceController;
 use App\Http\Controllers\Customer\InvoiceController;
+use App\Http\Controllers\Customer\LoggedInController;
 use App\Http\Controllers\Customer\NotificationController;
 use App\Http\Controllers\Customer\SocialController;
 use App\Http\Controllers\Customer\WishlistController;
@@ -173,6 +174,8 @@ Route::group(
 
                 Route::get('/account/wishlist', [WishlistController::class, 'index'])->name('customer.wishlist');
                 Route::delete('/account/wishlist', [WishlistController::class, 'delete'])->name('customer.wishlist.delete');
+
+                Route::get('/account/login-session', [LoggedInController::class, 'index'])->name('customer.logged');
             });
         });
     }

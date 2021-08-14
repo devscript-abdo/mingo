@@ -13,6 +13,7 @@ use TCG\Voyager\Traits\Translatable;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use App\Traits\Language;
+use Illuminate\Support\Carbon;
 
 class Product extends Model implements Searchable
 {
@@ -104,6 +105,11 @@ class Product extends Model implements Searchable
     {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
+    }
+
+    public function getIsPublishedAttribute(): bool
+    {
+        return $this->published_at->lessThanOrEqualTo(Carbon::now());
     }
 
     public function getFormatedPriceAttribute()
@@ -234,7 +240,7 @@ class Product extends Model implements Searchable
     }
 
 
-  
+
     public static function boot()
     {
         parent::boot();
