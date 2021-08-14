@@ -26,7 +26,7 @@
                                         <form id="deleteWish" action="{{route('customer.wishlist.delete')}}" method="post" hidden>
                                             @method('DELETE')
                                             @csrf
-                                            <input type="hidden" name="wisher" value="{{$list->id}}">
+                                            <input type="hidden" name="productData" value="{{$list->id}}">
 
                                         </form>
                                     </td>

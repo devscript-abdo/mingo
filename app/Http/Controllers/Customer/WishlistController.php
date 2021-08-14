@@ -22,9 +22,9 @@ class WishlistController extends Controller
 
     public function delete(Request $request)
     {
-        $request->validate(['wisher' => 'required|integer']);
+        $request->validate(['productData' => 'required|integer']);
 
-        $wish = Wishlist::find($request->wisher);
+        $wish = Wishlist::find($request->productData);
 
         if ($wish) {
 
