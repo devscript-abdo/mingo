@@ -24,5 +24,6 @@ class UserLogin extends Model
         'ip',
         'type',
         'logged_in_at',
+        'device'
     ];
 }

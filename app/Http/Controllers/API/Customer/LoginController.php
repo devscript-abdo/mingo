@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Customer\LoginRequest;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -26,6 +27,13 @@ class LoginController extends Controller
         }
 
         $token = $user->createToken($data['email'])->plainTextToken;
+
+        $user->lastLogin()->create([
+            'ip' => request()->ip(),
+            'customer_id' => $user->id,
+            'logged_in_at' => Carbon::now(),
+            'device' => 'application_Mobile'
+        ]);
 
         return response()->json([
             'payload' =>
