@@ -27,6 +27,7 @@ use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\ProductCollectionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\SMS\SmsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 /*
@@ -53,6 +54,8 @@ Route::get('/tokens/create', function (Request $request) {
 Route::get('/payment',[PaymentController::class,'index'])->name('checkout.payment');
 
 Route::get('/test', [SiteController::class, 'test']);
+
+Route::get('/sms', [SmsController::class, 'index']);
 
 Route::post('proccess',[PaymentController::class,'proccess'])->name('payment.proccess');
 //Route::post('proccess-done',[PaymentController::class,'proccessDone'])->name('payment.proccess.done');
