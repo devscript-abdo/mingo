@@ -20,10 +20,10 @@
                             @foreach($list->products as $product)
                                 <tr>
                                     <td data-label="Remove">
-                                        <a href="#" onclick="document.getElementById('deleteWish{{$product->id}}').submit();">
+                                        <a href="#" onclick="document.getElementById('deleteWish{{$list->id}}').submit();">
                                             <i class="icon-cross"></i>
                                         </a>
-                                        <form id="deleteWish{{$product->id}}" action="{{route('customer.wishlist.delete')}}" method="post" hidden>
+                                        <form id="deleteWish{{$list->id}}" action="{{route('customer.wishlist.delete')}}" method="post" hidden>
                                             @method('DELETE')
                                             @csrf
                                             <input type="hidden" name="productData" value="{{$list->id}}">
