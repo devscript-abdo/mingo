@@ -114,9 +114,9 @@ class GenerateInvoiceController extends Controller
             'count_download' => +1,
         ]);
 
-       // auth('customer')->user()->notify(new SendInvoiceNotification($link, $invoicer));
+       auth('customer')->user()->notify(new SendInvoiceNotification($link, $invoicer));
 
-        auth('customer')->user()->notify(new SendSMSNotification());
+       // auth('customer')->user()->notify(new SendSMSNotification());
 
         // And return invoice itself to browser or have a different view
         return $invoice->stream();
