@@ -47,9 +47,10 @@ class SendInvoiceNotification extends Notification
     {
         return (new MailMessage)
             ->subject("Facture Mingo n°{$this->invoicer->serial_numer}")
-            ->line('Facture')
+            ->line('Cher client,')
+            ->line("Veuillez trouver en pièce jointe la facture {$this->invoicer->serial_numer}")
             ->action('Ouvrire la Facture', $this->invoiceUrl)
-            ->line('Thank you for using our application!');
+            ->line('Notre service de facturation reste à votre disposition pour toute demande');
     }
 
     /**
