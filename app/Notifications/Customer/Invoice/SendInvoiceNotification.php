@@ -51,11 +51,11 @@ class SendInvoiceNotification extends Notification
             ->line("Veuillez trouver en pièce jointe la facture {$this->invoicer->serial_numer}")
             ->action('Ouvrire la Facture', $this->invoiceUrl)
             ->line('Notre service de facturation reste à votre disposition pour toute demande')
-            //->attach($this->invoiceUrl)
-            ->attach($this->invoiceUrl, [
+            ->attach($this->invoiceUrl);
+            /*->attach($this->invoiceUrl, [
                 'as' => 'Facture.pdf',
                 'mime' => 'application/pdf',
-            ]);
+            ]);*/
     }
 
     /**
