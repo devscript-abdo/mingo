@@ -30,7 +30,7 @@ class saveLastLoginCustomer
         //  dd($event);
         $event->user->lastLogin()->create([
             'ip' => request()->ip(),
-            'customer_id' => auth()->guard('customer')->user()->id,
+            'customer_id' => $event->user->id,
             'logged_in_at' => Carbon::now(),
             'device'=>'web_Browser'
         ]);
