@@ -63,7 +63,7 @@ class SendSMSNotification extends Notification
     public function toNexmo($notifiable)
     {
         return (new NexmoMessage)
-            ->content('Your SMS message content')
-            ->from('+212677512753');
+            ->content('Your SMS message content');
+            //->from('+212677512753');
     }
 }
