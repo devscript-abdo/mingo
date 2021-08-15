@@ -41,6 +41,6 @@ class ProductComposer
     private function timeToLive()
     {
 
-        return \Carbon\Carbon::now()->addDays(30);
+        return \Carbon\Carbon::now()->addDays(1);
     }
 }
