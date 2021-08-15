@@ -30,9 +30,9 @@ class Helper
 
     public function getInvoiceLogo()
     {
-        return public_path('storage/' . setting('site.logo'))
-            ??
-            public_path('vendor/invoices/sample-logo.png');
+        //return public_path('storage//' . setting('site.logo'))
+           // ??
+           return public_path('vendor/invoices/logo.png');
     }
 
     public function daysBeforCancelOrder($date)
