@@ -42,4 +42,8 @@ return [
         'redirect' => env('FB_REDIRECT'),
     ],
 
+    'nexmo' => [
+        'sms_from' => '+212677512753',
+    ],
+
 ];

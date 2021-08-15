@@ -121,4 +121,10 @@ class Customer extends Authenticatable
     {
         return $this->hasMany(UserLogin::class);
     }
+
+
+    public function routeNotificationForNexmo($notification)
+    {
+        return $this->phone;
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\GenerateInvoiceRequest;
 use App\Notifications\Customer\Invoice\SendInvoiceNotification;
+use App\Notifications\Customer\Invoice\SendSMSNotification;
 use Illuminate\Http\Request;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Party;
@@ -113,7 +114,9 @@ class GenerateInvoiceController extends Controller
             'count_download' => +1,
         ]);
 
-        auth('customer')->user()->notify(new SendInvoiceNotification($link, $invoicer));
+       // auth('customer')->user()->notify(new SendInvoiceNotification($link, $invoicer));
+
+        auth('customer')->user()->notify(new SendSMSNotification());
 
         // And return invoice itself to browser or have a different view
         return $invoice->stream();
