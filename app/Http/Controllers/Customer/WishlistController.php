@@ -12,7 +12,7 @@ class WishlistController extends Controller
 
     public  function  index()
     {
-       /* $lists = Wishlist::where('customer_id', auth()->user()->id)
+        /* $lists = Wishlist::where('customer_id', auth()->user()->id)
             ->with('products')
             ->get();*/
         $lists = $this->Wishlist()->getCustomerWishlist();
@@ -24,7 +24,7 @@ class WishlistController extends Controller
     {
         $request->validate(['productData' => 'required|integer']);
 
-        $wish = Wishlist::find($request->productData);
+        $wish = Wishlist::where('id', $request->productData)->where('customer_id', auth('customer')->user()->id)->first();
 
         if ($wish) {
 
