@@ -13,14 +13,17 @@ class SendInvoiceNotification extends Notification
 
 
     public $invoiceUrl;
+
+    public $invoicer;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($invoiceUrl)
+    public function __construct($invoiceUrl, $invoicer)
     {
         $this->invoiceUrl = $invoiceUrl;
+        $this->invoicer = $invoicer;
     }
 
     /**
@@ -43,6 +46,7 @@ class SendInvoiceNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->subject("MinGo.ma Facture numéro : {$this->invoicer->serial_numer}")
             ->line('Facture')
             ->action('Ouvrire la Facture', $this->invoiceUrl)
             ->line('Thank you for using our application!');

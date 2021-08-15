@@ -107,13 +107,13 @@ class GenerateInvoiceController extends Controller
 
         // Then send email to party with link
 
-        $order->invoice()->firstOrCreate(['url' => $link], [
+        $invoicer = $order->invoice()->firstOrCreate(['url' => $link], [
             'url' => $link,
             'customer_id' => auth()->guard('customer')->user()->id ?? null,
             'count_download' => +1,
         ]);
 
-        auth('customer')->user()->notify(new SendInvoiceNotification($link));
+        auth('customer')->user()->notify(new SendInvoiceNotification($link, $invoicer));
 
         // And return invoice itself to browser or have a different view
         return $invoice->stream();
