@@ -97,15 +97,28 @@ class Customer extends Authenticatable
     {
         return $query->addSelect([
             'last_logged_in_id' => UserLogin::select('id')
-               // ->whereColumn('customer_id', 'customers.id')
-                ->where('customer_id',auth()->guard('customer')->user()->id)
+                // ->whereColumn('customer_id', 'customers.id')
+                ->where('customer_id', $this->id)
                 ->orderBy('logged_in_at', 'desc')
                 ->limit(1),
         ])->with(['lastLogin'])->first();
     }
 
+    //https://laravel.com/docs/8.x/collections#method-pop
+    public function GetLoginHistory()
+    {
+        $sessionsAll = $this->loginHistory()->get() ?? [];
+        $sessionsAll->pop();//remove las login because it's getted from scopeWithLastLogin() function
+        return $sessionsAll->all();
+    }
+
     public function lastLogin()
     {
         return $this->belongsTo(UserLogin::class, 'last_logged_in_id');
+    }
+
+    public function loginHistory()
+    {
+        return $this->hasMany(UserLogin::class);
     }
 }

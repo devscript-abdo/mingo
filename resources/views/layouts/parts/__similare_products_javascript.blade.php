@@ -3,7 +3,7 @@
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
     let slugs = @json($productsSimilaire);
-
+    //console.log(slugs);
     const tryTosetUrl = async (element) => 
      {
         element.innerHTML='<i class="fa fa-spinner fa-spin"></i>';
@@ -19,10 +19,10 @@
 
         var item = slugs[Math.floor(Math.random()*slugs.length)];
 
-        element.setAttribute('href',`/products/${item}`);
+        element.setAttribute('href',`${item}`);
 
-        window.location=`/products/${item}`;
+        window.location=`${item}`;
             
      }
-
+  /// Elmarzougui Abdelghafour 
 </script>

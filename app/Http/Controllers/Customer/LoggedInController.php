@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class LoggedInController extends Controller
 {
-    
 
-    public  function  index()
-    {
 
-        $sessions = auth()->guard('customer')->user()->withLastLogin() ?? [];
-        
-      //  $sessionsAll = auth()->guard('customer')->user()->withAllLogin() ?? [];
+  public  function  index()
+  {
 
-        return view('theme.auth.customer.app.logged.index', compact('sessions'));
-    }
+    $sessions = auth('customer')->user()->withLastLogin() ?? [];
+
+    $sessionsAll = auth('customer')->user()->GetLoginHistory() ?? [];
+
+    return view('theme.auth.customer.app.logged.index', compact('sessions', 'sessionsAll'));
+  }
 }

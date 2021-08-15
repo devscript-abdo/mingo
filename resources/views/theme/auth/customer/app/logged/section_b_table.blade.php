@@ -19,9 +19,9 @@
                         <tbody>
                             <tr>
                                 {{--<td>Lorem</td>--}}
-                                <td>{{$sessions->lastLogin->logged_in_at}}</td>
+                                <td style="font-size: 17px;">{{$sessions->lastLogin->logged_in_at}}</td>
                                 <td>
-                                    <span class="badge badge-primary" style="font-size: 17px;">
+                                    <span class="badge badge-danger" style="font-size: 17px;">
                                         {{$sessions->lastLogin->ip}}
                                     </span>
                                     | Last login
@@ -34,24 +34,24 @@
                                 </td>
                             </tr>
                             
-                            {{--@foreach ($sessionsAll as $session)
+                            @foreach ($sessionsAll as $session)
                                 <tr>
                                    
-                                    <td>{{$session->lastLogin->logged_in_at}}</td>
+                                    <td style="font-size: 17px;">{{$session->logged_in_at}}</td>
                                     <td>
-                                        <span class="badge badge-primary" style="font-size: 17px;">
-                                            {{$session->lastLogin->ip}}
+                                        <span class="badge badge-warning" style="font-size: 17px;">
+                                            {{$session->ip}}
                                         </span>
-                                        | Last login
+                                     
                                     </td>
                                     <td>
-                                        <span class="badge badge-danger" style="font-size: 17px;">
-                                            {{$session->lastLogin->device}}
+                                        <span class="badge badge-warning" style="font-size: 17px;">
+                                            {{$session->device}}
                                         </span>
-                                    
+                                        {{--$session->customer_id--}}
                                     </td>
                                 </tr>
-                            @endforeach--}}
+                            @endforeach
                    
                         </tbody>
                     </table>

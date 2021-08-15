@@ -26,4 +26,10 @@ class UserLogin extends Model
         'logged_in_at',
         'device'
     ];
+
+
+    public function customer()
+    {
+        return $this->belongsTo('App\Models\Customer');
+    }
 }

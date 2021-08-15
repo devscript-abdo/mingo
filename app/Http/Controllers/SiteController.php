@@ -47,13 +47,13 @@ class SiteController extends Controller
     public function test()
     {
         $products = $this->Product()->model()->pluck('slug');
-        $resultat = $products->each(function ($item, $key) {
-            return $item.route('products');
+        $resultat = $products->map(function ($item, $key) {
+            return url(route('products.single', $item));
         });
-        dd($resultat);
+        dd($resultat, '---');
         $payment = app(PaymentInterface::class)->getPayment();
         dd($payment);
-       return view('payment.cmi');
+        return view('payment.cmi');
     }
 
 

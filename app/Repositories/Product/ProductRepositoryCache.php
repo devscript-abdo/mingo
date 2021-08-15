@@ -100,7 +100,13 @@ class ProductRepositoryCache  implements ProductInterface
     {
         $products = $this->model()->pluck('slug');
 
-        return $products->all();
+        /*return $products->all();*/
+
+        $resultat = $products->map(function ($item, $key) {
+            return url(route('products.single', $item));
+        });
+
+        return $resultat->all();
     }
 
     private function timeToLive()

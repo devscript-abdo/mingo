@@ -65,15 +65,22 @@ class ProductRepository  implements ProductInterface
     {
         return $this->model()->topSearched();
     }
-    public function explore(){
-        
+    public function explore()
+    {
+
         return $this->model()->exploreProducts();
     }
 
     public function similaire()
     {
         $products = $this->model()->pluck('slug');
-        
-       return $products->all();
+
+        /*return $products->all();*/
+
+        $resultat = $products->map(function ($item, $key) {
+            return url(route('products.single', $item));
+        });
+
+        return $resultat->all();
     }
 }
