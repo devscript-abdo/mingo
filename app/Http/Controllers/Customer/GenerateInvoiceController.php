@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\GenerateInvoiceRequest;
+use App\Notifications\Customer\Invoice\SendInvoiceNotification;
 use Illuminate\Http\Request;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Party;
@@ -103,7 +104,7 @@ class GenerateInvoiceController extends Controller
             ->save('public');
 
         $link = $invoice->url();
-        
+
         // Then send email to party with link
 
         $order->invoice()->firstOrCreate(['url' => $link], [
@@ -111,6 +112,8 @@ class GenerateInvoiceController extends Controller
             'customer_id' => auth()->guard('customer')->user()->id ?? null,
             'count_download' => +1,
         ]);
+
+        auth('customer')->user()->notify(new SendInvoiceNotification($link));
 
         // And return invoice itself to browser or have a different view
         return $invoice->stream();
