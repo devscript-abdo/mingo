@@ -46,7 +46,7 @@ class SendInvoiceNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject("MinGo.ma Facture numéro : {$this->invoicer->serial_numer}")
+            ->subject("Facture Mingo n°{$this->invoicer->serial_numer}")
             ->line('Facture')
             ->action('Ouvrire la Facture', $this->invoiceUrl)
             ->line('Thank you for using our application!');
