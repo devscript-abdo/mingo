@@ -30,7 +30,7 @@ class Invoice extends Model
 
         static::creating(function ($model) {
             $number = (self::max('id') + 1)  . '#' . auth('customer')->user()->id;
-            $model->serial_numer = str_pad($number, 5, 0, STR_PAD_LEFT) . '/MINGO';
+            $model->serial_numer = str_pad($number, 8, 0, STR_PAD_LEFT) . '/MINGO';
             $model->serial_code = Str::uuid();
         });
     }
