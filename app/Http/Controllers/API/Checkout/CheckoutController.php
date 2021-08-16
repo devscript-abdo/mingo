@@ -20,17 +20,9 @@ class CheckoutController extends Controller
 
     public function store(CheckoutRequest $request)
     {
-
-        // dd($request->all());
         $data = $request->validated();
-        // dd($data,'Oui');
-        // $items = collect($request->cart)->sum('price');
-        // dd($items);
-        /* $contents = Cart::content()->map(function ($item) {
-            return $item->options->url . ', ' . $item->qty;
-        })->values()->toJson();*/
 
-        $order = $this->addToOrdersTables($data, null);
+        $order = $this->addToOrdersTable($data, null);
 
         if ($order) {
 
@@ -44,7 +36,7 @@ class CheckoutController extends Controller
         }
     }
 
-    protected function addToOrdersTables($data, $error)
+    protected function addToOrdersTable($data, $error)
     {
 
         $totalPrice = collect($data['cart'])->sum('price');
