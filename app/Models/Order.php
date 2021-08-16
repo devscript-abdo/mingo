@@ -13,8 +13,22 @@ class Order extends Model
 
     protected $fillable = [
 
-        'customer_id', 'billing_email', 'billing_name', 'billing_address', 'billing_city',
-        'billing_province', 'billing_postalcode', 'billing_phone', 'billing_name_on_card', 'billing_discount', 'billing_discount_code', 'billing_subtotal', 'billing_tax', 'billing_total', 'payment_gateway', 'error',
+        'customer_id',
+        'billing_email',
+        'billing_name',
+        'billing_address',
+        'billing_city',
+        'billing_province',
+        'billing_postalcode',
+        'billing_phone',
+        'billing_name_on_card',
+        'billing_discount',
+        'billing_discount_code',
+        'billing_subtotal',
+        'billing_tax',
+        'billing_total',
+        'payment_gateway',
+        'error',
     ];
 
     public function customer()
@@ -36,7 +50,6 @@ class Order extends Model
             $result = $attrs->map(function ($item, $key) {
 
                 return $item->pivot->quantity;
-
             });
 
             return $result->all();
@@ -54,9 +67,11 @@ class Order extends Model
         parent::boot();
 
         static::creating(function ($model) {
+           
             $number = self::max('id') + 1;
             $model->full_number = "MNG-F-" . str_pad($number, 5, 0, STR_PAD_LEFT);
             $model->slug = Str::slug($model->full_number);
+           // dd('Ouiiiii finddd');
         });
     }
 }

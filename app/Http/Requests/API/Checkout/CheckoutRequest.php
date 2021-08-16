@@ -24,16 +24,28 @@ class CheckoutRequest extends FormRequest
      */
     public function rules()
     {
-        $emailRule = auth('sanctum')->user() ? ['required', 'email'] : ['required', 'email', Rule::unique('customers', 'email')->ignore(request()->user()->currentAccessToken()->tokenable_id)];
+       // $emailRule = auth('sanctum')->check() ? ['required', 'email'] : ['required', 'email', Rule::unique('customers', 'email')->ignore(request()->user()->currentAccessToken()->tokenable_id)];
 
         return [
-            'email' =>  $emailRule,
-            'name' => 'required|string',
-            'address' => 'required|string',
-            'city' => 'required|string',
-            //'province'=>'required|string',
-            'phone' => 'required|phone:MA',
-            'notes' => 'nullable|string'
+            //'email' =>  $emailRule,
+            'customer_info' => 'required|array',
+            'customer_info.address_id' => 'required',
+            'customer_info.shipping_address' => 'required|string',
+
+            'payment_method' => 'required|string',
+            'discount' => 'nullable|integer',
+
+            'cart' => 'required|array',
+            'cart.*.id' => 'required|integer',
+            'cart.*.tax' => 'required',
+            'cart.*.quantity' => 'required|integer',
+            'cart.*.price' => 'required',
+            'cart.*.discount' => 'required',
+            'cart.*.discount_type' => 'required|string',
+            'cart.*.shipping_method_id' => 'nullable|integer',
+            'cart.*.variant' => 'nullable|string',
+            'cart.*.variations' => 'nullable|string',
+            'cart.*.shipping_cost' => 'nullable|integer',
         ];
     }
 }

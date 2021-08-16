@@ -21,48 +21,63 @@ class CheckoutController extends Controller
     public function store(CheckoutRequest $request)
     {
 
+        // dd($request->all());
+        $data = $request->validated();
+        // dd($data,'Oui');
+        // $items = collect($request->cart)->sum('price');
+        // dd($items);
         /* $contents = Cart::content()->map(function ($item) {
             return $item->options->url . ', ' . $item->qty;
         })->values()->toJson();*/
 
-        $order = $this->addToOrdersTables($request, null);
+        $order = $this->addToOrdersTables($data, null);
 
         if ($order) {
 
-            // Cart::instance('default')->destroy();
+            return response()->json(
+                [
 
-            return redirect()->route('checkout.payment');
+                    '_response' => ['msg' => 'successfully Created Order']
+                ],
+                200
+            );
         }
     }
 
-    protected function addToOrdersTables($request, $error)
+    protected function addToOrdersTables($data, $error)
     {
-        // Insert into orders table
-        $order = Order::create([
+
+        $totalPrice = collect($data['cart'])->sum('price');
+
+        $order = Order::forceCreate([
             'customer_id' => auth('sanctum')->user()->id ??  null,
-            'billing_email' => $request->billing_email,
-            'billing_name' => $request->billing_name,
-            'billing_address' => $request->billing_address,
-            'billing_city' => $request->billing_city,
-            'billing_province' => $request->billing_province,
-            'billing_postalcode' => $request->billing_postalcode,
-            'billing_phone' => $request->billing_phone,
-            'billing_name_on_card' => $request->billing_name,
-            'billing_discount' => 0,
+
+            'billing_email' => auth('sanctum')->user()->email ?? 'app_mobile@mingo.ma',
+            'billing_name' => auth('sanctum')->user()->name,
+
+            'billing_address' => $data['customer_info']['shipping_address'],
+            'billing_city' => $data['customer_info']['shipping_address'],
+            'billing_province' => $data['customer_info']['shipping_address'],
+            'billing_postalcode' => "2000",
+            'billing_phone' => auth('sanctum')->user()->phone ?? '0660405003',
+            'billing_name_on_card' => auth('sanctum')->user()->name,
+            'billing_discount' => $data['discount'],
             'billing_discount_code' => 'coupon',
-            'billing_subtotal' => Cart::subtotal(),
-            'billing_tax' => 0,
-            'billing_total' => Cart::priceTotal(),
+            'billing_subtotal' => $totalPrice,
+            'billing_tax' => "550",
+            'billing_total' => $totalPrice,
             'payment_gateway' => 'COD',
             'error' => $error,
+            //dd('rrrr','last'),
         ]);
 
         // Insert into order_product table
-        foreach (Cart::content() as $item) {
+        foreach ($data['cart'] as $item) {
+
             OrderProduct::create([
                 'order_id' => $order->id,
-                'product_id' => $item->id,
-                'quantity' => $item->qty,
+                'product_id' => $item['id'],
+                'quantity' => $item['quantity'],
             ]);
         }
 
