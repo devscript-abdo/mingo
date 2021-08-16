@@ -69,6 +69,11 @@ class OrderObserver
 
             cache()->pull("orders_cache_{$id}");
             cache()->pull("orders_cache_slug_{$id}");
+        } else {
+            $id = json_encode(auth('sanctum')->user()->id);
+
+            cache()->pull("orders_cache_{$id}");
+            cache()->pull("orders_cache_slug_{$id}");
         }
     }
 }
