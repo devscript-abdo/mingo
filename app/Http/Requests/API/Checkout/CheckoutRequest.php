@@ -24,7 +24,7 @@ class CheckoutRequest extends FormRequest
      */
     public function rules()
     {
-       // $emailRule = auth('sanctum')->check() ? ['required', 'email'] : ['required', 'email', Rule::unique('customers', 'email')->ignore(request()->user()->currentAccessToken()->tokenable_id)];
+       /// $emailRule = auth('sanctum')->check() ? ['required', 'email'] : ['required', 'email', Rule::unique('customers', 'email')->ignore(request()->user()->currentAccessToken()->tokenable_id)];
 
         return [
             //'email' =>  $emailRule,
