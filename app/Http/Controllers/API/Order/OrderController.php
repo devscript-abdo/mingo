@@ -57,4 +57,24 @@ class OrderController extends Controller
         }
         return response()->json(['error' => 'Order not found'], 404);
     }
+
+
+    private function orderDetailToJson($product)
+    {
+        return [
+            'id' => $this->id,
+            'order_id' => $this->id,
+            'product_id' =>$product->id,
+            'seller_id' => 1,
+            'product_details' => ProductResource::collection($this->products),
+
+            'qty' => $product->pivot->quantity,
+            'price' =>$product->pivot->quantity * $product->price,
+            'discount' => $this->billing_discount_code,
+            'delivery_status' => $this->delivery_status,
+            'payment_status' => $this->is_payed,
+            'shipping_method_id' => 1,
+            'created_at' => $this->created_at->format('Y-m-d'),
+        ];
+    }
 }

@@ -51,8 +51,8 @@ class Order extends Model
 
                 return $item->pivot->quantity;
             });
-
-            return $result->all();
+          
+            return $result->sum();
         }
         return [];
     }

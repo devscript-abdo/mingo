@@ -8,7 +8,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class OrderDetailResource extends JsonResource
 {
 
-    public static $wrap = 'payload';
+    public static $wrap = null;
 
     /**
      * Transform the resource into an array.
@@ -18,22 +18,23 @@ class OrderDetailResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+       // return parent::toArray($request);
+  
+            return [
+                'id' => $this->id,
+                'order_id' => $this->id,
+                'product_id' =>$product->id,
+                'seller_id' => 1,
+                'product_details' => ProductResource::collection($this->products),
 
-        /*return [
-            'id' => $this->id,
-            'order_id' => $this->id,
-            'product_id' =>1,
-            'seller_id' => $this->payment_gateway,
-            'product_details' => ProductResource::collection($this->products),
-            'qty' => $this->products_all,
-            'price' => $this->billing_discount,
-            'discount' => $this->billing_discount_code,
-            'delivery_status' => $this->delivery_status,
-            'order_status' => $this->status,
-            'payment_status' => $this->is_payed,
-            'shipping_method_id' => 1,
-            'created_at' => $this->created_at->format('Y-m-d'),
-        ];*/
+                'qty' => $this->products_all,
+                'price' =>$this->products_all * $product->price,
+                'discount' => $this->billing_discount_code,
+                'delivery_status' => $this->delivery_status,
+                'payment_status' => $this->is_payed,
+                'shipping_method_id' => 1,
+                'created_at' => $this->created_at->format('Y-m-d'),
+            ];
+        
     }
 }
