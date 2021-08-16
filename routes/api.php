@@ -140,12 +140,15 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
             Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.fr');
             Route::get('/orders/{id}', [OrderController::class, 'show'])->name('api.orders.single.fr');
+            Route::post('/orders/delete',[OrderController::class,'delete'])->name('api.orders.delete.fr');
         });
 
         Route::group(['prefix' => 'ar/account'], function () {
 
             Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.ar');
             Route::get('/orders/{id}', [OrderController::class, 'show'])->name('api.orders.single.ar');
+            Route::post('/orders/delete',[OrderController::class,'delete'])->name('api.orders.delete.ar');
+
         });
 
         /*********Profile */

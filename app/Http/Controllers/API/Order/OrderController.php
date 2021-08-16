@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Order\OrderDetailResource;
 use App\Http\Resources\Order\OrderResource;
 use App\Http\Resources\Product\ProductResource;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -64,17 +66,52 @@ class OrderController extends Controller
         return [
             'id' => $this->id,
             'order_id' => $this->id,
-            'product_id' =>$product->id,
+            'product_id' => $product->id,
             'seller_id' => 1,
             'product_details' => ProductResource::collection($this->products),
 
             'qty' => $product->pivot->quantity,
-            'price' =>$product->pivot->quantity * $product->price,
+            'price' => $product->pivot->quantity * $product->price,
             'discount' => $this->billing_discount_code,
             'delivery_status' => $this->delivery_status,
             'payment_status' => $this->is_payed,
             'shipping_method_id' => 1,
             'created_at' => $this->created_at->format('Y-m-d'),
         ];
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->validate(['orderId' => 'required|integer']);
+
+        $order = Order::whereId($id)
+            ->where('customer_id', auth('sanctum')->user()->id)
+            ->first();
+        //  dd($order);
+        if ($order) {
+
+            OrderProduct::whereIn('order_id', [$order->id])->delete();
+
+            //$orderDetail->delete();
+
+            $order->delete();
+
+            return response()->json(
+                [
+
+                    'payload' =>   [],
+                    '_response' => ['msg' => 'cette commande a été annulée']
+                ],
+                200
+            );
+        }
+        return response()->json(
+            [
+
+                'payload' =>   [],
+                '_response' => ['msg' => 'error']
+            ],
+            200
+        );
     }
 }
