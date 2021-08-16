@@ -82,4 +82,37 @@ class ProductController extends Controller
         }
         return response()->json(['error' => 'product not found'], 404);
     }
+
+    public function getProductsCollections()
+    {
+        $collections = $this->ProductCollection()->showInHome();
+
+        $collectProducts = $collections->map(function ($collection, $key) {
+
+            // return $collection->products;
+
+            return $this->productCollectionObject($collection->products, $collection->name);
+        })->all();
+
+        // dd($collectProducts);
+
+        if ($collections) {
+            return response()->json(
+                [
+                    'payload' => $collectProducts,
+                    '_response' => ['msg' => 'successfully Collections Products']
+                ],
+                200
+            );
+        }
+    }
+
+    public function productCollectionObject($data, $collectionName)
+    {
+
+        return [
+            'collection_name' => $collectionName,
+            'products' => ProductResource::collection($data)
+        ];
+    }
 }

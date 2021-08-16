@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
 });
+//Route::get('/fr/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.fr');
 
 Route::group(['middleware' => 'verifyApiAccess'], function () {
 
@@ -41,6 +42,9 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
             Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.latest.fr');
             Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.fr');
+
+            Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.fr');
+
         });
 
         Route::group(['prefix' => 'ar'], function () {
@@ -49,7 +53,8 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
             Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show.ar');
 
             Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.deals.ar');
-            Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.fr');
+            Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.ar');
+            Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.ar');
         });
     });
 
@@ -140,15 +145,16 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
             Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.fr');
             Route::get('/orders/{id}', [OrderController::class, 'show'])->name('api.orders.single.fr');
-            Route::post('/orders/delete',[OrderController::class,'delete'])->name('api.orders.delete.fr');
+
+            Route::post('/orders/delete', [OrderController::class, 'delete'])->name('api.orders.delete.fr');
         });
 
         Route::group(['prefix' => 'ar/account'], function () {
 
             Route::get('/orders', [OrderController::class, 'index'])->name('api.orders.index.ar');
             Route::get('/orders/{id}', [OrderController::class, 'show'])->name('api.orders.single.ar');
-            Route::post('/orders/delete',[OrderController::class,'delete'])->name('api.orders.delete.ar');
 
+            Route::post('/orders/delete', [OrderController::class, 'delete'])->name('api.orders.delete.ar');
         });
 
         /*********Profile */

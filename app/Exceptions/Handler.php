@@ -72,14 +72,10 @@ class Handler extends ExceptionHandler
                 ], 405);
             }
 
-            if ($exception instanceof NotFoundHttpException) {
-               /* return response()->json([
-
-                    'msg' => ['error' => 'sorry this URL is not Found']
-                ], 404);*/
+           /* if ($exception instanceof NotFoundHttpException) {
 
                 return redirect()->route('home');
-            }
+            }*/
         }
 
         return parent::render($request, $exception);
