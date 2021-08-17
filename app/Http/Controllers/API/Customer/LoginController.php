@@ -46,6 +46,7 @@ class LoginController extends Controller
                 'ville' => $user->city,
                 'zip' => '12345600',
                 'photo_link' => $user->profil_avatar,
+                'phone'=>$user->phone,
 
                 'token' => $token,
             ],
