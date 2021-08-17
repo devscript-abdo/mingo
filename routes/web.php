@@ -22,6 +22,7 @@ use App\Http\Controllers\Customer\LoggedInController;
 use App\Http\Controllers\Customer\NotificationController;
 use App\Http\Controllers\Customer\SocialController;
 use App\Http\Controllers\Customer\WishlistController;
+use App\Http\Controllers\Devlopper\DevlopperController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\ProductCollectionController;
@@ -51,15 +52,15 @@ Route::get('/tokens/create', function (Request $request) {
     return ['token' => $token->plainTextToken];
 });
 
-Route::get('/payment',[PaymentController::class,'index'])->name('checkout.payment');
+Route::get('/payment', [PaymentController::class, 'index'])->name('checkout.payment');
 
 Route::get('/test', [SiteController::class, 'test']);
 
 Route::get('/sms', [SmsController::class, 'index']);
 
-Route::post('proccess',[PaymentController::class,'proccess'])->name('payment.proccess');
+Route::post('proccess', [PaymentController::class, 'proccess'])->name('payment.proccess');
 //Route::post('proccess-done',[PaymentController::class,'proccessDone'])->name('payment.proccess.done');
-Route::post('proccess-fail',[PaymentController::class,'proccessDone'])->name('payment.proccess.fail');
+Route::post('proccess-fail', [PaymentController::class, 'proccessDone'])->name('payment.proccess.fail');
 /*******************Social Login */
 Route::get('/redirect/{service}', [SocialController::class, 'redirect'])
     ->name('customer.service.login');
@@ -91,7 +92,7 @@ Route::group(
         Route::get('/products', [ProductController::class, 'indexWithFilters'])->name('products');
         Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.single');
 
-        Route::get('/explore',[ExploreController::class,'index'])->name('products.explore');
+        Route::get('/explore', [ExploreController::class, 'index'])->name('products.explore');
 
         Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
         Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('categories.single');
@@ -113,19 +114,19 @@ Route::group(
 
 
             Route::get('password/request', [CustomerForgotPasswordController::class, 'showLinkRequestForm'])
-            ->middleware('guest:customer')
-            ->name('customer.forgotpassword');
+                ->middleware('guest:customer')
+                ->name('customer.forgotpassword');
 
             Route::post('password/request', [CustomerForgotPasswordController::class, 'sendResetLinkEmail'])
-            ->middleware('guest:customer')
+                ->middleware('guest:customer')
                 ->name('customer.forgotpasswordPost');
 
             Route::get('/password/reset/{token}', [CustomerResetPasswordController::class, 'showResetForm'])
-            ->middleware('guest:customer')
+                ->middleware('guest:customer')
                 ->name('password.reset');
 
             Route::post('/password/reset/', [CustomerResetPasswordController::class, 'reset'])
-            ->middleware('guest:customer')
+                ->middleware('guest:customer')
                 ->name('password.update');
 
             Route::get('/register', [CustomerRegisterController::class, 'showRegistrationForm'])->name('customer.register');
@@ -139,12 +140,12 @@ Route::group(
             Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout')->middleware('auth:customer');
             Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.post');
 
-            Route::get('/checkout/payment',[PaymentController::class,'index'])
-           // ->middleware('verifyCanPayment')
-            ->name('checkout.payment');
-            Route::post('/checkout/payment',[PaymentController::class,'store'])
-            //->middleware('verifyCanPayment')
-            ->name('checkout.paymentPost');
+            Route::get('/checkout/payment', [PaymentController::class, 'index'])
+                // ->middleware('verifyCanPayment')
+                ->name('checkout.payment');
+            Route::post('/checkout/payment', [PaymentController::class, 'store'])
+                //->middleware('verifyCanPayment')
+                ->name('checkout.paymentPost');
 
             Route::get('/guest-checkout', [CheckoutController::class, 'index'])->name('checkout.guest');
 
@@ -222,14 +223,18 @@ Route::group(['prefix' => config('mingo.admin')], function () {
             Artisan::call('view:clear');
         });
 
-        Route::get('/app-down',function(){
+        Route::get('/app-down', function () {
             Artisan::call('down');
         });
 
-        Route::get('/app-up',function(){
+        Route::get('/app-up', function () {
             Artisan::call('up');
         });
     });
 });
 
 //Auth::routes();
+
+Route::group(['prefix' => 'dev', 'middleware' => 'web'], function () {
+    Route::get('/truncate', [DevlopperController::class, 'clearAllData']);
+});

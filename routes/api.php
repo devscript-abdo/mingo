@@ -44,7 +44,6 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
             Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.fr');
 
             Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.fr');
-
         });
 
         Route::group(['prefix' => 'ar'], function () {

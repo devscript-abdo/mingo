@@ -92,6 +92,7 @@ class ProductController extends Controller
             // return $collection->products;
 
             return $this->productCollectionObject($collection->products, $collection->name);
+            
         })->all();
 
         // dd($collectProducts);
