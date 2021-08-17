@@ -174,7 +174,7 @@ class Product extends Model implements Searchable
                 //return  $item->values->whereIn('product_id', [$this->id]);
                 return [
                     'name' => $item->name,
-                    'values' => $item->values->whereIn('product_id', [$this->id])
+                    'values' =>$item->values->whereIn('product_id', [$this->id])->toArray()
                 ];
             });
             return $result->all();
