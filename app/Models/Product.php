@@ -78,6 +78,11 @@ class Product extends Model implements Searchable
         return $this->hasMany('App\Models\Review');
     }
 
+    public function orders()
+    {
+        return $this->belongsToMany('App\Models\Order', 'order_product', 'product_id', 'order_id');
+    }
+
     public function scopeActive($query)
     {
 
@@ -174,7 +179,7 @@ class Product extends Model implements Searchable
                 //return  $item->values->whereIn('product_id', [$this->id]);
                 return [
                     'name' => $item->name,
-                    'values' =>$item->values->whereIn('product_id', [$this->id])->toArray()
+                    'values' => $item->values->whereIn('product_id', [$this->id])->toArray()
                 ];
             });
             return $result->all();

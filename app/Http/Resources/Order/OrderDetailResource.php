@@ -8,7 +8,18 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class OrderDetailResource extends JsonResource
 {
 
-    public static $wrap = null;
+    public static $wrap = 'payload';
+
+    /*public $order;
+
+    public $products;
+
+    public function __construct($products, $order)
+    {
+        $this->order = $order;
+
+        $this->products = $products;
+    }*/
 
     /**
      * Transform the resource into an array.
@@ -18,23 +29,25 @@ class OrderDetailResource extends JsonResource
      */
     public function toArray($request)
     {
-       // return parent::toArray($request);
-  
-            return [
-                'id' => $this->id,
-                'order_id' => $this->id,
-                'product_id' =>$product->id,
-                'seller_id' => 1,
-                'product_details' => ProductResource::collection($this->products),
+        // return parent::toArray($request);
+        /* dd($this->order->billing_subtotal, '---*---', $this->order->products->map(function ($item) {
+            return $item->name;
+        }));*/
+        //  dd($this->orders);
+        return [
+            'id' => $this->orders[0]->id,
+            'order_id' => $this->orders[0]->id,
+            'product_id' => $this->id,
+            'seller_id' => 1,
+            'product_details' => new ProductResource($this),
 
-                'qty' => $this->products_all,
-                'price' =>$this->products_all * $product->price,
-                'discount' => $this->billing_discount_code,
-                'delivery_status' => $this->delivery_status,
-                'payment_status' => $this->is_payed,
-                'shipping_method_id' => 1,
-                'created_at' => $this->created_at->format('Y-m-d'),
-            ];
-        
+            'qty' => $this->pivot->quantity,
+            'price' => $this->pivot->quantity * $this->price,
+            'discount' => $this->orders[0]->billing_discount_code,
+            'delivery_status' => $this->orders[0]->delivery_status,
+            'payment_status' => $this->orders[0]->is_payed,
+            'shipping_method_id' => 1,
+            'created_at' => $this->orders[0]->created_at->format('Y-m-d'),
+        ];
     }
 }
