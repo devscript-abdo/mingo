@@ -22,11 +22,13 @@ class CheckoutController extends Controller
     {
         $data = $request->validated();
 
-        if (array_key_exists('customer_info_perso', $data) &&  count($data['customer_info_perso'])) {
-            $order = $this->CreateOrderGuest($data, null);
-        } else {
+        if (auth('sanctum')->check()) {
             $order = $this->CreateOrderAuth($data, null);
         }
+        if (array_key_exists('customer_info_perso', $data) &&  count($data['customer_info_perso'])) {
+            $order = $this->CreateOrderGuest($data, null);
+        }
+
         if ($order) {
 
             return response()->json(

@@ -28,7 +28,7 @@ class ReviewController extends Controller
             return response()->json(
                 [
 
-                    '_response' => ['msg' => 'successfully Created Review wait when its accepted by Admin']
+                    '_response' => ['msg' => 'successfully Created Review wait ... when its accepted by Admin']
                 ],
                 201
             );

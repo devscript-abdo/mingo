@@ -115,38 +115,42 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
     Route::group(['prefix' => 'fr'], function () {
 
-        Route::post('/login', [LoginController::class, 'login'])->name('api.customer.loginPost');
+        Route::post('/login', [LoginController::class, 'login'])->name('api.customer.loginPost.fr');
     });
 
     Route::group(['prefix' => 'ar'], function () {
 
-        Route::post('/login', [LoginController::class, 'login'])->name('api.customer.loginPost');
+        Route::post('/login', [LoginController::class, 'login'])->name('api.customer.loginPost.ar');
     });
 
     Route::group(['prefix' => 'fr', 'middleware' => 'auth:sanctum'], function () {
 
-        Route::post('/logout', [LogoutController::class, 'logout'])->name('api.customer.logout');
+        Route::post('/logout', [LogoutController::class, 'logout'])->name('api.customer.logout.fr');
     });
 
     Route::group(['prefix' => 'ar', 'middleware' => 'auth:sanctum'], function () {
 
-        Route::post('/logout', [LogoutController::class, 'logout'])->name('api.customer.logout');
+        Route::post('/logout', [LogoutController::class, 'logout'])->name('api.customer.logout.ar');
     });
 
     Route::group(['prefix' => 'fr'], function () {
 
-        Route::post('/register', [RegisterController::class, 'create'])->name('api.customer.create');
+        Route::post('/register', [RegisterController::class, 'create'])->name('api.customer.create.fr');
     });
 
     Route::group(['prefix' => 'ar'], function () {
 
-        Route::post('/register', [RegisterController::class, 'create'])->name('api.customer.create');
+        Route::post('/register', [RegisterController::class, 'create'])->name('api.customer.create.ar');
     });
 
     Route::group(['middleware' => 'auth:sanctum'], function () {
 
-        Route::post('fr/checkout', [CheckoutController::class, 'store'])->name('api.checkout-post.fr');
-        Route::post('ar/checkout', [CheckoutController::class, 'store'])->name('api.checkout-post.ar');
+        Route::post('fr/checkout', [CheckoutController::class, 'store'])
+            ->name('api.checkout-post.fr')
+            ->withoutMiddleware('auth:sanctum');
+        Route::post('ar/checkout', [CheckoutController::class, 'store'])
+            ->name('api.checkout-post.ar')
+            ->withoutMiddleware('auth:sanctum');
 
 
         Route::group(['prefix' => 'fr/account'], function () {
