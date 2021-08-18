@@ -1,4 +1,4 @@
-[<?php
+<?php
 
 namespace App\Http\Controllers\API\Customer;
 
@@ -20,7 +20,7 @@ class LoginController extends Controller
         // Tokener Model : represent personal_access_tokens Table from database
         Tokener::whereDate('last_used_at', '<', now())->delete();
 
-       
+
         // check if user already loggedIn 
         /*$loggedUser = Tokener::whereName($data['email'])
             ->where('tokenable_type', 'App\Models\Customer')
@@ -69,8 +69,4 @@ class LoginController extends Controller
         ], 201);
     }
 
-    private function checkUserIfAlearyLoggedIn()
-    {
-    }
 }
-]
