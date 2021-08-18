@@ -54,9 +54,15 @@ class OrderController extends Controller
             ->find($id);
 
         if ($order) {
-            
-            return OrderDetailResource::collection($order->products);
-            // return ProductResource::collection($order->products);
+            count($order->products) ? $message = 'successfully Order Detail' : $message = 'no Order Detail';
+
+            return response()->json(
+                [
+                    'payload' =>  OrderDetailResource::collection($order->products),
+                    '_response' => ['msg' => $message]
+                ],
+                200
+            );
         }
         return response()->json(['error' => 'Order not found'], 404);
     }
