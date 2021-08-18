@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'expiration' => 1440, // one day 
+    'expiration' => 2, // 1440 minuts =  1 day 
 
     //'expiration' => 60 * 24 * 7,
     /*

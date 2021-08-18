@@ -17,6 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+      
         //return   ProductResource::collection(Product::all());
         // return  new ProductResource(Product::all()->toArray());
         return response()->json(

@@ -22,8 +22,11 @@ class CheckoutController extends Controller
     {
         $data = $request->validated();
 
-        $order = $this->addToOrdersTable($data, null);
-
+        if (array_key_exists('customer_info_perso', $data) &&  count($data['customer_info_perso'])) {
+            $order = $this->CreateOrderGuest($data, null);
+        } else {
+            $order = $this->CreateOrderAuth($data, null);
+        }
         if ($order) {
 
             return response()->json(
@@ -36,12 +39,14 @@ class CheckoutController extends Controller
         }
     }
 
-    protected function addToOrdersTable($data, $error)
+    protected function CreateOrderAuth($data, $error)
     {
 
         $totalPrice = collect($data['cart'])->sum('price');
 
         $order = Order::forceCreate([
+            'user_type' => 'auth_mobile',
+
             'customer_id' => auth('sanctum')->user()->id ??  null,
 
             'billing_email' => auth('sanctum')->user()->email ?? 'app_mobile@mingo.ma',
@@ -53,6 +58,49 @@ class CheckoutController extends Controller
             'billing_postalcode' => "2000",
             'billing_phone' => auth('sanctum')->user()->phone ?? '0660405003',
             'billing_name_on_card' => auth('sanctum')->user()->name,
+            'billing_discount' => $data['discount'],
+            'billing_discount_code' => 'coupon',
+            'billing_subtotal' => $totalPrice,
+            'billing_tax' => "550",
+            'billing_total' => $totalPrice,
+            'payment_gateway' => 'COD',
+            'error' => $error,
+            //dd('rrrr','last'),
+        ]);
+
+        // Insert into order_product table
+        foreach ($data['cart'] as $item) {
+
+            OrderProduct::create([
+                'order_id' => $order->id,
+                'product_id' => $item['id'],
+                'quantity' => $item['quantity'],
+            ]);
+        }
+
+        return $order;
+    }
+
+    protected function CreateOrderGuest($data, $error)
+    {
+
+        $totalPrice = collect($data['cart'])->sum('price');
+
+        $order = Order::forceCreate([
+
+            'user_type' => 'guest_mobile',
+
+            'customer_id' =>  null,
+
+            'billing_email' => $data['customer_info_perso']['email'],
+            'billing_name' => $data['customer_info_perso']['name'],
+
+            'billing_address' => $data['customer_info']['shipping_address'],
+            'billing_city' => $data['customer_info']['shipping_address'],
+            'billing_province' => $data['customer_info']['shipping_address'],
+            'billing_postalcode' => "2000",
+            'billing_phone' => $data['customer_info_perso']['phone'],
+            'billing_name_on_card' => $data['customer_info_perso']['name'],
             'billing_discount' => $data['discount'],
             'billing_discount_code' => 'coupon',
             'billing_subtotal' => $totalPrice,

@@ -24,13 +24,23 @@ class CheckoutRequest extends FormRequest
      */
     public function rules()
     {
-       /// $emailRule = auth('sanctum')->check() ? ['required', 'email'] : ['required', 'email', Rule::unique('customers', 'email')->ignore(request()->user()->currentAccessToken()->tokenable_id)];
+        /// $emailRule = auth('sanctum')->check() ? ['required', 'email'] : ['required', 'email', Rule::unique('customers', 'email')->ignore(request()->user()->currentAccessToken()->tokenable_id)];
 
         return [
             //'email' =>  $emailRule,
             'customer_info' => 'required|array',
             'customer_info.address_id' => 'required',
             'customer_info.shipping_address' => 'required|string',
+
+            ///Guuest Checkout
+            'customer_info_perso' => 'nullable|array',
+            'customer_info_perso.name' => 'nullable|string',
+            'customer_info_perso.email' => 'nullable|email',
+            'customer_info_perso.phone' => 'nullable|phone:MA',
+            'customer_info_perso.city' => 'nullable|string',
+            'customer_info_perso.adresse' => 'nullable|string',
+            'customer_info_perso.zip' => 'nullable|integer',
+            ///Guuest Checkout
 
             'payment_method' => 'required|string',
             'discount' => 'nullable|integer',

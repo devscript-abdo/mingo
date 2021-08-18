@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Customer\LoginRequest;
 use App\Models\Customer;
+use App\Models\Tokener;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -16,6 +17,22 @@ class LoginController extends Controller
     {
         $data = $request->validated();
 
+        $tokens = Tokener::whereDate('last_used_at', '<', now())->delete();
+       // dd($tokens);
+       /* if ($tokens) {
+            $tokens->delete();
+        }*/
+
+        // Tokener Model : represent personal_access_tokens Table from database
+        // check if user already loggedIn 
+        /*$loggedUser = Tokener::whereName($data['email'])
+            ->where('tokenable_type', 'App\Models\Customer')
+            ->first();
+        if ($loggedUser) {
+            // Delete they Tokens
+            $loggedUser->delete();
+        }*/
+
         //check email if exists
         $user = Customer::whereEmail($data['email'])->first();
         // check password
@@ -25,6 +42,7 @@ class LoginController extends Controller
                 'message' => 'Ces identifiants ne correspondent pas à nos enregistrements'
             ], 401);
         }
+        $user->tokens()->delete(); // delete old token
 
         $token = $user->createToken($data['email'])->plainTextToken;
 
@@ -46,11 +64,15 @@ class LoginController extends Controller
                 'ville' => $user->city,
                 'zip' => '12345600',
                 'photo_link' => $user->profil_avatar,
-                'phone'=>$user->phone,
+                'phone' => $user->phone,
 
                 'token' => $token,
             ],
             '_response' => ['msg' => 'user logged with success']
         ], 201);
+    }
+
+    private function checkUserIfAlearyLoggedIn()
+    {
     }
 }
