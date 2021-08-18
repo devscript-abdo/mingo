@@ -17,7 +17,7 @@ class LoginController extends Controller
     {
         $data = $request->validated();
 
- // Tokener Model : represent personal_access_tokens Table from database
+        // Tokener Model : represent personal_access_tokens Table from database
         Tokener::whereDate('last_used_at', '<', now())->delete();
 
        
