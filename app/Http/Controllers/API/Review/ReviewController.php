@@ -4,17 +4,18 @@ namespace App\Http\Controllers\API\Review;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Review\ReviewRequest;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    
+
 
 
     public function store(ReviewRequest $request)
     {
 
-        $review = auth('sanctum')->user()->reviews()->create([
+        $review = Review::create([
             'name' => $request->name,
             'email' => $request->email,
             'comment' => $request->comment,
@@ -23,8 +24,21 @@ class ReviewController extends Controller
             //'customer_id' => $request->name,
         ]);
 
-        if($review){
-            
+        if ($review) {
+            return response()->json(
+                [
+
+                    '_response' => ['msg' => 'successfully Created Review wait when its accepted by Admin']
+                ],
+                201
+            );
         }
+        return response()->json(
+            [
+
+                '_response' => ['msg' => 'Error Created Review']
+            ],
+            201
+        );
     }
 }

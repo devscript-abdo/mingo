@@ -13,6 +13,7 @@ use App\Http\Controllers\API\Customer\UpdateController;
 use App\Http\Controllers\API\Customer\WishListController;
 use App\Http\Controllers\API\Order\OrderController;
 use App\Http\Controllers\API\Product\ProductController;
+use App\Http\Controllers\API\Review\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,10 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
             Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.fr');
 
             Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.fr');
+
+            /*****Add review route */
+
+            Route::post('/products-reviews/add', [ReviewController::class, 'store'])->name('api.products.reviews.store.fr');
         });
 
         Route::group(['prefix' => 'ar'], function () {
@@ -54,6 +59,10 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
             Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.deals.ar');
             Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.ar');
             Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.ar');
+
+            /*****Add review route */
+
+            Route::post('/products-reviews/add', [ReviewController::class, 'store'])->name('api.products.reviews.store.ar');
         });
     });
 
