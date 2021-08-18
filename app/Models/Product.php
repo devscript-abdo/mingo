@@ -186,6 +186,22 @@ class Product extends Model implements Searchable
         }
         return [];
     }
+    public function getAllReviewsAttribute()
+    {
+        if ($this->reviews->count()) {
+            $reviews = collect($this->reviews);
+            $result = $reviews->map(function ($review, $key) {
+                return [
+                    'name' => $review->name,
+                    'email' => $review->email,
+                    'comment' => $review->comment,
+                    'rating' => $review->rating
+                ];
+            });
+            return $result->all();
+        }
+        return [];
+    }
 
 
     public function getUrlAttribute()

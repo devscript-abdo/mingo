@@ -61,6 +61,7 @@ class ProductResource extends JsonResource
             'updatedAt' => $this->updated_at->format('Y-m-d H:i:s'),
             'status' => '',
             'featuredStatus' => '',
+            //'reviews' => $this->all_reviews,
             "rating" => [
 
                 (object)["average" => "4.7", "productId" => "$this->id"]
