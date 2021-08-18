@@ -1,4 +1,4 @@
-<?php
+[<?php
 
 namespace App\Http\Controllers\API\Customer;
 
@@ -17,13 +17,10 @@ class LoginController extends Controller
     {
         $data = $request->validated();
 
-        $tokens = Tokener::whereDate('last_used_at', '<', now())->delete();
-       // dd($tokens);
-       /* if ($tokens) {
-            $tokens->delete();
-        }*/
+ // Tokener Model : represent personal_access_tokens Table from database
+        Tokener::whereDate('last_used_at', '<', now())->delete();
 
-        // Tokener Model : represent personal_access_tokens Table from database
+       
         // check if user already loggedIn 
         /*$loggedUser = Tokener::whereName($data['email'])
             ->where('tokenable_type', 'App\Models\Customer')
@@ -76,3 +73,4 @@ class LoginController extends Controller
     {
     }
 }
+]
