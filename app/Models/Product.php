@@ -30,11 +30,16 @@ class Product extends Model implements Searchable
         'formated_price' => 'decimal:2',
         ///'all_colors'=>'json',
     ];
+
     public function category()
     {
         return $this->belongsTo('App\Models\Category');
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\Category', 'product_category', 'product_id', 'category_id');
+    }
 
     public function brand()
     {

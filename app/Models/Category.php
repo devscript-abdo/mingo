@@ -28,6 +28,11 @@ class Category extends Categories implements Searchable
         return $this->hasMany('App\Models\Product');
     }
 
+    public function productsMany()
+    {
+        return $this->belongsToMany('App\Models\Product', 'product_category', 'category_id', 'product_id');
+    }
+
     public function childrens()
     {
         return $this->hasMany(self::class, 'parent_id', 'id')->with('childrens');
