@@ -69,8 +69,9 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.fr');
 
         /*****Add review route */
-
+        Route::get('/products-reviews', [ReviewController::class, 'index'])->name('api.products.reviews.index.fr');
         Route::post('/products-reviews/add', [ReviewController::class, 'store'])->name('api.products.reviews.store.fr');
+
     });
 
     Route::group(['prefix' => 'ar'], function () {
@@ -83,7 +84,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.ar');
 
         /*****Add review route */
-
+        Route::get('/products-reviews', [ReviewController::class, 'index'])->name('api.products.reviews.index.ar');
         Route::post('/products-reviews/add', [ReviewController::class, 'store'])->name('api.products.reviews.store.ar');
     });
 

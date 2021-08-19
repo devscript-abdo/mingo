@@ -4,12 +4,18 @@ namespace App\Http\Controllers\API\Review;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Review\ReviewRequest;
+use App\Http\Resources\Review\ReviewResource;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
 
+
+    public function index()
+    {
+        return ReviewResource::collection(Review::all());
+    }
 
 
     public function store(ReviewRequest $request)
