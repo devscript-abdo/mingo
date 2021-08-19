@@ -15,6 +15,7 @@ use App\Http\Controllers\API\Order\OrderController;
 use App\Http\Controllers\API\Page\PageController;
 use App\Http\Controllers\API\Product\ProductController;
 use App\Http\Controllers\API\Review\ReviewController;
+use App\Http\Controllers\API\Search\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 //Route::get('/fr/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.fr');
 
 Route::group(['middleware' => 'verifyApiAccess'], function () {
+
+    Route::group(['prefix' => 'fr'], function () {
+        Route::post('/search', [SearchController::class, 'search'])->name('api.search.fr');
+    });
+    
+    Route::group(['prefix' => 'ar'], function () {
+        Route::post('/search', [SearchController::class, 'search'])->name('api.search.ar');
+    });
 
     Route::group(['prefix' => 'fr'], function () {
 
