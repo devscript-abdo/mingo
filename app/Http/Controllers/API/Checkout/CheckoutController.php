@@ -46,6 +46,8 @@ class CheckoutController extends Controller
         $totalPrice = collect($data['cart'])->sum('price');
         $quantity = collect($data['cart'])->sum('quantity');
 
+       // dd($totalPrice,'--',$quantity);
+
         $order = Order::forceCreate([
             'user_type' => 'mingo-mobile',
 
@@ -62,9 +64,9 @@ class CheckoutController extends Controller
             'billing_name_on_card' => auth('sanctum')->user()->name,
             'billing_discount' => $data['discount'],
             'billing_discount_code' => 'coupon',
-            'billing_subtotal' => $quantity * $totalPrice,
+            'billing_subtotal' =>  $totalPrice,
             'billing_tax' => "550",
-            'billing_total' => $quantity * $totalPrice,
+            'billing_total' =>  $totalPrice,
             'payment_gateway' => 'COD',
             'error' => $error,
             //dd('rrrr','last'),
@@ -88,7 +90,7 @@ class CheckoutController extends Controller
 
         $totalPrice = collect($data['cart'])->sum('price');
         $quantity = collect($data['cart'])->sum('quantity');
-        
+      //  dd($totalPrice,'--',$quantity);
         $order = Order::forceCreate([
 
             'user_type' => 'mingo-mobile',
@@ -106,9 +108,9 @@ class CheckoutController extends Controller
             'billing_name_on_card' => $data['customer_info_perso']['name'],
             'billing_discount' => $data['discount'],
             'billing_discount_code' => 'coupon',
-            'billing_subtotal' => $quantity * $totalPrice,
+            'billing_subtotal' =>  $totalPrice,
             'billing_tax' => "550",
-            'billing_total' => $quantity * $totalPrice,
+            'billing_total' => $totalPrice,
             'payment_gateway' => 'COD',
             'error' => $error,
             //dd('rrrr','last'),
