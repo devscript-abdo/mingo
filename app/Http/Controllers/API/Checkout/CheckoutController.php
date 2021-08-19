@@ -46,7 +46,7 @@ class CheckoutController extends Controller
         $totalPrice = collect($data['cart'])->sum('price');
 
         $order = Order::forceCreate([
-            'user_type' => 'auth_mobile',
+            'user_type' => 'mingo-mobile',
 
             'customer_id' => auth('sanctum')->user()->id ??  null,
 
@@ -89,7 +89,7 @@ class CheckoutController extends Controller
 
         $order = Order::forceCreate([
 
-            'user_type' => 'guest_mobile',
+            'user_type' => 'mingo-mobile',
 
             'customer_id' =>  null,
 
