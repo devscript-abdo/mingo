@@ -12,6 +12,7 @@ use App\Http\Controllers\API\Customer\RegisterController;
 use App\Http\Controllers\API\Customer\UpdateController;
 use App\Http\Controllers\API\Customer\WishListController;
 use App\Http\Controllers\API\Order\OrderController;
+use App\Http\Controllers\API\Page\PageController;
 use App\Http\Controllers\API\Product\ProductController;
 use App\Http\Controllers\API\Review\ReviewController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,18 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 //Route::get('/fr/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.fr');
 
 Route::group(['middleware' => 'verifyApiAccess'], function () {
+
+    Route::group(['prefix' => 'fr'], function () {
+
+        Route::get('/pages', [PageController::class, 'index'])->name('api.pages.index.fr');
+        Route::get('/pages/{slug}', [PageController::class, 'getPage'])->name('api.pages.single.fr');
+    });
+
+    Route::group(['prefix' => 'ar'], function () {
+
+        Route::get('/pages', [PageController::class, 'index'])->name('api.pages.index.ar');
+        Route::get('/pages/{slug}', [PageController::class, 'getPage'])->name('api.pages.single.ar');
+    });
 
     /********************************** Products API  **********************************************/
     Route::group(['middleware' => 'api'], function () {
@@ -145,12 +158,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
 
     Route::group(['middleware' => 'auth:sanctum'], function () {
 
-        Route::post('fr/checkout', [CheckoutController::class, 'store'])
-            ->name('api.checkout-post.fr')
-            ->withoutMiddleware('auth:sanctum');
-        Route::post('ar/checkout', [CheckoutController::class, 'store'])
-            ->name('api.checkout-post.ar')
-            ->withoutMiddleware('auth:sanctum');
+
 
 
         Route::group(['prefix' => 'fr/account'], function () {
@@ -212,4 +220,10 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::post('/password/email', [ForgetPasswordController::class, 'forget'])
             ->name('api.account.forget-password.ar');
     });
+
+    Route::post('fr/checkout', [CheckoutController::class, 'store'])
+        ->name('api.checkout-post.fr');
+
+    Route::post('ar/checkout', [CheckoutController::class, 'store'])
+        ->name('api.checkout-post.ar');
 });
