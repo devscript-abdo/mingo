@@ -83,8 +83,9 @@ class Kernel extends HttpKernel
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
 
         'doNotCacheResponse'      => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
-        
+        'cacheResponse'           => \Spatie\ResponseCache\Middlewares\CacheResponse::class,
+
         'verifyApiAccess' => \App\Http\Middleware\VerifyAPIAccess::class,
-        'verifyCanPayment'=>\App\Http\Middleware\PaymentMiddleware::class,
+        'verifyCanPayment' => \App\Http\Middleware\PaymentMiddleware::class,
     ];
 }

@@ -36,4 +36,8 @@ return [
     /*****Method de payment ****************/
 
     'paymentMethod' => env('PAYMENT_METHOD', 'cmi'),
+
+    /******Define if API  use cache or no */
+
+    'api_can_cache' => env('APP_API_CACHE', false)
 ];

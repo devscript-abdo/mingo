@@ -17,29 +17,29 @@ class ProductController extends Controller
      */
     public function index()
     {
-      
-        //return   ProductResource::collection(Product::all());
-        // return  new ProductResource(Product::all()->toArray());
-        return response()->json(
-            [
-                'payload' =>  ProductResource::collection(Product::all()),
-                '_response' => ['msg' => 'successfully']
-            ],
-            200
-        );
-
         /*****Using Cache ****/
+        if (config('mingo.api_can_cache')) {
+            // dd('oui use cache');
+            return response()->json(
+                [
+                    'payload' =>  ProductResource::collection(Cache::remember('api_products_all', $this->timeToLiveForCache(), function () {
+                        return Product::all();
+                    })),
 
-        /*return response()->json(
-            [
-                'payload' =>  ProductResource::collection(Cache::remember('api-products', $this->timeToLiveForCache(), function () {
-                    return Product::all();
-                })),
-
-                '_response' => ['msg' => 'successfully']
-            ],
-            200
-        );*/
+                    '_response' => ['msg' => 'successfully']
+                ],
+                200
+            );
+        } else {
+            // dd('NOOOO use cache');
+            return response()->json(
+                [
+                    'payload' =>  ProductResource::collection(Product::all()),
+                    '_response' => ['msg' => 'successfully']
+                ],
+                200
+            );
+        }
     }
 
     public function latest()
@@ -51,19 +51,6 @@ class ProductController extends Controller
             ],
             200
         );
-
-        /*****Using Cache ****/
-
-        /*return response()->json(
-            [
-                'payload' =>  ProductResource::collection(Cache::remember('api-products-latest', $this->timeToLiveForCache(), function () {
-                    return Product::latest('created_at')->get();
-                })),
-
-                '_response' => ['msg' => 'successfully']
-            ],
-            200
-        );*/
     }
 
 
@@ -93,7 +80,6 @@ class ProductController extends Controller
             // return $collection->products;
 
             return $this->productCollectionObject($collection->products, $collection->name);
-            
         })->all();
 
         // dd($collectProducts);
