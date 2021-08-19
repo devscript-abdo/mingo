@@ -13,7 +13,7 @@ use TCG\Voyager\Facades\Voyager;
 
 use Laravel\Sanctum\HasApiTokens;
 
-class Customer extends Authenticatable
+class Customer extends Authenticatable //implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens, CanResetPassword;
 
@@ -108,7 +108,7 @@ class Customer extends Authenticatable
     public function GetLoginHistory()
     {
         $sessionsAll = $this->loginHistory()->get() ?? [];
-        $sessionsAll->pop();//remove las login because it's getted from scopeWithLastLogin() function
+        $sessionsAll->pop(); //remove las login because it's getted from scopeWithLastLogin() function
         return $sessionsAll->all();
     }
 

@@ -21,6 +21,7 @@ use App\Http\Controllers\Customer\InvoiceController;
 use App\Http\Controllers\Customer\LoggedInController;
 use App\Http\Controllers\Customer\NotificationController;
 use App\Http\Controllers\Customer\SocialController;
+use App\Http\Controllers\Customer\Verify\VerifyController;
 use App\Http\Controllers\Customer\WishlistController;
 use App\Http\Controllers\Devlopper\DevlopperController;
 use App\Http\Controllers\ExploreController;
@@ -132,7 +133,21 @@ Route::group(
             Route::get('/register', [CustomerRegisterController::class, 'showRegistrationForm'])->name('customer.register');
             Route::post('/register', [CustomerRegisterController::class, 'register'])->name('customer.registerPost');
 
+            /****Email Verification for Customer */
 
+            Route::get('/email/verification', [VerifyController::class, 'verifyNotice'])
+                ->middleware('auth:customer')
+                ->name('verification.notice');
+
+            Route::get('/email/verification/{id}/{hash}', [VerifyController::class, 'verification'])
+                ->middleware(['auth:customer', 'signed'])
+                ->name('verification.verify');
+
+            // resend Email Verification
+            Route::post('/email/verification-notify', [VerifyController::class, 'resendVerificationEmail'])
+                ->middleware(['auth:customer', 'throttle:6,1'])->name('verification.send');
+
+            /**** END Email Verification for Customer *****/
 
             Route::get('/shopping-cart', [CartController::class, 'index'])->name('shoppingcart');
             Route::delete('/shopping-cart', [CartController::class, 'delete'])->name('shoppingcart.delete');
