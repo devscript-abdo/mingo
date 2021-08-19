@@ -13,7 +13,7 @@ use TCG\Voyager\Facades\Voyager;
 
 use Laravel\Sanctum\HasApiTokens;
 
-class Customer extends Authenticatable //implements MustVerifyEmail
+class Customer extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens, CanResetPassword;
 
