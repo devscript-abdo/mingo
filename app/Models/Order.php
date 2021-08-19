@@ -29,6 +29,7 @@ class Order extends Model
         'billing_total',
         'payment_gateway',
         'error',
+        'user_type'
     ];
 
     public function customer()
@@ -41,6 +42,15 @@ class Order extends Model
     {
         return $this->belongsToMany('App\Models\Product')->withPivot('quantity');
     }
+
+    public function getOrderAmountAttribute()
+    {
+        if ($this->user_type === 'auth_mobile' || $this->user_type === 'guest_mobile') {
+            return (float)$this->billing_total;
+        } else {
+            return (float)str_replace('.', '', str_replace(',', '.', substr($this->billing_total, 0, -3)));
+        }
+    }
     public function getProductsAllAttribute()
     {
         if ($this->products->count()) {
@@ -51,7 +61,7 @@ class Order extends Model
 
                 return $item->pivot->quantity;
             });
-          
+
             return $result->sum();
         }
         return [];
@@ -67,11 +77,11 @@ class Order extends Model
         parent::boot();
 
         static::creating(function ($model) {
-           
+
             $number = self::max('id') + 1;
             $model->full_number = "MNG-F-" . str_pad($number, 5, 0, STR_PAD_LEFT);
             $model->slug = Str::slug($model->full_number);
-           // dd('Ouiiiii finddd');
+            // dd('Ouiiiii finddd');
         });
     }
 }

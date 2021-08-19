@@ -24,7 +24,7 @@ class OrderResource extends JsonResource
             'payment_status' => $this->is_payed,
             'payment_method' => $this->payment_gateway,
             // 'order_amount' => str_replace(',', '.', $this->billing_total),
-            'order_amount' => (float)str_replace('.', '', str_replace(',', '.', substr($this->billing_total, 0, -3))),
+            'order_amount' => $this->order_amount,
             'shipping_address' => $this->billing_address,
             'discount_amount' => $this->billing_discount,
             'discount_type' => $this->billing_discount_code,
