@@ -42,7 +42,8 @@ class OrderDetailResource extends JsonResource
             'product_details' => new ProductResource($this),
 
             'qty' => $this->pivot->quantity,
-            'price' => $this->pivot->quantity * $this->price,
+            //'price' => $this->pivot->quantity * $this->price,
+            'price' => $this->price,
             'discount' => $this->orders[0]->billing_discount_code,
             'delivery_status' => $this->orders[0]->delivery_status,
             'payment_status' => $this->orders[0]->is_payed,
