@@ -26,9 +26,12 @@ class PageRepository  implements PageInterface
         return $this->model->all();
     }
 
-    public function getPage($slug)
+    public function getPage($page)
     {
-        return $this->model->whereSlug($slug)->whereStatus('active')->first();
+
+        return $this->model->whereSlug($page)->whereStatus('active')->first();
+
+        // return $this->model->whereId($page)->whereStatus('active')->first();
     }
 
     public function getFooters()

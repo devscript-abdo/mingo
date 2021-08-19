@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Page;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Page\PageResource;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -32,9 +33,10 @@ class PageController extends Controller
             200
         );
     }
-    public function getPage($slug)
+    public function getPage($page)
     {
-        $page = $this->Page()->getPage($slug);
+
+        $page = Page::whereId($page)->first();
         if ($page) {
             return response()->json(
                 [
@@ -47,7 +49,7 @@ class PageController extends Controller
         return response()->json(
             [
                 'payload' =>   [],
-                '_response' => ['msg' => "Error get page"]
+                '_response' => ['msg' => "Error 404 page not found"]
             ],
             200
         );

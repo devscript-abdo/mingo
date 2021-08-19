@@ -37,47 +37,47 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
     Route::group(['prefix' => 'fr'], function () {
 
         Route::get('/pages', [PageController::class, 'index'])->name('api.pages.index.fr');
-        Route::get('/pages/{slug}', [PageController::class, 'getPage'])->name('api.pages.single.fr');
+        Route::get('/pages/{page}', [PageController::class, 'getPage'])->name('api.pages.single.fr');
     });
 
     Route::group(['prefix' => 'ar'], function () {
 
         Route::get('/pages', [PageController::class, 'index'])->name('api.pages.index.ar');
-        Route::get('/pages/{slug}', [PageController::class, 'getPage'])->name('api.pages.single.ar');
+        Route::get('/pages/{page}', [PageController::class, 'getPage'])->name('api.pages.single.ar');
     });
 
     /********************************** Products API  **********************************************/
-    Route::group(['middleware' => 'api'], function () {
 
-        Route::group(['prefix' => 'fr'], function () {
 
-            Route::get('/products', [ProductController::class, 'index'])->name('api.products.fr');
-            Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show.fr');
+    Route::group(['prefix' => 'fr'], function () {
 
-            Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.latest.fr');
-            Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.fr');
+        Route::get('/products', [ProductController::class, 'index'])->name('api.products.fr');
+        Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show.fr');
 
-            Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.fr');
+        Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.latest.fr');
+        Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.fr');
 
-            /*****Add review route */
+        Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.fr');
 
-            Route::post('/products-reviews/add', [ReviewController::class, 'store'])->name('api.products.reviews.store.fr');
-        });
+        /*****Add review route */
 
-        Route::group(['prefix' => 'ar'], function () {
-
-            Route::get('/products', [ProductController::class, 'index'])->name('api.products.ar');
-            Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show.ar');
-
-            Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.deals.ar');
-            Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.ar');
-            Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.ar');
-
-            /*****Add review route */
-
-            Route::post('/products-reviews/add', [ReviewController::class, 'store'])->name('api.products.reviews.store.ar');
-        });
+        Route::post('/products-reviews/add', [ReviewController::class, 'store'])->name('api.products.reviews.store.fr');
     });
+
+    Route::group(['prefix' => 'ar'], function () {
+
+        Route::get('/products', [ProductController::class, 'index'])->name('api.products.ar');
+        Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show.ar');
+
+        Route::get('/products-latest', [ProductController::class, 'latest'])->name('api.products.deals.ar');
+        Route::get('/products-deals', [ProductController::class, 'latest'])->name('api.products.deals.ar');
+        Route::get('/products-collections', [ProductController::class, 'getProductsCollections'])->name('api.products.collections.ar');
+
+        /*****Add review route */
+
+        Route::post('/products-reviews/add', [ReviewController::class, 'store'])->name('api.products.reviews.store.ar');
+    });
+
 
     /********************************** END Products API  **********************************************/
 
