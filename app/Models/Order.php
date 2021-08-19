@@ -45,7 +45,7 @@ class Order extends Model
 
     public function getOrderAmountAttribute()
     {
-        if ($this->user_type === 'auth_mobile' || $this->user_type === 'guest_mobile') {
+        if ($this->user_type === 'mingo-mobile') {
             return (float)$this->billing_total;
         } else {
             return (float)str_replace('.', '', str_replace(',', '.', substr($this->billing_total, 0, -3)));
