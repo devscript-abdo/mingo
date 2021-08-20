@@ -3,9 +3,11 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Swift_TransportException;
 use Throwable;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Support\Str;
 
 class Handler extends ExceptionHandler
 {
@@ -63,6 +65,21 @@ class Handler extends ExceptionHandler
                        'data' => 'Resource not found'
                    ], 404);
          }*/
+        if ($exception instanceof Swift_TransportException) {
+
+            // dd($exception->getMessage(),'--',$exception);
+
+            $contains = Str::contains($exception->getMessage(), ['could not be established with host', ':stream_socket_client():']);
+
+            $contains ? $message = "désole nous avons un problème au niveau du serveur mailing" : $message = $exception->getMessage();
+
+            return response()->json([
+
+                'data' => $message,
+                'is_send' => false
+                
+            ], 500);
+        }
 
         if (request()->is('api/*')) {
 
@@ -72,7 +89,7 @@ class Handler extends ExceptionHandler
                 ], 405);
             }
 
-           /* if ($exception instanceof NotFoundHttpException) {
+            /* if ($exception instanceof NotFoundHttpException) {
 
                 return redirect()->route('home');
             }*/

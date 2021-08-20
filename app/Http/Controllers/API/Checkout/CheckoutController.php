@@ -43,10 +43,10 @@ class CheckoutController extends Controller
     protected function CreateOrderAuth($data, $error)
     {
 
-        $totalPrice = collect($data['cart'])->map(function($item){
+        $totalPrice = collect($data['cart'])->map(function ($item) {
             return $item['price'] * $item['quantity'];
         })->sum();
-       
+
         $order = Order::forceCreate([
             'user_type' => 'mingo-mobile',
 
@@ -87,11 +87,11 @@ class CheckoutController extends Controller
     protected function CreateOrderGuest($data, $error)
     {
 
-        $totalPrice = collect($data['cart'])->map(function($item){
+        $totalPrice = collect($data['cart'])->map(function ($item) {
             return $item['price'] * $item['quantity'];
         })->sum();
-       
-      
+
+
         $order = Order::forceCreate([
 
             'user_type' => 'mingo-mobile',

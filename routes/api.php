@@ -4,6 +4,7 @@ use App\Http\Controllers\API\Banner\BannerController;
 use App\Http\Controllers\API\Brand\BrandController;
 use App\Http\Controllers\API\Category\CategoryController;
 use App\Http\Controllers\API\Checkout\CheckoutController;
+use App\Http\Controllers\API\Contact\ContactUsController;
 use App\Http\Controllers\API\Customer\AdresseController;
 use App\Http\Controllers\API\Customer\ForgetPasswordController;
 use App\Http\Controllers\API\Customer\LoginController;
@@ -36,9 +37,17 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 Route::group(['middleware' => 'verifyApiAccess'], function () {
 
     Route::group(['prefix' => 'fr'], function () {
-        Route::post('/search', [SearchController::class, 'search'])->name('api.search.fr');
+        Route::post('/contact-us', [ContactUsController::class, 'contactUs'])->name('api.contact.fr');
     });
     
+    Route::group(['prefix' => 'ar'], function () {
+        Route::post('/contact-us', [ContactUsController::class, 'contactUs'])->name('api.contact.ar');
+    });
+
+    Route::group(['prefix' => 'fr'], function () {
+        Route::post('/search', [SearchController::class, 'search'])->name('api.search.fr');
+    });
+
     Route::group(['prefix' => 'ar'], function () {
         Route::post('/search', [SearchController::class, 'search'])->name('api.search.ar');
     });
@@ -71,7 +80,6 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         /*****Add review route */
         Route::get('/products-reviews', [ReviewController::class, 'index'])->name('api.products.reviews.index.fr');
         Route::post('/products-reviews/add', [ReviewController::class, 'store'])->name('api.products.reviews.store.fr');
-
     });
 
     Route::group(['prefix' => 'ar'], function () {
