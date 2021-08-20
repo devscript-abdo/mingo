@@ -17,14 +17,14 @@ class ContactUsController extends Controller
     {
         $data = $request;
 
-        $email = setting('contact.email_reciver') ?? 'site@' . request()->getHost();
+        $email = setting('contact.email_reciver') ?? 'abdelgha4or@gmail.com'; //'site@' . request()->getHost();
 
         if ($email) {
 
             dispatch(function () use ($email, $data) {
 
                 Mail::to($email)->send(new ContactMail($data));
-                
+
             })->afterResponse();
 
             if (count(Mail::failures()) > 0) {
