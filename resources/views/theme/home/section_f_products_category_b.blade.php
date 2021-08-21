@@ -1,5 +1,5 @@
-<div class="ps-product-list ps-clothings" >
-    <div class="ps-container">
+<div class="ps-product-list ps-clothings">
+    <div class="ps-container"  dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
         <div class="ps-section__header">
             <h3>{{$category->field('name')}}</h3>
             <ul class="ps-section__links">

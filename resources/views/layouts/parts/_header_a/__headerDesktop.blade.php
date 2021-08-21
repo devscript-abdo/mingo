@@ -1,6 +1,6 @@
 <header class="header header--standard header--market-place-2" data-sticky="true">
     <div class="header__top">
-        <div class="container">
+        <div class="container" >
             <div class="header__left">
                 <p>Welcome to MINGO Online Shopping Store !</p>
             </div>
@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="header__content">
+    <div class="header__content" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
         <div class="container">
             <div class="header__content-left">
                 <a class="ps-logo" href="{{route('home')}}">

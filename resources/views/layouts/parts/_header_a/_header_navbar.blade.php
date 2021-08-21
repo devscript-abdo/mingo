@@ -1,5 +1,5 @@
 <nav class="navigation">
-    <div class="container">
+    <div class="container" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
         <ul class="menu menu--market-2">
             <li><a href="{{route('products')}}">{{__('navbar.shop')}}</a>
             </li>

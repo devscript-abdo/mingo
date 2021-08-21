@@ -1,4 +1,4 @@
-<div class="ps-top-categories">
+<div class="ps-top-categories" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
     <div class="ps-container">
         <h3>{{__('homePage.top_categories')}}</h3>
         <div class="row {{--justify-content-center--}}">

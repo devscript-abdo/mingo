@@ -1,4 +1,4 @@
-<div class="ps-site-features">
+<div class="ps-site-features" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
     <div class="ps-container">
         <div class="ps-block--site-features">
             <div class="ps-block__item">

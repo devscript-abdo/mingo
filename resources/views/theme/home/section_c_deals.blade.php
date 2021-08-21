@@ -1,4 +1,4 @@
-<div class="ps-deal-of-day">
+<div class="ps-deal-of-day" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
     <div class="ps-container">
         <div class="ps-section__header">
             <div class="ps-block--countdown-deal">

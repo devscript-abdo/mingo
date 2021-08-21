@@ -1,6 +1,6 @@
 <div class="ps-product-list ps-new-arrivals">
 
-    <div class="ps-container">
+    <div class="ps-container"  dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
         <div class="ps-section__header">
             <h3>{{$collection->field('name')}}</h3>
             <ul class="ps-section__links">
