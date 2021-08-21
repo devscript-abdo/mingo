@@ -17,23 +17,15 @@ use Illuminate\Support\Facades\Storage;
 class GenerateInvoiceController extends Controller
 {
 
-
-    private $invoiceLogo;
-
-    public function __construct()
-    {
-        $this->invoiceLogo = \Mingo::getInvoiceLogo();
-    }
-
     public function generate(GenerateInvoiceRequest $request)
     {
+
         $order = $this->Order()->getOrderDetail($request->order);
 
-
-
         $client = new Party([
-            'name'          => 'MINGO',
-            'phone'         => '(520) 318-9486',
+            'name'          => config('invoiceGenerator.seller_info.seller_name'),
+            'phone'         => config('invoiceGenerator.seller_info.seller_phone'),
+            'address'       => config('invoiceGenerator.seller_info.seller_addresse'),
             'custom_fields' => [
                 'note'        => 'IDDQD',
                 'business id' => '365#GG',
@@ -63,7 +55,7 @@ class GenerateInvoiceController extends Controller
         $items = $order->products->map(function ($product, $key) {
 
             return (new InvoiceItem())
-                ->title($product->field('name'))
+                ->title($product->name)
                 ->pricePerUnit($product->price)
                 ->quantity($product->pivot->quantity);
         });
@@ -81,8 +73,8 @@ class GenerateInvoiceController extends Controller
         $notes = implode("<br>", $notes);
 
         $invoice = Invoice::make('Facture')
-            ->series('BIG')
-            ->sequence(667)
+            ->series('MNG-F')
+            ->sequence($order->id)
             ->serialNumberFormat('{SEQUENCE}/{SERIES}')
             ->seller($client)
             ->buyer($customer)
@@ -93,16 +85,16 @@ class GenerateInvoiceController extends Controller
             ->currencySymbol('DH ')
             ->currencyCode('MAD')
             ->currencyFormat('{VALUE} {SYMBOL}')
-            ->currencyThousandsSeparator('.')
-            ->currencyDecimalPoint(',')
-            ->filename($client->name . '-' . Str::slug($customer->name) . '-' . $order->full_number . '-' . date('Y-m-d'))
+            ->currencyThousandsSeparator(',')
+            ->currencyDecimalPoint('.')
+            ->filename(Str::slug($customer->name) . '-' . $order->slug . '-' . date('Y-m-d'))
             ->addItems($items)
             ->notes($notes)
-            ->logo($this->invoiceLogo)
-            //->logo(public_path('vendor/invoices/sample-logo.png'))
+            //->logo($this->invoiceLogo)
+            ->logo(public_path('vendor/invoices/logo.png'))
 
             // You can additionally save generated invoice to configured disk
-            ->save('public');
+            ->save('invoices');
 
         $link = $invoice->url();
 
@@ -114,9 +106,9 @@ class GenerateInvoiceController extends Controller
             'count_download' => +1,
         ]);
 
-       auth('customer')->user()->notify(new SendInvoiceNotification($link, $invoicer));
+        // auth('customer')->user()->notify(new SendInvoiceNotification($link, $invoicer));
 
-       // auth('customer')->user()->notify(new SendSMSNotification());
+        // auth('customer')->user()->notify(new SendSMSNotification());
 
         // And return invoice itself to browser or have a different view
         return $invoice->stream();
