@@ -32,4 +32,9 @@ class UserLogin extends Model
     {
         return $this->belongsTo('App\Models\Customer');
     }
+
+    public function getMachineAttribute()
+    {
+        return str_replace('_', ' ', $this->device);
+    }
 }

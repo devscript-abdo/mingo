@@ -17,6 +17,8 @@ class SiteController extends Controller
 
         $sliders  = $this->Slider()->activeItems();
 
+        $brands = $this->Brand()->activeItems();
+
         $topAds = $this->Ads()->locationIn('top_slider', 2);
         $centerAds = $this->Ads()->locationIn('center_home', 3);
         $bottomAds = $this->Ads()->locationIn('bottom_home', 2);
@@ -55,7 +57,6 @@ class SiteController extends Controller
         dd($payment);
         return view('payment.cmi');
     }
-
 
     public function about()
     {

@@ -13,9 +13,11 @@ class CheckoutController extends Controller
 {
     //
 
+    private $isCreated = false;
+
     public function index()
     {
-        
+
         if (Cart::instance('default')->count() == 0) {
 
             return redirect()->route('products');
@@ -41,9 +43,9 @@ class CheckoutController extends Controller
 
         $order = $this->addToOrdersTables($request, null);
 
-        if ($order) {
-
-           // Cart::instance('default')->destroy();
+        if ($order && $this->isCreated) {
+           dd($this->isCreated);
+            // Cart::instance('default')->destroy();
 
             return redirect()->route('checkout.payment');
         }
@@ -52,6 +54,7 @@ class CheckoutController extends Controller
 
     protected function addToOrdersTables($request, $error)
     {
+
         // Insert into orders table
         $order = Order::create([
             'customer_id' => auth()->guard('customer')->user()->id ??  null,
@@ -68,7 +71,7 @@ class CheckoutController extends Controller
             'billing_subtotal' => Cart::subtotal(),
             'billing_tax' => 0,
             'billing_total' => Cart::priceTotal(),
-            'payment_gateway'=>'COD',
+            'payment_gateway' => 'COD',
             'error' => $error,
         ]);
 
@@ -80,6 +83,8 @@ class CheckoutController extends Controller
                 'quantity' => $item->qty,
             ]);
         }
+
+        $this->isCreated = true;
 
         return $order;
     }

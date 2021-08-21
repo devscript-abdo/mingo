@@ -7,7 +7,6 @@ use App\Http\Requests\API\Contact\ContactUsRequest;
 use App\Mail\Contact\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Throwable;
 
 class ContactUsController extends Controller
 {

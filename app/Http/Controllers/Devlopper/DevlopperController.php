@@ -7,6 +7,7 @@ use App\Models\Invoice;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Review;
+use App\Models\Tokener;
 use App\Models\UserLogin;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ class DevlopperController extends Controller
         Order::truncate();
         OrderProduct::truncate();
         Review::truncate();
+        Tokener::truncate();
 
         return response()->json(['message' => 'all data was deleted'], 200);
     }

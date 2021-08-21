@@ -20,8 +20,8 @@ class CategoryScope implements Scope
         if (request()->is('ar/*')) {
 
             $builder->with(['translations']);
-        }else{
-            $builder->without(['translations']); 
+        } else {
+            $builder->without(['translations']);
         }
     }
 }

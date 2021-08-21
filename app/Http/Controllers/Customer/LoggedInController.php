@@ -18,4 +18,16 @@ class LoggedInController extends Controller
 
     return view('theme.auth.customer.app.logged.index', compact('sessions', 'sessionsAll'));
   }
+
+
+  public function deleteHistory()
+  {
+    $histories = auth('customer')->user()->GetLoginHistory();
+
+    foreach ($histories as $history) {
+      $history->delete();
+      return redirect()->back()->with('message','All Old histories was deleted');
+    }
+    return redirect()->back();
+  }
 }

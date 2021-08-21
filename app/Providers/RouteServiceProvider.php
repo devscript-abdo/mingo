@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
+
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)
@@ -48,6 +49,22 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+                
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/SocialLogin/socialLoginRoutes.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/Customer/CustomerRoutes.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/Admin/adminRoutes.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/Devlopper/devlopperRoutes.php'));
         });
     }
 

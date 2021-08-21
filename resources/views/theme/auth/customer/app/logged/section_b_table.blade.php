@@ -6,6 +6,11 @@
             </div>
           
             <div class="ps-section__content">
+                <div class="ps-section__footer mb-2">
+                    <a class="ps-btn ps-btn--sm" href="#" onclick="document.getElementById('deleteHistory').submit();">
+                        Vider La list
+                    </a>
+                </div>
                 <div class="table-responsive">
                     <table class="table ps-table ps-table--notification">
                         <thead>
@@ -28,7 +33,7 @@
                                 </td>
                                 <td>
                                     <span class="badge badge-danger" style="font-size: 17px;">
-                                        {{$sessions->lastLogin->device}}
+                                        {{$sessions->lastLogin->machine}}
                                     </span>
                                    
                                 </td>
@@ -46,7 +51,7 @@
                                     </td>
                                     <td>
                                         <span class="badge badge-warning" style="font-size: 17px;">
-                                            {{$session->device}}
+                                            {{$session->machine}}
                                         </span>
                                         {{--$session->customer_id--}}
                                     </td>
@@ -56,6 +61,13 @@
                         </tbody>
                     </table>
                 </div>
+
+                <form action="{{route('customer.logged.delete')}}" method="post" hidden id="deleteHistory">
+                    @csrf
+                    @method('DELETE')
+                    @honeypot
+                    <input type="hidden" name="deleteHistory" value="1">
+                </form>
             </div>
         </div>
     </div>

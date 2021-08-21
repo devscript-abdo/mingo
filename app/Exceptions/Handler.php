@@ -73,12 +73,7 @@ class Handler extends ExceptionHandler
 
             $contains ? $message = "désole nous avons un problème au niveau du serveur mailing" : $message = $exception->getMessage();
 
-            return response()->json([
-
-                'data' => $message,
-                'is_send' => false
-                
-            ], 500);
+            return response()->json(['_response' => ['msg' => $message, 'is_send' => false]], 500);
         }
 
         if (request()->is('api/*')) {

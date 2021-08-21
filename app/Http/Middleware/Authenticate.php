@@ -14,19 +14,27 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+        //dd('OOOk');
 
         if (!$request->expectsJson()) {
             return route('customer.login');
         }
+
+        if ($request->is('api/', 'api/*')) {
+            return abort(response()->json([
+                'message' => 'Unauthenticated you must be logged in',
+            ], 401));
+        }
     }
 
-    protected function unauthenticated($request, array $guards)
+    /*protected function unauthenticated($request, array $guards)
     {
-        if ($request->is('api/*', 'api/')) {
+        //dd($guards);
+        if (! $request->routeIs('chefckout') && $request->is('api/', 'api/*')) {
 
             abort(response()->json([
                 'message' => 'Unauthenticated you must be logged in',
             ], 401));
         }
-    }
+    }*/
 }

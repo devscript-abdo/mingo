@@ -19,7 +19,7 @@ class VerifyController extends Controller
     {
         $request->fulfill();
 
-        return redirect()->route('home');
+        return redirect()->route('customer.profil');
     }
 
     public function resendVerificationEmail(Request $request)

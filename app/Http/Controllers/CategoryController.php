@@ -10,7 +10,8 @@ class CategoryController extends Controller
 {
     use InterfaceHandler;
 
-    public function index($category){
+    public function index($category)
+    {
 
         $categorie =  $this->Category()->getCategory($category);
 
@@ -20,6 +21,6 @@ class CategoryController extends Controller
 
         $colors = $this->Color()->active();
 
-        return view('theme.categories.index',compact('categorie','products','brands','colors'));
+        return view('theme.categories.index', compact('categorie', 'products', 'brands', 'colors'));
     }
 }

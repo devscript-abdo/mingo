@@ -109,7 +109,7 @@ class Customer extends Authenticatable //implements MustVerifyEmail
     {
         $sessionsAll = $this->loginHistory()->get() ?? [];
         $sessionsAll->pop(); //remove las login because it's getted from scopeWithLastLogin() function
-        return $sessionsAll->all();
+        return collect($sessionsAll->all());
     }
 
     public function lastLogin()
