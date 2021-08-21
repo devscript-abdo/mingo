@@ -195,9 +195,15 @@
                         @endif
 
                         @foreach($invoice->seller->custom_fields as $key => $value)
+                           @if($key ==='ICE')
                             <p class="seller-custom-field">
-                                {{ ucfirst($key) }}: {{ $value }}
+                                <strong>{{ ucfirst($key) }}: {{ $value }}</strong>
                             </p>
+                           @else
+                                <p class="seller-custom-field">
+                                    {{ ucfirst($key) }}: {{ $value }}
+                                </p>
+                           @endif
                         @endforeach
                     </td>
                     <td class="border-0"></td>
@@ -351,9 +357,9 @@
             </p>
         @endif
 
-        <p>
+        {{--<p>
             {{ trans('invoices::invoice.amount_in_words') }}: {{ $invoice->getTotalAmountInWords() }}
-        </p>
+        </p>--}}
         <p>
             {{ trans('invoices::invoice.pay_until') }}: {{ $invoice->getPayUntilDate() }}
         </p>

@@ -27,8 +27,8 @@ class GenerateInvoiceController extends Controller
             'phone'         => config('invoiceGenerator.seller_info.seller_phone'),
             'address'       => config('invoiceGenerator.seller_info.seller_addresse'),
             'custom_fields' => [
-                'note'        => 'IDDQD',
-                'business id' => '365#GG',
+
+                'ICE' => config('invoiceGenerator.seller_info.seller_ice'),
             ],
         ]);
 
