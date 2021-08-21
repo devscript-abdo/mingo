@@ -16064,14 +16064,14 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 
 @media (max-width: 479px) {
   .header--mobile .header__top {
-    display: none;
+    display: flex;
   }
   .header--mobile .header__actions > * {
     margin: 0;
     margin-right: 20px;
   }
   .header--mobile .header__actions i {
-    font-size: 24px;
+    font-size: 14px;
   }
   .header--mobile .ps-block--user-header {
     margin-right: 0;

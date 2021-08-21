@@ -2,7 +2,7 @@
     @php
     $default = Mingo::currentLocale()
     @endphp
-<html lang="fr" dir="{{$default==='ar'?'rtl':''}}">
+<html lang="{{$default}}" {{--dir="{{$default==='ar'?'rtl':''}}"--}}>
 <head>
 
     <title>Mingo - Mingo ecommerce platform</title>
@@ -13,10 +13,13 @@
 
     @if($default === 'ar')
      
-       @include('layouts.parts.singleLinkRTL')
+       {{--@include('layouts.parts.singleLinkRTL')--}}
+
+       @include('layouts.parts.fullLinkRTL')
 
     @else
-       @include('layouts.parts.singleLink')
+       {{--@include('layouts.parts.singleLink')--}}
+       @include('layouts.parts.fullLink')
     @endif
 
     <link rel="stylesheet" href="{{asset('assets/css/_header_a.css')}}">
@@ -64,9 +67,9 @@
     {{--@livewire('product.modal-view')--}}
     @livewireScripts()
 
-    {{--@include('layouts.parts.fullScript')--}}
+    @include('layouts.parts.fullScript')
     
-    @include('layouts.parts.singleScript')
+    {{--@include('layouts.parts.singleScript')--}}
 
     @yield('productsJs')
 

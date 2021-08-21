@@ -1153,7 +1153,7 @@ figure {
 
 /*2. ELEMENTS */
 html, body {
-  min-height: 100%;
+ 
   position: relative;
 }
 
@@ -16075,8 +16075,12 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 @media (max-width: 479px) {
+
+  body{
+    justify-content: center;
+  }
   .header--mobile .header__top {
-    display: none;
+    display: flex;
   }
   .header--mobile .header__actions > * {
     margin: 0;

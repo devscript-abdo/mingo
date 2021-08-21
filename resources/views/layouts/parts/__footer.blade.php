@@ -1,5 +1,5 @@
 <footer class="ps-footer">
-    <div class="ps-container">
+    <div class="ps-container" dir="{{$default==='ar'?'rtl':''}}">
         <div class="ps-footer__widgets">
             <aside class="widget widget_footer widget_contact-us">
                 <h4 class="widget-title">{{__('footer.contact_us')}}</h4>
@@ -61,7 +61,7 @@
             @endforeach
 
         </div>
-        <div dir="ltr" class="ps-footer__copyright">
+        <div class="ps-footer__copyright">
             <p>© {{date('Y')}} MinGo. All Rights Reserved | powered by <a href="">Haymacproduction</a></p>
             <p>
                 <span>{{__('footer.payment-method')}}</span>

@@ -17,11 +17,11 @@ class WithoutTranslationScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (request()->is('ar/*')) {
+        if (request()->is('ar/*') || request()->is('api/ar/*')) {
 
             $builder->with(['translations']);
-        }else{
-            $builder->without(['translations']); 
+        } else {
+            $builder->without(['translations']);
         }
     }
 }
