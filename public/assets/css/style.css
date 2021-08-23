@@ -2618,8 +2618,8 @@ textarea.form-control {
   top: 100%;
   right: 0;
   z-index: 100;
-  min-width: 120px;
-  max-width: 200px;
+  /*min-width: 120px;
+  max-width: 200px;*/
   width: 100%;
   padding: 4px 0;
   background-color: #fff;
@@ -2627,7 +2627,7 @@ textarea.form-control {
   box-shadow: 0 1px 1px 2px rgba(204, 204, 204, 0.2);
   visibility: hidden;
   opacity: 0;
-  text-align: left;
+  text-align: justify;
 }
 
 .ps-dropdown ul li {
@@ -2645,6 +2645,7 @@ textarea.form-control {
 
 .ps-dropdown:hover ul {
   visibility: visible;
+  display: inline;
   opacity: 1;
 }
 
@@ -16053,6 +16054,10 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   .header--mobile .header__top .header__left {
     display: none;
   }
+  .selectLanguage
+  {
+    color: red;
+  }
   .header--mobile .header__top .header__right {
     max-width: 100%;
     text-align: center;
@@ -16219,7 +16224,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 .navigation--sidebar .navigation__actions .ps-dropdown {
-  margin-bottom: 10px;
+  margin-bottom: 100px;
 }
 
 .navigation--sidebar .navigation__actions .ps-dropdown > a {
@@ -16278,7 +16283,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 .navigation--sidebar .header__actions .ps-dropdown a:after {
-  display: none;
+  display: inline;
 }
 
 .navigation--sidebar .header__actions .ps-cart-toggle {

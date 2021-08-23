@@ -1,6 +1,6 @@
 <nav class="navigation ">
     <div class="container" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
-        <ul class="menu menu--market-2 justify-content-center">
+        <ul class="menu menu--market-2">
             <li><a href="{{route('products')}}">{{__('navbar.shop')}}</a>
             </li>
             @if($categoriesMenu)

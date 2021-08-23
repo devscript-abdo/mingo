@@ -4,7 +4,7 @@
             <p>Welcome to mingo Online Shopping Store !</p>
         </div>
         <div class="header__right">
-            <ul class="navigation__extra">
+            <ul class="nav nav-tabs">
                 {{--<li><a href="#">Sell on Martfury</a></li>
                 <li><a href="#">{{__('navbar.track_order')}}</a></li>
                 <li>
@@ -15,34 +15,8 @@
                         </ul>
                     </div>
                 </li>--}}
-                <li>
-                    <div class="ps-dropdown language">
-                        <a href="#">
-                            @php
-                              $default = Mingo::currentLocale()
-                            @endphp
-                            <img src="{{asset("assets/img/flag/{$default}.png")}}" alt="{{Mingo::currentLocaleName()}}" width="18" height="12">
-                             {{Mingo::currentLocaleName()}}
-                        </a>
-                        <ul class="ps-dropdown-menu">
-                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                <li> 
-                                    <a 
-                                        rel="alternate" 
-                                        hreflang="{{ $localeCode }}" 
-                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
-                                        class="dropdown-item" 
-                                    >
-                                    <img src="{{asset("assets/img/flag/{$localeCode}.png")}}" alt="{{ $localeCode }}"
-                                    width="18" height="12"
-                                    >
-                                    {{ $properties['native'] }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </li>
+                @include('layouts.parts.__mobile_language_selector_a')
+                {{--@include('layouts.parts.__mobile_language_selector')--}}
             </ul>
         </div>
     </div>

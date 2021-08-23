@@ -18,7 +18,7 @@
                         </div>
                     </li>--}}
                     <li>
-                        <div class="ps-dropdown language">
+                        <div class="ps-dropdown language ">
                             <a href="#">
                                 @php
                                 $default = Mingo::currentLocale()
