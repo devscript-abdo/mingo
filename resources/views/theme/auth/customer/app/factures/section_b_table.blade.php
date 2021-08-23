@@ -2,7 +2,7 @@
     <div class="ps-section__right">
         <div class="ps-section--account-setting">
             <div class="ps-section__header">
-                <h3>{{__('customer.customer_orders')}}</h3>
+                <h3>{{__('customer.customer_factures')}}</h3>
             </div>
             <div class="ps-section__content">
                 <div class="table-responsive">

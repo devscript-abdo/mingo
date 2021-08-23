@@ -1,7 +1,7 @@
 
 @include('theme.categories.default.section_a_top')
 
-<div class="ps-page--shop">
+<div class="ps-page--shop" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
 
     <div class="ps-container">
 

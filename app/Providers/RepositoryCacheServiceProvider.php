@@ -38,7 +38,7 @@ class RepositoryCacheServiceProvider extends ServiceProvider
         ],
         [
             'abstract' => "App\Repositories\Ads\AdsInterface",
-            'concrete' => "App\Repositories\Ads\AdsRepository"
+            'concrete' => "App\Repositories\Ads\AdsRepositoryCache"
         ],
         [
             'abstract' => "App\Repositories\Brand\BrandInterface",

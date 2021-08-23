@@ -28,20 +28,20 @@ class CategoryRepositoryCache  implements CategoryInterface
 
     public function query()
     {
-        return $this->model->query();
+        return $this->model()->query();
     }
 
     public function all()
     {
         return $this->cache->remember('categories_cache', $this->timeToLive(), function () {
-            return $this->model->all();
+            return $this->model()->all();
         });
     }
 
     public function activeItems()
     {
         return $this->cache->remember('categories_cache_active', $this->timeToLive(), function () {
-            return $this->model->active();
+            return $this->model()->active();
         });
     }
 
@@ -51,9 +51,18 @@ class CategoryRepositoryCache  implements CategoryInterface
         $sluger = json_encode($slug);
 
         return $this->cache->remember("categorie_cache_{$sluger}", $this->timeToLive(), function () use ($slug) {
-            return $this->model->whereSlug($slug)
+            return $this->model()->whereSlug($slug)
                 ->with(['products'])
                 ->firstOrFail();
+        });
+    }
+
+    public function getCategoryWith(array $with)
+    {
+        return $this->cache->remember('categories_cache_with', $this->timeToLive(), function () use($with) {
+
+            return $this->model()->with($with)->get();
+
         });
     }
 
@@ -69,7 +78,7 @@ class CategoryRepositoryCache  implements CategoryInterface
     {
         return $this->cache->remember('categories_in_home', $this->timeToLive(), function () {
 
-            return $this->model->inHome();
+            return $this->model()->inHome();
         });
     }
 
@@ -77,7 +86,7 @@ class CategoryRepositoryCache  implements CategoryInterface
     {
         return $this->cache->remember('categories_of_year', $this->timeToLive(), function () {
 
-            return $this->model->categoryOfYear();
+            return $this->model()->categoryOfYear();
         });
     }
 
@@ -85,7 +94,7 @@ class CategoryRepositoryCache  implements CategoryInterface
     {
         return $this->cache->remember('categories_of_navbar', $this->timeToLive(), function () {
 
-            return $this->model->showInMenu();
+            return $this->model()->showInMenu();
         });
     }
 

@@ -8,7 +8,8 @@ return [
     'form_remember' => 'تدكرني',
     'form_login_button' => 'الدخول',
 
-    'form_login_guest'=>'الاستمرار دون انشاء الحساب',
-    'form_login_with'=>'تسجيل الدخول بواسطة',
-    'form_create_account'=>'انشاء حساب'
+    'form_login_guest' => 'الاستمرار دون انشاء الحساب',
+    'form_login_with' => 'تسجيل الدخول بواسطة',
+    'form_create_account' => 'انشاء حساب',
+    'form_forgot_pass' => 'نسيت كلمة المرور'
 ];

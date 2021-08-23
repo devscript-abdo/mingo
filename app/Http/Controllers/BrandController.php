@@ -45,15 +45,13 @@ class BrandController extends Controller
     {
         $brand = $this->Brand()->getBrand($brand, ['products']);
 
-        $topAds = $this->Ads()->locationIn('top_products_page');
-
         $products = $brand->products;
 
         $brands = $this->Brand()->activeItems();
 
-        $colors = $this->Color()->active();
+       // $colors = $this->Color()->active();
 
-        return view('theme.brands.index', compact('brand','topAds', 'brands', 'colors', 'products'));
+        return view('theme.brands.index', compact('brand', 'brands',  'products'));
     }
 
     /**

@@ -1,4 +1,4 @@
-<div class="ps-panel--sidebar" id="navigation-mobile">
+<div class="ps-panel--sidebar" id="navigation-mobile" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
     <div class="ps-panel__header">
         <h3>{{__('navbar.all_categories')}}</h3>
     </div>

@@ -2,7 +2,7 @@
 return [
 
     'more_searched' => 'les produits les plus demandés',
-    'top_categories' => 'les catégories les plus demandés',
+    'top_categories' => 'Les Marques',
     /************************************************** */
     /************************************************** */
     /************************************************** */

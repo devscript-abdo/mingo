@@ -20,21 +20,21 @@ class AdsRepository  implements AdsInterface
     }
     public function query()
     {
-        return $this->model->query();
+        return $this->model()->query();
     }
 
     public function all()
     {
-        return $this->model->all();
+        return $this->model()->all();
     }
 
     public function publishedItems()
     {
-        return $this->model->published();
+        return $this->model()->published();
     }
 
     public function locationIn($location, $limit)
     {
-        return $this->model->location($location, $limit);
+        return $this->model()->location($location, $limit);
     }
 }

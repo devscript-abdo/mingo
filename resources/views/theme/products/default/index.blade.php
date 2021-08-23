@@ -1,7 +1,7 @@
 
 @include('theme.products.default.section_a_top')
 
-<div class="ps-page--shop">
+<div class="ps-page--shop" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
 
     <div class="ps-container">
 
@@ -25,11 +25,10 @@
 
                 {{--@livewire('product.products',['productsModel' => $productsModel])--}}
                 
-                @if (request()->has('mingoFilter') && request()->filled('mingoFilter'))
-                   @include('theme.products.default.section_right_c_products')
-                @else
-                    @livewire('product.products')
-                @endif
+                
+                {{--@include('theme.products.default.section_right_c_products')--}}
+          
+                @livewire('product.products')
 
             </div>
 

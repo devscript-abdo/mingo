@@ -4,7 +4,7 @@
 
     @include('theme.about.section_a_top')
 
-    <div class="ps-page--single" id="about-us">
+    <div class="ps-page--single" id="about-us" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
 
         <img src="{{$about->photo}}" alt="{{$about->field('title')}}">
 

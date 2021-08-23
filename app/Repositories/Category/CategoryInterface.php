@@ -23,4 +23,5 @@ interface CategoryInterface
 
     public function categoryInMenu();
 
+    public function getCategoryWith(array $with);
 }

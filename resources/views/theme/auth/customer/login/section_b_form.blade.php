@@ -16,6 +16,7 @@
                                 </span>
                             @enderror
                         </div>
+
                         <div class="form-group form-forgot">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="{{__('login.form_password')}}" required autocomplete="password">
 
@@ -27,10 +28,11 @@
                            
                             @if (Route::has('customer.forgotpassword'))
                                 <a  href="{{ route('customer.forgotpassword') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                    <strong>{{__('login.form_forgot_pass')}}</strong>
                                 </a>
                             @endif
                         </div>
+
                         <div class="form-group">
                             <div class="ps-checkbox">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

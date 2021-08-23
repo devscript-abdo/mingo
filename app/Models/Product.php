@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Collections\Product\ProductCollections;
 use App\Scopes\ProviderProductsScope;
 use App\Scopes\WithoutTranslationScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,6 +31,11 @@ class Product extends Model implements Searchable
         'formated_price' => 'decimal:2',
         ///'all_colors'=>'json',
     ];
+    // added at 22-08-2021
+    public function newCollection(array $models = [])
+    {
+        return new ProductCollections($models);
+    }
 
     public function category()
     {
@@ -156,7 +162,7 @@ class Product extends Model implements Searchable
 
     /******************** 09-08-2021 ***************************/
 
-    // this accessor is used For IP route
+    // this accessor is used For API route
     public function getAllColorsAttribute()
     {
         if ($this->colors->count()) {
@@ -173,7 +179,7 @@ class Product extends Model implements Searchable
         return [];
     }
 
-    // this accessor is used For IP route
+    // this accessor is used For API route
     public function getAllAttributesAttribute()
     {
         if ($this->attributesVariant->count()) {

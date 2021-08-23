@@ -22,11 +22,11 @@
         @endforeach
       
     </figure>
-    {{--<figure>
+    <figure>
         <h4 class="widget-title">Prix</h4>
         <div id="nonlinear"></div>
         <p class="ps-slider__meta">Prix:<span class="ps-slider__value">$<span class="ps-slider__min"></span></span>-<span class="ps-slider__value">$<span class="ps-slider__max"></span></span></p>
-    </figure>--}}
+    </figure>
 
     {{--<figure>
         <h4 class="widget-title">Prix</h4>
@@ -37,7 +37,7 @@
       
     </figure>--}}
 
-    <figure>
+    {{--<figure>
         <h4 class="widget-title">{{__('products.product_color')}}</h4>
         @foreach($colors as $color)
         
@@ -55,10 +55,10 @@
             {{--<div class="ps-checkbox ps-checkbox--color color-1 ps-checkbox--inline" style="background-color: {{$color->code}}; !important">
                 <input class="form-control" type="checkbox" id="color-1" name="size">
                 <label for="color-1"></label>
-            </div>--}}
+            </div>
         @endforeach
      
-    </figure>
+    </figure>--}}
     {{--<figure class="sizes">
         <h4 class="widget-title">BY SIZE</h4><a href="#">L</a><a href="#">M</a><a href="#">S</a><a href="#">XL</a>
     </figure>--}}

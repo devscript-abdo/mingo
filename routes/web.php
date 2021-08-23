@@ -36,7 +36,8 @@ Route::get('/tokens/create', function (Request $request) {
 
 Route::get('/payment', [PaymentController::class, 'index'])->name('checkout.payment');
 
-Route::get('/test', [SiteController::class, 'test']);
+Route::get('/test', [SiteController::class, 'directive']);
+Route::get('/products-test', [SiteController::class, 'testProd']);
 
 Route::get('/sms', [SmsController::class, 'index']);
 

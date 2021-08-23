@@ -19,15 +19,9 @@ class SiteController extends Controller
 
         $brands = $this->Brand()->activeItems();
 
-        $topAds = $this->Ads()->locationIn('top_slider', 2);
-        $centerAds = $this->Ads()->locationIn('center_home', 3);
-        $bottomAds = $this->Ads()->locationIn('bottom_home', 2);
-
-        $categories = $this->Category()->randomsHome();
+        $categories = $this->Category()->getCategoryWith(['products'])->groupByType();
 
         $collections = $this->ProductCollection()->showInHome();
-
-        $categoriesOfYear = $this->Category()->categoryOfYear();
 
         $productsSearched = $this->Product()->bestSearched();
 
@@ -35,13 +29,9 @@ class SiteController extends Controller
             'theme.home.index',
             compact(
                 'sliders',
-                'topAds',
-                'centerAds',
-                'bottomAds',
                 'categories',
-                'categoriesOfYear',
                 'collections',
-                'productsSearched'
+                'productsSearched','brands'
             )
         );
     }
@@ -56,6 +46,17 @@ class SiteController extends Controller
         $payment = app(PaymentInterface::class)->getPayment();
         dd($payment);
         return view('payment.cmi');
+    }
+
+    public function testProd()
+    {
+        $oo = $this->Order()->model()->get()->groupByStatus();
+        dd($oo);
+    }
+
+    public function directive()
+    {
+        return view('archive');
     }
 
     public function about()

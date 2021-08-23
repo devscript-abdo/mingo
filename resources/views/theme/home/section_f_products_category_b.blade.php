@@ -16,22 +16,22 @@
             </ul>
         </div>
         <div class="ps-section__content">
-            <div  dir="ltr"
+            <div 
                 class="ps-carousel--responsive owl-slider" 
                 data-owl-auto="true" 
-                data-owl-loop="true" 
+                data-owl-loop="false" 
                 data-owl-speed="10000" 
                 data-owl-gap="0" 
                 data-owl-nav="false" 
                 data-owl-dots="true" 
-                data-owl-item="7" 
+                data-owl-item="6" 
                 data-owl-item-xs="2" 
                 data-owl-item-sm="2" 
                 data-owl-item-md="2" 
                 data-owl-item-lg="4" 
                 data-owl-item-xl="6" 
                 data-owl-duration="1000" 
-                data-owl-mousedrag="on"
+               
                >
                <!----------------- Haymacproduction ------------------------->
                 @foreach ($category->products as $product )
@@ -43,9 +43,9 @@
                             </a>
                             <div class="ps-product__badge">-16%</div>
                             <ul class="ps-product__actions">
-                                
-                                @livewire('cart.add-to-cart',['prod'=>$product->id])
-                                
+                                <div>
+                                    @livewire('cart.add-to-cart',['prod'=>$product->id])
+                                </div> 
                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                 @auth('customer')
                                     <li>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Collections\Category\CategoryCollections;
 use App\Scopes\WithoutTranslationScope;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,9 +20,15 @@ class Category extends Categories implements Searchable
 
     protected $translatable = ['name', 'description'];
 
-    protected $with = ['childrens'];
+   // protected $with = ['childrens'];
 
     // protected $appends = ['icon_mobile_link'];
+
+
+    public function newCollection(array $models = [])
+    {
+        return new CategoryCollections($models);
+    }
 
     public function products()
     {

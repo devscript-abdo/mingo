@@ -44,7 +44,7 @@ class CheckoutController extends Controller
         $order = $this->addToOrdersTables($request, null);
 
         if ($order && $this->isCreated) {
-           dd($this->isCreated);
+         
             // Cart::instance('default')->destroy();
 
             return redirect()->route('checkout.payment');

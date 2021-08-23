@@ -11918,14 +11918,14 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 .ps-form--account .form-forgot input {
-  padding-right: 100px;
+  padding-left: 100px;
 }
 
 .ps-form--account .form-forgot > a {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 10px;
+  left: 10px;
   color: #06c;
 }
 

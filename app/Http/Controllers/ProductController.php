@@ -30,7 +30,7 @@ class ProductController extends Controller
     }
     public function index()
     {
-        $topAds = $this->Ads()->locationIn('top_products_page', 10);
+       // $topAds = $this->Ads()->locationIn('top_products_page', 10);
 
         $products = $this->Product()->withRelated(['category']);
 
@@ -38,7 +38,7 @@ class ProductController extends Controller
 
         $colors = $this->Color()->active();
 
-        return view('theme.products.index', compact('topAds', 'brands', 'colors', 'products'));
+        return view('theme.products.index', compact('brands', 'colors', 'products'));
     }
 
     public function indexWithFilters()
@@ -72,13 +72,11 @@ class ProductController extends Controller
             $products = $this->Product();
         }
 
-        $colors = $this->Color()->active();
-
-        $topAds = $this->Ads()->locationIn('top_products_page', 10);
+       // $colors = $this->Color()->active();
 
         $brands = $this->Brand()->activeItems();
 
-        return view('theme.products.index', compact('topAds', 'brands', 'colors', 'products'));
+        return view('theme.products.index', compact('brands', 'products'));
     }
 
     /**
@@ -115,9 +113,7 @@ class ProductController extends Controller
 
         $cart = Cart::content();
 
-        $ad = $this->Ads()->model()->where('location', 'single_product')->first();
-
-        return view('theme.products.single.single', compact('product', 'products', 'cart', 'ad'));
+        return view('theme.products.single.single', compact('product', 'products', 'cart'));
     }
 
     /**

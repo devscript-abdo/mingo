@@ -16,7 +16,7 @@ interface ProductInterface
 
     public function showInNav();
 
-    public function getProduct($product, $with = null);
+    public function getProduct($product, $with = []);
 
     public function model();
 

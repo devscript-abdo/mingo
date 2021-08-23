@@ -15,7 +15,7 @@
 </aside>
 
 <aside class="widget widget_ads">
-    <a href="{{$ad->url}}">
-        <img src="{{$ad->photo}}" alt="{{$ad->name}}">
+    <a href="{{$ads['single_product'][0]->url}}">
+        <img src="{{$ads['single_product'][0]->photo}}" alt="{{$ads['single_product'][0]->name}}">
     </a>
 </aside>

@@ -12,10 +12,10 @@ class ConfirmationController extends Controller
 
     public function index()
     {
-        if (!session()->has('success_message')) {
+       /* if (!session()->has('success_message')) {
 
             return redirect()->route('products');
-        }
+        }*/
         if (auth()->guard('customer')->check()) {
 
             $order = Order::latest('id')

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="ps-page--single" id="contact-us">
+    <div class="ps-page--single" id="contact-us" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
 
         @include('theme.contact.section_a_top')
 

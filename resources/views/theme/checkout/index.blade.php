@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="ps-page--simple">
+<div class="ps-page--simple" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
 
     @include('theme.checkout.section_a_top')
 

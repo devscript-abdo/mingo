@@ -1,5 +1,5 @@
 <div>
-    <div class="ps-section--shopping ps-shopping-cart">
+    <div class="ps-section--shopping ps-shopping-cart" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
         <div class="container">
             <div class="ps-section__header">
                 <h1>{{__('navbar.shopping_cart')}}</h1>

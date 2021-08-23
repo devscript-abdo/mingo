@@ -42,23 +42,24 @@
             <label for="review-5"><span><i class="fa fa-star rate"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span><small>(1)</small></label>
         </div>
     </figure>
-    <figure>
+     {{--<figure>
         <h4 class="widget-title">By Color</h4>
-        @foreach($colors as $color)
+       @foreach($colors as $color)
         
             <div class="ps-checkbox ps-checkbox--color  ps-checkbox--inline" style="background-color: {{$color->code}}; !important">
                 <input class="form-control" type="checkbox" id="color-{{$color->slug}}" name="size">
                 <label for="color-{{$color->slug}}"></label>
             </div>
 
-            {{--<div class="ps-checkbox ps-checkbox--color color-1 ps-checkbox--inline" style="background-color: {{$color->code}}; !important">
+            <div class="ps-checkbox ps-checkbox--color color-1 ps-checkbox--inline" style="background-color: {{$color->code}}; !important">
                 <input class="form-control" type="checkbox" id="color-1" name="size">
                 <label for="color-1"></label>
-            </div>--}}
+            </div>
         @endforeach
      
-    </figure>
+    </figure>--}}
+
     <figure class="sizes">
-        <h4 class="widget-title">BY SIZE</h4><a href="#">L</a><a href="#">M</a><a href="#">S</a><a href="#">XL</a>
+        <h4 class="widget-title">BY SIZE</h4><a href="#" onclick="return 0">L</a><a href="#">M</a><a href="#">S</a><a href="#">XL</a>
     </figure>
 </aside>

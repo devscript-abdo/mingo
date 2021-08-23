@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="ps-page--my-account">
+<main class="ps-page--my-account" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
     <div class="ps-breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
@@ -14,18 +14,18 @@
     <section class="ps-section--account">
         <div class="container">
             <div class="ps-block--payment-success">
-                <h3>Order Success !</h3>
+                <h3>{{__('thankyouPage.order_success')}}</h3>
                 <p>
-                    Thanks for your Order. 
+                    {{__('thankyouPage.order_success_message')}}
                     @auth('customer')
-                        Please visit
+                    {{__('thankyouPage.order_success_message_a')}}
                             <a href="{{route('customer.invoices.single',$order->slug)}}">
-                                here
+                                {{__('thankyouPage.order_success_message_b')}}
                             </a> 
-                        to check your order status.
+                       
                     @endauth
                     <br> 
-                    to check your order status: <strong>{{$order->full_number}}</strong>
+                    {{__('thankyouPage.order_number')}} : <strong>{{$order->full_number}}</strong>
                 </p>
             </div>
         </div>

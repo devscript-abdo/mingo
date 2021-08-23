@@ -23,25 +23,32 @@ class CategoryRepository  implements CategoryInterface
 
     public function query()
     {
-        return $this->model->query();
+        return $this->model()->query();
     }
 
     public function all()
     {
-        return $this->model->all();
+        return $this->model()->all();
     }
 
     public function activeItems()
     {
-        return $this->model->active();
+        return $this->model()->active();
     }
 
     public function getCategory($slug)
     {
-        return $this->model->whereSlug($slug)
+        return $this->model()->whereSlug($slug)
             ->with(['products'])
             ->firstOrFail();
     }
+
+    public function getCategoryWith(array $with){
+
+        return $this->model()->with($with)->get();
+
+    }
+    
     public function getWithChildrens()
     {
         /*****Method one  Take multiple Query  */
@@ -57,16 +64,16 @@ class CategoryRepository  implements CategoryInterface
     }
     public function randomsHome()
     {
-        return $this->model->inHome();
+        return $this->model()->inHome();
     }
 
     public function categoryOfYear()
     {
-        return $this->model->categoryOfYear();
+        return $this->model()->categoryOfYear();
     }
 
     public function categoryInMenu()
     {
-        return $this->model->showInMenu();
+        return $this->model()->showInMenu();
     }
 }

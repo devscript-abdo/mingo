@@ -1,7 +1,7 @@
 <div class="ps-home-ads">
     <div class="ps-container">
         <div class="row">
-            @foreach($bottomAds as $add)
+            @foreach($ads['bottom_home'] as $add)
             <div 
                 @if($loop->first)
                  class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12"

@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\BladeDirectivesServiceProvider::class,
+
         /******MINGO */
         App\Providers\PaymentServiceProvider::class,
         App\Providers\ObserverServiceProvider::class,

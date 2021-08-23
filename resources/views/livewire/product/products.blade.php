@@ -48,6 +48,7 @@
                                                     data-toggle="tooltip" 
                                                     data-placement="top" 
                                                     title="{{__('buttons.add_to_cart')}}"
+                                                    onclick="return false;"
                                                 >
                                                     <i class="icon-bag2"></i>
                                                 </a>
@@ -61,6 +62,7 @@
                                                     data-toggle="tooltip" 
                                                     data-placement="top" 
                                                     title="{{__('buttons.add_to_wish')}}"
+                                                    onclick="return false;"
                                                     >
                                                         <i class="icon-heart"></i>
                                                     </a>
@@ -75,6 +77,7 @@
                                                         data-toggle="modal"
                                                         data-target="#product-wishlistGuest"
                                                         title="{{__('buttons.add_to_wish')}}"
+                                                        onclick="return false;"
                                                     >
                                                         <i class="icon-heart"></i>
                                                     </a>
@@ -144,6 +147,7 @@
                                                 <a 
                                                 href="#"
                                                 wire:click="addToWishList({{$product->id}})"
+                                                onclick="return false;"
                                                 >
                                                     <i class="icon-heart"></i> 
                                                     {{__('buttons.add_to_whish')}}
@@ -158,7 +162,9 @@
                                                 data-placement="top"
                                                 title="Quick View"
                                                 data-toggle="modal"
+                                                onclick="return false;"
                                                 data-target="#product-wishlistGuest">
+
                                                 <i class="icon-eye"></i>
                                             </a>
                                         </li>

@@ -1,4 +1,4 @@
-<div class="col-xl-7 col-lg-8 col-md-12 col-sm-12  ">
+<div class="col-xl-7 col-lg-8 col-md-12 col-sm-12  " dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
     <div class="ps-form__billing-info">
         <h3 class="ps-form__heading">{{__('checkoutPage.check_form_title')}}</h3>
             <div class="form-group">
@@ -129,14 +129,7 @@
                         class="form-control @error('billing_phone') is-invalid @enderror" 
                         type="text" 
                         name="billing_phone" 
-                        value="
-                        {{
-                         auth()->guard('customer')->check()
-                             ?
-                         auth()->guard('customer')->user()->phone
-                             : 
-                         old('billing_phone')
-                        }}" 
+                        value="{{auth()->guard('customer')->check() ? auth()->guard('customer')->user()->phone : old('billing_phone')}}"   
                     >
                     @error('billing_phone')
                         <span class="invalid-feedback" role="alert">
@@ -164,7 +157,7 @@
                         rows="7" 
                         placeholder="Notes about your order, e.g. special notes for delivery."
                      >
-                     {{old('billing_notes')}}
+                    {{old('billing_notes')}}
                     </textarea>
                     @error('billing_notes')
                         <span class="invalid-feedback" role="alert">

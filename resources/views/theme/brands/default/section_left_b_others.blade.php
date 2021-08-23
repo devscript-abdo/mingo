@@ -15,7 +15,7 @@
       
     </figure>--}}
 
-    <figure>
+   {{-- <figure>
         <h4 class="widget-title">By Color</h4>
         @foreach($colors as $color)
         
@@ -30,14 +30,14 @@
                 <label for="color-{{$color->slug}}"></label>
             </div>
 
-            {{--<div class="ps-checkbox ps-checkbox--color color-1 ps-checkbox--inline" style="background-color: {{$color->code}}; !important">
+            <div class="ps-checkbox ps-checkbox--color color-1 ps-checkbox--inline" style="background-color: {{$color->code}}; !important">
                 <input class="form-control" type="checkbox" id="color-1" name="size">
                 <label for="color-1"></label>
-            </div>--}}
+            </div>
         @endforeach
      
-    </figure>
-    <figure class="sizes">
+    </figure>--}}
+    {{--<figure class="sizes">
         <h4 class="widget-title">BY SIZE</h4><a href="#">L</a><a href="#">M</a><a href="#">S</a><a href="#">XL</a>
-    </figure>
+    </figure>--}}
 </aside>

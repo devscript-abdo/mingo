@@ -14,9 +14,9 @@
 
 
          {{--@include('theme.home.section_f_products_category_a')--}}
-         @isset($categories)
+         @isset($categories['categories_in_home'])
          
-           @each('theme.home.section_f_products_category_b', $categories, 'category')
+           @each('theme.home.section_f_products_category_b', $categories['categories_in_home'], 'category')
 
          @endisset
 

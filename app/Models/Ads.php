@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Collections\Ads\AdsCollections;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Facades\Voyager;
@@ -37,5 +38,10 @@ class Ads extends Model
     {
         $image  = Voyager::image($this->image);
         return $image;
+    }
+
+    public function newCollection(array $models = [])
+    {
+        return new AdsCollections($models);
     }
 }

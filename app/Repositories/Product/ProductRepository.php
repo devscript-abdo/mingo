@@ -22,43 +22,43 @@ class ProductRepository  implements ProductInterface
     }
     public function query()
     {
-        return $this->model->query();
+        return $this->model()->query();
     }
 
     public function all()
     {
-        return $this->model->all();
+        return $this->model()->all();
     }
 
     public function showInNav()
     {
-        return $this->model->showInNavbar();
+        return $this->model()->showInNavbar();
     }
 
-    public function getProduct($slug, $with = null)
+    public function getProduct($slug, $with = [])
     {
         if (isset($with) && is_array($with)) {
-            return $this->model->whereSlug($slug)->whereActive(true)
+            return $this->model()->whereSlug($slug)->whereActive(true)
                 ->with($with)
                 ->firstOrFail();
         }
-        return $this->model->whereSlug($slug)->whereActive(true)
+        return $this->model()->whereSlug($slug)->whereActive(true)
             ->firstOrFail();
     }
 
     public function activeItems()
     {
-        return $this->model->active();
+        return $this->model()->active();
     }
 
     public function withRelated(array $related)
     {
 
-        return $this->model->withRelated($related);
+        return $this->model()->withRelated($related);
     }
     public function randomsHome()
     {
-        return $this->model->randoms();
+        return $this->model()->randoms();
     }
 
     public function bestSearched()

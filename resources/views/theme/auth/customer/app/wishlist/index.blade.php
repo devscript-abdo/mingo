@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="ps-page--simple">
+<div class="ps-page--simple" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
 
     @include('theme.auth.customer.app.wishlist.section_a_top')
 

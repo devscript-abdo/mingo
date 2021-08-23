@@ -1,4 +1,4 @@
-<div class="ps-section--default" >
+<div class="ps-section--default" dir="ltr">
     <div class="ps-section__header">
         <h3>{{__('singleProduct.related')}}</h3>
     </div>

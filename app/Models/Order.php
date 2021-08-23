@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Collections\Order\OrderCollections;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -31,6 +32,12 @@ class Order extends Model
         'error',
         'user_type'
     ];
+
+    // added at 22-08-2021
+    public function newCollection(array $models = [])
+    {
+        return new OrderCollections($models);
+    }
 
     public function customer()
     {

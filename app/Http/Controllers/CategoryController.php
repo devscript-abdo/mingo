@@ -15,12 +15,12 @@ class CategoryController extends Controller
 
         $categorie =  $this->Category()->getCategory($category);
 
-        $products = $categorie->products()->active()->get();
+        $products = $categorie->products;
 
         $brands = $this->Brand()->activeItems();
 
-        $colors = $this->Color()->active();
+       // $colors = $this->Color()->active();
 
-        return view('theme.categories.index', compact('categorie', 'products', 'brands', 'colors'));
+        return view('theme.categories.index', compact('categorie', 'products', 'brands'));
     }
 }

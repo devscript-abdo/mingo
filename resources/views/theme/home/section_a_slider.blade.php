@@ -12,7 +12,7 @@
         </div>
         <div class="ps-section__right">
 
-            @foreach ($topAds as $ad)
+            @foreach ($ads['top_slider'] as $ad)
                 <a class="ps-collection" href="{{$ad->url}}">
                     <img src="{{$ad->photo}}" alt="{{$ad->name}}">
                 </a>

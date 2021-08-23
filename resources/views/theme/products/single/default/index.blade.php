@@ -2,7 +2,7 @@
 {{--@include('theme.products.single.default.section_a_nav_add')--}}
 @include('theme.products.single.default.section_b_top')
 
-<div class="ps-page--product">
+<div class="ps-page--product" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
     <div class="ps-container">
         <div class="ps-page__container">
             <div class="ps-page__left">

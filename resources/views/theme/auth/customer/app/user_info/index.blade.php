@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <main class="ps-page--my-account">
+    <main class="ps-page--my-account" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
 
         @include('theme.auth.customer.app.user_info.section_a_top')
 
