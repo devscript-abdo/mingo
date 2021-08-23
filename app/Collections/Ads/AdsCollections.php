@@ -25,7 +25,7 @@ class AdsCollections extends Collection
                 return 'top_products_page';
             }
 
-            if ($item->where('location','single_product')->first()) {
+            if ($item->location === 'single_product') {
                 return 'single_product';
             }
 
