@@ -15,7 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        //\App\Models\Ads::factory(33)->create();
+        //\App\Models\Slider::factory(10)->create();
        // $this->call(AttributeSeeder::class);
-        $this->call(CouponsTableSeeder::class);
+       // $this->call(CouponsTableSeeder::class);
+       $this->call(ProductSeeder::class);
     }
 }

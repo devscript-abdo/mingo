@@ -6,6 +6,7 @@ use App\Collections\Ads\AdsCollections;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Facades\Voyager;
+use Illuminate\Support\Str;
 
 class Ads extends Model
 {
@@ -36,6 +37,11 @@ class Ads extends Model
 
     public function getPhotoAttribute()
     {
+        /// used this  if becuase i used random image  in Factory Seed
+        if (Str::contains($this->image, ['lorempixel', 'source.unsplash'])) {
+            return $this->image;
+        }
+
         $image  = Voyager::image($this->image);
         return $image;
     }

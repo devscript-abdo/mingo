@@ -30,6 +30,10 @@ class Slider extends Model
 
     public function getPhotoAttribute()
     {
+        /// used this  if becuase i used random image  in Factory Seed
+        if (Str::contains($this->image, 'lorempixel')) {
+            return $this->image;
+        }
         $image  = Voyager::image($this->image);
         return $image;
     }
