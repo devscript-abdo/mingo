@@ -1,8 +1,8 @@
-<div class="ps-panel--sidebar" id="navigation-mobile" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
+<div class="ps-panel--sidebar" id="navigation-mobile" >
     <div class="ps-panel__header">
         <h3>{{__('navbar.all_categories')}}</h3>
     </div>
-    <div class="ps-panel__content">
+    <div class="ps-panel__content" dir="{{Mingo::currentLocale()==='ar'?'rtl':''}}">
         <ul class="menu--mobile">
             <li><a href="#">Hot Promotions</a>
             </li>

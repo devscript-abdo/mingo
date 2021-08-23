@@ -20,7 +20,7 @@
     @else
        {{--@include('layouts.parts.singleLink')--}}
        @include('layouts.parts.fullLink')
-       
+
     @endif
 
     <link rel="stylesheet" href="{{asset('assets/css/_header_a.css')}}">
@@ -30,7 +30,7 @@
 
 </head>
 
-<body>
+<body >
 
     @include('sections.__promo')
 

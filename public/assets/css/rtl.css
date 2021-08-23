@@ -1234,7 +1234,7 @@ body {
 
 @media (min-width: 1200px) {
   .container {
-    min-width: 1230px;
+    min-width: 1577px;
   }
 }
 
@@ -15900,7 +15900,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 .header--standard.header--sticky .ps-logo {
-  display: none;
+  display: inline;
 }
 
 @media (max-width: 1199px) {

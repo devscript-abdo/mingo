@@ -10,7 +10,7 @@
   }
   
   .header--market-place-2 .navigation {
-    border-bottom: 1px solid #e1e1e1;
+    /*border-bottom: 1px solid #e1e1e1;*/
     background-color: #fcb800;
   }
   
@@ -106,9 +106,9 @@
     align-items: center;
   }
   
-  .header--market-place-2.header--sticky .header__content .menu--product-categories span {
+  /*.header--market-place-2.header--sticky .header__content .menu--product-categories span {
     display: block;
-  }
+  }*/
   
   .header--market-place-2.header--sticky .header__content .menu--product-categories .menu__content:before {
     right: auto;

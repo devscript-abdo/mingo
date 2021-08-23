@@ -1,4 +1,4 @@
-<header class="header header--mobile" data-sticky="true">
+<header class="header header--mobile" data-sticky="true" >
     <div class="header__top">
         <div class="header__left">
             <p>Welcome to mingo Online Shopping Store !</p>
