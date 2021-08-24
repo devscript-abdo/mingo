@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        Schema::defaultStringLength(191);
         //
         // using the laravel voyager dashborad->add team (facebook, linked,....)
         Validator::extend('validateDomain', function ($attribute, $value, $parameters, $validator) {
