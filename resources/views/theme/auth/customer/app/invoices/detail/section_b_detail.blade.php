@@ -62,7 +62,23 @@
                                     <td><span><i>MAD</i> {{$product->pivot->quantity * $product->price}}</span></td>
                                 </tr>
                             @endforeach
-                 
+                                <tr>
+                                    <td colspan="1">
+                                        <div class="ps-product--cart">
+                                            <div class="ps-product__thumbnail"><a href="">
+                                            
+                                            </div>
+                                            <div class="ps-product__content"><a href="">
+                                            
+                                            </a>
+                                            
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td ><span><i></i> </span></td>
+                                    <td><strong>TOTAL</strong> </td>
+                                    <td><span> <strong>{{$order->billing_total}}</strong> </span></td>
+                                </tr>
                         </tbody>
                     </table>
                 </div>

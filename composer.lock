@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfc475aa8bb360cd79ff2c347a2705aa",
+    "content-hash": "82de9a25cdac639ef13aa2e61d70ffd4",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -6104,16 +6104,16 @@
         },
         {
             "name": "spatie/laravel-collection-macros",
-            "version": "7.2.0",
+            "version": "7.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-collection-macros.git",
-                "reference": "b0e207716726bb903cdcac0224828d7138aba087"
+                "reference": "6e39f61d8de3487b01031d50adea15c64e1f3507"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-collection-macros/zipball/b0e207716726bb903cdcac0224828d7138aba087",
-                "reference": "b0e207716726bb903cdcac0224828d7138aba087",
+                "url": "https://api.github.com/repos/spatie/laravel-collection-macros/zipball/6e39f61d8de3487b01031d50adea15c64e1f3507",
+                "reference": "6e39f61d8de3487b01031d50adea15c64e1f3507",
                 "shasum": ""
             },
             "require": {
@@ -6170,7 +6170,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-collection-macros/issues",
-                "source": "https://github.com/spatie/laravel-collection-macros/tree/7.2.0"
+                "source": "https://github.com/spatie/laravel-collection-macros/tree/7.3.0"
             },
             "funding": [
                 {
@@ -6178,7 +6178,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-05-08T19:10:34+00:00"
+            "time": "2021-07-15T10:58:15+00:00"
         },
         {
             "name": "spatie/laravel-honeypot",
