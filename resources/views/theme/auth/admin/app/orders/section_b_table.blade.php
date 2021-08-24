@@ -74,7 +74,7 @@
 
                             @foreach($orders[$status] as $order)
                                 <tr>
-                                    <td><a href="{{route('customer.invoices.single',$order->slug)}}">{{$order->full_number}}</a></td>
+                                    <td><a href="{{route('admin.orders.show',$order->slug)}}">{{$order->full_number}}</a></td>
                                     <td>{{$order->billing_name}}</td>
                                     <td>{{$order->created_at}}</td>
                                     <td>{{$order->billing_address}}</td>
