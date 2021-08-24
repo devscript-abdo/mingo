@@ -15,5 +15,3 @@ yarn-error.log
 /.vscode
 *.zip
 *.rar
-composer.json
-composer.lock
