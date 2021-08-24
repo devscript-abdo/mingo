@@ -21,19 +21,6 @@
                         <a class="dropdown-item" href="?fliter[status]=canceled">canceled</a>
                       </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            Status
-                          </a>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="?fliter[status]=pending">pending</a>
-                          <a class="dropdown-item" href="?fliter[status]=processing">processing</a>
-                          <a class="dropdown-item" href="?fliter[status]=completed">completed</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="?fliter[status]=canceled">canceled</a>
-                        </div>
-                      </li>
-
                   </ul>
             </div>
         </div>
@@ -71,35 +58,39 @@
                                 }
 
                             @endphp
+                            @if(Arr::exists($orders,$status))
+                             
+                        
+                                @foreach($orders[$status] as $order)
+                                    <tr>
+                                        <td><a href="{{route('admin.orders.show',$order->slug)}}">{{$order->full_number}}</a></td>
+                                        <td>{{$order->billing_name}}</td>
+                                        <td>{{$order->created_at}}</td>
+                                        <td>{{$order->billing_address}}</td>
+                                        <td>{{$order->billing_city}}</td>
+                                        <td>{{$order->billing_total}} {{__('symbole.mad')}}</td>
+                                        <td>{{$order->status}}</td>
+                                        <td>
 
-                            @foreach($orders[$status] as $order)
-                                <tr>
-                                    <td><a href="{{route('admin.orders.show',$order->slug)}}">{{$order->full_number}}</a></td>
-                                    <td>{{$order->billing_name}}</td>
-                                    <td>{{$order->created_at}}</td>
-                                    <td>{{$order->billing_address}}</td>
-                                    <td>{{$order->billing_city}}</td>
-                                    <td>{{$order->billing_total}} {{__('symbole.mad')}}</td>
-                                    <td>{{$order->status}}</td>
-                                    <td>
+                                            <a class="ps-btn ps-btn--sm" href="{{route('admin.orders.show',$order->slug)}}">
+                                            Voir
+                                            </a>
 
-                                        <a class="ps-btn ps-btn--sm" href="{{route('admin.orders.show',$order->slug)}}">
-                                          Voir
-                                        </a>
-
-                                    </td>
-                      
-                                </tr>
+                                        </td>
+                        
+                                    </tr>
+                                    
+                                        <form action="{{route('customer.invoices.delete')}}" method="post" hidden id="{{$order->slug}}">
+                                            @csrf
+                                            @honeypot
+                                            @method('DELETE')
+                                            <input type="hidden" name="ordercancel" value="{{$order->slug}}">
+                                        </form>
                                 
-                                    <form action="{{route('customer.invoices.delete')}}" method="post" hidden id="{{$order->slug}}">
-                                        @csrf
-                                        @honeypot
-                                        @method('DELETE')
-                                        <input type="hidden" name="ordercancel" value="{{$order->slug}}">
-                                    </form>
-                               
-                            @endforeach
-           
+                                @endforeach
+                            @else
+                            <p>No Result</p>
+                            @endif
                        
                         </tbody>
                     </table>

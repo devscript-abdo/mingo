@@ -90,7 +90,7 @@ class CheckoutController extends Controller
         $totalPrice = collect($data['cart'])->map(function ($item) {
             return $item['price'] * $item['quantity'];
         })->sum();
-
+         
 
         $order = Order::forceCreate([
 

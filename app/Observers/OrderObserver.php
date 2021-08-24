@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Order;
+use Illuminate\Support\Facades\Cache;
 
 class OrderObserver
 {
@@ -25,6 +26,7 @@ class OrderObserver
      */
     public function updated(Order $order)
     {
+        // dd('yes,up');
         $this->clearAllCache();
     }
 
@@ -70,6 +72,7 @@ class OrderObserver
             cache()->pull("orders_cache_{$id}");
             cache()->pull("orders_cache_slug_{$id}");
         } else {
+
             $id = json_encode(auth('sanctum')->user()->id ?? null);
 
             cache()->pull("orders_cache_{$id}");
