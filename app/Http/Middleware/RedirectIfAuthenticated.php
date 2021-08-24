@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
 {
+
+    private $actions = ['admin' => 'admin.orders', 'customer' => 'customer.profil'];
     /**
      * Handle an incoming request.
      *
@@ -23,7 +25,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::CUSTOMER_DASH);
+                return redirect(route($this->actions[$guard]));
             }
         }
 

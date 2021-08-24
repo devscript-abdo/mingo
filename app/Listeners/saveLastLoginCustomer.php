@@ -27,12 +27,14 @@ class saveLastLoginCustomer
      */
     public function handle(Login $event)
     {
-        //  dd($event);
-        $event->user->lastLogin()->create([
-            'ip' => request()->ip(),
-            'customer_id' => $event->user->id,
-            'logged_in_at' => Carbon::now(),
-            'device'=>'web_Browser'
-        ]);
+        // dd($event->guard,'----',$event->user);
+        if ($event->guard !== 'admin') {
+            $event->user->lastLogin()->create([
+                'ip' => request()->ip(),
+                'customer_id' => $event->user->id,
+                'logged_in_at' => Carbon::now(),
+                'device' => 'web_Browser'
+            ]);
+        }
     }
 }

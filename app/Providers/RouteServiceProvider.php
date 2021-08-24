@@ -61,6 +61,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/Admin/adminRoutes.php'));
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->prefix(config('mingo.global_admin_prefix'))
+                ->group(base_path('routes/Admin/globalAdminRoutes.php'));
 
             Route::middleware('web')
                 ->namespace($this->namespace)

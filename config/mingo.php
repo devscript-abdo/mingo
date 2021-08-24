@@ -27,6 +27,8 @@ return [
      */
     'admin' => env('APP_ADMIN_URL', 'admin'),
 
+    'global_admin_prefix'=> env('APP_GLOBAL_ADMIN_URL','theorders'),
+
 
     /**************Order setting *******************/
     'days_befor_cancel_order' => 3,

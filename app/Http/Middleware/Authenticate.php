@@ -16,14 +16,30 @@ class Authenticate extends Middleware
     {
         //dd('OOOk');
 
-        if (!$request->expectsJson()) {
+        /* if (!$request->expectsJson()) {
+
+
             return route('customer.login');
-        }
+        }*/
 
         if ($request->is('api/', 'api/*')) {
             return abort(response()->json([
                 'message' => 'Unauthenticated you must be logged in',
             ], 401));
+        }
+
+        $routes  = $request->route()->action['middleware'];
+        //  dd($routes);
+
+        switch ($routes) {
+            case $routes[1] === 'auth:admin':
+                return  route('admin.login');
+                break;
+            case $routes[4] === 'auth:customer':
+                return  route('customer.login');
+                break;
+            default:
+                return route('home');
         }
     }
 
