@@ -30,7 +30,8 @@ class Order extends Model
         'billing_total',
         'payment_gateway',
         'error',
-        'user_type'
+        'user_type',
+        'status'
     ];
 
     // added at 22-08-2021

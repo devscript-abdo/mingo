@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Order;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Order\UpdateStatusRequest;
 use Illuminate\Http\Request;
 
 class AdminOrderController extends Controller
@@ -15,7 +16,7 @@ class AdminOrderController extends Controller
     public function index(Request $request)
     {
 
-     
+
         $orders = $this->Order()->model()->latest()->get()->groupByStatus();
 
         return view('theme.auth.admin.app.orders.index', compact('orders'));
@@ -45,13 +46,17 @@ class AdminOrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  str  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function show($slug)
     {
-        //
+        $order = $this->Order()->getOrderDetail($slug);
+
+        return view('theme.auth.admin.app.orders.detail.index', compact('order'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -71,9 +76,15 @@ class AdminOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateStatusRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $order  = $this->Order()->getOrderDetail($request->order);
+
+        $order->update(['status' => $data['status']]);
+
+        return redirect()->back();
     }
 
     /**

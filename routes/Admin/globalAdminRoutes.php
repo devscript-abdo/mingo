@@ -29,6 +29,11 @@ Route::group(
     function () {
         Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
-        Route::get('/', [AdminOrderController::class, 'index'])->name('admin.orders');
+        Route::group(['prefix'=>'orders'],function(){
+            Route::get('/', [AdminOrderController::class, 'index'])->name('admin.orders');
+            Route::get('/{slug}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
+            Route::post('/{slug}', [AdminOrderController::class, 'update'])->name('admin.orders.update');
+        });
+
     }
 );
