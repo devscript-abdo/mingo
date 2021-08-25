@@ -26,7 +26,7 @@ class OrderObserver
      */
     public function updated(Order $order)
     {
-        // dd('yes,up');
+      //  dd($order);
         $this->clearAllCache();
     }
 
@@ -71,12 +71,16 @@ class OrderObserver
 
             cache()->pull("orders_cache_{$id}");
             cache()->pull("orders_cache_slug_{$id}");
+            cache()->pull('orders_cache_');
+            cache()->pull('orders_cache_slug_');
         } else {
 
             $id = json_encode(auth('sanctum')->user()->id ?? null);
 
             cache()->pull("orders_cache_{$id}");
             cache()->pull("orders_cache_slug_{$id}");
+            cache()->pull('orders_cache_');
+            cache()->pull('orders_cache_slug_');
         }
     }
 }

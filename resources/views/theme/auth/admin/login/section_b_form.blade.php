@@ -9,7 +9,7 @@
       
                         <h5>{{__('login.login_title')}}</h5>
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{__('login.form_email')}}" required autocomplete="email" autofocus>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{__('login.form_email')}}" required autocomplete="off" autofocus>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="form-group form-forgot">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="{{__('login.form_password')}}" required autocomplete="password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="{{__('login.form_password')}}" required autocomplete="off">
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">

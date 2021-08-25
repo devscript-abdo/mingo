@@ -88,5 +88,6 @@ class Kernel extends HttpKernel
 
         'verifyApiAccess' => \App\Http\Middleware\VerifyAPIAccess::class,
         'verifyCanPayment' => \App\Http\Middleware\PaymentMiddleware::class,
+        'cache_response' => \App\Http\Middleware\CacheResponseMiddleware::class
     ];
 }
