@@ -50,7 +50,7 @@ Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
 
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => ['cache_response','localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
 
