@@ -66,10 +66,13 @@
                                         <h3>{{__('checkoutPage.checkout_total')}} <span>{{$totalPrice}} {{__('symbole.mad')}}</span></h3>
                                     </div>
                                 </div>
+                                <hr>
+
                                 <button type="submit" class="ps-btn ps-btn--fullwidth">{{__('checkoutPage.checkout_button')}}</button>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </form>
         </div>

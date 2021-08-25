@@ -32,16 +32,29 @@
     }
 </script>
 
+<script src="{{asset('assets/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
+
 
 <script>
-  
- // $(document).ready(function() {$('.singleProductsColors').select2();});
-     
+
+$('#product-zoom').elevateZoom({
+            gallery:'product-zoom-gallery',
+            galleryActiveClass: 'active',
+            zoomType: "inner",
+            cursor: "crosshair",
+            zoomWindowFadeIn: 400,
+            zoomWindowFadeOut: 400,
+            responsive: true
+}); 
+        // On click change thumbs active item
+$('.item').on('click', function (e) {
+  console.log('OOOOO');
+            $('#product-zoom-gallery').find('div').removeClass('active');
+            $(this).addClass('active');
+
+            e.preventDefault();
+});
 </script>
-
+ 
 @endsection
 
-@section('productsCss')
-
-
-@endsection

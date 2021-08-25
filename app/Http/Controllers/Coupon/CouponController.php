@@ -15,6 +15,7 @@ class CouponController extends Controller
     public function store(CouponRequest $request)
     {
 
+       // dd('OOOO');
         $coupon = Coupon::whereCode($request->coupon_code)->first();
 
         if (!$coupon) {
@@ -23,7 +24,7 @@ class CouponController extends Controller
 
         session()->put('coupon', [
             'name' => $coupon->code,
-            'discount' => $coupon->discount(Cart::priceTotal())
+            'discount' => $coupon->discount(Cart::subtotal())
         ]);
 
         return redirect()->back()->with('message', 'Coupon has been applied');

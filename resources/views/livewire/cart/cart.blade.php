@@ -93,7 +93,7 @@
             <div class="ps-section__footer">
                 <div class="row">
                     
-                       {{--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
                             @if(! session()->has('coupon'))
                             <figure>
                                 <figcaption>Coupon Discount</figcaption>
@@ -129,37 +129,40 @@
                             
                             </figure>
                             @endif
-                        </div>--}}
+                        </div>
                  
     
                     {{--@include('theme.shopping-cart.section_c_shipping')--}}
     
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
                         <div class="ps-block--shopping-total">
-                            {{--<div class="ps-block__header">
+                            <div class="ps-block__header">
                                 <p>Subtotal <span> {{$subTotal}} MAD</span></p>
-                            </div>--}}
+                            </div>
+                            @if(session()->has('coupon'))
+                            <div class="ps-block__header">
+                                <p> DISCOUNT({{session()->get('coupon')['name']}})
+                                    <span>
+                                    - {{--session()->get('coupon')['discount']/100--}} 
+                                      {{$discount}} {{__('symbole.mad')}}
+                                    </span>
+                                </p>
+                                <a href="#" class="deleteCouponFromCart">
+                                    <i class="icon-cross"></i>
+                                </a>
+                            </div>
+                            <div class="ps-block__header">
+                                <p>New subtotal <span> {{$newsubTotal}} MAD</span></p>
+                            </div>
+                            <div class="ps-block__header">
+                                <p>Tax <span> {{$newtax}} MAD</span></p>
+                            </div>
+                            @endif
                             <div class="ps-block__content">
-                                <ul class="ps-block__product">
-                                    @if(session()->has('coupon'))
-                                        <li>
-
-                                            <span class="ps-block__shop">
-                                                DISCOUNT({{session()->get('coupon')['name']}}) 
-                                                - {{session()->get('coupon')['discount']/100}} MAD
-                                                <a href="#" class="deleteCouponFromCart">
-                                                    <i class="icon-cross"></i>
-                                                </a>
-                                            </span>
-                                            <span class="ps-block__shipping">
-                                             
-                                            </span>
-                           
-                                        </li>
-                                    @endif
-                         
-                                </ul>
-                                <h3>{{__('cart.product_total')}} <br><hr> <span>{{$totalPrice}} {{__('symbole.mad')}}</span></h3>
+                                <h3>{{__('cart.product_total')}}
+                                    {{--<span>{{$totalPrice}} {{__('symbole.mad')}}</span>--}}
+                                    <span>{{$newtotalPrice}} {{__('symbole.mad')}}</span>
+                                </h3>
                             </div>
                         </div>
                         <a class="ps-btn" href="{{route('products')}}">

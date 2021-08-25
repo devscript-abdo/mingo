@@ -12,8 +12,14 @@
             <div class="ps-block__item">
                 <a class="ps-block__overlay" href="{{$product->url}}"></a>
                 <img loading="lazy" src="{{$product->photo}}" alt="{{$product->field('name')}}">
-                <p>{{$product->field('name')}}</span>
+                <p>{{$product->field('name')}}</p>
+                <div class="ps-product__content">
+                   
+                    <p class="ps-product__price">{{$product->formated_price}} {{__('symbole.mad')}}</p>
+                </div>
+
             </div>
+
         @endforeach
  
     </div>
