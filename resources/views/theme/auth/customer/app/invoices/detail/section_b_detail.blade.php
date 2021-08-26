@@ -57,9 +57,9 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td><span><i>MAD</i> {{$product->price}} </span></td>
+                                    <td><span><i>{{__('symbole.mad')}}</i> {{$product->price}} </span></td>
                                     <td>{{$product->pivot->quantity}}</td>
-                                    <td><span><i>MAD</i> {{$product->pivot->quantity * $product->price}}</span></td>
+                                    <td><span><i>{{__('symbole.mad')}}</i> {{$product->pivot->quantity * $product->price}}</span></td>
                                 </tr>
                             @endforeach
                                 <tr>

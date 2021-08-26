@@ -33,17 +33,8 @@ class Cart extends Component
         $cartItemes = MyCart::content();
         $totalPrice = MyCart::priceTotal();
         $subTotal = MyCart::subtotal();
-        $tax = config('cart.tax') / 1000;
-        /*************** */
 
-        $discount = session()->get('coupon')['discount'] ?? 0;
-        $sb = (int)str_replace('.', '', str_replace(',', '.', substr(MyCart::subtotal(), 0, -3)));
-        // dd([$sb, $discount]);
-        $newsubTotal = ($sb  - $discount);
-        $newtax =   $newsubTotal * $tax;
-        $newtotalPrice = $newsubTotal + $newtax;
-        //$newtotalPrice = $newsubTotal;
-        return view('livewire.cart.cart', compact('cartItemes', 'totalPrice', 'subTotal', 'tax', 'discount', 'newsubTotal', 'newtotalPrice', 'newtax'));
+        return view('livewire.cart.cart', compact('cartItemes', 'totalPrice', 'subTotal'));
     }
 
     public function addToCart($product_id)

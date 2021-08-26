@@ -44,7 +44,7 @@ class CheckoutController extends Controller
         $order = $this->addToOrdersTables($request, null);
 
         if ($order && $this->isCreated) {
-         
+
             // Cart::instance('default')->destroy();
 
             return redirect()->route('checkout.payment');
@@ -66,8 +66,8 @@ class CheckoutController extends Controller
             'billing_postalcode' => $request->billing_postalcode,
             'billing_phone' => $request->billing_phone,
             'billing_name_on_card' => $request->billing_name,
-            'billing_discount' => 0,
-            'billing_discount_code' => 'coupon',
+            'billing_discount' => session()->get('coupon')['discount'] ?? 0,
+            'billing_discount_code' => session()->get('coupon')['code'] ?? null,
             'billing_subtotal' => Cart::subtotal(),
             'billing_tax' => 0,
             'billing_total' => Cart::priceTotal(),
