@@ -9,6 +9,7 @@
             @endif
         </div>
         <div class="ps-section__content">
+            
             <form class="ps-form--checkout"  action="{{route('checkout.post')}}" method="post">
                 @csrf
                 <div class="row">

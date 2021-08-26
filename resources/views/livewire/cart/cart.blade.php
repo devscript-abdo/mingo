@@ -127,9 +127,9 @@
                         </figure>
                         @endif
                             <div class="ps-block--shopping-total">
-                                {{--<div class="ps-block__header">
+                                <div class="ps-block__header">
                                     <p>Subtotal <span> {{$subTotal}} {{__('symbole.mad')}}</span></p>
-                                </div>--}}
+                                </div>
                             @if(session()->has('coupon'))
                                 <div class="ps-block__header">
                                     <p> 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Checkout\CheckoutRequest;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -82,6 +83,8 @@ class CheckoutController extends Controller
                 'product_id' => $item->id,
                 'quantity' => $item->qty,
             ]);
+          //  $product = Product::find($item->id);
+           // $product->update(['stock' => $product->stock - $item->qty]);
         }
 
         $this->isCreated = true;
