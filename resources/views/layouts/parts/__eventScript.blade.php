@@ -86,5 +86,13 @@
      })*/
 </script>
 
+<script>
+        window.addEventListener('cart.added',function(event) {
+     
+          alert('Ouii', event);
+     
+
+ });
+</script>
 
 

@@ -3,60 +3,43 @@
         <div class="ps-product__header">
             <div class="ps-product__thumbnail" data-vertical="true">
                 <figure>
-                    <div class="ps-wrapper" >
+                    <div class="ps-wrapper">
                         <div class="ps-product__gallery" data-arrow="true">
                             <div class="item">
                                 <a href="{{$product->photo}}">
-                                    <img 
-                                        id="product-zoom" 
-                                        data-zoom-image="{{$product->photo}}"
-                                        src="{{$product->photo}}" 
-                                        alt="{{$product->field('name')}}"
-                                       
-                                    >
+                                    <img src="{{$product->photo}}" alt="{{$product->field('name')}}">
                                 </a>
                             </div>
-                           
                             @foreach($product->all_photos as $photo)
-                            
-                                <div class="item ">
-                                    
-                                  <img  src="{{$photo}}" alt="{{$product->field('name')}}" >
-                                    
-                                </div>
-                                
+                  
+                                    <div class="item">
+                                        <a href="{{$photo}}">
+                                            <img src="{{$photo}}" alt="{{$product->field('name')}}">
+                                        </a>
+                                    </div>
+                             
                             @endforeach
                         </div>
                     </div>
                 </figure>
-                <div id="product-zoom-gallery " class="ps-product__variants" data-item="{{count($product->all_photos)}}" data-md="4" data-sm="4" data-arrow="false">
-                        <div class="item">
-                            <a href="{{$product->photo}}">
-                                <img 
-                                    id="product-zoom" 
-                                    data-zoom-image="{{$product->photo}}"
-                                    src="{{$product->photo}}" 
-                                    alt="{{$product->field('name')}}"
-                                
-                                >
-                            </a>
-                        </div>
+                <div class="ps-product__variants" data-item="{{count($product->all_photos)}}" data-md="4" data-sm="4" data-arrow="false">
+                    <div class="item">
+                            
+                        <img src="{{$product->photo}}" alt="{{$product->field('name')}}">
+                         
+                     </div>
                     @foreach($product->all_photos as $photo)
-
                         <div class="item">
                             
-                           <img  
-                                src="{{$photo}}" 
-                                alt="{{$product->field('name')}}"   
-                                id="product-zoom" 
-                                data-zoom-image="{{$photo}}"
-                           >
+                           <img src="{{$photo}}" alt="{{$product->field('name')}}">
                             
                         </div>
                         
                     @endforeach
                 </div>
             </div>
+
+
             <div class="ps-product__info">
                 <h1>{{$product->field('name')}}</h1>
                 <div class="ps-product__meta">

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Listeners\AddedToCart;
 use App\Listeners\saveLastLoginCustomer;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
@@ -23,6 +24,8 @@ class EventServiceProvider extends ServiceProvider
         Login::class => [
             saveLastLoginCustomer::class,
         ],
+
+        'cart.added' => [AddedToCart::class]
     ];
 
     /**

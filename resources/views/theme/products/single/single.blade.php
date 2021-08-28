@@ -32,7 +32,7 @@
     }
 </script>
 
-<script src="{{asset('assets/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
+{{--<script src="{{asset('assets/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
 
 
 <script>
@@ -46,7 +46,7 @@ $('#product-zoom').elevateZoom({
             zoomWindowFadeOut: 400,
             responsive: true
 }); 
-        // On click change thumbs active item
+       
 $('.item').on('click', function (e) {
   console.log('OOOOO');
             $('#product-zoom-gallery').find('div').removeClass('active');
@@ -54,7 +54,7 @@ $('.item').on('click', function (e) {
 
             e.preventDefault();
 });
-</script>
+</script>--}}
  
 @endsection
 

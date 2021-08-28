@@ -11,7 +11,7 @@
 <script src="{{asset('assets/plugins/slick/slick/slick.min.js')}}"></script>
 <script src="{{asset('assets/plugins/jquery-bar-rating/dist/jquery.barrating.min.js')}}"></script>
 <script src="{{asset('assets/plugins/slick-animation.min.js')}}"></script>
-{{--<script src="{{asset('assets/plugins/lightGallery-master/dist/js/lightgallery-all.min.js')}}"></script>--}}
+<script src="{{asset('assets/plugins/lightGallery-master/dist/js/lightgallery-all.min.js')}}"></script>
 {{--<script src="{{asset('assets/plugins/sticky-sidebar/dist/sticky-sidebar.min.js')}}"></script>--}}
 
 {{--<script src="{{asset('assets/plugins/select2/dist/js/select2.full.min.js')}}"></script>--}}
