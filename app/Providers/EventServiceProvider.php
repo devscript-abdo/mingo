@@ -21,11 +21,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        Login::class => [
+        /* Login::class => [
             saveLastLoginCustomer::class,
-        ],
+        ],*/
 
-        'cart.added' => [AddedToCart::class]
+        // 'cart.added' => [AddedToCart::class]
     ];
 
     /**

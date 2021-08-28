@@ -55,12 +55,12 @@
                             {{__('customer.customer_wishlist')}}
                         </a>
                     </li>
-                    <li class="{{request()->routeIs('customer.logged') ? 'active':''}}">
+                    {{--<li class="{{request()->routeIs('customer.logged') ? 'active':''}}">
                         <a href="{{route('customer.logged')}}">
                             <i class="icon-list"></i> 
                             {{__('customer.customer_logged')}}
                         </a>
-                    </li>
+                    </li>--}}
                     <li>
                         <a href="#" onclick="document.getElementById('logoutM').submit();">
                             <i class="icon-power-switch"></i>{{__('customer.customer_logout')}}
