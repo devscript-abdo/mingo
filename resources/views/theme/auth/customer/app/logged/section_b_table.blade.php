@@ -22,23 +22,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                {{--<td>Lorem</td>--}}
-                                <td style="font-size: 17px;">{{$sessions->lastLogin->logged_in_at}}</td>
-                                <td>
-                                    <span class="badge badge-danger" style="font-size: 17px;">
-                                        {{$sessions->lastLogin->ip}}
-                                    </span>
-                                    | Last login
-                                </td>
-                                <td>
-                                    <span class="badge badge-danger" style="font-size: 17px;">
-                                        {{$sessions->lastLogin->machine}}
-                                    </span>
-                                   
-                                </td>
-                            </tr>
-                            
+                            @if($sessions->count))
+                                <tr>
+                                    {{--<td>Lorem</td>--}}
+                                    <td style="font-size: 17px;">{{$sessions->lastLogin->logged_in_at}}</td>
+                                    <td>
+                                        <span class="badge badge-danger" style="font-size: 17px;">
+                                            {{$sessions->lastLogin->ip}}
+                                        </span>
+                                        | Last login
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-danger" style="font-size: 17px;">
+                                            {{$sessions->lastLogin->machine}}
+                                        </span>
+                                    
+                                    </td>
+                                </tr>
+                            @endif
                             @foreach ($sessionsAll as $session)
                                 <tr>
                                    

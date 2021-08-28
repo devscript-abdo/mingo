@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserLogin;
 use Illuminate\Http\Request;
 
 class LoggedInController extends Controller
@@ -22,12 +23,10 @@ class LoggedInController extends Controller
 
   public function deleteHistory()
   {
-    $histories = auth('customer')->user()->loginHistory()->get();
+    // $histories = auth('customer')->user()->loginHistory()->get();
 
-    foreach ($histories as $history) {
-      $history->delete();
-      return redirect()->back()->with('message','All Old histories was deleted');
-    }
+    UserLogin::whereIn('customer_id', [auth('customer')->user()->id])->delete();
+
     return redirect()->back();
   }
 }
