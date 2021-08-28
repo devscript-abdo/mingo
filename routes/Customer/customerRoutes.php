@@ -111,7 +111,7 @@ Route::group(
 
                 Route::get('/account/notifications', [NotificationController::class, 'index'])->name('customer.notifications');
 
-                Route::get('/account/orders', [InvoiceController::class, 'index'])->middleware('password.confirm')->name('customer.invoices');
+                Route::get('/account/orders', [InvoiceController::class, 'index'])->name('customer.invoices');
                 Route::delete('/account/orders', [InvoiceController::class, 'delete'])->name('customer.invoices.delete');
 
                 Route::get('/account/orders/{slug}', [InvoiceController::class, 'show'])->name('customer.invoices.single');
