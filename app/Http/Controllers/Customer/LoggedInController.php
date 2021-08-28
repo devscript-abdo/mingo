@@ -22,7 +22,7 @@ class LoggedInController extends Controller
 
   public function deleteHistory()
   {
-    $histories = auth('customer')->user()->loginHistory();
+    $histories = auth('customer')->user()->loginHistory()->get();
 
     foreach ($histories as $history) {
       $history->delete();
