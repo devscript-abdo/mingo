@@ -68,9 +68,9 @@
     {{--@livewire('product.modal-view')--}}
     @livewireScripts()
 
-    @include('layouts.parts.fullScript')
+    {{--@include('layouts.parts.fullScript')--}}
     
-    {{--@include('layouts.parts.singleScript')--}}
+    @include('layouts.parts.singleScript')
 
     @yield('productsJs')
 
