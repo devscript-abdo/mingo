@@ -8,8 +8,8 @@
 
         @foreach($brands as $brand)
             <div class="ps-checkbox">
-                <input class="form-control" type="checkbox" id="brand-1" name="brand">
-                <label for="brand-1">{{$brand->name}}</label>
+                <input class="form-control" type="checkbox" id="brand-{{$brand->id}}" name="brand">
+                <label for="brand-{{$brand->id}}">{{$brand->name}}</label>
             </div>
         @endforeach
 
@@ -59,7 +59,12 @@
 
     </figure>--}}
 
-    <figure class="sizes">
-        <h4 class="widget-title">BY SIZE</h4><a href="#" onclick="return 0">L</a><a href="#">M</a><a href="#">S</a><a href="#">XL</a>
-    </figure>
+    {{--<figure class="sizes">
+        <h4 class="widget-title">BY SIZE</h4>
+        <a href="#" onclick="return 0">L</a>
+        <a href="#">M</a>
+        <a href="#">S</a>
+        <a href="#">XL</a>
+    </figure>--}}
+
 </aside>
