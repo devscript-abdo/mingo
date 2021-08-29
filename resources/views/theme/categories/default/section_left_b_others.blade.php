@@ -12,9 +12,9 @@
                 <label for="brand-1">{{$brand->name}}</label>
             </div>
         @endforeach
-      
+
     </figure>
-    <figure>
+    {{--<figure>
         <h4 class="widget-title">Prix</h4>
         <div id="nonlinear"></div>
         <p class="ps-slider__meta">Prix:<span class="ps-slider__value">$<span class="ps-slider__min"></span></span>-<span class="ps-slider__value">$<span class="ps-slider__max"></span></span></p>
@@ -41,11 +41,11 @@
             <input class="form-control" type="checkbox" id="review-5" name="review">
             <label for="review-5"><span><i class="fa fa-star rate"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span><small>(1)</small></label>
         </div>
-    </figure>
+    </figure>--}}
      {{--<figure>
         <h4 class="widget-title">By Color</h4>
        @foreach($colors as $color)
-        
+
             <div class="ps-checkbox ps-checkbox--color  ps-checkbox--inline" style="background-color: {{$color->code}}; !important">
                 <input class="form-control" type="checkbox" id="color-{{$color->slug}}" name="size">
                 <label for="color-{{$color->slug}}"></label>
@@ -56,7 +56,7 @@
                 <label for="color-1"></label>
             </div>
         @endforeach
-     
+
     </figure>--}}
 
     <figure class="sizes">
