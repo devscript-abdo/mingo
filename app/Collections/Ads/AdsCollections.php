@@ -8,7 +8,7 @@ class AdsCollections extends Collection
 {
 
 
-    public function groupByPosition()
+    public function groupByPosition(): AdsCollections
     {
         return $this->groupBy(function ($item) {
 

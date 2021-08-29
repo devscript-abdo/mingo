@@ -8,7 +8,7 @@ class CategoryCollections extends Collection
 {
 
 
-    public function groupByType()
+    public function groupByType(): CategoryCollections
     {
         return $this->groupBy(function ($item) {
 

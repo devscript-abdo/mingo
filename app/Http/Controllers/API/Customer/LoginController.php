@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
 
-    public function login(LoginRequest $request)
+    public function login(LoginRequest $request): \Illuminate\Http\JsonResponse
     {
         $data = $request->validated();
 
@@ -21,7 +21,7 @@ class LoginController extends Controller
         Tokener::whereDate('last_used_at', '<', now())->delete();
 
 
-        // check if user already loggedIn 
+        // check if user already loggedIn
         /*$loggedUser = Tokener::whereName($data['email'])
             ->where('tokenable_type', 'App\Models\Customer')
             ->first();

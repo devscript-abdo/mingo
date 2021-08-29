@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
 
-    public function index()
+    public function index(): \Illuminate\Http\JsonResponse
     {
         return response()->json(
             [
@@ -24,7 +24,7 @@ class CategoryController extends Controller
         );
     }
 
-    public function show($id)
+    public function show($id): \Illuminate\Http\JsonResponse
     {
         $category = Category::without(['childrens', 'translations'])->find($id);
 
@@ -39,16 +39,16 @@ class CategoryController extends Controller
         return response()->json(['_response' => ['code' => 'code_404', 'message' => 'error 404']], 404);
     }
 
-    public function getProductsOfCategory($id)
+    public function getProductsOfCategory($id): \Illuminate\Http\JsonResponse
     {
         $category = Category::without(['childrens', 'translations'])->find($id);
 
         if ($category) {
-          
+
             return response()->json(
 
                 ['payload' => ProductResource::collection($category->products), '_response' => ['message' => 'successfully products of category']
-                
+
             ], 200);
         }
         return response()->json(['_response' => ['code' => 'code_404', 'message' => 'error 404']], 404);

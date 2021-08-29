@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class AdresseController extends Controller
 {
     //
-    public function index()
+    public function index(): \Illuminate\Http\JsonResponse
     {
         $addresses = auth('sanctum')
             ->user()
@@ -43,7 +43,7 @@ class AdresseController extends Controller
     );*/
     }
 
-    public function create(AddresseRequest $request)
+    public function create(AddresseRequest $request): \Illuminate\Http\JsonResponse
     {
         $data = $request->validated();
 
@@ -64,7 +64,7 @@ class AdresseController extends Controller
         return response()->json(['_response' => ['code' => 'code_404', 'message' => 'error 404']], 404);
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->validate(['addresseId' => 'required|integer']);
 

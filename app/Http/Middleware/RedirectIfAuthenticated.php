@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class RedirectIfAuthenticated
 {
 
-    private $actions = ['admin' => 'admin.orders', 'customer' => 'customer.profil'];
+    private array $actions = ['admin' => 'admin.orders', 'customer' => 'customer.profil'];
     /**
      * Handle an incoming request.
      *

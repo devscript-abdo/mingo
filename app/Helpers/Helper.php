@@ -5,19 +5,19 @@ namespace App\Helpers;
 class Helper
 {
 
-    function getPrice($priceInDecimals)
+    function getPrice($priceInDecimals): string
     {
         $price = floatval($priceInDecimals) / 1;
 
         return number_format($price, 2, '.', ',');
     }
 
-    public function int_to_decimal(int $number)
+    public function int_to_decimal(int $number): string
     {
         return number_format(($number / 100), 2);
     }
 
-    function presentPrice($price)
+    function presentPrice($price): ?string
     {
         return money_format('$%i', $price / 100);
     }
@@ -35,14 +35,14 @@ class Helper
         return \LaravelLocalization::getCurrentLocaleName();
     }
 
-    public function getInvoiceLogo()
+    public function getInvoiceLogo(): string
     {
         //return public_path('storage//' . setting('site.logo'))
         // ??
         return public_path('vendor/invoices/logo.png');
     }
 
-    public function daysBeforCancelOrder($date)
+    public function daysBeforCancelOrder($date): bool
     {
         $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $date);
         $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', now());

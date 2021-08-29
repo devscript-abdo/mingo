@@ -17,7 +17,7 @@ class CheckoutController extends Controller
     {
     }
 
-    public function store(CheckoutRequest $request)
+    public function store(CheckoutRequest $request): \Illuminate\Http\JsonResponse
     {
         $data = $request->validated();
 
@@ -90,7 +90,7 @@ class CheckoutController extends Controller
         $totalPrice = collect($data['cart'])->map(function ($item) {
             return $item['price'] * $item['quantity'];
         })->sum();
-         
+
 
         $order = Order::forceCreate([
 

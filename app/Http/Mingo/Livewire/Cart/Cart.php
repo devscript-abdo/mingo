@@ -14,7 +14,7 @@ class Cart extends Component
     public array $quantity = [];
 
 
-    protected $rules = [
+    protected array $rules = [
         'quantity' => 'required|array',
         'quantity.*' => 'required|integer|min:1',
     ];

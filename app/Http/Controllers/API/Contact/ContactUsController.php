@@ -12,7 +12,7 @@ class ContactUsController extends Controller
 {
 
 
-    public function contactUs(ContactUsRequest $request)
+    public function contactUs(ContactUsRequest $request): \Illuminate\Http\JsonResponse
     {
         $data = $request;
 

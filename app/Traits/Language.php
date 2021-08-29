@@ -9,9 +9,12 @@ trait Language
      * getTranslatedAttribute : come from  Voyager
      * https://voyager-docs.devdojo.com/core-concepts/multilanguage
      * currentLocale() : Helper function in App\Helpers\Helpers.php
-     * 
+     *
      * *
-     **/
+     * @param $field
+     * @param null $lng
+     * @return mixed
+     */
 
     public function field($field, $lng = null)
     {
