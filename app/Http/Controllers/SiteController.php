@@ -19,7 +19,7 @@ class SiteController extends Controller
 
         $brands = $this->Brand()->activeItems();
 
-        $categories = $this->Category()->getCategoryWith(['products'])->groupByType();
+        $categories = $this->Category()->getCategoryWith(['products.attributesVariant'])->groupByType();
 
         $collections = $this->ProductCollection()->showInHome();
 

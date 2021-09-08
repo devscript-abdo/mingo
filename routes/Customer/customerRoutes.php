@@ -24,8 +24,6 @@ use App\Http\Controllers\Customer\WishlistController;
 
 use App\Http\Controllers\Cart\CartController;
 
-
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),

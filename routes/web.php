@@ -45,6 +45,7 @@ Route::post('proccess', [PaymentController::class, 'proccess'])->name('payment.p
 //Route::post('proccess-done',[PaymentController::class,'proccessDone'])->name('payment.proccess.done');
 Route::post('proccess-fail', [PaymentController::class, 'proccessDone'])->name('payment.proccess.fail');
 
+Route::get('/tt',[SiteController::class,'index'])->name('home.ttt');
 
 Route::group(
     [
@@ -76,7 +77,7 @@ Route::group(
 
         Route::get('/brands', [BrandController::class, 'index'])->name('brands');
         Route::get('/brands/{brand}', [BrandController::class, 'show'])->name('brands.single');
-     
+
     }
 );
 

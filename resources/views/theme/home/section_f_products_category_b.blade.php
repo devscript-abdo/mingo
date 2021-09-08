@@ -33,7 +33,8 @@
                 data-owl-duration="1000" 
                
                >
-               <!----------------- Haymacproduction ------------------------->
+<!----------------- Haymacproduction ------------------------->
+
                 @foreach ($category->products as $product )
         
                     <div class="ps-product">
@@ -46,7 +47,19 @@
                                 <div>
                                     @livewire('cart.add-to-cart',['prod'=>$product->id])
                                 </div> 
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+
+                                <li>
+                                    <a 
+                                        href="#" 
+                                        data-placement="top"
+                                        title="Quick View"
+                                        data-toggle="modal" 
+                                        data-target="#product-quickview-{{$product->slug}}"
+                                    >
+                                        <i class="icon-eye"></i>
+                                    </a>
+                                </li>
+
                                 @auth('customer')
                                     <li>
                                         <a
@@ -82,16 +95,15 @@
                                 {{$product->getBrand('name')}}
                             </a>--}}
                             <div class="ps-product__content">
+
                                 <a class="ps-product__title" href="{{$product->url}}">
                                     {{$product->field('name')}}
                                 </a>
+                                
                                 <div class="ps-product__rating">
                                     <select class="ps-rating" data-read-only="true">
                                         <option value="1">1</option>
                                         <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
                                     </select><span>01</span>
                                 </div>
                                 <p class="ps-product__price sale">{{$product->price}} {{__('symbole.mad')}} <del>{{$product->price}} {{__('symbole.mad')}}</del></p>
@@ -108,3 +120,8 @@
         </div>
     </div>
 </div>
+
+
+ <!---------------------------- Products that has Variants -------------------------------------->              
+                
+@each('theme.home.section_modals_products',$category->products,'product')
