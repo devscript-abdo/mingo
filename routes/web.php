@@ -82,4 +82,9 @@ Route::group(
 );
 
 
+Route::domain('abdo.demo.mingo.ma')->group(function () {
+  
+    Route::get('/',[SiteController::class,'subDomain']);
+});
+
 //Auth::routes();

@@ -76,4 +76,9 @@ class SiteController extends Controller
 
         return view('theme.page.index', compact('page'));
     }
+
+    public function subDomain()
+    {
+        return 'Hello';
+    }
 }
