@@ -47,6 +47,11 @@ Route::post('proccess-fail', [PaymentController::class, 'proccessDone'])->name('
 
 Route::get('/tt',[SiteController::class,'index'])->name('home.ttt');
 
+Route::domain('abdo.demo.mingo.ma')->group(function () {
+  
+    Route::get('/sub',[SiteController::class,'subDomain']);
+});
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -82,9 +87,6 @@ Route::group(
 );
 
 
-Route::domain('abdo.demo.mingo.ma')->group(function () {
-  
-    Route::get('/',[SiteController::class,'subDomain']);
-});
+
 
 //Auth::routes();
