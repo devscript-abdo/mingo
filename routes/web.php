@@ -47,10 +47,7 @@ Route::post('proccess-fail', [PaymentController::class, 'proccessDone'])->name('
 
 Route::get('/tt',[SiteController::class,'index'])->name('home.ttt');
 
-Route::domain('abdo.demo.mingo.ma')->group(function () {
-  
-    Route::get('/sub',[SiteController::class,'subDomain']);
-});
+
 
 Route::group(
     [
@@ -59,6 +56,11 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
+
+        Route::domain('abdo.demo.mingo.ma')->group(function () {
+  
+            Route::get('/sub',[SiteController::class,'subDomain']);
+        });
 
         Route::get('/page/{slug}', [SiteController::class, 'getPage'])->name('site.page');
 
