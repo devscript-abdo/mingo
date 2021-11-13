@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Collections\Category\CategoryCollections;
 use App\Scopes\WithoutTranslationScope;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Models\Category as Categories;
