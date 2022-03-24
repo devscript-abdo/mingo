@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 class AdsCollections extends Collection
 {
 
-
     public function groupByPosition(): AdsCollections
     {
         return $this->groupBy(function ($item) {
