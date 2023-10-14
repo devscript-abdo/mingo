@@ -31,6 +31,7 @@
         "spatie/laravel-query-builder": "^5.0",
         "spatie/laravel-responsecache": "^7.4",
         "spatie/laravel-searchable": "^1.11.2",
+        "spatie/laravel-sluggable": "^3.5",
         "staudenmeir/belongs-to-through": "^2.13",
         "staudenmeir/eloquent-has-many-deep": "^1.18",
         "tcg/voyager": "dev-1.6-l10"
