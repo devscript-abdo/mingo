@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12a6868516f44dea8e68296ded441180",
+    "content-hash": "541f10dacb0f30dc97202530d274cf39",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -1129,6 +1129,72 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "elmarzouguidev/shoppingcart",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elmarzouguidev/LaravelShoppingcart.git",
+                "reference": "1c859a1faec76f5c9d739b55bb2da2aa6c251b10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elmarzouguidev/LaravelShoppingcart/zipball/1c859a1faec76f5c9d739b55bb2da2aa6c251b10",
+                "reference": "1c859a1faec76f5c9d739b55bb2da2aa6c251b10",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/events": "^8.0||^9.0||^10.0",
+                "illuminate/session": "^8.0||^9.0||^10.0",
+                "illuminate/support": "^8.0||^9.0||^10.0",
+                "nesbot/carbon": "^2.0"
+            },
+            "require-dev": {
+                "laravel/pint": "dev-main",
+                "mockery/mockery": "^1.6",
+                "orchestra/testbench": "^8.0",
+                "phpunit/phpunit": "~9.0"
+            },
+            "suggest": {
+                "Elmarzouguidev/notify": "Simple flash notifications for Laravel"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Elmarzouguidev\\Shoppingcart\\ShoppingcartServiceProvider"
+                    ],
+                    "aliases": {
+                        "Cart": "Elmarzouguidev\\Shoppingcart\\Facades\\Cart"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Elmarzouguidev\\Shoppingcart\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Elmarzougui Abdelghafour",
+                    "email": "contact@elmarzougui.net",
+                    "homepage": "http://elmarzougui.com/"
+                }
+            ],
+            "description": "Laravel Shoppingcart",
+            "keywords": [
+                "laravel",
+                "shoppingcart"
+            ],
+            "support": {
+                "source": "https://github.com/elmarzouguidev/LaravelShoppingcart/tree/v1.0.0"
+            },
+            "time": "2023-10-14T11:07:10+00:00"
         },
         {
             "name": "fruitcake/php-cors",
