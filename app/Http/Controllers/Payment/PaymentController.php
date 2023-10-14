@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Payment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Payment\PaymentRequest;
 use App\Models\Order;
-use Illuminate\Http\Request;
 use CMI\CmiClient;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
@@ -33,7 +33,7 @@ class PaymentController extends Controller
             'BillToCountry' => '504', // YOUR COUNTRY APPEAR IN CMI PLATEFORM NOT REQUIRED (504=MA)
             'tel' => '0021201020304', // YOUR PHONE APPEAR IN CMI PLATEFORM NOT REQUIRED
             'amount' => $request->amount, // RETRIEVE AMOUNT WITH METHOD POST
-            'CallbackURL' => $base_url . '/callback', // CALLBACK
+            'CallbackURL' => $base_url.'/callback', // CALLBACK
         ]);
     }
 
@@ -55,7 +55,7 @@ class PaymentController extends Controller
 
     public function store(PaymentRequest $request)
     {
-        
+
         Cart::instance('default')->destroy();
 
         return redirect()->route('checkout.thankyou')->with('success_message', 'Merci pour votre Command');

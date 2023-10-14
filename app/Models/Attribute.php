@@ -11,9 +11,8 @@ class Attribute extends Model
     use HasFactory;
 
     protected $fillable = [
-        'slug', 'name', 'quantity', 'price', 'product_id'
+        'slug', 'name', 'quantity', 'price', 'product_id',
     ];
-
 
     /*protected $casts  = [
         'is_filterable' =>  'boolean',
@@ -32,7 +31,6 @@ class Attribute extends Model
     {
         return $this->hasMany(AttributeValue::class);
     }
-
 
     public function setNameAttribute($value)
     {

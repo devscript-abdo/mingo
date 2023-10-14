@@ -16,7 +16,6 @@ class AdminOrderController extends Controller
     public function index(Request $request)
     {
 
-
         $orders = $this->Order()->model()->latest()->get()->groupByStatus();
 
         return view('theme.auth.admin.app.orders.index', compact('orders'));
@@ -35,7 +34,6 @@ class AdminOrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,17 +44,15 @@ class AdminOrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  str  $slug
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-
     public function show($slug)
     {
         $order = $this->Order()->getOrderDetail($slug);
 
         return view('theme.auth.admin.app.orders.detail.index', compact('order'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -80,7 +76,7 @@ class AdminOrderController extends Controller
     {
         $data = $request->validated();
 
-        $order  = $this->Order()->getOrderDetail($request->order);
+        $order = $this->Order()->getOrderDetail($request->order);
 
         $order->update(['status' => $data['status']]);
 

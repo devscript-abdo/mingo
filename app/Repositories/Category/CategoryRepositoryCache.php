@@ -3,12 +3,10 @@
 namespace App\Repositories\Category;
 
 use App\Models\Category;
-
 use Illuminate\Cache\CacheManager;
 
-class CategoryRepositoryCache  implements CategoryInterface
+class CategoryRepositoryCache implements CategoryInterface
 {
-
     protected $model;
 
     protected $cache;
@@ -24,7 +22,6 @@ class CategoryRepositoryCache  implements CategoryInterface
     {
         return $this->model;
     }
-
 
     public function query()
     {
@@ -45,7 +42,6 @@ class CategoryRepositoryCache  implements CategoryInterface
         });
     }
 
-
     public function getCategory($slug)
     {
         $sluger = json_encode($slug);
@@ -59,7 +55,7 @@ class CategoryRepositoryCache  implements CategoryInterface
 
     public function getCategoryWith(array $with)
     {
-        return $this->cache->remember('categories_cache_with', $this->timeToLive(), function () use($with) {
+        return $this->cache->remember('categories_cache_with', $this->timeToLive(), function () use ($with) {
 
             return $this->model()->with($with)->get();
 

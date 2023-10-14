@@ -4,9 +4,8 @@ namespace App\Repositories\Product;
 
 use App\Models\Product;
 
-class ProductRepository  implements ProductInterface
+class ProductRepository implements ProductInterface
 {
-
     protected $model;
 
     public function __construct(Product $model)
@@ -20,6 +19,7 @@ class ProductRepository  implements ProductInterface
 
         return $this->model;
     }
+
     public function query()
     {
         return $this->model()->query();
@@ -42,6 +42,7 @@ class ProductRepository  implements ProductInterface
                 ->with($with)
                 ->firstOrFail();
         }
+
         return $this->model()->whereSlug($slug)->whereActive(true)
             ->firstOrFail();
     }
@@ -56,6 +57,7 @@ class ProductRepository  implements ProductInterface
 
         return $this->model()->withRelated($related);
     }
+
     public function randomsHome()
     {
         return $this->model()->randoms();
@@ -65,6 +67,7 @@ class ProductRepository  implements ProductInterface
     {
         return $this->model()->topSearched();
     }
+
     public function explore()
     {
 

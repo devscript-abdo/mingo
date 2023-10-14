@@ -17,5 +17,5 @@ return [
     'check_form_tele' => 'رقم الهاتف',
     'check_form_order' => 'معلومات اظافية',
 
-    'check_creat_account'=>'انشاء حساب'
+    'check_creat_account' => 'انشاء حساب',
 ];

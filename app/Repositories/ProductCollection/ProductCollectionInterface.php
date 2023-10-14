@@ -4,8 +4,6 @@ namespace App\Repositories\ProductCollection;
 
 interface ProductCollectionInterface
 {
-
-
     public function all();
 
     public function query();
@@ -13,6 +11,4 @@ interface ProductCollectionInterface
     public function model();
 
     public function showInHome();
-
-
 }

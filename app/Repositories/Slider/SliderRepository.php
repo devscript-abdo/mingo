@@ -4,11 +4,8 @@ namespace App\Repositories\Slider;
 
 use App\Models\Slider;
 
-use App\Repositories\Slider\SliderInterface;
-
-class SliderRepository  implements SliderInterface
+class SliderRepository implements SliderInterface
 {
-
     protected $model;
 
     public function __construct(Slider $model)
@@ -16,7 +13,6 @@ class SliderRepository  implements SliderInterface
 
         $this->model = $model;
     }
-
 
     public function query()
     {

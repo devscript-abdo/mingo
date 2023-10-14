@@ -11,18 +11,17 @@ class PaymentMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
     {
         $contains = Str::contains(url()->previous(), ['app/checkout', 'app/guest-checkout']);
         // dd(route('checkout'), "****", $contains, "***", url()->previous());
-        if (!$contains) {
+        if (! $contains) {
 
             return redirect()->back();
         }
+
         return $next($request);
     }
 }

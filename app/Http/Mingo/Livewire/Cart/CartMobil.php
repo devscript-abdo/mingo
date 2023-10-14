@@ -2,12 +2,11 @@
 
 namespace App\Http\Mingo\Livewire\Cart;
 
-use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Livewire\Component;
 
 class CartMobil extends Component
 {
-
     protected $listeners = ['cart_updated' => 'render'];
 
     public function render()

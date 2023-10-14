@@ -18,6 +18,7 @@ class UpdateQuantity extends Component
 
         $this->itemId = $itemId;
     }
+
     public function render()
     {
         return view('livewire.cart.update-quantity');

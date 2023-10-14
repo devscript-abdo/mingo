@@ -3,11 +3,9 @@
 namespace App\Repositories\Brand;
 
 use App\Models\Brand;
-
 use App\Repositories\CacheTrait;
 
-
-class BrandRepositoryCache  implements BrandInterface
+class BrandRepositoryCache implements BrandInterface
 {
     use CacheTrait;
 
@@ -22,6 +20,7 @@ class BrandRepositoryCache  implements BrandInterface
     {
         return $this->model;
     }
+
     public function query()
     {
         return $this->model->query();
@@ -52,6 +51,7 @@ class BrandRepositoryCache  implements BrandInterface
                     ->firstOrFail();
             });
         }
+
         return $this->setCache()->remember("brands_cache_slug_{$slugg}", $this->timeToLive(), function () use ($slug) {
 
             return $this->model->whereSlug($slug)->whereActive(true)

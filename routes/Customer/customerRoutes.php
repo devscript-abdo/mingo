@@ -1,10 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Checkout\ConfirmationController;
-use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Coupon\CouponController;
 use App\Http\Controllers\Customer\AddresseController;
 use App\Http\Controllers\Customer\CustomerConfirmPasswordController;
@@ -18,17 +16,16 @@ use App\Http\Controllers\Customer\GenerateInvoiceController;
 use App\Http\Controllers\Customer\InvoiceController;
 use App\Http\Controllers\Customer\LoggedInController;
 use App\Http\Controllers\Customer\NotificationController;
-
 use App\Http\Controllers\Customer\Verify\VerifyController;
 use App\Http\Controllers\Customer\WishlistController;
-
-use App\Http\Controllers\Cart\CartController;
+use App\Http\Controllers\Payment\PaymentController;
+use Illuminate\Support\Facades\Route;
 
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
 
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
     ],
     function () {
 
@@ -49,14 +46,13 @@ Route::group(
                 ->middleware(['auth:customer', 'throttle:6,1'])->name('verification.send');
 
             /**** END Email Verification for Customer *****/
-            
+
             Route::get('/confirm-password', [CustomerConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
 
             Route::post('/confirm-password', [CustomerConfirmPasswordController::class, 'confirm'])->name('password.confirm');
 
             Route::get('/login', [CustomerLoginController::class, 'loginForm'])->name('customer.login');
             Route::post('/login', [CustomerLoginController::class, 'login'])->name('customer.loginPost');
-
 
             Route::get('password/request', [CustomerForgotPasswordController::class, 'showLinkRequestForm'])
                 ->middleware('guest:customer')
@@ -76,8 +72,6 @@ Route::group(
 
             Route::get('/register', [CustomerRegisterController::class, 'showRegistrationForm'])->name('customer.register');
             Route::post('/register', [CustomerRegisterController::class, 'register'])->name('customer.registerPost');
-
-
 
             Route::get('/shopping-cart', [CartController::class, 'index'])->name('shoppingcart');
             Route::delete('/shopping-cart', [CartController::class, 'delete'])->name('shoppingcart.delete');

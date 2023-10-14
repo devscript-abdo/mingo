@@ -4,9 +4,8 @@ namespace App\Repositories\Ads;
 
 use App\Models\Ads;
 
-class AdsRepository  implements AdsInterface
+class AdsRepository implements AdsInterface
 {
-
     protected $model;
 
     public function __construct(Ads $model)
@@ -18,6 +17,7 @@ class AdsRepository  implements AdsInterface
     {
         return $this->model;
     }
+
     public function query()
     {
         return $this->model()->query();

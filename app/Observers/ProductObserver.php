@@ -9,7 +9,6 @@ class ProductObserver
     /**
      * Handle the Product "created" event.
      *
-     * @param  \App\Models\Product  $product
      * @return void
      */
     public function created(Product $product)
@@ -20,7 +19,6 @@ class ProductObserver
     /**
      * Handle the Product "updated" event.
      *
-     * @param  \App\Models\Product  $product
      * @return void
      */
     public function updated(Product $product)
@@ -31,7 +29,6 @@ class ProductObserver
     /**
      * Handle the Product "deleted" event.
      *
-     * @param  \App\Models\Product  $product
      * @return void
      */
     public function deleted(Product $product)
@@ -42,7 +39,6 @@ class ProductObserver
     /**
      * Handle the Product "restored" event.
      *
-     * @param  \App\Models\Product  $product
      * @return void
      */
     public function restored(Product $product)
@@ -53,15 +49,12 @@ class ProductObserver
     /**
      * Handle the Product "force deleted" event.
      *
-     * @param  \App\Models\Product  $product
      * @return void
      */
     public function forceDeleted(Product $product)
     {
         return $this->clearAllCache($product->slug);
     }
-
-
 
     private function clearAllCache($slug)
     {
@@ -73,7 +66,7 @@ class ProductObserver
         cache()->pull('products_cache_related');
         cache()->pull('products_cache_random');
         cache()->pull('products_cache_topsearch');
-        
+
         cache()->pull('api-products');
         cache()->pull('api-products-latest');
     }

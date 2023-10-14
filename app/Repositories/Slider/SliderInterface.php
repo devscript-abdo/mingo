@@ -2,16 +2,13 @@
 
 namespace App\Repositories\Slider;
 
-interface SliderInterface 
+interface SliderInterface
 {
+    public function all();
 
-    
-	public function all();
-
-	public function query();
+    public function query();
 
     public function activeItems();
 
-
-	// more
+    // more
 }

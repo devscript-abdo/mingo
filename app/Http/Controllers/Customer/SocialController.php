@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
@@ -39,7 +38,7 @@ class SocialController extends Controller
                 'email_verified_at' => now(),
                 'avatar' => $user->getAvatar(),
                 'remember_token' => $token,
-                'registred_by' => $service
+                'registred_by' => $service,
             ]
         );
 

@@ -6,63 +6,62 @@ use Illuminate\Support\ServiceProvider;
 
 class RepositoryCacheServiceProvider extends ServiceProvider
 {
-
     private $repositories = [
         [
             'abstract' => "App\Repositories\Category\CategoryInterface",
-            'concrete' => "App\Repositories\Category\CategoryRepositoryCache"
+            'concrete' => "App\Repositories\Category\CategoryRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Color\ColorInterface",
-            'concrete' => "App\Repositories\Color\ColorRepositoryCache"
+            'concrete' => "App\Repositories\Color\ColorRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Product\ProductInterface",
-            'concrete' => "App\Repositories\Product\ProductRepositoryCache"
+            'concrete' => "App\Repositories\Product\ProductRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Category\CategoryRepositoryInterface",
-            'concrete' => "App\Repositories\Category\CategoryRepositoryCache"
+            'concrete' => "App\Repositories\Category\CategoryRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Product\ProductRepositoryInterface",
-            'concrete' => "App\Repositories\Product\ProductRepositoryCache"
+            'concrete' => "App\Repositories\Product\ProductRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\ProductCollection\ProductCollectionInterface",
-            'concrete' => "App\Repositories\ProductCollection\ProductCollectionRepositoryCache"
+            'concrete' => "App\Repositories\ProductCollection\ProductCollectionRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Slider\SliderInterface",
-            'concrete' => "App\Repositories\Slider\SliderRepositoryCache"
+            'concrete' => "App\Repositories\Slider\SliderRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Ads\AdsInterface",
-            'concrete' => "App\Repositories\Ads\AdsRepositoryCache"
+            'concrete' => "App\Repositories\Ads\AdsRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Brand\BrandInterface",
-            'concrete' => "App\Repositories\Brand\BrandRepositoryCache"
+            'concrete' => "App\Repositories\Brand\BrandRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Page\PageInterface",
-            'concrete' => "App\Repositories\Page\PageRepositoryCache"
+            'concrete' => "App\Repositories\Page\PageRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Team\TeamInterface",
-            'concrete' => "App\Repositories\Team\TeamRepositoryCache"
+            'concrete' => "App\Repositories\Team\TeamRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Addresse\AddresseInterface",
-            'concrete' => "App\Repositories\Addresse\AddresseRepositoryCache"
+            'concrete' => "App\Repositories\Addresse\AddresseRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Order\OrderInterface",
-            'concrete' => "App\Repositories\Order\OrderRepositoryCache"
+            'concrete' => "App\Repositories\Order\OrderRepositoryCache",
         ],
         [
             'abstract' => "App\Repositories\Wishlist\WishlistInterface",
-            'concrete' => "App\Repositories\Wishlist\WishlistRepositoryCache"
+            'concrete' => "App\Repositories\Wishlist\WishlistRepositoryCache",
         ],
     ];
 

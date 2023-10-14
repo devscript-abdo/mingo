@@ -32,14 +32,12 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //
     }
-
 
     public function show($brand)
     {
@@ -49,15 +47,14 @@ class BrandController extends Controller
 
         $brands = $this->Brand()->activeItems();
 
-       // $colors = $this->Color()->active();
+        // $colors = $this->Color()->active();
 
-        return view('theme.brands.index', compact('brand', 'brands',  'products'));
+        return view('theme.brands.index', compact('brand', 'brands', 'products'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
     public function edit(Brand $brand)
@@ -68,8 +65,6 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Brand $brand)
@@ -80,7 +75,6 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
     public function destroy(Brand $brand)

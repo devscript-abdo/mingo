@@ -28,7 +28,7 @@ class RepositoryAdapterServiceProvider extends ServiceProvider
 
                 break;
             default:
-                throw new DataSourceException("Unknown data source type ");
+                throw new DataSourceException('Unknown data source type ');
         }
     }
 

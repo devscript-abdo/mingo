@@ -22,5 +22,5 @@ return [
     'payer_online_bon' => 'ادفع عبر الإنترنت أو عند استلام المنتج',
 
     'create_account' => 'تريد انشاء حساب مرحبا بك معنا',
-    'create_account_register'=>'قم بالتسجيل الان'
+    'create_account_register' => 'قم بالتسجيل الان',
 ];

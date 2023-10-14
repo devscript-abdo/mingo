@@ -27,7 +27,7 @@ class CreateInvoicesTable extends Migration
             $table->integer('count_download')->default(0);
             $table->boolean('is_sent_to_mail')->default(false);
             $table->timestamps();
-            
+
         });
     }
 

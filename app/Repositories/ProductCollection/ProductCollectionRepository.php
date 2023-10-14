@@ -4,9 +4,8 @@ namespace App\Repositories\ProductCollection;
 
 use App\Models\ProductCollection;
 
-class ProductCollectionRepository  implements ProductCollectionInterface
+class ProductCollectionRepository implements ProductCollectionInterface
 {
-
     protected $model;
 
     public function __construct(ProductCollection $model)
@@ -20,6 +19,7 @@ class ProductCollectionRepository  implements ProductCollectionInterface
 
         return $this->model;
     }
+
     public function query()
     {
         return $this->model->query();

@@ -6,13 +6,11 @@ use App\Models\Order;
 
 class OrderRepository implements OrderInterface
 {
-
-
     protected $model;
 
     public function __construct(Order $model)
     {
-        if (!$this->model) {
+        if (! $this->model) {
             $this->model = $model;
         }
     }
@@ -27,14 +25,14 @@ class OrderRepository implements OrderInterface
         return $this->model()->all();
     }
 
-    public function  query()
+    public function query()
     {
         return $this->model()->query();
     }
 
     public function delete($id)
     {
-        $model =  $this->model()->find($id);
+        $model = $this->model()->find($id);
 
         return $model->delete();
     }

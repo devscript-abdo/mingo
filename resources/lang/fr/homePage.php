@@ -1,4 +1,5 @@
 <?php
+
 return [
 
     'more_searched' => 'les produits les plus demandés',
@@ -20,6 +21,5 @@ return [
 
     'app_mobile_title' => "Télécharger L'application",
     'app_mobile_desciption' => "Télécharger l'application et profiter de tous les options",
-
 
 ];

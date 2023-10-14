@@ -3,18 +3,20 @@
 namespace App\Http\Mingo\Livewire\Cart;
 
 use App\Models\Product;
-use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart as MyCart;
+use Livewire\Component;
 
 class AddToCart extends Component
 {
     public $prod;
+
     public $quantity;
 
     public function mount()
     {
         $this->quantity = 1;
     }
+
     public function render()
     {
         return view('livewire.cart.add-to-cart');
@@ -42,7 +44,7 @@ class AddToCart extends Component
 
         $this->dispatchBrowserEvent('added_to_cart', [
             'type' => 'success',
-            'message' => 'le produit est ajouté à votre panier'
+            'message' => 'le produit est ajouté à votre panier',
         ]);
     }
 }

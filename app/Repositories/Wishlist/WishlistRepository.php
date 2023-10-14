@@ -4,16 +4,14 @@ namespace App\Repositories\Wishlist;
 
 use App\Models\Wishlist;
 
-class WishlistRepository  implements WishlistInterface
+class WishlistRepository implements WishlistInterface
 {
-
     protected $model;
 
     public function __construct(Wishlist $model)
     {
         $this->model = $model;
     }
-
 
     public function query()
     {
@@ -24,7 +22,6 @@ class WishlistRepository  implements WishlistInterface
     {
         return $this->model->all();
     }
-
 
     public function active()
     {

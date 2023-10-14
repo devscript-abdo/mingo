@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ModelsCollections extends Collection
 {
-
-
     public function groupByCreatedDate()
     {
         return $this->groupBy(function ($item) {

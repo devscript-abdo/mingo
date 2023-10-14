@@ -11,8 +11,6 @@ class ProviderProductsScope implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
-     * @param  \Illuminate\Database\Eloquent\Model  $model
      * @return void
      */
     public function apply(Builder $builder, Model $model)
@@ -23,7 +21,7 @@ class ProviderProductsScope implements Scope
         }
 
         /*if (auth()->check()) {
-            
+
             $builder->where('provider_id', auth()->id());
         }*/
     }

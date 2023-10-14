@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\SocialController;
-
+use Illuminate\Support\Facades\Route;
 
 Route::get('/redirect/{service}', [SocialController::class, 'redirect'])
     ->name('customer.service.login');

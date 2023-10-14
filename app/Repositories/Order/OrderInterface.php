@@ -2,13 +2,11 @@
 
 namespace App\Repositories\Order;
 
-
 interface OrderInterface
 {
-
     public function all();
 
-    public function  query();
+    public function query();
 
     public function model();
 

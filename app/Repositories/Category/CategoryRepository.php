@@ -4,9 +4,8 @@ namespace App\Repositories\Category;
 
 use App\Models\Category;
 
-class CategoryRepository  implements CategoryInterface
+class CategoryRepository implements CategoryInterface
 {
-
     protected $model;
 
     public function __construct(Category $model)
@@ -14,7 +13,6 @@ class CategoryRepository  implements CategoryInterface
 
         $this->model = $model;
     }
-
 
     public function model()
     {
@@ -43,12 +41,13 @@ class CategoryRepository  implements CategoryInterface
             ->firstOrFail();
     }
 
-    public function getCategoryWith(array $with){
+    public function getCategoryWith(array $with)
+    {
 
         return $this->model()->with($with)->get();
 
     }
-    
+
     public function getWithChildrens()
     {
         /*****Method one  Take multiple Query  */
@@ -62,6 +61,7 @@ class CategoryRepository  implements CategoryInterface
         /****Method Tow take one Query */
         return $this->model()::tree();
     }
+
     public function randomsHome()
     {
         return $this->model()->inHome();

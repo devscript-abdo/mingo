@@ -75,7 +75,7 @@ class ProductsController extends VoyagerBaseController
         if (strlen($dataType->model_name) != 0) {
             $model = app($dataType->model_name);
 
-            if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope' . ucfirst($dataType->scope))) {
+            if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope'.ucfirst($dataType->scope))) {
                 $query = $model->{$dataType->scope}();
             } else {
                 $query = $model::select('*');
@@ -96,12 +96,12 @@ class ProductsController extends VoyagerBaseController
 
             if ($search->value != '' && $search->key && $search->filter) {
                 $search_filter = ($search->filter == 'equals') ? '=' : 'LIKE';
-                $search_value = ($search->filter == 'equals') ? $search->value : '%' . $search->value . '%';
+                $search_value = ($search->filter == 'equals') ? $search->value : '%'.$search->value.'%';
                 $query->where($search->key, $search_filter, $search_value);
             }
 
             if ($orderBy && in_array($orderBy, $dataType->fields())) {
-                $querySortOrder = (!empty($sortOrder)) ? $sortOrder : 'desc';
+                $querySortOrder = (! empty($sortOrder)) ? $sortOrder : 'desc';
                 $dataTypeContent = call_user_func([
                     $query->orderBy($orderBy, $querySortOrder),
                     $getter,
@@ -134,7 +134,7 @@ class ProductsController extends VoyagerBaseController
 
         // Actions
         $actions = [];
-        if (!empty($dataTypeContent->first())) {
+        if (! empty($dataTypeContent->first())) {
             foreach (Voyager::actions() as $action) {
                 $action = new $action($dataType, $dataTypeContent->first());
 
@@ -214,7 +214,7 @@ class ProductsController extends VoyagerBaseController
             if ($model && in_array(SoftDeletes::class, class_uses_recursive($model))) {
                 $model = $model->withTrashed();
             }
-            if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope' . ucfirst($dataType->scope))) {
+            if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope'.ucfirst($dataType->scope))) {
                 $model = $model->{$dataType->scope}();
             }
             $dataTypeContent = call_user_func([$model, 'findOrFail'], $id);
@@ -276,7 +276,7 @@ class ProductsController extends VoyagerBaseController
             if ($model && in_array(SoftDeletes::class, class_uses_recursive($model))) {
                 $model = $model->withTrashed();
             }
-            if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope' . ucfirst($dataType->scope))) {
+            if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope'.ucfirst($dataType->scope))) {
                 $model = $model->{$dataType->scope}();
             }
             $dataTypeContent = call_user_func([$model, 'findOrFail'], $id);
@@ -313,12 +313,12 @@ class ProductsController extends VoyagerBaseController
 
         $categoriesForProduct = $product->category->id;
 
-      //  $attrs = $product->attributes()->get();
+        //  $attrs = $product->attributes()->get();
 
         $attributesData = Attribute::select(['id', 'name', 'slug'])->with('values')->get();
-        $attributesDataExist = $product->attributesVariant()->whereIn('product_id',[$product->id])->get();
+        $attributesDataExist = $product->attributesVariant()->whereIn('product_id', [$product->id])->get();
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct', 'attributesData','product','attributesDataExist'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct', 'attributesData', 'product', 'attributesDataExist'));
     }
 
     // POST BR(E)AD
@@ -333,7 +333,7 @@ class ProductsController extends VoyagerBaseController
         $id = $id instanceof \Illuminate\Database\Eloquent\Model ? $id->{$id->getKeyName()} : $id;
 
         $model = app($dataType->model_name);
-        if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope' . ucfirst($dataType->scope))) {
+        if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope'.ucfirst($dataType->scope))) {
             $model = $model->{$dataType->scope}();
         }
         if ($model && in_array(SoftDeletes::class, class_uses_recursive($model))) {
@@ -347,46 +347,45 @@ class ProductsController extends VoyagerBaseController
 
         // Validate fields with ajax
         $val = $this->validateBread($request->all(), $dataType->editRows, $dataType->name, $id)->validate();
-          //dd($request->request);
-       // $allData = array_merge($request,['attributes'=>$request->attributes]);
- 
+        //dd($request->request);
+        // $allData = array_merge($request,['attributes'=>$request->attributes]);
+
         $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
 
         /****this part is added by abdelghafour to add attribute to products */
         //dd($request->attributeData);
-         //$product->update(['attributes' => json_encode($request->attributeData)]); because is casted in Model Product
-         //$product->update(['attributes' => $request->attributeData]);
-        
+        //$product->update(['attributes' => json_encode($request->attributeData)]); because is casted in Model Product
+        //$product->update(['attributes' => $request->attributeData]);
+
         $attr = Attribute::whereSlug($request->attributeData)->first();
         if ($attr) {
 
             foreach ($request->attrset as $attrset) {
 
-                $data = array_merge($attrset,['product_id'=>$product->id]);
+                $data = array_merge($attrset, ['product_id' => $product->id]);
                 //dd($data);
                 $attr->values()->create($data);
                 //$product->attributeValues()->create($data);
             }
             $at = $attr->products()->whereIn('product_id', [$product->id])->exists();
-            if (!$at) {
+            if (! $at) {
                 $attr->products()->attach($product);
             }
-           // $product->sync(AttributeValue::where('attribute_id',$attr->id));
+            // $product->sync(AttributeValue::where('attribute_id',$attr->id));
         }
 
-       /* if ($request->has('attrset.*') &&  $request->filled('attrset.*')) {
+        /* if ($request->has('attrset.*') &&  $request->filled('attrset.*')) {
 
-            foreach ($request->attrs as $attr) {
-                $product->attributes()->create($attr);
-            }
-        }*/
+             foreach ($request->attrs as $attr) {
+                 $product->attributes()->create($attr);
+             }
+         }*/
         //  $result = $product->attributes()->create($request->attrs);
-        //dd($result); 
+        //dd($result);
         /**************end by abdelghafour *********************************/
         event(new BreadDataUpdated($dataType, $data));
 
         // $model->category()->associate($request->category);
-
 
         if (auth()->user()->can('browse', app($dataType->model_name))) {
             $redirect = redirect()->route("voyager.{$dataType->slug}.index");
@@ -395,7 +394,7 @@ class ProductsController extends VoyagerBaseController
         }
 
         return $redirect->with([
-            'message'    => __('voyager::generic.successfully_updated') . " {$dataType->getTranslatedAttribute('display_name_singular')}",
+            'message' => __('voyager::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
             'alert-type' => 'success',
         ]);
     }
@@ -461,7 +460,6 @@ class ProductsController extends VoyagerBaseController
     /**
      * POST BRE(A)D - Store data.
      *
-     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -482,18 +480,18 @@ class ProductsController extends VoyagerBaseController
         //dd($data);
         /****this part is added by abdelghafour to add attribute to products */
 
-        if ($request->has('attrs.0.name') &&  $request->filled('attrs.0.name')) {
+        if ($request->has('attrs.0.name') && $request->filled('attrs.0.name')) {
             dd($request->attrs);
             foreach ($request->attrs as $attr) {
                 $data->attributes()->create($attr);
             }
         }
         //  $result = $product->attributes()->create($request->attrs);
-        //dd($result); 
+        //dd($result);
         /**************end by abdelghafour *********************************/
         event(new BreadDataAdded($dataType, $data));
 
-        if (!$request->has('_tagging')) {
+        if (! $request->has('_tagging')) {
             if (auth()->user()->can('browse', $data)) {
                 $redirect = redirect()->route("voyager.{$dataType->slug}.index");
             } else {
@@ -501,7 +499,7 @@ class ProductsController extends VoyagerBaseController
             }
 
             return $redirect->with([
-                'message'    => __('voyager::generic.successfully_added_new') . " {$dataType->getTranslatedAttribute('display_name_singular')}",
+                'message' => __('voyager::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
                 'alert-type' => 'success',
             ]);
         } else {
@@ -543,7 +541,7 @@ class ProductsController extends VoyagerBaseController
             $this->authorize('delete', $data);
 
             $model = app($dataType->model_name);
-            if (!($model && in_array(SoftDeletes::class, class_uses_recursive($model)))) {
+            if (! ($model && in_array(SoftDeletes::class, class_uses_recursive($model)))) {
                 $this->cleanup($dataType, $data);
             }
         }
@@ -553,11 +551,11 @@ class ProductsController extends VoyagerBaseController
         $res = $data->destroy($ids);
         $data = $res
             ? [
-                'message'    => __('voyager::generic.successfully_deleted') . " {$displayName}",
+                'message' => __('voyager::generic.successfully_deleted')." {$displayName}",
                 'alert-type' => 'success',
             ]
             : [
-                'message'    => __('voyager::generic.error_deleting') . " {$displayName}",
+                'message' => __('voyager::generic.error_deleting')." {$displayName}",
                 'alert-type' => 'error',
             ];
 
@@ -579,7 +577,7 @@ class ProductsController extends VoyagerBaseController
 
         // Get record
         $model = call_user_func([$dataType->model_name, 'withTrashed']);
-        if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope' . ucfirst($dataType->scope))) {
+        if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope'.ucfirst($dataType->scope))) {
             $model = $model->{$dataType->scope}();
         }
         $data = $model->findOrFail($id);
@@ -589,11 +587,11 @@ class ProductsController extends VoyagerBaseController
         $res = $data->restore($id);
         $data = $res
             ? [
-                'message'    => __('voyager::generic.successfully_restored') . " {$displayName}",
+                'message' => __('voyager::generic.successfully_restored')." {$displayName}",
                 'alert-type' => 'success',
             ]
             : [
-                'message'    => __('voyager::generic.error_restoring') . " {$displayName}",
+                'message' => __('voyager::generic.error_restoring')." {$displayName}",
                 'alert-type' => 'error',
             ];
 
@@ -635,7 +633,7 @@ class ProductsController extends VoyagerBaseController
             $data = $model::find([$id])->first();
 
             // Check if field exists
-            if (!isset($data->{$field})) {
+            if (! isset($data->{$field})) {
                 throw new Exception(__('voyager::generic.field_does_not_exist'), 400);
             }
 
@@ -656,7 +654,7 @@ class ProductsController extends VoyagerBaseController
                 if (is_array($fieldData[0])) {
                     foreach ($fieldData as $index => $file) {
                         // file type has a different structure than images
-                        if (!empty($file['original_name'])) {
+                        if (! empty($file['original_name'])) {
                             if ($file['original_name'] == $filename) {
                                 $key = $index;
                                 break;
@@ -708,7 +706,7 @@ class ProductsController extends VoyagerBaseController
 
             return response()->json([
                 'data' => [
-                    'status'  => 200,
+                    'status' => 200,
                     'message' => __('voyager::media.file_removed'),
                 ],
             ]);
@@ -726,7 +724,7 @@ class ProductsController extends VoyagerBaseController
 
             return response()->json([
                 'data' => [
-                    'status'  => $code,
+                    'status' => $code,
                     'message' => $message,
                 ],
             ], $code);
@@ -736,9 +734,8 @@ class ProductsController extends VoyagerBaseController
     /**
      * Remove translations, images and files related to a BREAD item.
      *
-     * @param \Illuminate\Database\Eloquent\Model $dataType
-     * @param \Illuminate\Database\Eloquent\Model $data
-     *
+     * @param  \Illuminate\Database\Eloquent\Model  $dataType
+     * @param  \Illuminate\Database\Eloquent\Model  $data
      * @return void
      */
     protected function cleanup($dataType, $data)
@@ -764,7 +761,7 @@ class ProductsController extends VoyagerBaseController
         $dataType->rows->where('type', 'media_picker')->where('details.delete_files', true)->each(function ($row) use ($data) {
             $content = $data->{$row->field};
             if (isset($content)) {
-                if (!is_array($content)) {
+                if (! is_array($content)) {
                     $content = json_decode($content);
                 }
                 if (is_array($content)) {
@@ -781,9 +778,8 @@ class ProductsController extends VoyagerBaseController
     /**
      * Delete all images related to a BREAD item.
      *
-     * @param \Illuminate\Database\Eloquent\Model $data
-     * @param \Illuminate\Database\Eloquent\Model $rows
-     *
+     * @param  \Illuminate\Database\Eloquent\Model  $data
+     * @param  \Illuminate\Database\Eloquent\Model  $rows
      * @return void
      */
     public function deleteBreadImages($data, $rows, $single_image = null)
@@ -806,13 +802,13 @@ class ProductsController extends VoyagerBaseController
                     if (isset($row->details->thumbnails)) {
                         foreach ($row->details->thumbnails as $thumbnail) {
                             $ext = explode('.', $image);
-                            $extension = '.' . $ext[count($ext) - 1];
+                            $extension = '.'.$ext[count($ext) - 1];
 
                             $path = str_replace($extension, '', $image);
 
                             $thumb_name = $thumbnail->name;
 
-                            $this->deleteFileIfExists($path . '-' . $thumb_name . $extension);
+                            $this->deleteFileIfExists($path.'-'.$thumb_name.$extension);
                         }
                     }
                 }
@@ -827,8 +823,7 @@ class ProductsController extends VoyagerBaseController
     /**
      * Order BREAD items.
      *
-     * @param string $table
-     *
+     * @param  string  $table
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function order(Request $request)
@@ -840,11 +835,11 @@ class ProductsController extends VoyagerBaseController
         // Check permission
         $this->authorize('edit', app($dataType->model_name));
 
-        if (!isset($dataType->order_column) || !isset($dataType->order_display_column)) {
+        if (! isset($dataType->order_column) || ! isset($dataType->order_display_column)) {
             return redirect()
                 ->route("voyager.{$dataType->slug}.index")
                 ->with([
-                    'message'    => __('voyager::bread.ordering_not_set'),
+                    'message' => __('voyager::bread.ordering_not_set'),
                     'alert-type' => 'error',
                 ]);
         }
@@ -910,7 +905,6 @@ class ProductsController extends VoyagerBaseController
     /**
      * Get BREAD relations data.
      *
-     * @param Request $request
      *
      * @return mixed
      */
@@ -931,7 +925,7 @@ class ProductsController extends VoyagerBaseController
 
         $this->authorize($method, $model);
 
-        $rows = $dataType->{$method . 'Rows'};
+        $rows = $dataType->{$method.'Rows'};
         foreach ($rows as $key => $row) {
             if ($row->field === $request->input('type')) {
                 $options = $row->details;
@@ -941,7 +935,7 @@ class ProductsController extends VoyagerBaseController
                 $additional_attributes = $model->additional_attributes ?? [];
 
                 // Apply local scope if it is defined in the relationship-options
-                if (isset($options->scope) && $options->scope != '' && method_exists($model, 'scope' . ucfirst($options->scope))) {
+                if (isset($options->scope) && $options->scope != '' && method_exists($model, 'scope'.ucfirst($options->scope))) {
                     $model = $model->{$options->scope}();
                 }
 
@@ -956,9 +950,9 @@ class ProductsController extends VoyagerBaseController
                         $total_count = $relationshipOptions->count();
                         $relationshipOptions = $relationshipOptions->forPage($page, $on_page);
                     } else {
-                        $total_count = $model->where($options->label, 'LIKE', '%' . $search . '%')->count();
+                        $total_count = $model->where($options->label, 'LIKE', '%'.$search.'%')->count();
                         $relationshipOptions = $model->take($on_page)->skip($skip)
-                            ->where($options->label, 'LIKE', '%' . $search . '%')
+                            ->where($options->label, 'LIKE', '%'.$search.'%')
                             ->get();
                     }
                 } else {
@@ -968,16 +962,16 @@ class ProductsController extends VoyagerBaseController
 
                 $results = [];
 
-                if (!$row->required && !$search && $page == 1) {
+                if (! $row->required && ! $search && $page == 1) {
                     $results[] = [
-                        'id'   => '',
+                        'id' => '',
                         'text' => __('voyager::generic.none'),
                     ];
                 }
 
                 // Sort results
-                if (!empty($options->sort->field)) {
-                    if (!empty($options->sort->direction) && strtolower($options->sort->direction) == 'desc') {
+                if (! empty($options->sort->field)) {
+                    if (! empty($options->sort->direction) && strtolower($options->sort->direction) == 'desc') {
                         $relationshipOptions = $relationshipOptions->sortByDesc($options->sort->field);
                     } else {
                         $relationshipOptions = $relationshipOptions->sortBy($options->sort->field);
@@ -986,13 +980,13 @@ class ProductsController extends VoyagerBaseController
 
                 foreach ($relationshipOptions as $relationshipOption) {
                     $results[] = [
-                        'id'   => $relationshipOption->{$options->key},
+                        'id' => $relationshipOption->{$options->key},
                         'text' => $relationshipOption->{$options->label},
                     ];
                 }
 
                 return response()->json([
-                    'results'    => $results,
+                    'results' => $results,
                     'pagination' => [
                         'more' => ($total_count > ($skip + $on_page)),
                     ],

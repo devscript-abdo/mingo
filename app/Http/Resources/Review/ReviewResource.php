@@ -6,9 +6,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ReviewResource extends JsonResource
 {
-
     public static $wrap = 'payload';
-    
+
     /**
      * Transform the resource into an array.
      *
@@ -27,7 +26,7 @@ class ReviewResource extends JsonResource
             'comment' => $this->comment,
             'rating' => $this->rating,
             'product_id' => $this->product_id,
-            'customer_id' => $this->customer_id ?? 'Guest review'
+            'customer_id' => $this->customer_id ?? 'Guest review',
         ];
     }
 }

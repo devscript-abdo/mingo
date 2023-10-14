@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'mad'=>'DH'
+    'mad' => 'DH',
 ];

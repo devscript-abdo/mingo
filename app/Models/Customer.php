@@ -3,19 +3,18 @@
 namespace App\Models;
 
 use App\Notifications\Customer\ResetPasswordNotification;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 //use Illuminate\Contracts\Auth\CanResetPassword;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use TCG\Voyager\Facades\Voyager;
-
+use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use TCG\Voyager\Facades\Voyager;
 
 class Customer extends Authenticatable //implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasApiTokens, CanResetPassword;
+    use CanResetPassword, HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +29,7 @@ class Customer extends Authenticatable //implements MustVerifyEmail
         'registred_by',
         'phone',
         'addresse',
-        'city'
+        'city',
     ];
 
     /**
@@ -109,6 +108,7 @@ class Customer extends Authenticatable //implements MustVerifyEmail
     {
         $sessionsAll = $this->loginHistory()->get() ?? [];
         $sessionsAll->pop(); //remove las login because it's getted from scopeWithLastLogin() function
+
         return collect($sessionsAll->all());
     }
 
@@ -121,7 +121,6 @@ class Customer extends Authenticatable //implements MustVerifyEmail
     {
         return $this->hasMany(UserLogin::class);
     }
-
 
     public function routeNotificationForNexmo($notification)
     {

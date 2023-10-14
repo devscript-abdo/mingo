@@ -28,7 +28,7 @@ class ContactRequest extends FormRequest
             'email' => 'nullable|email',
             'message' => 'required|string',
             'subject' => 'required|string',
-            'telephone' => 'nullable|phone:MA'
+            'telephone' => 'nullable|phone:MA',
         ];
     }
 

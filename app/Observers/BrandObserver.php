@@ -9,59 +9,52 @@ class BrandObserver
     /**
      * Handle the Brand "created" event.
      *
-     * @param  \App\Models\Brand  $brand
      * @return void
      */
     public function created(Brand $brand)
     {
-        return  $this->clearAllCache($brand->slug);
+        return $this->clearAllCache($brand->slug);
     }
 
     /**
      * Handle the Brand "updated" event.
      *
-     * @param  \App\Models\Brand  $brand
      * @return void
      */
     public function updated(Brand $brand)
     {
-        return  $this->clearAllCache($brand->slug);
+        return $this->clearAllCache($brand->slug);
     }
 
     /**
      * Handle the Brand "deleted" event.
      *
-     * @param  \App\Models\Brand  $brand
      * @return void
      */
     public function deleted(Brand $brand)
     {
-        return  $this->clearAllCache($brand->slug);
+        return $this->clearAllCache($brand->slug);
     }
 
     /**
      * Handle the Brand "restored" event.
      *
-     * @param  \App\Models\Brand  $brand
      * @return void
      */
     public function restored(Brand $brand)
     {
-        return  $this->clearAllCache($brand->slug);
+        return $this->clearAllCache($brand->slug);
     }
 
     /**
      * Handle the Brand "force deleted" event.
      *
-     * @param  \App\Models\Brand  $brand
      * @return void
      */
     public function forceDeleted(Brand $brand)
     {
-        return  $this->clearAllCache($brand->slug);
+        return $this->clearAllCache($brand->slug);
     }
-
-
 
     private function clearAllCache($slug)
     {

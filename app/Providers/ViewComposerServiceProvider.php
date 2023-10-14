@@ -6,8 +6,8 @@ use App\Http\View\Composers\AdsComposer;
 use App\Http\View\Composers\CategoryComposer;
 use App\Http\View\Composers\PageComposer;
 use App\Http\View\Composers\ProductComposer;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {

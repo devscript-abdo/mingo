@@ -9,17 +9,20 @@ use Spatie\Searchable\Search as Searchable;
 
 class Search extends Component
 {
-
     public $query;
+
     public $search;
+
     public $results;
+
     public $class;
 
     protected $rules = ['query' => 'required|string'];
 
     protected $messages = [
-        'query.required' => 'tapez ce que vous voulez trouvé'
+        'query.required' => 'tapez ce que vous voulez trouvé',
     ];
+
     public function render()
     {
         return view('livewire.search.searchTow', ['results' => $this->results]);
@@ -37,14 +40,13 @@ class Search extends Component
     {
         if (isset($this->query)) {
 
-
             $searchResults = (new Searchable())
                 ->registerModel(Product::class, ['name', 'content', 'description'])
                 ->registerModel(Category::class, ['name', 'slug'])
 
                 ->search($q);
 
-            $this->class = "active";
+            $this->class = 'active';
 
             return $searchResults;
         }
@@ -52,7 +54,7 @@ class Search extends Component
 
     public function getData($query)
     {
-        $search = '%' . $query . '%';
+        $search = '%'.$query.'%';
         // $search = '%' . $this->search . '%';
         $searchResults = Product::where('name', 'like', $search)
             ->orWhere('description', 'like', $search)
@@ -60,7 +62,7 @@ class Search extends Component
             ->get();
 
         /*$this->cats     = Category::where('name', 'like', $search)->get();*/
-        $this->class = "active";
+        $this->class = 'active';
 
         return $searchResults;
     }

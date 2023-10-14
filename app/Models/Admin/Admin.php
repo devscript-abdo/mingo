@@ -2,18 +2,16 @@
 
 namespace App\Models\Admin;
 
-use App\Models\UserLogin;
 use App\Notifications\Admin\ResetPasswordNotification;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-
 
 class Admin extends Authenticatable //implements MustVerifyEmail
 {
-    use HasFactory, Notifiable,  CanResetPassword;
+    use CanResetPassword, HasFactory,  Notifiable;
 
     protected $fillable = [
         'name',
@@ -21,9 +19,8 @@ class Admin extends Authenticatable //implements MustVerifyEmail
         'password',
         'avatar',
         'phone',
-        'active'
+        'active',
     ];
-    
 
     /*****Notifications */
 
@@ -31,5 +28,4 @@ class Admin extends Authenticatable //implements MustVerifyEmail
     {
         $this->notify(new ResetPasswordNotification($token));
     }
-
 }

@@ -28,15 +28,15 @@ class Authenticate extends Middleware
             ], 401));
         }
 
-        $routes  = $request->route()->action['middleware'];
+        $routes = $request->route()->action['middleware'];
         //  dd($routes);
 
         switch ($routes) {
             case $routes[1] === 'auth:admin':
-                return  route('admin.login');
+                return route('admin.login');
                 break;
             case $routes[4] === 'auth:customer':
-                return  route('customer.login');
+                return route('customer.login');
                 break;
             default:
                 return route('home');

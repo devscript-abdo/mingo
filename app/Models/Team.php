@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Str;
+use TCG\Voyager\Facades\Voyager;
 
 class Team extends Model
 {
-
     use HasFactory;
 
     public function scopeActive($query)

@@ -3,8 +3,7 @@
 namespace App\Http\Mingo\Livewire\Newsletter;
 
 use Livewire\Component;
-
-use Newsletter as  News;
+use Newsletter as News;
 
 class Newsletter extends Component
 {
@@ -18,7 +17,7 @@ class Newsletter extends Component
     public function addToNewsLetter()
     {
         //dd('Ouiiii');
-       // News::subscribe($this->email);
-       //https://github.com/spatie/laravel-newsletter
+        // News::subscribe($this->email);
+        //https://github.com/spatie/laravel-newsletter
     }
 }

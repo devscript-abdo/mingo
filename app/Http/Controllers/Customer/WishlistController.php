@@ -10,7 +10,7 @@ class WishlistController extends Controller
 {
     //
 
-    public  function  index()
+    public function index()
     {
         /* $lists = Wishlist::where('customer_id', auth()->user()->id)
             ->with('products')
@@ -32,6 +32,7 @@ class WishlistController extends Controller
 
             return redirect()->back();
         }
+
         return redirect()->back();
     }
 }

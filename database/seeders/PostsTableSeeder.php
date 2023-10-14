@@ -19,143 +19,143 @@ class PostsTableSeeder extends Seeder
     {
         //Data Type
         $dataType = $this->dataType('slug', 'posts');
-        if (!$dataType->exists) {
+        if (! $dataType->exists) {
             $dataType->fill([
-                'name'                  => 'posts',
+                'name' => 'posts',
                 'display_name_singular' => __('voyager::seeders.data_types.post.singular'),
-                'display_name_plural'   => __('voyager::seeders.data_types.post.plural'),
-                'icon'                  => 'voyager-news',
-                'model_name'            => 'TCG\\Voyager\\Models\\Post',
-                'policy_name'           => 'TCG\\Voyager\\Policies\\PostPolicy',
-                'controller'            => '',
-                'generate_permissions'  => 1,
-                'description'           => '',
+                'display_name_plural' => __('voyager::seeders.data_types.post.plural'),
+                'icon' => 'voyager-news',
+                'model_name' => 'TCG\\Voyager\\Models\\Post',
+                'policy_name' => 'TCG\\Voyager\\Policies\\PostPolicy',
+                'controller' => '',
+                'generate_permissions' => 1,
+                'description' => '',
             ])->save();
         }
 
         //Data Rows
         $postDataType = DataType::where('slug', 'posts')->firstOrFail();
         $dataRow = $this->dataRow($postDataType, 'id');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'number',
+                'type' => 'number',
                 'display_name' => __('voyager::seeders.data_rows.id'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 1,
+                'required' => 1,
+                'browse' => 0,
+                'read' => 0,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'order' => 1,
             ])->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'author_id');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type' => 'text',
                 'display_name' => __('voyager::seeders.data_rows.author'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 0,
-                'delete'       => 1,
-                'order'        => 2,
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 0,
+                'delete' => 1,
+                'order' => 2,
             ])->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'category_id');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type' => 'text',
                 'display_name' => __('voyager::seeders.data_rows.category'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => 3,
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'order' => 3,
             ])->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'title');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type' => 'text',
                 'display_name' => __('voyager::seeders.data_rows.title'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 4,
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'order' => 4,
             ])->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'excerpt');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text_area',
+                'type' => 'text_area',
                 'display_name' => __('voyager::seeders.data_rows.excerpt'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 5,
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'order' => 5,
             ])->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'body');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'rich_text_box',
+                'type' => 'rich_text_box',
                 'display_name' => __('voyager::seeders.data_rows.body'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 6,
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'order' => 6,
             ])->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'image');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'image',
+                'type' => 'image',
                 'display_name' => __('voyager::seeders.data_rows.post_image'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => [
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => [
                     'resize' => [
-                        'width'  => '1000',
+                        'width' => '1000',
                         'height' => 'null',
                     ],
-                    'quality'    => '70%',
-                    'upsize'     => true,
+                    'quality' => '70%',
+                    'upsize' => true,
                     'thumbnails' => [
                         [
-                            'name'  => 'medium',
+                            'name' => 'medium',
                             'scale' => '50%',
                         ],
                         [
-                            'name'  => 'small',
+                            'name' => 'small',
                             'scale' => '25%',
                         ],
                         [
                             'name' => 'cropped',
                             'crop' => [
-                                'width'  => '300',
+                                'width' => '300',
                                 'height' => '250',
                             ],
                         ],
@@ -166,23 +166,23 @@ class PostsTableSeeder extends Seeder
         }
 
         $dataRow = $this->dataRow($postDataType, 'slug');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type' => 'text',
                 'display_name' => __('voyager::seeders.data_rows.slug'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => [
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => [
                     'slugify' => [
-                        'origin'      => 'title',
+                        'origin' => 'title',
                         'forceUpdate' => true,
                     ],
                     'validation' => [
-                        'rule'  => 'unique:posts,slug',
+                        'rule' => 'unique:posts,slug',
                     ],
                 ],
                 'order' => 8,
@@ -190,52 +190,52 @@ class PostsTableSeeder extends Seeder
         }
 
         $dataRow = $this->dataRow($postDataType, 'meta_description');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text_area',
+                'type' => 'text_area',
                 'display_name' => __('voyager::seeders.data_rows.meta_description'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 9,
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'order' => 9,
             ])->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'meta_keywords');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text_area',
+                'type' => 'text_area',
                 'display_name' => __('voyager::seeders.data_rows.meta_keywords'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 10,
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'order' => 10,
             ])->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'status');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'select_dropdown',
+                'type' => 'select_dropdown',
                 'display_name' => __('voyager::seeders.data_rows.status'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => [
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => [
                     'default' => 'DRAFT',
                     'options' => [
                         'PUBLISHED' => 'published',
-                        'DRAFT'     => 'draft',
-                        'PENDING'   => 'pending',
+                        'DRAFT' => 'draft',
+                        'PENDING' => 'pending',
                     ],
                 ],
                 'order' => 11,
@@ -243,61 +243,61 @@ class PostsTableSeeder extends Seeder
         }
 
         $dataRow = $this->dataRow($postDataType, 'created_at');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
+                'type' => 'timestamp',
                 'display_name' => __('voyager::seeders.data_rows.created_at'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 12,
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'order' => 12,
             ])->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'updated_at');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
+                'type' => 'timestamp',
                 'display_name' => __('voyager::seeders.data_rows.updated_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 13,
+                'required' => 0,
+                'browse' => 0,
+                'read' => 0,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'order' => 13,
             ])->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'seo_title');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type' => 'text',
                 'display_name' => __('voyager::seeders.data_rows.seo_title'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 14,
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'order' => 14,
             ])->save();
         }
         $dataRow = $this->dataRow($postDataType, 'featured');
-        if (!$dataRow->exists) {
+        if (! $dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'checkbox',
+                'type' => 'checkbox',
                 'display_name' => __('voyager::seeders.data_rows.featured'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 15,
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'order' => 15,
             ])->save();
         }
 
@@ -305,17 +305,17 @@ class PostsTableSeeder extends Seeder
         $menu = Menu::where('name', 'admin')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.posts'),
-            'url'     => '',
-            'route'   => 'voyager.posts.index',
+            'title' => __('voyager::seeders.menu_items.posts'),
+            'url' => '',
+            'route' => 'voyager.posts.index',
         ]);
-        if (!$menuItem->exists) {
+        if (! $menuItem->exists) {
             $menuItem->fill([
-                'target'     => '_self',
+                'target' => '_self',
                 'icon_class' => 'voyager-news',
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 6,
+                'color' => null,
+                'parent_id' => null,
+                'order' => 6,
             ])->save();
         }
 
@@ -324,74 +324,74 @@ class PostsTableSeeder extends Seeder
 
         //Content
         $post = $this->findPost('lorem-ipsum-post');
-        if (!$post->exists) {
+        if (! $post->exists) {
             $post->fill([
-                'title'            => 'Lorem Ipsum Post',
-                'author_id'        => 0,
-                'seo_title'        => null,
-                'excerpt'          => 'This is the excerpt for the Lorem Ipsum Post',
-                'body'             => '<p>This is the body of the lorem ipsum post</p>',
-                'image'            => 'posts/post1.jpg',
-                'slug'             => 'lorem-ipsum-post',
+                'title' => 'Lorem Ipsum Post',
+                'author_id' => 0,
+                'seo_title' => null,
+                'excerpt' => 'This is the excerpt for the Lorem Ipsum Post',
+                'body' => '<p>This is the body of the lorem ipsum post</p>',
+                'image' => 'posts/post1.jpg',
+                'slug' => 'lorem-ipsum-post',
                 'meta_description' => 'This is the meta description',
-                'meta_keywords'    => 'keyword1, keyword2, keyword3',
-                'status'           => 'PUBLISHED',
-                'featured'         => 0,
+                'meta_keywords' => 'keyword1, keyword2, keyword3',
+                'status' => 'PUBLISHED',
+                'featured' => 0,
             ])->save();
         }
 
         $post = $this->findPost('my-sample-post');
-        if (!$post->exists) {
+        if (! $post->exists) {
             $post->fill([
-                'title'     => 'My Sample Post',
+                'title' => 'My Sample Post',
                 'author_id' => 0,
                 'seo_title' => null,
-                'excerpt'   => 'This is the excerpt for the sample Post',
-                'body'      => '<p>This is the body for the sample post, which includes the body.</p>
+                'excerpt' => 'This is the excerpt for the sample Post',
+                'body' => '<p>This is the body for the sample post, which includes the body.</p>
                 <h2>We can use all kinds of format!</h2>
                 <p>And include a bunch of other stuff.</p>',
-                'image'            => 'posts/post2.jpg',
-                'slug'             => 'my-sample-post',
+                'image' => 'posts/post2.jpg',
+                'slug' => 'my-sample-post',
                 'meta_description' => 'Meta Description for sample post',
-                'meta_keywords'    => 'keyword1, keyword2, keyword3',
-                'status'           => 'PUBLISHED',
-                'featured'         => 0,
+                'meta_keywords' => 'keyword1, keyword2, keyword3',
+                'status' => 'PUBLISHED',
+                'featured' => 0,
             ])->save();
         }
 
         $post = $this->findPost('latest-post');
-        if (!$post->exists) {
+        if (! $post->exists) {
             $post->fill([
-                'title'            => 'Latest Post',
-                'author_id'        => 0,
-                'seo_title'        => null,
-                'excerpt'          => 'This is the excerpt for the latest post',
-                'body'             => '<p>This is the body for the latest post</p>',
-                'image'            => 'posts/post3.jpg',
-                'slug'             => 'latest-post',
+                'title' => 'Latest Post',
+                'author_id' => 0,
+                'seo_title' => null,
+                'excerpt' => 'This is the excerpt for the latest post',
+                'body' => '<p>This is the body for the latest post</p>',
+                'image' => 'posts/post3.jpg',
+                'slug' => 'latest-post',
                 'meta_description' => 'This is the meta description',
-                'meta_keywords'    => 'keyword1, keyword2, keyword3',
-                'status'           => 'PUBLISHED',
-                'featured'         => 0,
+                'meta_keywords' => 'keyword1, keyword2, keyword3',
+                'status' => 'PUBLISHED',
+                'featured' => 0,
             ])->save();
         }
 
         $post = $this->findPost('yarr-post');
-        if (!$post->exists) {
+        if (! $post->exists) {
             $post->fill([
-                'title'     => 'Yarr Post',
+                'title' => 'Yarr Post',
                 'author_id' => 0,
                 'seo_title' => null,
-                'excerpt'   => 'Reef sails nipperkin bring a spring upon her cable coffer jury mast spike marooned Pieces of Eight poop deck pillage. Clipper driver coxswain galleon hempen halter come about pressgang gangplank boatswain swing the lead. Nipperkin yard skysail swab lanyard Blimey bilge water ho quarter Buccaneer.',
-                'body'      => '<p>Swab deadlights Buccaneer fire ship square-rigged dance the hempen jig weigh anchor cackle fruit grog furl. Crack Jennys tea cup chase guns pressgang hearties spirits hogshead Gold Road six pounders fathom measured fer yer chains. Main sheet provost come about trysail barkadeer crimp scuttle mizzenmast brig plunder.</p>
+                'excerpt' => 'Reef sails nipperkin bring a spring upon her cable coffer jury mast spike marooned Pieces of Eight poop deck pillage. Clipper driver coxswain galleon hempen halter come about pressgang gangplank boatswain swing the lead. Nipperkin yard skysail swab lanyard Blimey bilge water ho quarter Buccaneer.',
+                'body' => '<p>Swab deadlights Buccaneer fire ship square-rigged dance the hempen jig weigh anchor cackle fruit grog furl. Crack Jennys tea cup chase guns pressgang hearties spirits hogshead Gold Road six pounders fathom measured fer yer chains. Main sheet provost come about trysail barkadeer crimp scuttle mizzenmast brig plunder.</p>
 <p>Mizzen league keelhaul galleon tender cog chase Barbary Coast doubloon crack Jennys tea cup. Blow the man down lugsail fire ship pinnace cackle fruit line warp Admiral of the Black strike colors doubloon. Tackle Jack Ketch come about crimp rum draft scuppers run a shot across the bow haul wind maroon.</p>
 <p>Interloper heave down list driver pressgang holystone scuppers tackle scallywag bilged on her anchor. Jack Tar interloper draught grapple mizzenmast hulk knave cable transom hogshead. Gaff pillage to go on account grog aft chase guns piracy yardarm knave clap of thunder.</p>',
-                'image'            => 'posts/post4.jpg',
-                'slug'             => 'yarr-post',
+                'image' => 'posts/post4.jpg',
+                'slug' => 'yarr-post',
                 'meta_description' => 'this be a meta descript',
-                'meta_keywords'    => 'keyword1, keyword2, keyword3',
-                'status'           => 'PUBLISHED',
-                'featured'         => 0,
+                'meta_keywords' => 'keyword1, keyword2, keyword3',
+                'status' => 'PUBLISHED',
+                'featured' => 0,
             ])->save();
         }
     }
@@ -400,7 +400,6 @@ class PostsTableSeeder extends Seeder
      * [post description].
      *
      * @param [type] $slug [description]
-     *
      * @return [type] [description]
      */
     protected function findPost($slug)
@@ -413,14 +412,13 @@ class PostsTableSeeder extends Seeder
      *
      * @param [type] $type  [description]
      * @param [type] $field [description]
-     *
      * @return [type] [description]
      */
     protected function dataRow($type, $field)
     {
         return DataRow::firstOrNew([
             'data_type_id' => $type->id,
-            'field'        => $field,
+            'field' => $field,
         ]);
     }
 
@@ -429,7 +427,6 @@ class PostsTableSeeder extends Seeder
      *
      * @param [type] $field [description]
      * @param [type] $for   [description]
-     *
      * @return [type] [description]
      */
     protected function dataType($field, $for)

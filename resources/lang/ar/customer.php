@@ -67,13 +67,12 @@ return [
     'customer_whislist_table_price' => 'الثمن',
 
     /****************************************************** */
-    'customer_logged'=>'Sessions',
-    'customer_logged_date'=>'التاريخ',
-    'customer_logged_ip'=>'عنوان الايبي ادريس',
-    'customer_logged_device'=>'الحهاز',
-    
+    'customer_logged' => 'Sessions',
+    'customer_logged_date' => 'التاريخ',
+    'customer_logged_ip' => 'عنوان الايبي ادريس',
+    'customer_logged_device' => 'الحهاز',
+
     'customer_factures' => 'الفواتير',
 
-
-    'customer_logout' => 'الخروج'
+    'customer_logout' => 'الخروج',
 ];

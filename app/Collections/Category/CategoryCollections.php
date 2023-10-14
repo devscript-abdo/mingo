@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CategoryCollections extends Collection
 {
-
-
     public function groupByType(): CategoryCollections
     {
         return $this->groupBy(function ($item) {

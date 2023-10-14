@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ads;
-use App\Models\Archive;
 use App\Models\Product;
-use App\Models\Slider;
 use App\Services\Payment\PaymentInterface;
-use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
-
     public function index()
     {
 
-        $sliders  = $this->Slider()->activeItems();
+        $sliders = $this->Slider()->activeItems();
 
         $brands = $this->Brand()->activeItems();
 
@@ -31,7 +26,7 @@ class SiteController extends Controller
                 'sliders',
                 'categories',
                 'collections',
-                'productsSearched','brands'
+                'productsSearched', 'brands'
             )
         );
     }

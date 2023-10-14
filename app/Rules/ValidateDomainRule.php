@@ -27,7 +27,6 @@ class ValidateDomainRule implements Rule
     {
         return preg_match('/^(?!:\/\/)(?=.{1,255}$)((.{1,63}\.){1,127}(?![0-9]*$)[a-z0-9-]+\.?)$/i', $value);
     }
-    
 
     /**
      * Get the validation error message.

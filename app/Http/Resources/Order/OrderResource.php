@@ -6,8 +6,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderResource extends JsonResource
 {
-
     public static $wrap = 'payload';
+
     /**
      * Transform the resource into an array.
      *

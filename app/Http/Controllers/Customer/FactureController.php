@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -15,10 +14,11 @@ class FactureController extends Controller
     public function index()
     {
         $factures = auth()
-        ->guard('customer')
-        ->user()
-        ->invoices()
-        ->get();
+            ->guard('customer')
+            ->user()
+            ->invoices()
+            ->get();
+
         /* $facts = $factures->map(function($fct,$key){
            return Storage::disk('public')->exists($fct->url);
        });
@@ -30,6 +30,7 @@ class FactureController extends Controller
     {
         $pdf = Invoice::whereSerialCode($serial)->first();
         $url = Str::remove('http://localhost:8000/', $pdf->url);
+
         //$url = $pdf->url;
         //dd($url);
         return redirect($pdf->url);
@@ -37,6 +38,6 @@ class FactureController extends Controller
             'Content-Type' => 'application/pdf',
             //'Content-Disposition' => 'inline; filename="'.$serial.'"'
         ]);*/
-       // return view('theme.auth.customer.app.factures.viewPdf');
+        // return view('theme.auth.customer.app.factures.viewPdf');
     }
 }

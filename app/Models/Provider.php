@@ -10,10 +10,9 @@ class Provider extends Model
 {
     use HasFactory;
 
-
     public function categories()
     {
-        return $this->belongsToMany('App\Models\Category','provider_category','provider_id','category_id');
+        return $this->belongsToMany('App\Models\Category', 'provider_category', 'provider_id', 'category_id');
     }
 
     public function setPasswordAttribute($value)

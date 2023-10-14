@@ -4,9 +4,8 @@ namespace App\Repositories\Page;
 
 use App\Models\Page;
 
-class PageRepository  implements PageInterface
+class PageRepository implements PageInterface
 {
-
     protected $model;
 
     public function __construct(Page $model)
@@ -14,7 +13,6 @@ class PageRepository  implements PageInterface
 
         $this->model = $model;
     }
-
 
     public function query()
     {

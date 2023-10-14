@@ -14,9 +14,9 @@ class UpdatePasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        
-        return auth('sanctum')->user()->currentAccessToken()->token  === request()->user()->currentAccessToken()->token ;
-            
+
+        return auth('sanctum')->user()->currentAccessToken()->token === request()->user()->currentAccessToken()->token;
+
     }
 
     /**

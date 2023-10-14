@@ -29,6 +29,6 @@ return [
     'search' => 'Rechecher',
 
     /***************** */
-    'explore' => 'Explore'
+    'explore' => 'Explore',
 
 ];

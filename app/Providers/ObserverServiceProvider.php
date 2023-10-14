@@ -9,7 +9,6 @@ use App\Models\Category;
 use App\Models\Color;
 use App\Models\Invoice;
 use App\Models\Order;
-use App\Models\Page;
 use App\Models\Product;
 use App\Models\ProductCollection;
 use App\Models\Team;

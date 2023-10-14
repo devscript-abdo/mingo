@@ -11,5 +11,5 @@ return [
     'form_login_guest' => 'الاستمرار دون انشاء الحساب',
     'form_login_with' => 'تسجيل الدخول بواسطة',
     'form_create_account' => 'انشاء حساب',
-    'form_forgot_pass' => 'نسيت كلمة المرور'
+    'form_forgot_pass' => 'نسيت كلمة المرور',
 ];

@@ -24,18 +24,18 @@ return [
     */
     'skip' => [
 
-                //'fr/produits',
+        //'fr/produits',
         //'en/produits',
         'fr/produits/*',
-        'en/produits/*', 
+        'en/produits/*',
         'fr/cart',
         'en/cart',
         //'en/categories',
-       // 'fr/categories/*',
+        // 'fr/categories/*',
 
         'admin',
         'admin/*',
-        
+
         '*.xml',
         '*.less',
         '*.pdf',
@@ -67,6 +67,6 @@ return [
         '*.iso',
         '*.flv',
         '*.m4v',
-        '*.torrent'
+        '*.torrent',
     ],
 ];

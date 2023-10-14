@@ -12,6 +12,6 @@ return [
     'short_price_desc' => 'الثمن الرخيص الى الاغلى',
     'short_price' => 'الثمن الغالي الى الرخيص',
 
-    'products_count'=>"عدد المنتوجات  <strong>:numero</strong>"
+    'products_count' => 'عدد المنتوجات  <strong>:numero</strong>',
 
 ];

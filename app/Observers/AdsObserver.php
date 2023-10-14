@@ -9,7 +9,6 @@ class AdsObserver
     /**
      * Handle the Ads "created" event.
      *
-     * @param  \App\Models\Ads  $ads
      * @return void
      */
     public function created(Ads $ads)
@@ -22,7 +21,6 @@ class AdsObserver
     /**
      * Handle the Ads "updated" event.
      *
-     * @param  \App\Models\Ads  $ads
      * @return void
      */
     public function updated(Ads $ads)
@@ -35,7 +33,6 @@ class AdsObserver
     /**
      * Handle the Ads "deleted" event.
      *
-     * @param  \App\Models\Ads  $ads
      * @return void
      */
     public function deleted(Ads $ads)
@@ -48,7 +45,6 @@ class AdsObserver
     /**
      * Handle the Ads "restored" event.
      *
-     * @param  \App\Models\Ads  $ads
      * @return void
      */
     public function restored(Ads $ads)
@@ -61,7 +57,6 @@ class AdsObserver
     /**
      * Handle the Ads "force deleted" event.
      *
-     * @param  \App\Models\Ads  $ads
      * @return void
      */
     public function forceDeleted(Ads $ads)

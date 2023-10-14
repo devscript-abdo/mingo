@@ -4,7 +4,6 @@ namespace App\Repositories\Category;
 
 interface CategoryInterface
 {
-
     public function all();
 
     public function model();

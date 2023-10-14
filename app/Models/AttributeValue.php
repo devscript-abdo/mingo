@@ -9,6 +9,7 @@ class AttributeValue extends Model
 {
     use HasFactory;
     use \Znck\Eloquent\Traits\BelongsToThrough;
+
     /**
      * @var string
      */
@@ -18,16 +19,15 @@ class AttributeValue extends Model
      * @var array
      */
     protected $fillable = [
-        'attribute_id','product_id', 'value', 'price', 'quantity'
+        'attribute_id', 'product_id', 'value', 'price', 'quantity',
     ];
 
     /**
      * @var array
      */
     protected $casts = [
-        'attribute_id'  =>  'integer',
+        'attribute_id' => 'integer',
     ];
-
 
     public function attribute()
     {
@@ -38,5 +38,4 @@ class AttributeValue extends Model
     {
         return $this->belongsToThrough('App\Models\Product', 'App\Models\Attribute');
     }
-
 }

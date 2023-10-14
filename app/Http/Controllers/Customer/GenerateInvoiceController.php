@@ -6,26 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\GenerateInvoiceRequest;
 use App\Notifications\Customer\Invoice\SendInvoiceNotification;
 use App\Notifications\Customer\Invoice\SendSMSNotification;
-use Illuminate\Http\Request;
-use LaravelDaily\Invoices\Invoice;
-use LaravelDaily\Invoices\Classes\Party;
-use LaravelDaily\Invoices\Classes\InvoiceItem;
-use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
+use LaravelDaily\Invoices\Classes\InvoiceItem;
+use LaravelDaily\Invoices\Classes\Party;
+use LaravelDaily\Invoices\Invoice;
 
 class GenerateInvoiceController extends Controller
 {
-
     public function generate(GenerateInvoiceRequest $request)
     {
 
         $order = $this->Order()->getOrderDetail($request->order);
 
         $client = new Party([
-            'name'          => config('invoiceGenerator.seller_info.seller_name'),
-            'phone'         => config('invoiceGenerator.seller_info.seller_phone'),
-            'address'       => config('invoiceGenerator.seller_info.seller_addresse'),
+            'name' => config('invoiceGenerator.seller_info.seller_name'),
+            'phone' => config('invoiceGenerator.seller_info.seller_phone'),
+            'address' => config('invoiceGenerator.seller_info.seller_addresse'),
             'custom_fields' => [
 
                 'ICE' => config('invoiceGenerator.seller_info.seller_ice'),
@@ -33,9 +29,9 @@ class GenerateInvoiceController extends Controller
         ]);
 
         $customer = new Party([
-            'name'          => $order->billing_name,
-            'address'       => $order->billing_city . ' - ' . $order->billing_address,
-            'code'          => $order->full_number,
+            'name' => $order->billing_name,
+            'address' => $order->billing_city.' - '.$order->billing_address,
+            'code' => $order->full_number,
             'custom_fields' => [
                 'order number' => $order->full_number,
                 'téléphone' => $order->billing_phone,
@@ -70,7 +66,7 @@ class GenerateInvoiceController extends Controller
             'additional notes',
             'in regards of delivery or something else',
         ];
-        $notes = implode("<br>", $notes);
+        $notes = implode('<br>', $notes);
 
         $invoice = Invoice::make('Facture')
             ->series('MNG-F')
@@ -87,7 +83,7 @@ class GenerateInvoiceController extends Controller
             ->currencyFormat('{VALUE} {SYMBOL}')
             ->currencyThousandsSeparator(',')
             ->currencyDecimalPoint('.')
-            ->filename(Str::slug($customer->name) . '-' . $order->slug . '-' . date('Y-m-d'))
+            ->filename(Str::slug($customer->name).'-'.$order->slug.'-'.date('Y-m-d'))
             ->addItems($items)
             ->notes($notes)
             //->logo($this->invoiceLogo)

@@ -23,7 +23,7 @@ class PageResource extends JsonResource
             'title' => $this->field('title', $lng[1]),
             'body' => strip_tags($this->field('body', $lng[1])),
             'image' => $this->photo,
-        
+
         ];
     }
 }

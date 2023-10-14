@@ -26,8 +26,8 @@ class ChangeColumsTypeInOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-           // $table->dropColumn(['billing_subtotal', 'billing_tax', 'billing_total']);
-            /******Creat the colulms  
+            // $table->dropColumn(['billing_subtotal', 'billing_tax', 'billing_total']);
+            /******Creat the colulms
 
             $table->string('billing_subtotal')->change();
             $table->string('billing_tax')->change();

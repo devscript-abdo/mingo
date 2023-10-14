@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class ModalView extends Component
 {
-
     protected $listeners = ['viewProduct' => 'render'];
 
     public function render()

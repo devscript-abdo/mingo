@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class AddresseController extends Controller
 {
     //
-    public  function  index()
+    public function index()
     {
 
         $addresses = $this->Addresse()->getCustomerAddresses();
@@ -37,6 +37,7 @@ class AddresseController extends Controller
         $request->validate(['addresse' => 'required|integer']);
         $address = Addresse::find($request->addresse);
         $address->delete();
+
         return back()->with('message', 'Addresse  Deleted');
     }
 }

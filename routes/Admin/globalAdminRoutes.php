@@ -9,7 +9,7 @@ Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
 
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
     ],
     function () {
     }
@@ -24,12 +24,12 @@ Route::post('/register', [AdminRegisterController::class, 'register'])->name('ad
 Route::group(
     [
 
-        'middleware' => ['auth:admin']
+        'middleware' => ['auth:admin'],
     ],
     function () {
         Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
-        Route::group(['prefix'=>'orders'],function(){
+        Route::group(['prefix' => 'orders'], function () {
             Route::get('/', [AdminOrderController::class, 'index'])->name('admin.orders');
             Route::get('/{slug}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
             Route::post('/{slug}', [AdminOrderController::class, 'update'])->name('admin.orders.update');

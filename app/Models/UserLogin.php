@@ -24,9 +24,8 @@ class UserLogin extends Model
         'ip',
         'type',
         'logged_in_at',
-        'device'
+        'device',
     ];
-
 
     public function customer()
     {

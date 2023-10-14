@@ -3,19 +3,17 @@
 namespace App\Repositories\Order;
 
 use App\Models\Order;
-
 use App\Repositories\CacheTrait;
 
 class OrderRepositoryCache implements OrderInterface
 {
-
     use CacheTrait;
 
     protected $model;
 
     public function __construct(Order $model)
     {
-        if (!$this->model) {
+        if (! $this->model) {
             $this->model = $model;
         }
     }
@@ -30,14 +28,14 @@ class OrderRepositoryCache implements OrderInterface
         return $this->model()->all();
     }
 
-    public function  query()
+    public function query()
     {
         return $this->model()->query();
     }
 
     public function delete($id)
     {
-        $model =  $this->model()->find($id);
+        $model = $this->model()->find($id);
 
         return $model->delete();
     }

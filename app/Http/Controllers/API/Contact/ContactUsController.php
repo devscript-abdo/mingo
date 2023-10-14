@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactUsController extends Controller
 {
-
-
     public function contactUs(ContactUsRequest $request): \Illuminate\Http\JsonResponse
     {
         $data = $request;
@@ -28,10 +26,11 @@ class ContactUsController extends Controller
 
             if (count(Mail::failures()) > 0) {
             }
+
             return response()->json(
                 [
 
-                    '_response' => ['msg' => 'nous vous remercions de nous avoir contacté', 'is_send' => true]
+                    '_response' => ['msg' => 'nous vous remercions de nous avoir contacté', 'is_send' => true],
                 ],
                 200
             );

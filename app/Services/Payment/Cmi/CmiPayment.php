@@ -6,8 +6,8 @@ use App\Services\Payment\PaymentInterface;
 
 class CmiPayment implements PaymentInterface
 {
-
-    public function getPayment(){
+    public function getPayment()
+    {
 
         return 'CMI MAROC';
     }

@@ -17,7 +17,7 @@ class CreateAttributesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->enum('frontend_type', ['select','muli_select','color_selector', 'radio', 'text', 'text_area'])->default('select');
+            $table->enum('frontend_type', ['select', 'muli_select', 'color_selector', 'radio', 'text', 'text_area'])->default('select');
             $table->boolean('is_filterable')->default(0);
             $table->boolean('is_required')->default(0);
             $table->boolean('active')->default(true);

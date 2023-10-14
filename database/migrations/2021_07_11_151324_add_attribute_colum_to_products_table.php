@@ -14,7 +14,7 @@ class AddAttributeColumToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-           // $table->json('attributes')->nullable();
+            // $table->json('attributes')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddAttributeColumToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-          //  $table->dropColumn("attributes");
+            //  $table->dropColumn("attributes");
         });
     }
 }

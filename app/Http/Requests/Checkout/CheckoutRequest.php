@@ -25,6 +25,7 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
         $emailRule = auth()->guard('customer')->user() ? ['required', 'email'] : ['required', 'email', Rule::unique('customers', 'email')->ignore(auth()->id())];
+
         return [
             'billing_name' => 'required|string',
             'billing_email' => $emailRule,
@@ -49,13 +50,14 @@ class CheckoutRequest extends FormRequest
             'billing_city' => 'Ville',
             'billing_address' => 'Address',
             'billing_phone' => 'Phone',
-            'billing_notes' => 'Notes'
+            'billing_notes' => 'Notes',
         ];
     }
 
     public function messages()
     {
         $loginRoute = route('customer.login');
+
         return [
             'billing_email.unique' => "
              You already have an account with this email . please 

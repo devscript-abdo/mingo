@@ -61,12 +61,11 @@ class PageObserver
         return $this->clearAllCache($page->slug);
     }
 
-
     private function clearAllCache($slug)
     {
         $slg = json_encode($slug);
         cache()->pull('pages_cache');
         cache()->pull("page_cache_slug_{$slg}");
-        cache()->pull("page_cache_footers");
+        cache()->pull('page_cache_footers');
     }
 }

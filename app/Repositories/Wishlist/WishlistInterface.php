@@ -4,8 +4,6 @@ namespace App\Repositories\Wishlist;
 
 interface WishlistInterface
 {
-
-
     public function all();
 
     public function query();

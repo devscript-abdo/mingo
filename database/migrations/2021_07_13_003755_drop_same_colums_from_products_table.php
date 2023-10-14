@@ -14,7 +14,7 @@ class DropSameColumsFromProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            
+
             $table->dropColumn('allow_checkout_when_out_of_stock');
             $table->dropColumn('with_storehouse_management');
             $table->dropColumn('is_variation');

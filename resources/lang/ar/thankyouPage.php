@@ -8,5 +8,5 @@ return [
 
     'order_success_message_a' => 'لتتبع طلبكم',
 
-    'order_number' => ' رقم طلبكم'
+    'order_number' => ' رقم طلبكم',
 ];

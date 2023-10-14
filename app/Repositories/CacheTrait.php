@@ -6,8 +6,6 @@ use Illuminate\Cache\CacheManager;
 
 trait CacheTrait
 {
-
-
     public function setCache()
     {
         return app(CacheManager::class);

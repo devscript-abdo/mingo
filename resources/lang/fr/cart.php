@@ -10,12 +10,12 @@ return [
     /************************ */
 
     'update' => 'mise a jour',
-    'remove'=>'Vider le panier',
+    'remove' => 'Vider le panier',
     'back_to_store' => 'Poursuivre vos achats',
 
     /**************************** */
 
     'show_cart' => 'Voir le panier',
-    'checkout' => 'Passer au paiement'
+    'checkout' => 'Passer au paiement',
 
 ];

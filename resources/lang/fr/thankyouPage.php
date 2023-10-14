@@ -10,5 +10,5 @@ return [
 
     'order_success_message_b' => 'أنقر هنا',
 
-    'order_number' => 'numéro de commande'
+    'order_number' => 'numéro de commande',
 ];

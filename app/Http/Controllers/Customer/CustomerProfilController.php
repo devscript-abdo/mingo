@@ -5,19 +5,15 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\CustomerInfoRequest;
 use App\Models\Customer;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class CustomerProfilController extends Controller
 {
-
-
-    public  function  index()
+    public function index()
     {
 
         return view('theme.auth.customer.app.user_info.index');
     }
-
 
     public function updateInfo(CustomerInfoRequest $request)
     {
@@ -38,6 +34,7 @@ class CustomerProfilController extends Controller
                 $user->password = Hash::make($request->new_password);
             }
             $user->save();
+
             return back()->with('message', 'Profile Updated');
         }
 

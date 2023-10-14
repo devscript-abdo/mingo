@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 class OrderCollections extends Collection
 {
-
-
     public function groupByStatus()
     {
         return $this->groupBy(function ($item) {
@@ -24,6 +22,7 @@ class OrderCollections extends Collection
             if ($item->status === 'canceled') {
                 return 'canceled';
             }
+
             return 'normal';
         });
     }

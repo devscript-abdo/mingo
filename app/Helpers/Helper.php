@@ -4,8 +4,7 @@ namespace App\Helpers;
 
 class Helper
 {
-
-    function getPrice($priceInDecimals): string
+    public function getPrice($priceInDecimals): string
     {
         $price = floatval($priceInDecimals) / 1;
 
@@ -17,13 +16,12 @@ class Helper
         return number_format(($number / 100), 2);
     }
 
-    function presentPrice($price): ?string
+    public function presentPrice($price): ?string
     {
         return money_format('$%i', $price / 100);
     }
 
     /***********Local  */
-
 
     public function currentLocale()
     {
@@ -47,6 +45,7 @@ class Helper
         $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $date);
         $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', now());
         $diff_in_days = $to->diffInDays($from);
+
         return $diff_in_days >= config('mingo.days_befor_cancel_order');
     }
 }

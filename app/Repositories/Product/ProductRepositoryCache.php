@@ -3,12 +3,10 @@
 namespace App\Repositories\Product;
 
 use App\Models\Product;
-
 use Illuminate\Cache\CacheManager;
 
-class ProductRepositoryCache  implements ProductInterface
+class ProductRepositoryCache implements ProductInterface
 {
-
     protected $model;
 
     protected $cache;
@@ -25,6 +23,7 @@ class ProductRepositoryCache  implements ProductInterface
 
         return $this->model;
     }
+
     public function query()
     {
         return $this->model->query();
@@ -55,6 +54,7 @@ class ProductRepositoryCache  implements ProductInterface
                     ->firstOrFail();
             });
         }
+
         return $this->cache->remember("single_product_cache_{$sluger}", $this->timeToLive(), function () use ($slug) {
             return $this->model->whereSlug($slug)->whereActive(true)
                 ->firstOrFail();

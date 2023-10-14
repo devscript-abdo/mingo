@@ -15,20 +15,20 @@ class AttributeSeeder extends Seeder
     public function run()
     {
         Attribute::create([
-            'code'          =>  'size',
-            'name'          =>  'Size',
-            'frontend_type' =>  'select',
-            'is_filterable' =>  1,
-            'is_required'   =>  1,
+            'code' => 'size',
+            'name' => 'Size',
+            'frontend_type' => 'select',
+            'is_filterable' => 1,
+            'is_required' => 1,
         ]);
 
         // Create a color attribute
         Attribute::create([
-            'code'          =>  'color',
-            'name'          =>  'Color',
-            'frontend_type' =>  'color_selector',
-            'is_filterable' =>  1,
-            'is_required'   =>  1,
+            'code' => 'color',
+            'name' => 'Color',
+            'frontend_type' => 'color_selector',
+            'is_filterable' => 1,
+            'is_required' => 1,
         ]);
     }
 }

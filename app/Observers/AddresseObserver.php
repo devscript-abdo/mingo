@@ -9,7 +9,6 @@ class AddresseObserver
     /**
      * Handle the Addresse "created" event.
      *
-     * @param  \App\Models\Addresse  $addresse
      * @return void
      */
     public function created(Addresse $addresse)
@@ -20,7 +19,6 @@ class AddresseObserver
     /**
      * Handle the Addresse "updated" event.
      *
-     * @param  \App\Models\Addresse  $addresse
      * @return void
      */
     public function updated(Addresse $addresse)
@@ -31,7 +29,6 @@ class AddresseObserver
     /**
      * Handle the Addresse "deleted" event.
      *
-     * @param  \App\Models\Addresse  $addresse
      * @return void
      */
     public function deleted(Addresse $addresse)
@@ -42,7 +39,6 @@ class AddresseObserver
     /**
      * Handle the Addresse "restored" event.
      *
-     * @param  \App\Models\Addresse  $addresse
      * @return void
      */
     public function restored(Addresse $addresse)
@@ -53,7 +49,6 @@ class AddresseObserver
     /**
      * Handle the Addresse "force deleted" event.
      *
-     * @param  \App\Models\Addresse  $addresse
      * @return void
      */
     public function forceDeleted(Addresse $addresse)
@@ -63,7 +58,7 @@ class AddresseObserver
 
     private function clearAllCache()
     {
-        if (!request()->routeIs('api.addresses.create.fr', 'api.addresses.create.ar', 'api.addresses.delete.fr', 'api.addresses.delete.ar')) {
+        if (! request()->routeIs('api.addresses.create.fr', 'api.addresses.create.ar', 'api.addresses.delete.fr', 'api.addresses.delete.ar')) {
             $id = json_encode(auth()->guard('customer')->user()->id);
 
             cache()->pull('addresse_cache');

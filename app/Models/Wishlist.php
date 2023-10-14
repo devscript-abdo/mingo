@@ -14,6 +14,7 @@ class Wishlist extends Model
         'product_id',
 
     ];
+
     public function customer()
     {
         return $this->belongsTo('App\Models\Customer');

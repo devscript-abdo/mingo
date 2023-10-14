@@ -3,11 +3,11 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Str;
 use Swift_TransportException;
-use Throwable;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Illuminate\Support\Str;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -71,7 +71,7 @@ class Handler extends ExceptionHandler
 
             $contains = Str::contains($exception->getMessage(), ['could not be established with host', ':stream_socket_client():']);
 
-            $contains ? $message = "désole nous avons un problème au niveau du serveur mailing" : $message = $exception->getMessage();
+            $contains ? $message = 'désole nous avons un problème au niveau du serveur mailing' : $message = $exception->getMessage();
 
             return response()->json(['_response' => ['msg' => $message, 'is_send' => false]], 500);
         }
@@ -80,7 +80,7 @@ class Handler extends ExceptionHandler
 
             if ($exception instanceof MethodNotAllowedHttpException) {
                 return response()->json([
-                    'msg' => ['error' => 'sorry this URL is not Allowed from Browser Directly']
+                    'msg' => ['error' => 'sorry this URL is not Allowed from Browser Directly'],
                 ], 405);
             }
 

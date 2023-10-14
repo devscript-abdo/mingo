@@ -9,7 +9,6 @@ class TeamObserver
     /**
      * Handle the Team "created" event.
      *
-     * @param  \App\Models\Team  $team
      * @return void
      */
     public function created(Team $team)
@@ -20,7 +19,6 @@ class TeamObserver
     /**
      * Handle the Team "updated" event.
      *
-     * @param  \App\Models\Team  $team
      * @return void
      */
     public function updated(Team $team)
@@ -32,7 +30,6 @@ class TeamObserver
     /**
      * Handle the Team "deleted" event.
      *
-     * @param  \App\Models\Team  $team
      * @return void
      */
     public function deleted(Team $team)
@@ -44,7 +41,6 @@ class TeamObserver
     /**
      * Handle the Team "restored" event.
      *
-     * @param  \App\Models\Team  $team
      * @return void
      */
     public function restored(Team $team)
@@ -56,7 +52,6 @@ class TeamObserver
     /**
      * Handle the Team "force deleted" event.
      *
-     * @param  \App\Models\Team  $team
      * @return void
      */
     public function forceDeleted(Team $team)
@@ -70,6 +65,6 @@ class TeamObserver
 
         cache()->pull('teams_cache');
 
-        cache()->pull("teams_cache_active");
+        cache()->pull('teams_cache_active');
     }
 }

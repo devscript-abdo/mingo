@@ -18,7 +18,6 @@ class RemoveStarEndColumsFromProductsTable extends Migration
             $table->dropColumn('start_date_at');
             $table->dropColumn('end_date_at');
 
-
         });
     }
 

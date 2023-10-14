@@ -12,6 +12,6 @@ return [
     'short_price_desc' => 'Affiché le plus chére ',
     'short_price' => 'Affiché le plus cout',
 
-    'products_count'=>"Nombre de produits <strong> :numero </strong>"
+    'products_count' => 'Nombre de produits <strong> :numero </strong>',
 
 ];

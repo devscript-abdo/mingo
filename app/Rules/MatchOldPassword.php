@@ -3,13 +3,11 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-
 use Illuminate\Support\Facades\Hash;
 
 class MatchOldPassword implements Rule
 {
     /**
-
      * Determine if the validation rule passes.
 
      *
@@ -19,9 +17,7 @@ class MatchOldPassword implements Rule
      * @param  mixed  $value
 
      * @return bool
-
      */
-
     public function passes($attribute, $value)
     {
         if (request()->routeIs('api.account.update-pass.ar', 'api.account.update-pass.fr')) {
@@ -32,15 +28,12 @@ class MatchOldPassword implements Rule
     }
 
     /**
-
      * Get the validation error message.
 
      *
 
      * @return string
-
      */
-
     public function message()
     {
         return 'The :attribute is not match with your current password.';

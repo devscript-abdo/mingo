@@ -29,7 +29,7 @@ class PaymentServiceProvider extends ServiceProvider
                     return new PayzonePayment();
 
                 default:
-                    throw new PaymentMethodException("Unknown payment method");
+                    throw new PaymentMethodException('Unknown payment method');
             }
         });
     }

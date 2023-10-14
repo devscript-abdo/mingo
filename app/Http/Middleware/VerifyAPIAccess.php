@@ -10,8 +10,6 @@ class VerifyAPIAccess
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -19,7 +17,7 @@ class VerifyAPIAccess
         if (
             (app()->environment('local'))   //!(app()->environment('local'))
             && (
-                !$request->header('mingo-access-token')
+                ! $request->header('mingo-access-token')
                 || $request->header('mingo-access-token') !== config('mingo.api_access_token')
             )
         ) {

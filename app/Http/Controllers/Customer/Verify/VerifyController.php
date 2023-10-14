@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Customer\Verify;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 class VerifyController extends Controller
 {

@@ -4,29 +4,25 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\UserLogin;
-use Illuminate\Http\Request;
 
 class LoggedInController extends Controller
 {
+    public function index()
+    {
 
+        $sessions = auth('customer')->user()->withLastLogin() ?? [];
 
-  public  function  index()
-  {
+        $sessionsAll = auth('customer')->user()->GetLoginHistory() ?? [];
 
-    $sessions = auth('customer')->user()->withLastLogin() ?? [];
+        return view('theme.auth.customer.app.logged.index', compact('sessions', 'sessionsAll'));
+    }
 
-    $sessionsAll = auth('customer')->user()->GetLoginHistory() ?? [];
+    public function deleteHistory()
+    {
+        // $histories = auth('customer')->user()->loginHistory()->get();
 
-    return view('theme.auth.customer.app.logged.index', compact('sessions', 'sessionsAll'));
-  }
+        UserLogin::whereIn('customer_id', [auth('customer')->user()->id])->delete();
 
-
-  public function deleteHistory()
-  {
-    // $histories = auth('customer')->user()->loginHistory()->get();
-
-    UserLogin::whereIn('customer_id', [auth('customer')->user()->id])->delete();
-
-    return redirect()->back();
-  }
+        return redirect()->back();
+    }
 }

@@ -3,16 +3,14 @@
 namespace App\Http\Mingo\Livewire\Cart;
 
 use App\Models\Product;
-use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart as MyCart;
+use Livewire\Component;
 
 class Cart extends Component
 {
-
     public $cartItemess;
 
     public array $quantity = [];
-
 
     protected array $rules = [
         'quantity' => 'required|array',
@@ -59,7 +57,7 @@ class Cart extends Component
 
         $this->dispatchBrowserEvent('added_to_cart', [
             'type' => 'success',
-            'message' => 'le produit est ajouté à votre panier'
+            'message' => 'le produit est ajouté à votre panier',
         ]);
     }
 

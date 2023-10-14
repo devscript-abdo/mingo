@@ -4,9 +4,8 @@ namespace App\Repositories\Team;
 
 use App\Models\Team;
 
-class TeamRepository  implements TeamInterface
+class TeamRepository implements TeamInterface
 {
-
     protected $model;
 
     public function __construct(Team $model)
@@ -14,7 +13,6 @@ class TeamRepository  implements TeamInterface
 
         $this->model = $model;
     }
-
 
     public function query()
     {

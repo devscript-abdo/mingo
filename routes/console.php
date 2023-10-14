@@ -18,18 +18,17 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
+Artisan::command('log:clear', function () {
 
-Artisan::command('log:clear', function() {
-
-    exec('rm ' . storage_path('logs/*.log'));
+    exec('rm '.storage_path('logs/*.log'));
 
     $this->comment('Logs have been cleared!');
 
 })->describe('Clear log files');
 
-Artisan::command('debugbar:clear', function() {
+Artisan::command('debugbar:clear', function () {
 
-    exec('rm ' . storage_path('debugbar/*.json'));
+    exec('rm '.storage_path('debugbar/*.json'));
 
     $this->comment('debugbar have been cleared!');
 

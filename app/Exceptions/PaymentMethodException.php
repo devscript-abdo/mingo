@@ -14,7 +14,6 @@ class PaymentMethodException extends Exception
         $this->errors = $errors;
     }
 
-
     public function report()
     {
         Log::error($this->errors);

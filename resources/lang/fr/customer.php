@@ -34,7 +34,7 @@ return [
     'customer_orders_table_status' => 'Etat',
     'customer_orders_table_action' => 'Action',
     'customer_orders_table_view' => 'voir les détails',
-    'customer_orders_table_delete'=>'Annuler',
+    'customer_orders_table_delete' => 'Annuler',
     /*-----------------------------------------------------*/
     'customer_order' => 'Commande',
     'customer_order_product' => 'Produit',
@@ -67,12 +67,12 @@ return [
     'customer_whislist_table_price' => 'Prix',
 
     /****************************************************** */
-    'customer_logged'=>'Sessions',
-    'customer_logged_date'=>'Date ',
-    'customer_logged_ip'=>'IP',
-    'customer_logged_device'=>'Périphérique',
+    'customer_logged' => 'Sessions',
+    'customer_logged_date' => 'Date ',
+    'customer_logged_ip' => 'IP',
+    'customer_logged_device' => 'Périphérique',
 
-    'customer_factures'=>'Factures',
+    'customer_factures' => 'Factures',
 
-    'customer_logout' => 'Se deconnecter'
+    'customer_logout' => 'Se deconnecter',
 ];

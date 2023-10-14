@@ -12,8 +12,8 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    'validate_domain'=>'the SMTP Host is not valide.',
-    
+    'validate_domain' => 'the SMTP Host is not valide.',
+
     'phone' => 'The :attribute field contains an invalid number.',
     /************************************************************ */
     'accepted' => 'The :attribute must be accepted.',

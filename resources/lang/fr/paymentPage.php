@@ -18,5 +18,5 @@ return [
     'payment_ok' => 'اتمام عملية الدفع',
 
     'payment_table_product' => 'Produit',
-    'payment_table_total' => 'Total'
+    'payment_table_total' => 'Total',
 ];

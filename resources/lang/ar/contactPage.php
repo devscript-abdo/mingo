@@ -8,7 +8,6 @@ return [
 
     'contact_title' => 'للمزيد من المعلومات يمكنكم مراسلتنا',
 
-
     /******************Form ****/
 
     'form_name' => 'الاسم كاملا',
@@ -16,6 +15,6 @@ return [
     'form_tele' => 'رقم الهاتف',
     'form_subject' => 'الموضوع',
     'form_message' => 'نص الرسالة',
-    'form_button' => 'ارسل'
+    'form_button' => 'ارسل',
 
 ];

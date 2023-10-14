@@ -2,21 +2,18 @@
 
 namespace App\Http\Resources\Product;
 
-use App\Http\Resources\Category\CategoryResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
 {
-
     public static $wrap = 'payload';
+
     /**
-     * 
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-
     public function toArray($request)
     {
         //return parent::toArray($request);
@@ -62,10 +59,10 @@ class ProductResource extends JsonResource
             'status' => '',
             'featuredStatus' => '',
             //'reviews' => $this->all_reviews,
-            "rating" => [
+            'rating' => [
 
-                (object)["average" => "4.7", "productId" => "$this->id"]
-            ]
+                (object) ['average' => '4.7', 'productId' => "$this->id"],
+            ],
             //'category' => $this->category,
         ];
     }

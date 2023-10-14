@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\Cache;
 
 class CacheResponseMiddleware
 {
-
     private $ttl;
+
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next, $ttl = null)
@@ -25,6 +23,7 @@ class CacheResponseMiddleware
 
             return response(Cache::get($this->cacheKey($request)));
         }
+
         return $next($request);
     }
 
@@ -48,6 +47,6 @@ class CacheResponseMiddleware
 
     private function cacheKey($request): string
     {
-        return md5($request->fullUrl() . '-mingo-ma' . auth()->id());
+        return md5($request->fullUrl().'-mingo-ma'.auth()->id());
     }
 }

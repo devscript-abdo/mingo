@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ProductCollections extends Collection
 {
-
     public function groupByCreatedDate()
     {
         return $this->groupBy(function ($product) {
@@ -27,6 +26,6 @@ class ProductCollections extends Collection
 
     public function groupByRelated()
     {
-        
+
     }
 }

@@ -9,7 +9,6 @@ class ProductCollectionObserver
     /**
      * Handle the ProductCollection "created" event.
      *
-     * @param  \App\Models\ProductCollection  $productCollection
      * @return void
      */
     public function created(ProductCollection $productCollection)
@@ -20,7 +19,6 @@ class ProductCollectionObserver
     /**
      * Handle the ProductCollection "updated" event.
      *
-     * @param  \App\Models\ProductCollection  $productCollection
      * @return void
      */
     public function updated(ProductCollection $productCollection)
@@ -31,7 +29,6 @@ class ProductCollectionObserver
     /**
      * Handle the ProductCollection "deleted" event.
      *
-     * @param  \App\Models\ProductCollection  $productCollection
      * @return void
      */
     public function deleted(ProductCollection $productCollection)
@@ -42,7 +39,6 @@ class ProductCollectionObserver
     /**
      * Handle the ProductCollection "restored" event.
      *
-     * @param  \App\Models\ProductCollection  $productCollection
      * @return void
      */
     public function restored(ProductCollection $productCollection)
@@ -53,7 +49,6 @@ class ProductCollectionObserver
     /**
      * Handle the ProductCollection "force deleted" event.
      *
-     * @param  \App\Models\ProductCollection  $productCollection
      * @return void
      */
     public function forceDeleted(ProductCollection $productCollection)

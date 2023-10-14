@@ -13,6 +13,6 @@ return [
 
     'newsletter' => 'Souscrivez',
     'newsletter_detail' => 'souscrivez vous étre notifié',
-    'newsletter_detail_email' => "entrez votre email s'il vous plaît"
+    'newsletter_detail_email' => "entrez votre email s'il vous plaît",
 
 ];

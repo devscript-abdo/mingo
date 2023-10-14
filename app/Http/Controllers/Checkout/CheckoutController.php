@@ -8,7 +8,6 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
@@ -50,6 +49,7 @@ class CheckoutController extends Controller
 
             return redirect()->route('checkout.payment');
         }
+
         return redirect()->route('checkout.thankyou')->with('success_message', 'Merci pour votre Command');
     }
 
@@ -58,7 +58,7 @@ class CheckoutController extends Controller
 
         // Insert into orders table
         $order = Order::create([
-            'customer_id' => auth()->guard('customer')->user()->id ??  null,
+            'customer_id' => auth()->guard('customer')->user()->id ?? null,
             'billing_email' => $request->billing_email,
             'billing_name' => $request->billing_name,
             'billing_address' => $request->billing_address,
@@ -83,8 +83,8 @@ class CheckoutController extends Controller
                 'product_id' => $item->id,
                 'quantity' => $item->qty,
             ]);
-          //  $product = Product::find($item->id);
-           // $product->update(['stock' => $product->stock - $item->qty]);
+            //  $product = Product::find($item->id);
+            // $product->update(['stock' => $product->stock - $item->qty]);
         }
 
         $this->isCreated = true;

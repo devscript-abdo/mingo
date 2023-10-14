@@ -9,7 +9,6 @@ class WishlistObserver
     /**
      * Handle the Wishlist "created" event.
      *
-     * @param  \App\Models\Wishlist  $wishlist
      * @return void
      */
     public function created(Wishlist $wishlist)
@@ -20,7 +19,6 @@ class WishlistObserver
     /**
      * Handle the Wishlist "updated" event.
      *
-     * @param  \App\Models\Wishlist  $wishlist
      * @return void
      */
     public function updated(Wishlist $wishlist)
@@ -31,7 +29,6 @@ class WishlistObserver
     /**
      * Handle the Wishlist "deleted" event.
      *
-     * @param  \App\Models\Wishlist  $wishlist
      * @return void
      */
     public function deleted(Wishlist $wishlist)
@@ -42,7 +39,6 @@ class WishlistObserver
     /**
      * Handle the Wishlist "restored" event.
      *
-     * @param  \App\Models\Wishlist  $wishlist
      * @return void
      */
     public function restored(Wishlist $wishlist)
@@ -53,7 +49,6 @@ class WishlistObserver
     /**
      * Handle the Wishlist "force deleted" event.
      *
-     * @param  \App\Models\Wishlist  $wishlist
      * @return void
      */
     public function forceDeleted(Wishlist $wishlist)
@@ -63,12 +58,12 @@ class WishlistObserver
 
     private function clearAllCache()
     {
-        if (!request()->routeIs(
+        if (! request()->routeIs(
             'api.account.wishlist-create.fr',
-             'api.account.wishlist-create.ar',
-             'api.account.wishlist-delete.ar',
-             'api.account.wishlist-delete.fr',
-             )) {
+            'api.account.wishlist-create.ar',
+            'api.account.wishlist-delete.ar',
+            'api.account.wishlist-delete.fr',
+        )) {
             $idd = json_encode(auth()->guard('customer')->user()->id);
 
             cache()->pull("customer_wishlist_{$idd}");

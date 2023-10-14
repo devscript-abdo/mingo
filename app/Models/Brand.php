@@ -11,7 +11,6 @@ class Brand extends Model
 {
     use HasFactory;
 
-
     public function products()
     {
         return $this->hasMany('App\Models\Product');
@@ -31,13 +30,13 @@ class Brand extends Model
 
     public function getPhotoAttribute()
     {
-        $image  = Voyager::image($this->logo);
-        
+        $image = Voyager::image($this->logo);
+
         return $image;
     }
 
     public function getUrlAttribute()
     {
-        return route('brands.single',$this->slug);
+        return route('brands.single', $this->slug);
     }
 }

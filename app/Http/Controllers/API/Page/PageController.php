@@ -5,13 +5,9 @@ namespace App\Http\Controllers\API\Page;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Page\PageResource;
 use App\Models\Page;
-use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-
-
-
     public function index()
     {
         $pages = $this->Page()->all();
@@ -19,20 +15,22 @@ class PageController extends Controller
         if ($pages) {
             return response()->json(
                 [
-                    'payload' =>   PageResource::collection($pages),
-                    '_response' => ['msg' => "successfully pages"]
+                    'payload' => PageResource::collection($pages),
+                    '_response' => ['msg' => 'successfully pages'],
                 ],
                 200
             );
         }
+
         return response()->json(
             [
-                'payload' =>   [],
-                '_response' => ['msg' => "Error get pages"]
+                'payload' => [],
+                '_response' => ['msg' => 'Error get pages'],
             ],
             200
         );
     }
+
     public function getPage($page)
     {
 
@@ -40,16 +38,17 @@ class PageController extends Controller
         if ($page) {
             return response()->json(
                 [
-                    'payload' =>  new PageResource($page),
-                    '_response' => ['msg' => "successfully {$page->slug}"]
+                    'payload' => new PageResource($page),
+                    '_response' => ['msg' => "successfully {$page->slug}"],
                 ],
                 200
             );
         }
+
         return response()->json(
             [
-                'payload' =>   [],
-                '_response' => ['msg' => "Error 404 page not found"]
+                'payload' => [],
+                '_response' => ['msg' => 'Error 404 page not found'],
             ],
             200
         );

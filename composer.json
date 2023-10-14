@@ -41,7 +41,8 @@
         "laravel/sail": "^1.25",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^10.0",
+        "laravel/pint": "^1.6"
     },
     "autoload": {
         "psr-4": {
@@ -66,6 +67,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "pint": [
+            "./vendor/bin/pint"
+        ],
+        "test": [
+            "@php artisan test"
         ]
     },
     "extra": {

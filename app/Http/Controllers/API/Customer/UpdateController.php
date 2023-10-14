@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Customer\UpdatePasswordRequest;
 use App\Http\Requests\API\Customer\UpdateRequest;
 use App\Models\Customer;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UpdateController extends Controller
@@ -33,13 +32,12 @@ class UpdateController extends Controller
         ]);
 
         // $request->user()->currentAccessToken()->delete(); // delete old token
-       // $user->tokens()->delete(); // delete old token
+        // $user->tokens()->delete(); // delete old token
 
         $token = $user->createToken($data['email'])->plainTextToken; // generate new token
 
         return response()->json([
-            'payload' =>
-            [
+            'payload' => [
                 'id' => $user->id,
                 'nom' => $user->name,
                 'prenom' => $user->name,
@@ -52,7 +50,7 @@ class UpdateController extends Controller
                 'token' => $token,
 
             ],
-            '_response' => ['msg' => 'user updated with success']
+            '_response' => ['msg' => 'user updated with success'],
         ], 201);
     }
 
@@ -62,7 +60,7 @@ class UpdateController extends Controller
 
         $user = Customer::whereId($request->user()->currentAccessToken()->tokenable_id)->first();
 
-        if (!$user || !Hash::check($data['oldpassword'], $user->password)) {
+        if (! $user || ! Hash::check($data['oldpassword'], $user->password)) {
 
             return response()->json(['_response' => ['msg' => 'Sorry old password not Match']], 401);
         }

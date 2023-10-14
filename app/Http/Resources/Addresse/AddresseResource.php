@@ -22,7 +22,7 @@ class AddresseResource extends JsonResource
             'addressType' => $this->country,
             'address' => $this->addresse,
             'city' => $this->city,
-            'zip' => "122500",
+            'zip' => '122500',
         ];
     }
 }

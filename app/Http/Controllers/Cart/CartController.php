@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Cart;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
@@ -17,6 +17,7 @@ class CartController extends Controller
         } else {
             session()->forget('cartUrl');
         }
+
         return view('theme.shopping-cart.index');
     }
 

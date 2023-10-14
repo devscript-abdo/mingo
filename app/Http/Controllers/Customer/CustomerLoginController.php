@@ -3,20 +3,17 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-use App\Providers\RouteServiceProvider;
 
 class CustomerLoginController extends Controller
 {
     use AuthenticatesUsers;
 
-
     // protected $redirectTo = RouteServiceProvider::CUSTOMER_DASH;
-
 
     public function __construct()
     {
@@ -49,7 +46,6 @@ class CustomerLoginController extends Controller
             : redirect(route('home'));
     }
 
-
     protected function attemptLogin(Request $request)
     {
         /*if (!$request->has('guard') && !$request->filled('guard')) {
@@ -71,7 +67,7 @@ class CustomerLoginController extends Controller
     }
 
     /**
-     * @param string $guard
+     * @param  string  $guard
      * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
      */
     protected function guard()

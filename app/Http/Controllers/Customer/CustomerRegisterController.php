@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\Customer;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 
 class CustomerRegisterController extends Controller
 {
-
-
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -44,16 +42,15 @@ class CustomerRegisterController extends Controller
         $this->middleware('guest:customer');
     }
 
-
     public function showRegistrationForm()
     {
 
         return view('theme.auth.customer.register.index');
     }
+
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -69,7 +66,6 @@ class CustomerRegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
      * @return \App\Models\Customer
      */
     protected function create(array $data)

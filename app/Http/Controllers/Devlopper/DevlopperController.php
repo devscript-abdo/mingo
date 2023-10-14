@@ -10,13 +10,9 @@ use App\Models\Review;
 use App\Models\Tokener;
 use App\Models\UserLogin;
 use App\Models\Wishlist;
-use Illuminate\Http\Request;
 
 class DevlopperController extends Controller
 {
-
-
-
     public function clearAllData()
     {
         UserLogin::truncate();

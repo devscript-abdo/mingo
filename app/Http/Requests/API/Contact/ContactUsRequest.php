@@ -28,7 +28,7 @@ class ContactUsRequest extends FormRequest
             'email' => 'required|email',
             'message' => 'required|string',
             'subject' => 'required|string',
-            'telephone' => 'required|phone:MA'
+            'telephone' => 'required|phone:MA',
         ];
     }
 }

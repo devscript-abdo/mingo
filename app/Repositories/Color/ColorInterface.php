@@ -4,8 +4,6 @@ namespace App\Repositories\Color;
 
 interface ColorInterface
 {
-
-
     public function all();
 
     public function query();

@@ -30,7 +30,6 @@ class AttributeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +40,6 @@ class AttributeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Http\Response
      */
     public function show(Attribute $attribute)
@@ -52,7 +50,6 @@ class AttributeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Http\Response
      */
     public function edit(Attribute $attribute)
@@ -63,15 +60,12 @@ class AttributeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Attribute $attribute)
     {
         //
     }
-
 
     public function destroy(Request $request)
     {
@@ -81,8 +75,10 @@ class AttributeController extends Controller
 
         if ($attr) {
             $attr->delete();
+
             return response()->json(['status' => "L'attribute a été supprimé avec succès"]);
         }
+
         return response()->json(['status' => "problem l'ors de la supprission"]);
     }
 }

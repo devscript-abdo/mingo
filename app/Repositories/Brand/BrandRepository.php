@@ -4,9 +4,8 @@ namespace App\Repositories\Brand;
 
 use App\Models\Brand;
 
-class BrandRepository  implements BrandInterface
+class BrandRepository implements BrandInterface
 {
-
     protected $model;
 
     public function __construct(Brand $model)
@@ -18,6 +17,7 @@ class BrandRepository  implements BrandInterface
     {
         return $this->model;
     }
+
     public function query()
     {
         return $this->model->query();
@@ -40,6 +40,7 @@ class BrandRepository  implements BrandInterface
                 ->with($with)
                 ->firstOrFail();
         }
+
         return $this->model->whereSlug($slug)->whereActive(true)
             ->firstOrFail();
     }

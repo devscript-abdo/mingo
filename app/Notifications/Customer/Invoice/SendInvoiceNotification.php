@@ -3,7 +3,6 @@
 namespace App\Notifications\Customer\Invoice;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -11,10 +10,10 @@ class SendInvoiceNotification extends Notification
 {
     use Queueable;
 
-
     public $invoiceUrl;
 
     public $invoicer;
+
     /**
      * Create a new notification instance.
      *
@@ -52,10 +51,10 @@ class SendInvoiceNotification extends Notification
             ->action('Télécharger la Facture', $this->invoiceUrl)
             ->line('Notre service de facturation reste à votre disposition pour toute demande')
             ->attach($this->invoiceUrl);
-            /*->attach($this->invoiceUrl, [
-                'as' => 'Facture.pdf',
-                'mime' => 'application/pdf',
-            ]);*/
+        /*->attach($this->invoiceUrl, [
+            'as' => 'Facture.pdf',
+            'mime' => 'application/pdf',
+        ]);*/
     }
 
     /**

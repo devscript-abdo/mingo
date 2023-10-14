@@ -1,12 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
-
 use App\Http\Controllers\AttributeController;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => config('mingo.admin')], function () {
-    
+
     Voyager::routes();
 
     Route::delete('/attr/delete', [AttributeController::class, 'destroy'])->name('admin.attrs.delete');

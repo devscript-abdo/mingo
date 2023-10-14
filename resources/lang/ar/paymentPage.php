@@ -16,5 +16,5 @@ return [
     'payment_ok' => 'اتمام عملية الدفع',
 
     'payment_table_product' => 'المنتوج',
-    'payment_table_total' => 'المجموع'
+    'payment_table_total' => 'المجموع',
 ];

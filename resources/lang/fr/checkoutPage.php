@@ -2,7 +2,6 @@
 
 return [
 
-
     'checkout_title' => 'Checkout',
     'checkout_details' => 'Détails',
     'checkout_product' => 'Produit',
@@ -18,5 +17,5 @@ return [
     'check_form_tele' => 'Numéro de telephone',
     'check_form_order' => 'Details',
 
-    'check_creat_account'=>'Crée un compte'
+    'check_creat_account' => 'Crée un compte',
 ];

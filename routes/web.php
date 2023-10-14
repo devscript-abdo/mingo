@@ -1,16 +1,13 @@
 <?php
 
-
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ExploreController;
-
 use App\Http\Controllers\ProductCollectionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SMS\SmsController;
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,21 +42,19 @@ Route::post('proccess', [PaymentController::class, 'proccess'])->name('payment.p
 //Route::post('proccess-done',[PaymentController::class,'proccessDone'])->name('payment.proccess.done');
 Route::post('proccess-fail', [PaymentController::class, 'proccessDone'])->name('payment.proccess.fail');
 
-Route::get('/tt',[SiteController::class,'index'])->name('home.ttt');
-
-
+Route::get('/tt', [SiteController::class, 'index'])->name('home.ttt');
 
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
 
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
     ],
     function () {
 
         Route::domain('abdo.demo.mingo.ma')->group(function () {
-  
-            Route::get('/sub',[SiteController::class,'subDomain']);
+
+            Route::get('/sub', [SiteController::class, 'subDomain']);
         });
 
         Route::get('/page/{slug}', [SiteController::class, 'getPage'])->name('site.page');
@@ -87,8 +82,5 @@ Route::group(
 
     }
 );
-
-
-
 
 //Auth::routes();

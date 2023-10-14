@@ -5,17 +5,15 @@ namespace App\Http\Controllers\API\Order;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Order\OrderDetailResource;
 use App\Http\Resources\Order\OrderResource;
-use App\Http\Resources\Product\ProductResource;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-
     public function index()
     {
-       
+
         $orders = auth('sanctum')
             ->user()
             ->orders()
@@ -23,10 +21,11 @@ class OrderController extends Controller
         // dd(count($orders));
         // $message = '';
         count($orders) ? $message = 'successfully Orders' : $message = 'no Orders';
+
         return response()->json(
             [
-                'payload' =>  OrderResource::collection($orders),
-                '_response' => ['msg' => $message]
+                'payload' => OrderResource::collection($orders),
+                '_response' => ['msg' => $message],
             ],
             200
         );
@@ -59,15 +58,15 @@ class OrderController extends Controller
 
             return response()->json(
                 [
-                    'payload' =>  OrderDetailResource::collection($order->products),
-                    '_response' => ['msg' => $message]
+                    'payload' => OrderDetailResource::collection($order->products),
+                    '_response' => ['msg' => $message],
                 ],
                 200
             );
         }
+
         return response()->json(['error' => 'Order not found'], 404);
     }
-
 
     public function delete(Request $request)
     {
@@ -88,17 +87,18 @@ class OrderController extends Controller
             return response()->json(
                 [
 
-                    'payload' =>   [],
-                    '_response' => ['msg' => 'cette commande a été annulée']
+                    'payload' => [],
+                    '_response' => ['msg' => 'cette commande a été annulée'],
                 ],
                 200
             );
         }
+
         return response()->json(
             [
 
-                'payload' =>   [],
-                '_response' => ['msg' => 'error']
+                'payload' => [],
+                '_response' => ['msg' => 'error'],
             ],
             200
         );

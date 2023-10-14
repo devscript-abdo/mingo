@@ -5,9 +5,8 @@ namespace App\Repositories\Wishlist;
 use App\Models\Wishlist;
 use App\Repositories\CacheTrait;
 
-class WishlistRepositoryCache  implements WishlistInterface
+class WishlistRepositoryCache implements WishlistInterface
 {
-
     use CacheTrait;
 
     protected $model;
@@ -16,7 +15,6 @@ class WishlistRepositoryCache  implements WishlistInterface
     {
         $this->model = $model;
     }
-
 
     public function query()
     {
@@ -28,7 +26,6 @@ class WishlistRepositoryCache  implements WishlistInterface
         return $this->model->all();
     }
 
-
     public function active()
     {
         return $this->model->active();
@@ -38,6 +35,7 @@ class WishlistRepositoryCache  implements WishlistInterface
     {
         $auth = auth()->guard('customer')->user();
         $id = json_encode($auth->id);
+
         return $this->setCache()->remember("customer_wishlist_{$id}", $this->timeToLive(), function () use ($auth) {
             return $auth->wishlist()->with('products')->get();
         });

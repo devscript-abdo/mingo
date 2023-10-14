@@ -5,12 +5,11 @@ namespace App\Models;
 use App\Collections\Ads\AdsCollections;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Str;
+use TCG\Voyager\Facades\Voyager;
 
 class Ads extends Model
 {
-
     use HasFactory;
 
     protected $table = 'ads';
@@ -20,7 +19,6 @@ class Ads extends Model
         $this->attributes['name'] = $value;
         $this->attributes['clicked'] = 0;
     }
-
 
     public function scopePublished($query)
     {
@@ -34,7 +32,6 @@ class Ads extends Model
             ->get();
     }
 
-
     public function getPhotoAttribute()
     {
         /// used this  if becuase i used random image  in Factory Seed
@@ -42,7 +39,8 @@ class Ads extends Model
             return $this->image;
         }
 
-        $image  = Voyager::image($this->image);
+        $image = Voyager::image($this->image);
+
         return $image;
     }
 

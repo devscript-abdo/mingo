@@ -12,7 +12,6 @@ return [
 
     'newsletter' => 'اشترك',
     'newsletter_detail' => 'اشترك الآن  ليصلك كل ما هو جديد يوميا',
-    'newsletter_detail_email' => 'ادخل بريدك الالكتروني من فضلك'
-
+    'newsletter_detail_email' => 'ادخل بريدك الالكتروني من فضلك',
 
 ];

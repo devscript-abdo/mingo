@@ -13,7 +13,7 @@ class AddresseRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth('sanctum')->user()->currentAccessToken()->token  === request()->user()->currentAccessToken()->token ;
+        return auth('sanctum')->user()->currentAccessToken()->token === request()->user()->currentAccessToken()->token;
 
     }
 
@@ -26,8 +26,8 @@ class AddresseRequest extends FormRequest
     {
         return [
 
-           // 'country' => ['required', 'string', 'max:255'],
-           
+            // 'country' => ['required', 'string', 'max:255'],
+
             'address' => ['required', 'string', 'max:255'],
             'phone' => ['nullable', 'phone:MA'],
             'city' => ['required', 'string', 'max:255'],

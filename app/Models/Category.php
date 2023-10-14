@@ -4,25 +4,23 @@ namespace App\Models;
 
 use App\Collections\Category\CategoryCollections;
 use App\Scopes\WithoutTranslationScope;
+use App\Traits\Language;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Models\Category as Categories;
 use TCG\Voyager\Traits\Translatable;
-use Spatie\Searchable\Searchable;
-use Spatie\Searchable\SearchResult;
-use App\Traits\Language;
 
 class Category extends Categories implements Searchable
 {
-
     use HasFactory, Language, Translatable;
 
     protected $translatable = ['name', 'description'];
 
-   // protected $with = ['childrens'];
+    // protected $with = ['childrens'];
 
     // protected $appends = ['icon_mobile_link'];
-
 
     public function newCollection(array $models = [])
     {
@@ -43,6 +41,7 @@ class Category extends Categories implements Searchable
     {
         return $this->hasMany(self::class, 'parent_id', 'id')->with('childrens');
     }
+
     public function subcategory()
     {
         return $this->hasMany('App\Models\Category', 'parent_id');
@@ -99,11 +98,12 @@ class Category extends Categories implements Searchable
                     'id' => $category->id,
                     'name' => $category->name,
                     'icon' => $category->icon_mobile_link,
-                    'childes' => $category->childes
+                    'childes' => $category->childes,
                 ];
             })
             ->toArray();
     }
+
     public function getUrlAttribute()
     {
         return route('categories.single', $this->slug);
@@ -116,7 +116,8 @@ class Category extends Categories implements Searchable
 
     public function getPhotoAttribute()
     {
-        $image  = Voyager::image($this->image);
+        $image = Voyager::image($this->image);
+
         return $image;
     }
 
@@ -193,21 +194,19 @@ class Category extends Categories implements Searchable
         return \Carbon\Carbon::now()->addDays(30);
     }
 
-
-
     /************************** */
 
     public function getSearchResult(): SearchResult
     {
 
         $url = $this->url;
+
         return new \Spatie\Searchable\SearchResult(
             $this,
             $this->field('name'),
             $url
         );
     }
-
 
     /***********Global Scope added 14-08-2021 */
 

@@ -2,26 +2,24 @@
 
 namespace App\Models;
 
-use App\Scopes\WithoutTranslationScope;
+use App\Traits\Language;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use TCG\Voyager\Traits\Translatable;
-use App\Traits\Language;
 
 class ProductCollection extends Model
 {
-
-    use HasFactory, Translatable, Language;
+    use HasFactory, Language, Translatable;
 
     protected $translatable = ['name', 'description'];
-
 
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
+
     public function products()
     {
         return $this
@@ -54,5 +52,4 @@ class ProductCollection extends Model
 
     /***********Global Scope added 14-08-2021 */
 
- 
 }

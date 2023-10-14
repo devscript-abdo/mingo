@@ -3,12 +3,11 @@
 namespace App\Http\View\Composers;
 
 use App\Repositories\Page\PageInterface;
-use Illuminate\View\View;
 use Illuminate\Cache\CacheManager;
+use Illuminate\View\View;
 
 class PageComposer
 {
-
     protected $pages;
 
     protected $cache;
@@ -16,8 +15,8 @@ class PageComposer
     public function __construct(PageInterface $pages, CacheManager $cache)
     {
         // Dependencies are automatically resolved by the service container...
-        if (!$this->pages) {
-            
+        if (! $this->pages) {
+
             $this->pages = $pages;
         }
         $this->cache = $cache;
@@ -26,7 +25,6 @@ class PageComposer
     /**
      * Bind data to the view.
      *
-     * @param  \Illuminate\View\View  $view
      * @return void
      */
     public function compose(View $view)
@@ -35,7 +33,6 @@ class PageComposer
             return $this->pages->getFooters();
         }));
     }
-
 
     private function timeToLive()
     {

@@ -4,9 +4,8 @@ namespace App\Repositories\Review;
 
 use App\Models\Review;
 
-class ReviewRepository  implements ReviewInterface
+class ReviewRepository implements ReviewInterface
 {
-
     protected $model;
 
     public function __construct(Review $model)

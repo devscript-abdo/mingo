@@ -5,9 +5,8 @@ namespace App\Repositories\Team;
 use App\Models\Team;
 use App\Repositories\CacheTrait;
 
-class TeamRepositoryCache  implements TeamInterface
+class TeamRepositoryCache implements TeamInterface
 {
-
     use CacheTrait;
 
     protected $model;

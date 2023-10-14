@@ -3,10 +3,9 @@
 namespace App\Notifications\Customer\Invoice;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\NexmoMessage;
+use Illuminate\Notifications\Notification;
 
 class SendSMSNotification extends Notification
 {
@@ -64,6 +63,6 @@ class SendSMSNotification extends Notification
     {
         return (new NexmoMessage)
             ->content('Your SMS message content');
-            //->from('+212677512753');
+        //->from('+212677512753');
     }
 }

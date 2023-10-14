@@ -3,15 +3,11 @@
 namespace App\Models;
 
 use App\Scopes\WithoutTranslationScope;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-use Illuminate\Database\Eloquent\Model;
-
-use TCG\Voyager\Traits\Translatable;
-
 use App\Traits\Language;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use TCG\Voyager\Traits\Translatable;
 
 class Color extends Model
 {

@@ -6,7 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class BrandResource extends JsonResource
 {
-
     public static $wrap = 'payload';
 
     /**
@@ -22,7 +21,7 @@ class BrandResource extends JsonResource
         return [
             'id' => $this->id,
             'image' => $this->photo,
-            'name' => $this->name
+            'name' => $this->name,
         ];
     }
 }

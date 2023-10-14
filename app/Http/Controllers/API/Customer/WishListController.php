@@ -21,8 +21,8 @@ class WishListController extends Controller
             ->wishlist()
             ->with('products')
             ->get()
-            ->map(function ($list)  use ($lng) {
-                return $list->products->map(function ($product)  use ($lng) {
+            ->map(function ($list) use ($lng) {
+                return $list->products->map(function ($product) use ($lng) {
                     /*return [
                         'customerId' => auth('sanctum')->user()->id,
                         'id' => $product->id,
@@ -36,11 +36,12 @@ class WishListController extends Controller
         ///https://laravel.com/docs/8.x/collections#method-collapse
 
         count($lists) ? $message = 'successfully wishlist' : $message = 'no wishlist';
+
         return response()->json(
             [
                 //'payload' =>  WishlistResource::collection($lists),
-                'payload' =>   $lists, //The collapse method collapses a collection of arrays into a single, flat collection
-                '_response' => ['msg' => $message]
+                'payload' => $lists, //The collapse method collapses a collection of arrays into a single, flat collection
+                '_response' => ['msg' => $message],
             ],
             200
         );
@@ -86,10 +87,10 @@ class WishListController extends Controller
             'updatedAt' => $product->updated_at->format('Y-m-d H:i:s'),
             'status' => '',
             'featuredStatus' => '',
-            "rating" => [
+            'rating' => [
 
-                (object)["average" => "4.7", "productId" => "$product->id"]
-            ]
+                (object) ['average' => '4.7', 'productId' => "$product->id"],
+            ],
         ];
     }
 
@@ -103,28 +104,30 @@ class WishListController extends Controller
                 ->whereIn('product_id', [$request->productId]);
             //dd($wish->toSql());
             //dd($wish->exists());
-            if (!$wish->exists()) {
+            if (! $wish->exists()) {
                 $wishlist = new Wishlist();
                 $wishlist->product_id = $request->productId;
                 //$wishlist->customer_id = 5;
                 $wishlist->save();
 
                 $message = 'le produit est ajouté à votre Favorie';
+
                 return response()->json(
                     [
 
-                        'payload' =>   [],
-                        '_response' => ['msg' => $message]
+                        'payload' => [],
+                        '_response' => ['msg' => $message],
                     ],
                     200
                 );
             } else {
                 $message = 'le produit est deja dans votre Favorie';
+
                 return response()->json(
                     [
 
-                        'payload' =>   [],
-                        '_response' => ['msg' => $message]
+                        'payload' => [],
+                        '_response' => ['msg' => $message],
                     ],
                     200
                 );
@@ -147,17 +150,18 @@ class WishListController extends Controller
             return response()->json(
                 [
 
-                    'payload' =>   [],
-                    '_response' => ['msg' => 'les produit a été supprimé depuis votre favori']
+                    'payload' => [],
+                    '_response' => ['msg' => 'les produit a été supprimé depuis votre favori'],
                 ],
                 200
             );
         }
+
         return response()->json(
             [
 
-                'payload' =>   [],
-                '_response' => ['msg' => 'error']
+                'payload' => [],
+                '_response' => ['msg' => 'error'],
             ],
             200
         );

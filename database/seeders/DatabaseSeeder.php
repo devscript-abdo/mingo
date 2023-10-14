@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
 
         //\App\Models\Ads::factory(33)->create();
         //\App\Models\Slider::factory(10)->create();
-       // $this->call(AttributeSeeder::class);
-       // $this->call(CouponsTableSeeder::class);
-       $this->call(ProductSeeder::class);
+        // $this->call(AttributeSeeder::class);
+        // $this->call(CouponsTableSeeder::class);
+        $this->call(ProductSeeder::class);
     }
 }

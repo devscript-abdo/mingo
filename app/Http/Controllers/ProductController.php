@@ -3,21 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
-use Illuminate\Http\Request;
-
-use Gloudemans\Shoppingcart\Facades\Cart;
 
 class ProductController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function api()
     {
 
@@ -28,9 +25,10 @@ class ProductController extends Controller
     {
         return Product::whereId($id)->first();
     }
+
     public function index()
     {
-       // $topAds = $this->Ads()->locationIn('top_products_page', 10);
+        // $topAds = $this->Ads()->locationIn('top_products_page', 10);
 
         $products = $this->Product()->withRelated(['category']);
 
@@ -72,7 +70,7 @@ class ProductController extends Controller
             $products = $this->Product();
         }
 
-       // $colors = $this->Color()->active();
+        // $colors = $this->Color()->active();
 
         $brands = $this->Brand()->activeItems();
 
@@ -92,14 +90,12 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //
     }
-
 
     public function show($product)
     {
@@ -119,7 +115,6 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
@@ -130,8 +125,6 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
@@ -142,7 +135,6 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)

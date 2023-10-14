@@ -15,6 +15,6 @@ class PreventRequestsDuringMaintenance extends Middleware
         'theadmin',
         'theadmin/*',
         'api',
-        'api/*'
+        'api/*',
     ];
 }

@@ -24,7 +24,7 @@ class GenerateInvoiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'order' => 'required|string'
+            'order' => 'required|string',
         ];
     }
 }

@@ -5,9 +5,8 @@ namespace App\Repositories\Ads;
 use App\Models\Ads;
 use App\Repositories\CacheTrait;
 
-class AdsRepositoryCache  implements AdsInterface
+class AdsRepositoryCache implements AdsInterface
 {
-
     use CacheTrait;
 
     protected $model;
@@ -21,6 +20,7 @@ class AdsRepositoryCache  implements AdsInterface
     {
         return $this->model;
     }
+
     public function query()
     {
         return $this->model->query();

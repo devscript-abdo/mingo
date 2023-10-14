@@ -37,12 +37,11 @@ class StaticStorageLink extends Command
      */
     public function handle()
     {
-         $this->storageLink();
+        $this->storageLink();
     }
-
 
     public function storageLink()
     {
-        return  symlink(env('FILESYSTEM_STORAGE_ROOT'), env('FILESYSTEM_STORAGE_LINK_PATH'));
+        return symlink(env('FILESYSTEM_STORAGE_ROOT'), env('FILESYSTEM_STORAGE_LINK_PATH'));
     }
 }

@@ -11,5 +11,5 @@ return [
     'form_login_guest' => 'continue sans création de compte',
     'form_login_with' => 'Se connecter avec ',
     'form_create_account' => 'Crée un compte',
-    'form_forgot_pass' => 'mot de pass oublier '
+    'form_forgot_pass' => 'mot de pass oublier ',
 ];

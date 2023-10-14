@@ -6,17 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Review\ReviewRequest;
 use App\Http\Resources\Review\ReviewResource;
 use App\Models\Review;
-use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-
-
     public function index()
     {
         return ReviewResource::collection(Review::all());
     }
-
 
     public function store(ReviewRequest $request)
     {
@@ -34,15 +30,16 @@ class ReviewController extends Controller
             return response()->json(
                 [
 
-                    '_response' => ['msg' => 'successfully Created Review wait ... when its accepted by Admin']
+                    '_response' => ['msg' => 'successfully Created Review wait ... when its accepted by Admin'],
                 ],
                 201
             );
         }
+
         return response()->json(
             [
 
-                '_response' => ['msg' => 'Error Created Review']
+                '_response' => ['msg' => 'Error Created Review'],
             ],
             201
         );

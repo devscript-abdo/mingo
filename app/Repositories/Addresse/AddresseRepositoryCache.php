@@ -7,14 +7,13 @@ use App\Repositories\CacheTrait;
 
 class AddresseRepositoryCache implements AddresseInterface
 {
-
     use CacheTrait;
 
     protected $model;
 
     public function __construct(Addresse $model)
     {
-        if (!$this->model) {
+        if (! $this->model) {
             $this->model = $model;
         }
     }
@@ -31,14 +30,14 @@ class AddresseRepositoryCache implements AddresseInterface
         });
     }
 
-    public function  query()
+    public function query()
     {
         return $this->model()->query();
     }
 
     public function delete($id)
     {
-        $model =  $this->model()->find($id);
+        $model = $this->model()->find($id);
 
         return $model->delete();
     }
@@ -48,10 +47,10 @@ class AddresseRepositoryCache implements AddresseInterface
         $auth = auth()->guard('customer')->user();
 
         $id = json_encode($auth->id);
-        
+
         return $this->setCache()->remember("addresse_customer_cache_{$id}", $this->timeToLive(), function () use ($auth) {
 
-            return  $auth->addresses()->get();
+            return $auth->addresses()->get();
         });
     }
 }

@@ -5,9 +5,8 @@ namespace App\Repositories\Color;
 use App\Models\Color;
 use App\Repositories\CacheTrait;
 
-class ColorRepositoryCache  implements ColorInterface
+class ColorRepositoryCache implements ColorInterface
 {
-
     use CacheTrait;
 
     protected $model;
@@ -16,7 +15,6 @@ class ColorRepositoryCache  implements ColorInterface
     {
         $this->model = $model;
     }
-
 
     public function query()
     {
@@ -30,7 +28,6 @@ class ColorRepositoryCache  implements ColorInterface
             return $this->model->all();
         });
     }
-
 
     public function active()
     {

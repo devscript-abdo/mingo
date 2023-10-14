@@ -2,12 +2,11 @@
 
 namespace App\Repositories\Addresse;
 
-
-interface AddresseInterface {
-
+interface AddresseInterface
+{
     public function all();
 
-    public function  query();
+    public function query();
 
     public function model();
 

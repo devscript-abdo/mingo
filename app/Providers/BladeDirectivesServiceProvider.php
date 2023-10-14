@@ -25,7 +25,7 @@ class BladeDirectivesServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::directive('hello', function ($expression) {
-            return "Hello Baby ";
+            return 'Hello Baby ';
         });
     }
 }

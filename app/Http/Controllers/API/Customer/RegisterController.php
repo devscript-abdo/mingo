@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\API\Customer;
 
-use App\Models\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Customer\RegisterRequest;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -40,8 +38,7 @@ class RegisterController extends Controller
         $token = $user->createToken($data['email'])->plainTextToken;
 
         return response()->json([
-            'payload' =>
-            [
+            'payload' => [
                 'id' => $user->id,
                 'nom' => $user->name,
                 'prenom' => $user->name,
@@ -50,12 +47,12 @@ class RegisterController extends Controller
                 'ville' => $user->city,
                 'zip' => '12345600',
                 'photo_link' => $user->profil_avatar,
-                'phone'=>$user->phone,
+                'phone' => $user->phone,
 
                 'token' => $token,
-                
+
             ],
-            '_response' => ['msg' => 'user created with success']
+            '_response' => ['msg' => 'user created with success'],
         ], 201);
     }
 }

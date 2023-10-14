@@ -6,20 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Customer\LoginRequest;
 use App\Models\Customer;
 use App\Models\Tokener;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-
     public function login(LoginRequest $request): \Illuminate\Http\JsonResponse
     {
         $data = $request->validated();
 
         // Tokener Model : represent personal_access_tokens Table from database
         Tokener::whereDate('last_used_at', '<', now())->delete();
-
 
         // check if user already loggedIn
         /*$loggedUser = Tokener::whereName($data['email'])
@@ -33,10 +30,10 @@ class LoginController extends Controller
         //check email if exists
         $user = Customer::whereEmail($data['email'])->first();
         // check password
-        if (!$user || !Hash::check($data['password'], $user->password)) {
+        if (! $user || ! Hash::check($data['password'], $user->password)) {
 
             return response()->json([
-                'message' => 'Ces identifiants ne correspondent pas à nos enregistrements'
+                'message' => 'Ces identifiants ne correspondent pas à nos enregistrements',
             ], 401);
         }
         $user->tokens()->delete(); // delete old token
@@ -47,12 +44,11 @@ class LoginController extends Controller
             'ip' => request()->ip(),
             'customer_id' => $user->id,
             'logged_in_at' => Carbon::now(),
-            'device' => 'application_Mobile'
+            'device' => 'application_Mobile',
         ]);
 
         return response()->json([
-            'payload' =>
-            [
+            'payload' => [
                 'id' => $user->id,
                 'nom' => $user->name,
                 'prenom' => $user->name,
@@ -65,8 +61,7 @@ class LoginController extends Controller
 
                 'token' => $token,
             ],
-            '_response' => ['msg' => 'user logged with success']
+            '_response' => ['msg' => 'user logged with success'],
         ], 201);
     }
-
 }

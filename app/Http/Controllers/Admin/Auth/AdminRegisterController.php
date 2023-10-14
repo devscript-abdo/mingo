@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\Admin\Admin;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 
 class AdminRegisterController extends Controller
 {
-
-
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -44,16 +42,15 @@ class AdminRegisterController extends Controller
         $this->middleware('guest:admin');
     }
 
-
     public function showRegistrationForm()
     {
 
         return view('theme.auth.admin.register.index');
     }
+
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -69,7 +66,6 @@ class AdminRegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
      * @return \App\Models\Admin\Admin
      */
     protected function create(array $data)
@@ -79,7 +75,7 @@ class AdminRegisterController extends Controller
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
-            'active' => true
+            'active' => true,
         ]);
     }
 

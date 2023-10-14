@@ -16,7 +16,7 @@ return [
     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
         '%s%s',
         'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1',
-        env('APP_URL') ? ',' . parse_url(env('APP_URL'), PHP_URL_HOST) : ''
+        env('APP_URL') ? ','.parse_url(env('APP_URL'), PHP_URL_HOST) : ''
     ))),
 
     /*
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'expiration' => 1440, // 1440 minuts =  1 day 
+    'expiration' => 1440, // 1440 minuts =  1 day
 
     //'expiration' => 60 * 24 * 7,
     /*

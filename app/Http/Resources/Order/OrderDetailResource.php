@@ -7,7 +7,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderDetailResource extends JsonResource
 {
-
     public static $wrap = 'payload';
 
     /*public $order;

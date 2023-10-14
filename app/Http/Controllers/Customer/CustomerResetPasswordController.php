@@ -31,7 +31,6 @@ class CustomerResetPasswordController extends Controller
      */
     //protected $redirectTo = RouteServiceProvider::HOME;
 
-
     public function showResetForm(Request $request)
     {
         $token = $request->route()->parameter('token');

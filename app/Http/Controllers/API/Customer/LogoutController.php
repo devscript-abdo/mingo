@@ -19,8 +19,8 @@ class LogoutController extends Controller
 
         return response()->json([
             'payload' => [
-                'msg' => 'user Logged out'
-            ]
+                'msg' => 'user Logged out',
+            ],
         ]);
     }
 }

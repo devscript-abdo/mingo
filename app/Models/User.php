@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends \TCG\Voyager\Models\User
@@ -41,7 +39,6 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
     ];
 
-
     public function scopeWithLastLogin($query)
     {
         return $query->addSelect([
@@ -57,7 +54,8 @@ class User extends \TCG\Voyager\Models\User
     public function GetLoginHistory()
     {
         $sessionsAll = $this->loginHistory()->get() ?? [];
-        $sessionsAll->pop();//remove las login because it's getted from scopeWithLastLogin() function
+        $sessionsAll->pop(); //remove las login because it's getted from scopeWithLastLogin() function
+
         return $sessionsAll->all();
     }
 

@@ -5,7 +5,7 @@ namespace App\Repositories\Page;
 use App\Models\Page;
 use App\Repositories\CacheTrait;
 
-class PageRepositoryCache  implements PageInterface
+class PageRepositoryCache implements PageInterface
 {
     use CacheTrait;
 
@@ -16,7 +16,6 @@ class PageRepositoryCache  implements PageInterface
 
         $this->model = $model;
     }
-
 
     public function query()
     {
@@ -33,6 +32,7 @@ class PageRepositoryCache  implements PageInterface
     public function getPage($slug)
     {
         $slg = json_encode($slug);
+
         return $this->setCache()->remember("page_cache_slug_{$slg}", $this->timeToLive(), function () use ($slug) {
             return $this->model->whereSlug($slug)->whereStatus('active')->first();
         });

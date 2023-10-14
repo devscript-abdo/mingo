@@ -3,23 +3,22 @@
 namespace App\Models;
 
 use App\Collections\Product\ProductCollections;
-use App\Scopes\ProviderProductsScope;
 use App\Scopes\WithoutTranslationScope;
+use App\Traits\Language;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Builder;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Traits\Translatable;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
-use App\Traits\Language;
-use Illuminate\Support\Carbon;
+use TCG\Voyager\Facades\Voyager;
+use TCG\Voyager\Traits\Translatable;
 
 class Product extends Model implements Searchable
 {
+    use HasFactory, Language, Translatable;
     use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
-    use HasFactory, Translatable, Language;
 
     protected $translatable = ['name', 'description', 'content'];
 
@@ -31,6 +30,7 @@ class Product extends Model implements Searchable
         'formated_price' => 'decimal:2',
         ///'all_colors'=>'json',
     ];
+
     // added at 22-08-2021
     public function newCollection(array $models = [])
     {
@@ -140,14 +140,15 @@ class Product extends Model implements Searchable
 
     public function getFirstPhotoAttribute()
     {
-        $images =  json_decode($this->images);
+        $images = json_decode($this->images);
         $image = isset($images);
+
         return Voyager::image($image ? array_shift($images) : setting('portfolio.portfolio_default_image'));
     }
 
     public function getAllPhotosAttribute()
     {
-        $images =  json_decode($this->images) ?? [];
+        $images = json_decode($this->images) ?? [];
 
         $collection = collect($images);
 
@@ -171,11 +172,13 @@ class Product extends Model implements Searchable
             $result = $colors->map(function ($item, $key) {
 
                 $return = ['name' => $item->name, 'code' => $item->code];
-                return (object)$return;
+
+                return (object) $return;
             });
 
             return $result->all();
         }
+
         return [];
     }
 
@@ -190,13 +193,16 @@ class Product extends Model implements Searchable
                 //return  $item->values->whereIn('product_id', [$this->id]);
                 return [
                     'name' => $item->name,
-                    'values' => $item->values->whereIn('product_id', [$this->id])->toArray()
+                    'values' => $item->values->whereIn('product_id', [$this->id])->toArray(),
                 ];
             });
+
             return $result->all();
         }
+
         return [];
     }
+
     public function getAllReviewsAttribute()
     {
         if ($this->reviews->count()) {
@@ -206,14 +212,15 @@ class Product extends Model implements Searchable
                     'name' => $review->name,
                     'email' => $review->email,
                     'comment' => $review->comment,
-                    'rating' => $review->rating
+                    'rating' => $review->rating,
                 ];
             });
+
             return $result->all();
         }
+
         return [];
     }
-
 
     public function getUrlAttribute()
     {
@@ -257,13 +264,13 @@ class Product extends Model implements Searchable
         });
     }
 
-
     /************************** */
 
     public function getSearchResult(): SearchResult
     {
 
         $url = $this->url;
+
         return new \Spatie\Searchable\SearchResult(
             $this,
             $this->field('name'),
@@ -271,15 +278,13 @@ class Product extends Model implements Searchable
         );
     }
 
-
-
     public static function boot()
     {
         parent::boot();
 
         static::creating(function ($model) {
             $prefix = self::max('id') + 1;
-            $model->sku = str_pad($prefix . 'MNGP', 5, 0, STR_PAD_LEFT);
+            $model->sku = str_pad($prefix.'MNGP', 5, 0, STR_PAD_LEFT);
             // $model->serial_code = Str::uuid();
         });
     }

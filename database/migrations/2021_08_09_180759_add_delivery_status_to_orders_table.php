@@ -14,9 +14,9 @@ class AddDeliveryStatusToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->enum('delivery_status',['delivred','not-delivred'])
-            ->default('not-delivred');
-   
+            $table->enum('delivery_status', ['delivred', 'not-delivred'])
+                ->default('not-delivred');
+
         });
     }
 

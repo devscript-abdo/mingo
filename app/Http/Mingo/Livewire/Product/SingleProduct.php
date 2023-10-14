@@ -4,15 +4,15 @@ namespace App\Http\Mingo\Livewire\Product;
 
 use App\Models\Product;
 use App\Models\Wishlist;
-use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Livewire\Component;
 
 class SingleProduct extends Component
 {
-
     public array $quantity = [];
 
     public $product;
+
     //public $colors;
     public $cart;
 
@@ -33,7 +33,7 @@ class SingleProduct extends Component
     public function addToCart($product_id)
     {
 
-      //  dd($this->attributesData);
+        //  dd($this->attributesData);
         $product = Product::findOrFail($product_id);
 
         Cart::add(
@@ -54,7 +54,7 @@ class SingleProduct extends Component
 
         $this->dispatchBrowserEvent('added_to_cart', [
             'type' => 'success',
-            'message' => 'le produit est ajouté à votre panier'
+            'message' => 'le produit est ajouté à votre panier',
         ]);
     }
 
@@ -67,7 +67,7 @@ class SingleProduct extends Component
                 ->whereIn('product_id', [$productId]);
             //dd($wish->toSql());
             //dd($wish->exists());
-            if (!$wish->exists()) {
+            if (! $wish->exists()) {
                 $wishlist = new Wishlist();
                 $wishlist->product_id = $productId;
                 //$wishlist->customer_id = auth()->guard('customer')->user()->id;
@@ -75,7 +75,7 @@ class SingleProduct extends Component
 
                 $this->dispatchBrowserEvent('added_to_cart', [
                     'type' => 'success',
-                    'message' => 'le produit est ajouté à votre Favorie'
+                    'message' => 'le produit est ajouté à votre Favorie',
                 ]);
             }
             /*$this->dispatchBrowserEvent('added_to_cart', [

@@ -4,11 +4,9 @@ namespace App\Repositories\ProductCollection;
 
 use App\Models\ProductCollection;
 use App\Repositories\CacheTrait;
-use Illuminate\Cache\CacheManager;
 
-class ProductCollectionRepositoryCache  implements ProductCollectionInterface
+class ProductCollectionRepositoryCache implements ProductCollectionInterface
 {
-
     use CacheTrait;
 
     protected $model;

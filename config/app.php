@@ -194,7 +194,7 @@ return [
 
         Barryvdh\DomPDF\ServiceProvider::class,
 
-        Laravel\Socialite\SocialiteServiceProvider::class
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 
@@ -254,7 +254,7 @@ return [
 
         'PDF' => Barryvdh\DomPDF\Facade::class,
 
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

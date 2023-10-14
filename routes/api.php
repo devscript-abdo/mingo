@@ -39,7 +39,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
     Route::group(['prefix' => 'fr'], function () {
         Route::post('/contact-us', [ContactUsController::class, 'contactUs'])->name('api.contact.fr');
     });
-    
+
     Route::group(['prefix' => 'ar'], function () {
         Route::post('/contact-us', [ContactUsController::class, 'contactUs'])->name('api.contact.ar');
     });
@@ -65,7 +65,6 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
     });
 
     /********************************** Products API  **********************************************/
-
 
     Route::group(['prefix' => 'fr'], function () {
 
@@ -96,9 +95,7 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::post('/products-reviews/add', [ReviewController::class, 'store'])->name('api.products.reviews.store.ar');
     });
 
-
     /********************************** END Products API  **********************************************/
-
 
     /********************************** Categories API  **********************************************/
     Route::group(['prefix' => 'fr'], function () {
@@ -141,7 +138,6 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
         Route::get('/brands', [BrandController::class, 'index'])->name('api.brands.index.fr');
     });
 
-
     /***********************************************Customer Login API ********************************/
 
     Route::group(['prefix' => 'fr'], function () {
@@ -175,9 +171,6 @@ Route::group(['middleware' => 'verifyApiAccess'], function () {
     });
 
     Route::group(['middleware' => 'auth:sanctum'], function () {
-
-
-
 
         Route::group(['prefix' => 'fr/account'], function () {
 

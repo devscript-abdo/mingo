@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Product\ProductResource;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
@@ -22,11 +21,11 @@ class ProductController extends Controller
             // dd('oui use cache');
             return response()->json(
                 [
-                    'payload' =>  ProductResource::collection(Cache::remember('api_products_all', $this->timeToLiveForCache(), function () {
+                    'payload' => ProductResource::collection(Cache::remember('api_products_all', $this->timeToLiveForCache(), function () {
                         return Product::all();
                     })),
 
-                    '_response' => ['msg' => 'successfully']
+                    '_response' => ['msg' => 'successfully'],
                 ],
                 200
             );
@@ -34,8 +33,8 @@ class ProductController extends Controller
             // dd('NOOOO use cache');
             return response()->json(
                 [
-                    'payload' =>  ProductResource::collection(Product::all()),
-                    '_response' => ['msg' => 'successfully']
+                    'payload' => ProductResource::collection(Product::all()),
+                    '_response' => ['msg' => 'successfully'],
                 ],
                 200
             );
@@ -46,13 +45,12 @@ class ProductController extends Controller
     {
         return response()->json(
             [
-                'payload' =>  ProductResource::collection(Product::latest('created_at')->get()),
-                '_response' => ['msg' => 'successfully']
+                'payload' => ProductResource::collection(Product::latest('created_at')->get()),
+                '_response' => ['msg' => 'successfully'],
             ],
             200
         );
     }
-
 
     /**
      * Display the specified resource.
@@ -68,6 +66,7 @@ class ProductController extends Controller
         if ($product) {
             return new ProductResource($product);
         }
+
         return response()->json(['error' => 'product not found'], 404);
     }
 
@@ -88,7 +87,7 @@ class ProductController extends Controller
             return response()->json(
                 [
                     'payload' => $collectProducts,
-                    '_response' => ['msg' => 'successfully Collections Products']
+                    '_response' => ['msg' => 'successfully Collections Products'],
                 ],
                 200
             );
@@ -100,7 +99,7 @@ class ProductController extends Controller
 
         return [
             'collection_name' => $collectionName,
-            'products' => ProductResource::collection($data)
+            'products' => ProductResource::collection($data),
         ];
     }
 }

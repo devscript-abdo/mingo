@@ -23,6 +23,6 @@ return [
     'payer_online_bon' => 'Payez en ligne ou lors de la réception du bon',
 
     'create_account' => 'allez vite crée votre compte sur mingo !',
-    'create_account_register' => 'Crée le Maintenant'
+    'create_account_register' => 'Crée le Maintenant',
 
 ];

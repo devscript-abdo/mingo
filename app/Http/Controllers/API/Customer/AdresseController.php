@@ -21,10 +21,11 @@ class AdresseController extends Controller
         // dd(count($orders));
         // $message = '';
         count($addresses) ? $message = 'successfully addresses' : $message = 'no addresses';
+
         return response()->json(
             [
-                'payload' =>  AddresseResource::collection($addresses),
-                '_response' => ['msg' => $message]
+                'payload' => AddresseResource::collection($addresses),
+                '_response' => ['msg' => $message],
             ],
             200
         );
@@ -61,6 +62,7 @@ class AdresseController extends Controller
 
             return response()->json(['_response' => ['msg' => 'address added succesufully']], 201);
         }
+
         return response()->json(['_response' => ['code' => 'code_404', 'message' => 'error 404']], 404);
     }
 
@@ -79,17 +81,18 @@ class AdresseController extends Controller
             return response()->json(
                 [
 
-                    'payload' =>   [],
-                    '_response' => ['msg' => 'Cette adresse a été supprimer']
+                    'payload' => [],
+                    '_response' => ['msg' => 'Cette adresse a été supprimer'],
                 ],
                 200
             );
         }
+
         return response()->json(
             [
 
-                'payload' =>   [],
-                '_response' => ['msg' => 'error']
+                'payload' => [],
+                '_response' => ['msg' => 'error'],
             ],
             200
         );

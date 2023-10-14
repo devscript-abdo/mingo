@@ -3,12 +3,11 @@
 namespace App\Http\View\Composers;
 
 use App\Repositories\Category\CategoryInterface;
-use Illuminate\View\View;
 use Illuminate\Cache\CacheManager;
+use Illuminate\View\View;
 
 class CategoryComposer
 {
-
     protected $categories;
 
     protected $cache;
@@ -16,7 +15,7 @@ class CategoryComposer
     public function __construct(CategoryInterface $categories, CacheManager $cache)
     {
         // Dependencies are automatically resolved by the service container...
-        if (!$this->categories) {
+        if (! $this->categories) {
             $this->categories = $categories;
         }
         $this->cache = $cache;
@@ -25,13 +24,11 @@ class CategoryComposer
     /**
      * Bind data to the view.
      *
-     * @param  \Illuminate\View\View  $view
      * @return void
      */
     public function compose(View $view)
     {
         //$view->with('categories', $this->categories->getWithChildrens());
-
 
         $view->with('categories', $this->cache->remember('categories', $this->timeToLive() /* cache expired time(mins) */, function () {
             return $this->categories->getWithChildrens();
@@ -41,7 +38,6 @@ class CategoryComposer
             return $this->categories->categoryInMenu();
         }));
     }
-
 
     private function timeToLive()
     {

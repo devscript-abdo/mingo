@@ -14,7 +14,7 @@ class AddUserTypeToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->enum('user_type',['mingo-mobile','mingo-web'])->default('mingo-web')->after('id');
+            $table->enum('user_type', ['mingo-mobile', 'mingo-web'])->default('mingo-web')->after('id');
         });
     }
 

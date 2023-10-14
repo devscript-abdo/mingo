@@ -15,7 +15,8 @@ class ArchiveController extends Controller
     public function index()
     {
         $archives = Archive::all();
-        return view('archive',compact('archives'));
+
+        return view('archive', compact('archives'));
     }
 
     /**
@@ -31,7 +32,6 @@ class ArchiveController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,7 +42,6 @@ class ArchiveController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Archive  $archive
      * @return \Illuminate\Http\Response
      */
     public function show(Archive $archive)
@@ -53,7 +52,6 @@ class ArchiveController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Archive  $archive
      * @return \Illuminate\Http\Response
      */
     public function edit(Archive $archive)
@@ -64,8 +62,6 @@ class ArchiveController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Archive  $archive
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Archive $archive)
@@ -76,7 +72,6 @@ class ArchiveController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Archive  $archive
      * @return \Illuminate\Http\Response
      */
     public function destroy(Archive $archive)

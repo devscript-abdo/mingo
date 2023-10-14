@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\Language;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use TCG\Voyager\Traits\Translatable;
-use App\Traits\Language;
 use TCG\Voyager\Facades\Voyager;
+use TCG\Voyager\Traits\Translatable;
 
 class Slider extends Model
 {
-    use HasFactory, Translatable, Language;
+    use HasFactory, Language, Translatable;
 
     protected $translatable = ['title', 'description', 'button_text'];
 
@@ -34,7 +34,8 @@ class Slider extends Model
         if (Str::contains($this->image, 'lorempixel')) {
             return $this->image;
         }
-        $image  = Voyager::image($this->image);
+        $image = Voyager::image($this->image);
+
         return $image;
     }
 }

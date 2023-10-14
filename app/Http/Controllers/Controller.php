@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\InterfaceHandler;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
-use App\Traits\InterfaceHandler;
-
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, InterfaceHandler;
-
+    use AuthorizesRequests, DispatchesJobs, InterfaceHandler, ValidatesRequests;
 
     public function timeToLiveForCache()
     {
