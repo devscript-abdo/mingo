@@ -27,6 +27,7 @@
         "predis/predis": "^2.2",
         "propaganistas/laravel-phone": "^5.0",
         "spatie/laravel-honeypot": "^4.3",
+        "spatie/laravel-menu": "^4.1",
         "spatie/laravel-newsletter": "^5.1",
         "spatie/laravel-query-builder": "^5.0",
         "spatie/laravel-responsecache": "^7.4",
