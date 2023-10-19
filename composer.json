@@ -39,13 +39,13 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
-        "spatie/laravel-ignition": "^2.0",
         "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.13",
         "laravel/sail": "^1.25",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.0",
-        "laravel/pint": "^1.6"
+        "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
         "psr-4": {

@@ -17,9 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
 
-        Menu::macro('main', function() {
+        Menu::macro('main', function () {
             return Menu::new()
                 ->route('home', 'Home')
                 ->route('about', 'Home')

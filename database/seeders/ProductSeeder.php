@@ -6,7 +6,6 @@ use App\Models\Product;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File as FacadesFile;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
@@ -192,7 +191,7 @@ class ProductSeeder extends Seeder
 
                                 <p>This is a unisex item, please check our clothing &amp; footwear sizing guide for specific Rains jacket sizing information. RAINS comes from the rainy nation of Denmark at the edge of the European continent, close to the ocean and with prevailing westerly winds; all factors that contribute to an average of 121 rain days each year. Arising from these rainy weather conditions comes the attitude that a quick rain shower may be beautiful, as well as moody- but first and foremost requires the right outfit. Rains focus on the whole experience of going outside on rainy days, issuing an invitation to explore even in the most mercurial weather.</p>';
             $item['status'] = $faker->randomElement(['published', 'pending']);
-            $item['sku'] = 'SW-' . $faker->numberBetween(100, 200);
+            $item['sku'] = 'SW-'.$faker->numberBetween(100, 200);
             $item['brand_id'] = $faker->numberBetween(1, 7);
             $item['quantity'] = $faker->numberBetween(10, 20);
 
@@ -205,7 +204,7 @@ class ProductSeeder extends Seeder
 
                 $productsFolder = storage_path('app/public/products');
 
-                if (!FacadesFile::isDirectory($productsFolder)) {
+                if (! FacadesFile::isDirectory($productsFolder)) {
 
                     FacadesFile::makeDirectory($productsFolder, 0777, true, true);
 
