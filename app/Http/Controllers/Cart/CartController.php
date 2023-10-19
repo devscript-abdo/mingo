@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Cart;
 
 use App\Http\Controllers\Controller;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Elmarzouguidev\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller

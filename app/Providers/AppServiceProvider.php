@@ -6,6 +6,7 @@ use App\Http\Middleware\CacheResponseMiddleware;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Menu\Laravel\Facades\Menu;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        
+
+        Menu::macro('main', function() {
+            return Menu::new()
+                ->route('home', 'Home')
+                ->route('about', 'Home')
+                ->route('contact', 'Home');
+        });
     }
 
     /**
@@ -38,5 +46,6 @@ class AppServiceProvider extends ServiceProvider
         Schema::disableForeignKeyConstraints();
 
         $this->app->singleton(CacheResponseMiddleware::class);
+
     }
 }

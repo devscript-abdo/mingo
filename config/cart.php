@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'calculator' => \Gloudemans\Shoppingcart\Calculation\DefaultCalculator::class,
+    'calculator' => \Elmarzouguidev\Shoppingcart\Calculation\DefaultCalculator::class,
 
     /*
     |--------------------------------------------------------------------------

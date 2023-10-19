@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Coupon;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Coupon\CouponRequest;
 use App\Models\Coupon;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Elmarzouguidev\Shoppingcart\Facades\Cart;
 
 class CouponController extends Controller
 {

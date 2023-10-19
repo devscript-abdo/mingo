@@ -4,7 +4,7 @@ namespace App\Http\Mingo\Livewire\Product;
 
 use App\Models\Product;
 use App\Models\Wishlist;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Elmarzouguidev\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
 class SingleProduct extends Component

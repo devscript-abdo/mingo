@@ -3,7 +3,7 @@
 namespace App\Http\Mingo\Livewire\Cart;
 
 use App\Models\Product;
-use Gloudemans\Shoppingcart\Facades\Cart as MyCart;
+use Elmarzouguidev\Shoppingcart\Facades\Cart as MyCart;
 use Livewire\Component;
 
 class Cart extends Component

@@ -5,7 +5,7 @@ namespace App\Http\Mingo\Livewire\Product;
 use App\Models\Product;
 use App\Models\Wishlist;
 use App\Repositories\Product\ProductInterface;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Elmarzouguidev\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use Livewire\WithPagination;
 

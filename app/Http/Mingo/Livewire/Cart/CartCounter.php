@@ -2,7 +2,7 @@
 
 namespace App\Http\Mingo\Livewire\Cart;
 
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Elmarzouguidev\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
 class CartCounter extends Component

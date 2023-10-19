@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Payment\PaymentRequest;
 use App\Models\Order;
 use CMI\CmiClient;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Elmarzouguidev\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller

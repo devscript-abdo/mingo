@@ -7,7 +7,7 @@ use App\Http\Requests\Checkout\CheckoutRequest;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Elmarzouguidev\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
 {

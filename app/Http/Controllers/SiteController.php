@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Services\Payment\PaymentInterface;
+use Spatie\Menu\Laravel\Facades\Menu;
+use Spatie\Menu\Laravel\Link;
 
 class SiteController extends Controller
 {
     public function index()
     {
+
+        $menu = Menu::new([
+            Link::to('/', 'Home'),
+            Link::to('/about', 'About'),
+        ]);
+
+        //dd($menu->__toString());
 
         $sliders = $this->Slider()->activeItems();
 
