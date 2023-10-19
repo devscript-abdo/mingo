@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\Product;
 use Faker\Factory;
-use File;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File as FacadesFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
@@ -191,20 +192,28 @@ class ProductSeeder extends Seeder
 
                                 <p>This is a unisex item, please check our clothing &amp; footwear sizing guide for specific Rains jacket sizing information. RAINS comes from the rainy nation of Denmark at the edge of the European continent, close to the ocean and with prevailing westerly winds; all factors that contribute to an average of 121 rain days each year. Arising from these rainy weather conditions comes the attitude that a quick rain shower may be beautiful, as well as moody- but first and foremost requires the right outfit. Rains focus on the whole experience of going outside on rainy days, issuing an invitation to explore even in the most mercurial weather.</p>';
             $item['status'] = $faker->randomElement(['published', 'pending']);
-            $item['sku'] = 'SW-'.$faker->numberBetween(100, 200);
+            $item['sku'] = 'SW-' . $faker->numberBetween(100, 200);
             $item['brand_id'] = $faker->numberBetween(1, 7);
             $item['quantity'] = $faker->numberBetween(10, 20);
 
             $images = [
-                'products/'.($key + 1).'.jpg',
+                'products/demo-product.jpg',
             ];
 
-            for ($i = 1; $i <= 3; $i++) {
-                if (File::exists(database_path('seeders/files/products/'.($key + 1).'-'.$i.'.jpg'))) {
-                    $images[] = 'products/'.($key + 1).'-'.$i.'.jpg';
+            if (FacadesFile::exists(database_path('seeders/files/products/demo-product.jpg'))) {
+                $images[] = 'products/demo-product.jpg';
+
+                $productsFolder = storage_path('app/public/products');
+
+                if (!FacadesFile::isDirectory($productsFolder)) {
+
+                    FacadesFile::makeDirectory($productsFolder, 0777, true, true);
+
+                    FacadesFile::copy(database_path('seeders/files/products/demo-product.jpg'), storage_path('app/public/products/demo-product.jpg'));
                 }
             }
-            $item['image'] = 'products/'.($key + 1).'.jpg';
+
+            $item['image'] = 'products/demo-product.jpg';
             $item['images'] = json_encode($images);
 
             $item['category_id'] = $faker->numberBetween(10, 40);
@@ -223,7 +232,6 @@ class ProductSeeder extends Seeder
                 $faker->numberBetween(1, 37),
                 $faker->numberBetween(15, 17),
             ]);*/
-
         }
     }
 }

@@ -87,8 +87,8 @@
                                         </ul>
                                     </div>
                                     <div class="ps-product__container">
-                                        <a class="ps-product__vendor" href="{{$product->category->url}}">
-                                            {{$product->category->field('name')}}
+                                        <a class="ps-product__vendor" href="{{$product->category?->url}}">
+                                            {{$product->category?->field('name')}}
                                         </a>
                                         <div class="ps-product__content">
                                             <a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
@@ -128,8 +128,8 @@
                             </div>
                             <div class="ps-product__container">
                                 <div class="ps-product__content"><a class="ps-product__title" href="{{$product->url}}">{{$product->field('name')}}</a>
-                                    <a class="ps-product__vendor" href="{{$product->category->url}}">
-                                        {{$product->category->field('name')}}
+                                    <a class="ps-product__vendor" href="{{$product->category?->url}}">
+                                        {{$product->category?->field('name')}}
                                     </a>
                                     <ul class="ps-product__desc">
                                         <li>{{$product->field('description')}}</li>
