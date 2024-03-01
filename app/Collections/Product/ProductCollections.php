@@ -26,6 +26,5 @@ class ProductCollections extends Collection
 
     public function groupByRelated()
     {
-
     }
 }
